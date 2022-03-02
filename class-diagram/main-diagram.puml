@@ -1,0 +1,66 @@
+@startuml
+
+abstract class Field{
+
+}
+
+class Lab
+class Storage
+class UWU
+
+Field <|-- Lab
+Field <|-- Storage
+Field <|-- UWU
+
+
+interface EventEmitter
+
+class Virologist {
+
+}
+
+Virologist <- EventEmitter
+
+abstract class Matter {
+
+}
+
+class AminoAcid
+class NucleicAcid
+
+Matter <|-- AminoAcid
+Matter <|-- NucleicAcid
+
+abstract class Equipment {
+    onEvent(event)
+}
+
+class Cloak
+class Gloves
+class Bag
+
+Equipment <|-- Cloak
+Equipment <|-- Gloves
+Equipment <|-- Bag
+
+abstract class Agent{
+    gencode[] : Gencode
+}
+
+class Virus
+class Cure
+
+Agent <|-- Virus
+Agent <|-- Cure
+
+class Gencode {
+
+}
+
+Agent::gencode *- Gencode
+
+Agent <-left Collectable
+Equipment <- Collectable
+
+
+@enduml
