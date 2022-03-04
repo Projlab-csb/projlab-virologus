@@ -9,33 +9,38 @@ abstract class Field{
 }
 
 class Lab{
-    +getAminoAcid(amount: Integer): AminoAcid
+    +getGencode(): Gencode
 }
 class Storage{
+    +getAminoAcid(amount: Integer): AminoAcid
     +getNucleicAcid(amount: Integer): NucleicAcid
 }
 class Shelter{
+    +getEquipmentCount(): Integer
     +getEquipment(): Equipment
 }
 
-Lab::getAminoAcid <. AminoAcid
-Storage::getNucleicAcid <. NucleicAcid
+Lab::getGencode <. Gencode
+Storage::getAminoAcid <.l AminoAcid
+Storage::getNucleicAcid <.r NucleicAcid
 Shelter::getEquipment <.. Equipment
 
 Field <|-- Lab
 Field <|-- Storage
 Field <|-- Shelter
 
-
-interface EventEmitter
-
 class Virologist {
     +move(direction: Integer): void
-    +collectEquipment(field: Field): Equipment
-    +collectAminoAcid(field: Field): AminoAcid
+    +collect(field: Field): Collectable
+    +useAgent(agent: Agent, virologist: Virologist): void
+    +stealEquipment(robber: Virologist): Equipment
+    +stealMatter(): Matter
+    +canTouche(robber: Virologist): boolean
+    'Invoked at the start of the next Round eg. reduce the Agent's lifetime
+    +nextRound(): void
 }
-Virologist::matter *.d. Matter
-Virologist <- EventEmitter
+Virologist *.r. Matter
+Virologist *.l. Equipment
 
 abstract class Matter {
 
@@ -74,24 +79,37 @@ Equipment <|-- Gloves
 Equipment <|-- Bag
 
 abstract class Agent{
-    gencode[] : Gencode
+    gencode: Gencode
+    +applyEffect(v: Virologist)
+    +removeEffect(v: Virologist)
 }
 
-class Virus
-class Cure
+class Virus{
+    +applyEffect(v: Virologist)
+    +removeEffect(v: Virologist)
+}
+class Vacine{
+    +applyEffect(v: Virologist)
+    +removeEffect(v: Virologist)
+}
 
 Agent <|-- Virus
-Agent <|-- Cure
+Agent <|-- Vacine
 
+'This Gencode is basically the crafting receipt of the Agent
 class Gencode {
     +requiredNucleicAcid: NucleicAcid
     +requiredAminoAcid: AminoAcid
 }
 
-Agent::gencode *- Gencode
+Agent::gencode *-- Gencode
 
-Agent <-l Collectable
-Equipment <- Collectable
+interface Collectable{
+
+}
+
+Collectable<|- Agent
+Collectable <|- Equipment
 
 
 @enduml
