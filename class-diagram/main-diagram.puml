@@ -1,24 +1,40 @@
 @startuml
 
 abstract class Field{
-
+ +getNeighbors(): Array<Field>
+ +getNeighbor(direction: Integer): Field
+ +addNeighbor(neighbor: Field): void
+ +acceptVirologyst(virologyst: Virologyst): void
+ +removeVirologyst(virologyst: Virologyst): void
 }
 
-class Lab
-class Storage
-class UWU
+class Lab{
+    +getAminoAcid(amount: Integer): AminoAcid
+}
+class Storage{
+    +getNucleicAcid(amount: Integer): NucleicAcid
+}
+class Shelter{
+    +getEquipment(): Equipment
+}
+
+Lab::getAminoAcid <. AminoAcid
+Storage::getNucleicAcid <. NucleicAcid
+Shelter::getEquipment <.. Equipment
 
 Field <|-- Lab
 Field <|-- Storage
-Field <|-- UWU
+Field <|-- Shelter
 
 
 interface EventEmitter
 
 class Virologist {
-
+    +move(direction: Integer): void
+    +collectEquipment(field: Field): Equipment
+    +collectAminoAcid(field: Field): AminoAcid
 }
-
+Virologist::matter *.d. Matter
 Virologist <- EventEmitter
 
 abstract class Matter {
@@ -32,12 +48,26 @@ Matter <|-- AminoAcid
 Matter <|-- NucleicAcid
 
 abstract class Equipment {
-    onEvent(event)
+    +onEvent(event)
+    +collectBy(v: Virologist)
+    +applyEffect(v: Virologist)
+    +removeEffect(v: Virologist)
 }
 
-class Cloak
-class Gloves
-class Bag
+class Cloak{
+    +applyEffect(v: Virologist)
+    +removeEffect(v: Virologist)
+}
+
+class Gloves{
+    +applyEffect(v: Virologist)
+    +removeEffect(v: Virologist)
+}
+
+class Bag{
+    +applyEffect(v: Virologist)
+    +removeEffect(v: Virologist)
+}
 
 Equipment <|-- Cloak
 Equipment <|-- Gloves
@@ -54,12 +84,13 @@ Agent <|-- Virus
 Agent <|-- Cure
 
 class Gencode {
-
+    +requiredNucleicAcid: NucleicAcid
+    +requiredAminoAcid: AminoAcid
 }
 
 Agent::gencode *- Gencode
 
-Agent <-left Collectable
+Agent <-l Collectable
 Equipment <- Collectable
 
 
