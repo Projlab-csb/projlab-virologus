@@ -1,11 +1,20 @@
 @startuml
 
-abstract class Field{
+interface Steppable{
+    'Invoked at the start of the next Round eg. reduce the Agent's lifetime
+    +nextRound(): void
+}
+
+interface Collectable{
+    +collectBy(v: Virologist): void
+}
+
+class Field{
  +getNeighbors(): Array<Field>
  +getNeighbor(direction: Integer): Field
  +addNeighbor(neighbor: Field): void
- +acceptVirologyst(virologyst: Virologyst): void
- +removeVirologyst(virologyst: Virologyst): void
+ +acceptVirologist(virologist: Virologist): void
+ +removeVirologist(virologist: Virologist): void
 }
 
 class Lab{
@@ -20,27 +29,15 @@ class Shelter{
     +getEquipment(): Equipment
 }
 
-Lab::getGencode <. Gencode
-Storage::getAminoAcid <.l AminoAcid
-Storage::getNucleicAcid <.r NucleicAcid
-Shelter::getEquipment <.. Equipment
-
-Field <|-- Lab
-Field <|-- Storage
-Field <|-- Shelter
-
 class Virologist {
     +move(direction: Integer): void
     +collect(field: Field): Collectable
-    +useAgent(agent: Agent, virologist: Virologist): void
+    +useAgent(agent: Agent, attacker: Virologist, defender: Virologist): void
     +stealEquipment(robber: Virologist): Equipment
-    +stealMatter(): Matter
-    +canTouche(robber: Virologist): boolean
-    'Invoked at the start of the next Round eg. reduce the Agent's lifetime
+    +stealMatter(matter: Matter): Matter
+    +canTouch(robber: Virologist): boolean
     +nextRound(): void
 }
-Virologist *.r. Matter
-Virologist *.l. Equipment
 
 abstract class Matter {
 
@@ -49,11 +46,7 @@ abstract class Matter {
 class AminoAcid
 class NucleicAcid
 
-Matter <|-- AminoAcid
-Matter <|-- NucleicAcid
-
 abstract class Equipment {
-    +onEvent(event)
     +collectBy(v: Virologist)
     +applyEffect(v: Virologist)
     +removeEffect(v: Virologist)
@@ -74,14 +67,11 @@ class Bag{
     +removeEffect(v: Virologist)
 }
 
-Equipment <|-- Cloak
-Equipment <|-- Gloves
-Equipment <|-- Bag
-
 abstract class Agent{
     gencode: Gencode
     +applyEffect(v: Virologist)
     +removeEffect(v: Virologist)
+    +nextRound(): void
 }
 
 class Virus{
@@ -93,23 +83,38 @@ class Vacine{
     +removeEffect(v: Virologist)
 }
 
-Agent <|-- Virus
-Agent <|-- Vacine
-
 'This Gencode is basically the crafting receipt of the Agent
 class Gencode {
     +requiredNucleicAcid: NucleicAcid
     +requiredAminoAcid: AminoAcid
+    +collectBy(v: Virologist): void
 }
 
-Agent::gencode *-- Gencode
+Field <|-- Lab
+Field <|-- Storage
+Field <|-- Shelter
 
-interface Collectable{
+Lab o-- Gencode
+Storage o-- Equipment
 
-}
+Virologist --o Field
+Virologist *-d- Matter
+Virologist *-d- Equipment
+Virologist <|-l Steppable
 
-Collectable<|- Agent
-Collectable <|- Equipment
+Matter <|-- AminoAcid
+Matter <|-- NucleicAcid
+
+Equipment <|-- Cloak
+Equipment <|-- Gloves
+Equipment <|-- Bag
+
+Agent <|- Steppable
+Agent <|-- Virus
+Agent <|-- Vacine
+
+Collectable<|- Gencode
+Collectable <|-l Equipment
 
 
 @enduml
