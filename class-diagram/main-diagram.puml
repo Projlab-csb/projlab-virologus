@@ -2,41 +2,43 @@
 
 interface Steppable{
     'Invoked at the start of the next Round eg. reduce the Agent's lifetime
-    +nextRound(): void
+    +nextRound()
 }
 
 interface Collectable{
-    +collectBy(v: Virologist): void
+    +collectBy(v: Virologist)
 }
 
 class Field{
- +getNeighbors(): Array<Field>
- +getNeighbor(direction: Integer): Field
- +addNeighbor(neighbor: Field): void
- +acceptVirologist(virologist: Virologist): void
- +removeVirologist(virologist: Virologist): void
+    +getNeighbors(): Array<Field>
+    +getNeighbor(direction: Integer): Field
+    +addNeighbor(neighbor: Field)
+    +acceptVirologist(virologist: Virologist)
+    +removeVirologist(virologist: Virologist)
 }
 
 class Lab{
     +getGencode(): Gencode
 }
+
 class Storage{
     +getAminoAcid(amount: Integer): AminoAcid
     +getNucleicAcid(amount: Integer): NucleicAcid
 }
+
 class Shelter{
-    +getEquipmentCount(): Integer
+    '+getEquipmentCount(): Integer
     +getEquipment(): Equipment
 }
 
 class Virologist {
-    +move(direction: Integer): void
+    +move(direction: Integer)
     +collect(field: Field): Collectable
-    +useAgent(agent: Agent, attacker: Virologist, defender: Virologist): void
+    +useAgent(agent: Agent, attacker: Virologist, defender: Virologist)
     +stealEquipment(robber: Virologist): Equipment
     +stealMatter(matter: Matter): Matter
     +canTouch(robber: Virologist): boolean
-    +nextRound(): void
+    +nextRound()
 }
 
 abstract class Matter {
@@ -71,13 +73,14 @@ abstract class Agent{
     gencode: Gencode
     +applyEffect(v: Virologist)
     +removeEffect(v: Virologist)
-    +nextRound(): void
+    +nextRound()
 }
 
 class Virus{
     +applyEffect(v: Virologist)
     +removeEffect(v: Virologist)
 }
+
 class Vacine{
     +applyEffect(v: Virologist)
     +removeEffect(v: Virologist)
@@ -87,15 +90,16 @@ class Vacine{
 class Gencode {
     +requiredNucleicAcid: NucleicAcid
     +requiredAminoAcid: AminoAcid
-    +collectBy(v: Virologist): void
+    +collectBy(v: Virologist)
 }
 
 Field <|-- Lab
 Field <|-- Storage
 Field <|-- Shelter
 
-Lab o-- Gencode
-Storage o-- Equipment
+Lab o- Gencode
+Shelter o-- Equipment
+Storage o-- Matter
 
 Virologist --o Field
 Virologist *-d- Matter
@@ -112,9 +116,10 @@ Equipment <|-- Bag
 Agent <|- Steppable
 Agent <|-- Virus
 Agent <|-- Vacine
+Agent o--o Gencode
 
-Collectable<|- Gencode
-Collectable <|-l Equipment
-
+Collectable <|-l Gencode
+Collectable <|- Equipment
+Collectable <|- Matter
 
 @enduml
