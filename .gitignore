@@ -28,3 +28,4 @@ hs_err_pid*
 # MacOS X
 .DS_Store
 class-diagram/export
+sequence-diagrams/export
