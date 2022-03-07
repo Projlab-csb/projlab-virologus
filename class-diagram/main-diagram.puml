@@ -7,9 +7,18 @@ interface Steppable{
 
 interface Collectable{
     +collectBy(v: Virologist)
+    +destroy()
+}
+
+class GameController {
+    'Handle the turns, this knows the order of virologists, and calls the appropriate nextRound() functions
+    +endOfTurn(virologist: Virologist)
+    'Checks if the virologist won the game
+    +didIWin(virologist: Virologist): boolean
 }
 
 class Field{
+    +getCollectable(): Collectable
     +getNeighbors(): Array<Field>
     +getNeighbor(direction: Integer): Field
     +addNeighbor(neighbor: Field)
@@ -34,7 +43,7 @@ class Shelter{
 class Virologist {
     +move(direction: Integer)
     'In the collect function we can use the this.getField()
-    +collect(): Collectable
+    +collect()
     +discard(collectable: Collectable)
     +createAgent(gencode: Gencode)
     +useAgent(agent: Agent, attacker: Virologist, defender: Virologist)
@@ -77,18 +86,27 @@ class Bag{
 }
 
 abstract class Agent{
-    gencode: Gencode
     {abstract} +applyEffect(v: Virologist)
     {abstract} +removeEffect(v: Virologist)
     {abstract} +nextRound()
 }
 
-class Virus{
+class VitusDance{
     +applyEffect(v: Virologist)
     +removeEffect(v: Virologist)
 }
 
-class Vaccine{
+class Protection{
+    +applyEffect(v: Virologist)
+    +removeEffect(v: Virologist)
+}
+
+class Debilitation{
+    +applyEffect(v: Virologist)
+    +removeEffect(v: Virologist)
+}
+
+class Forget{
     +applyEffect(v: Virologist)
     +removeEffect(v: Virologist)
 }
@@ -100,19 +118,21 @@ class Gencode {
     +collectBy(v: Virologist)
 }
 
+GameController *-l Virologist
+
 Field <|- Lab
 Field <|-- Storage
 Field <|-- Shelter
 
-Lab "n" o- "1" Gencode
-Shelter "n" o-- "1" Equipment
-Storage "n" o-- "1" Matter
+Lab "n" o- "0..1" Gencode
+Shelter "n" o-- "0..1" Equipment
+Storage "n" o-- "0..1" Matter
 
-Virologist "n" --o "1" Field
-Virologist "n" *-d- "1" Matter
-Virologist "n" *-d- "1" Equipment
-Virologist <|-l Steppable
-Virologist "n" o-d- "1" Gencode
+Virologist "n" --o "0..1" Field
+Virologist "n" *-d- "0..1" Matter
+Virologist "n" *-d- "0..1" Equipment
+Virologist <|.l Steppable
+Virologist "n" o-d- "0..1" Gencode
 
 Matter <|-- AminoAcid
 Matter <|-- NucleicAcid
@@ -121,10 +141,12 @@ Equipment <|-- Cloak
 Equipment <|-- Gloves
 Equipment <|-- Bag
 
-Agent <|- Steppable
-Agent <|-- Virus
-Agent <|-- Vaccine
-Agent "1" o--o "1" Gencode
+Agent <|. Steppable
+Agent <|-- VitusDance
+Agent <|--- Protection
+Agent <|-- Debilitation
+Agent <|--- Forget
+Agent "0..1" o--o "0..1" Gencode
 
 Collectable <|.l Gencode
 Collectable <|.. Equipment
