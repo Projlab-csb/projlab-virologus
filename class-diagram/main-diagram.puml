@@ -15,6 +15,7 @@ class GameController {
     +endOfTurn(virologist: Virologist)
     'Checks if the virologist won the game
     +didIWin(virologist: Virologist): boolean
+    +gameOver()
 }
 
 class Field{
@@ -45,12 +46,12 @@ class Virologist {
     'In the collect function we can use the this.getField()
     +collect()
     +discard(collectable: Collectable)
-    +createAgent(gencode: Gencode)
+    +createAgent(gencode: Gencode) : Agent
     +useAgent(agent: Agent, attacker: Virologist, defender: Virologist)
     +stealEquipment(robber: Virologist): Equipment
     +stealMatter(matter: Matter): Matter
     +canTouch(robber: Virologist): boolean
-    +nextRound()
+    +startOfTurn()
 }
 
 abstract class Matter {

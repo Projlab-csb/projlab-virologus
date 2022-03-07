@@ -5,12 +5,12 @@ autonumber
 
 actor Player
 
-Player -> TargetVirologist: stealEquipment(Virologist)
+Player -> TargetVirologist: stealMatter(Virologist, matter)
 Activate TargetVirologist
 
 
 
-TargetVirologist --> Player: equipment
+TargetVirologist --> Player: matter
 Deactivate TargetVirologist
 
 @enduml

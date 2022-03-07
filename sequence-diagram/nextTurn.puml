@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor Player
+
+Player -> GameController: endOfTurn(Virologist)
+Activate GameController
+GameController -> GameController: didIWin(Virologist)
+Activate GameController
+GameController --> GameController: hasWon
+Deactivate GameController
+
+alt hasWon
+    GameController -> GameController: gameOver()
+    Activate GameController
+    GameController --> GameController
+    Deactivate GameController
+else !hasWon
+    GameController -> NextVirologist: startOfTurn()
+    Activate NextVirologist
+    NextVirologist --> GameController
+    Deactivate NextVirologist
+end
+
+GameController --> Player:
+Deactivate GameController
+@enduml

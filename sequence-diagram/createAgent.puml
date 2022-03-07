@@ -1,0 +1,14 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor Player
+
+Player -> Virologist: createAgent(Gencode)
+Activate Virologist
+
+Virologist --> Player: Agent
+Deactivate Virologist
+
+@enduml

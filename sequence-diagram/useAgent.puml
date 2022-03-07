@@ -8,16 +8,24 @@ actor Player
 Player -> Virologist: useAgent(Agent, TargetVirologist)
 Activate Virologist
 
+Virologist -> TargetVirologist: canTouch(Virologist)
+Activate TargetVirologist
+TargetVirologist --> Virologist: canBeTouched
+Deactivate TargetVirologist
+opt canBeTouched
+
 Virologist -> Agent: applyEffect(TargetVirologist)
 Activate Agent
 
 Agent -> TargetVirologist: effectApplied()
 Activate TargetVirologist
-'TODO it's probably not totally completed yet
-TargetVirologist --> Agent: 
+
+TargetVirologist --> Agent:
 Deactivate TargetVirologist
 Agent --> Virologist
 Deactivate Agent
+end
+
 
 Virologist --> Player:
 Deactivate Virologist
