@@ -33,7 +33,10 @@ class Shelter{
 
 class Virologist {
     +move(direction: Integer)
-    +collect(field: Field): Collectable
+    'In the collect function we can use the this.getField()
+    +collect(): Collectable
+    +discard(collectable: Collectable)
+    +createAgent(gencode: Gencode)
     +useAgent(agent: Agent, attacker: Virologist, defender: Virologist)
     +stealEquipment(robber: Virologist): Equipment
     +stealMatter(matter: Matter): Matter
@@ -42,16 +45,20 @@ class Virologist {
 }
 
 abstract class Matter {
-
+    {abstract} +collectBy(v: Virologist)
 }
 
-class AminoAcid
-class NucleicAcid
+class AminoAcid{
+    +collectBy(v: Virologist)
+}
+class NucleicAcid{
+    +collectBy(v: Virologist)
+}
 
 abstract class Equipment {
-    +collectBy(v: Virologist)
-    +applyEffect(v: Virologist)
-    +removeEffect(v: Virologist)
+    {abstract} +collectBy(v: Virologist)
+    {abstract} +applyEffect(v: Virologist)
+    {abstract} +removeEffect(v: Virologist)
 }
 
 class Cloak{
@@ -71,9 +78,9 @@ class Bag{
 
 abstract class Agent{
     gencode: Gencode
-    +applyEffect(v: Virologist)
-    +removeEffect(v: Virologist)
-    +nextRound()
+    {abstract} +applyEffect(v: Virologist)
+    {abstract} +removeEffect(v: Virologist)
+    {abstract} +nextRound()
 }
 
 class Virus{
@@ -81,7 +88,7 @@ class Virus{
     +removeEffect(v: Virologist)
 }
 
-class Vacine{
+class Vaccine{
     +applyEffect(v: Virologist)
     +removeEffect(v: Virologist)
 }
@@ -89,22 +96,23 @@ class Vacine{
 'This Gencode is basically the crafting receipt of the Agent
 class Gencode {
     +requiredNucleicAcid: NucleicAcid
-    +requiredAminoAcid: AminoAcid
+    + requiredAminoAcid: AminoAcid
     +collectBy(v: Virologist)
 }
 
-Field <|-- Lab
+Field <|- Lab
 Field <|-- Storage
 Field <|-- Shelter
 
-Lab o- Gencode
-Shelter o-- Equipment
-Storage o-- Matter
+Lab "n" o- "1" Gencode
+Shelter "n" o-- "1" Equipment
+Storage "n" o-- "1" Matter
 
-Virologist --o Field
-Virologist *-d- Matter
-Virologist *-d- Equipment
+Virologist "n" --o "1" Field
+Virologist "n" *-d- "1" Matter
+Virologist "n" *-d- "1" Equipment
 Virologist <|-l Steppable
+Virologist "n" o-d- "1" Gencode
 
 Matter <|-- AminoAcid
 Matter <|-- NucleicAcid
@@ -115,11 +123,11 @@ Equipment <|-- Bag
 
 Agent <|- Steppable
 Agent <|-- Virus
-Agent <|-- Vacine
-Agent o--o Gencode
+Agent <|-- Vaccine
+Agent "1" o--o "1" Gencode
 
-Collectable <|-l Gencode
-Collectable <|- Equipment
-Collectable <|- Matter
+Collectable <|.l Gencode
+Collectable <|.. Equipment
+Collectable <|. Matter
 
 @enduml
