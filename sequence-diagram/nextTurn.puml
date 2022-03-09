@@ -3,27 +3,18 @@
 
 autonumber
 
-actor Player
+'actor Player
 
-Player -> GameController: endOfTurn(Virologist)
-Activate GameController
-GameController -> GameController: didIWin(Virologist)
-Activate GameController
-GameController --> GameController: hasWon
-Deactivate GameController
 
-alt hasWon
-    GameController -> GameController: gameOver()
-    Activate GameController
-    GameController --> GameController
-    Deactivate GameController
-else !hasWon
-    GameController -> NextVirologist: startOfTurn()
-    Activate NextVirologist
-    NextVirologist --> GameController
-    Deactivate NextVirologist
+loop while someone not won
+    loop all virologists
+        GameControler -> Virologist: startOfTurn()
+        activate Virologist
+            'Do the turn, make all stuff happen
+        Virologist -> GameControler
+        deactivate Virologist
+    end
 end
 
-GameController --> Player:
-Deactivate GameController
+
 @enduml
