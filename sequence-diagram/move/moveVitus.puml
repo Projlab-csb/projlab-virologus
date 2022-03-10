@@ -3,14 +3,19 @@
 
 autonumber
 
-mainframe Virologist default move
+mainframe Virologist paralyzed move
 
 actor Player
 
 Player -> Virologist: move(direction)
 Activate Virologist
 
-Virologist -> FieldCurrent: getNeighbor(direction)
+note right of Virologist
+Get a random integer as direction
+end note
+Virologist -> Virologist: randomDirection = generateRandomNumber()
+
+Virologist -> FieldCurrent: getNeighbor(randomDirection)
 Activate FieldCurrent
 FieldCurrent --> Virologist: targetField : Field
 Deactivate FieldCurrent

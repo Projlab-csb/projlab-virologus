@@ -9,14 +9,17 @@
 - [ ] RoundFlow - RoundRunStrategy Default
 - [ ] RoundFlow Paralyzed - RoundRunStrategy Paralyzed
 ---
-- [ ] Move Default - MoveStrategy Default
-- [ ] Move Vitus - MoveStrategy VitusDance
+### Bálint:
+- [X] Move Default - MoveStrategy Default
+- [X] Move Vitus - MoveStrategy VitusDance
 ---
+### Bálint:
 - [ ] Defense Default - DefenseStrategy Default
 - [ ] Defense Gloves - DefenseStrategy Gloves
 - [ ] Defense Cloak - DefenseStrategy Cloak
 ---
-- [ ] Create Agent
+### Bálint: 
+- [X] Create Agent
 - [ ] Use Agent
 - [ ] Refresh Agents
 ---
