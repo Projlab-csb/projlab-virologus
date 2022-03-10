@@ -1,0 +1,24 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Virologist default defense stategy
+
+
+Virologist -> TargetVirologist++: attack(Agent, Virologist, TargetVirologist)
+
+TargetVirologist -> TargetVirologist++: defese(Agent, Virologist, TargetVirologist)
+
+
+note over TargetVirologist
+    By default no defense, so just apply the agent's attack
+end note
+
+TargetVirologist -> Agent++: +applyEffect(TargetVirologist)
+Agent --> TargetVirologist--
+
+TargetVirologist --> TargetVirologist--
+
+TargetVirologist --> Virologist --
+@enduml

@@ -14,14 +14,14 @@
 - [X] Move Vitus - MoveStrategy VitusDance
 ---
 ### Bálint:
-- [ ] Defense Default - DefenseStrategy Default
+- [X] Defense Default - DefenseStrategy Default
 - [ ] Defense Gloves - DefenseStrategy Gloves
 - [ ] Defense Cloak - DefenseStrategy Cloak
 ---
 ### Bálint: 
 - [X] Create Agent
-- [ ] Use Agent
-- [X] Refresh Agents - 
+- [X] Use Agent
+- [X] Refresh Agents
 ---
 ### Zoli
 - [ ] Steal Matter
@@ -37,5 +37,7 @@
 - [ ] Bag Remove Effect
 ---
 - [ ] Forget Apply Effect
+---
+- [ ] 
 
 

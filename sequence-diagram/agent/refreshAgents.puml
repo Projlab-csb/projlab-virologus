@@ -12,6 +12,8 @@ Activate Virologist
             Virologist->Agent:decreaseTTL()
             Activate Agent
                 opt lifeofanagent=0
+                    'TODO: A removeEffect() függvényt az ágensen kell meghívni, és nem a virológuson
+                    'TODO: A lifeline-oknak legyen rendesen vége és eleje. Ne legyen egybe az egész
                     Agent->Virologist:removeEffect()
                     Virologist-->Agent
                 end

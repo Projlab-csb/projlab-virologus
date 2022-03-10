@@ -1,0 +1,23 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Use Agent
+
+actor Player
+
+Player -> Virologist++: useAgent(Agent, TargetVirologist)
+
+Virologist -> TargetVirologist++: attack(Agent, Virologist, TargetVirologist)
+
+note right TargetVirologist
+    We call our defense strategy
+end note
+
+TargetVirologist -> TargetVirologist: TargetVirologist.DefenseStrategy.defense(Agent, Virologist, TargetVirologist)
+
+TargetVirologist --> Virologist --
+
+Virologist --> Player --
+@enduml

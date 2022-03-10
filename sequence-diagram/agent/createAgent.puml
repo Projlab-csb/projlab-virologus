@@ -3,6 +3,8 @@
 
 autonumber
 
+mainframe Create Agent
+
 actor Player
 
 Player -> Virologist: createAgent(Gencode)
@@ -24,9 +26,9 @@ opt Virologist.getAminoAcid() > requiredAminoAcid && Virologist.getNucleicAcid()
 end
 
 Virologist -> Agent **
-Activate Agent
-Agent --> Virologist: storeAgent(Agent)
-Deactivate Agent
+Agent --> Virologist
+
+Virologist -> Virologist: storeAgent(Agent)
 
 Virologist --> Player
 Deactivate Virologist

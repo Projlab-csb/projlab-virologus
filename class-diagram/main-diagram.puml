@@ -10,7 +10,7 @@ interface MoveStrategyInterface{
 }
 
 interface DefenseStrategyInterface{
-    +defense()
+    +defense(agent: Agent, attacker: Virologist, defender: Virologist)
 }
 
 interface Collectable{
@@ -55,7 +55,8 @@ class Virologist {
     +collect()
     +discard(collectable: Collectable)
     +createAgent(gencode: Gencode) : Agent
-    +useAgent(agent: Agent, attacker: Virologist, defender: Virologist)
+    +useAgent(agent: Agent, defender: Virologist)
+    +attack(agent: Agent, attacker: Virologist, defender: Virologist)
     +stealEquipment(robber: Virologist): Equipment
     +stealMatter(robber: Virologist, matter: Matter): Matter
     +startOfTurn()
@@ -112,13 +113,11 @@ class VitusDance{
 class Protection{
     +applyEffect(v: Virologist)
     +removeEffect(v: Virologist)
-    +defense()
 }
 
 class Paralyzed{
     +applyEffect(v: Virologist)
     +removeEffect(v: Virologist)
-    +roundRun()
 }
 
 class Forget{
