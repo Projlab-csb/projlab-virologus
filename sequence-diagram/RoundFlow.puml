@@ -11,6 +11,7 @@ actor GameControl
         loop while userinput!=EndOfTurn
 
         end
+
         Virologist-->GameControl
         Deactivate Virologist
 
