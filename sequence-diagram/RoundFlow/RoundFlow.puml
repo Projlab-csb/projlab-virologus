@@ -3,6 +3,8 @@
 
 autonumber
 
+mainframe Virologist default round
+
 actor GameControl
 GameControl -> Virologist: RoundRun()
 Activate Virologist
@@ -23,6 +25,11 @@ loop while userinput!=EndOfTurn
 end
 Virologist->GameControl:reportGenCode()
 Activate GameControl
+
+GameControl->Virologist: RefreshAgents()
+Activate Virologist
+Virologist-->GameControl
+deactivate Virologist
 GameControl-->Virologist
 deactivate GameControl
 Virologist-->GameControl

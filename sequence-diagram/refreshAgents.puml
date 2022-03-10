@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+mainframe Refresh Agents
+
+actor GameControl
+
+
+GameControl->Virologist: RefreshAgents()
+Activate Virologist
+    loop all Agent on Virologist
+            Virologist->Agent:decreaseTTL()
+            Activate Agent
+                opt lifeofanagent=0
+                    Agent->Virologist:removeEffect()
+                    Virologist-->Agent
+                end
+            Agent-->Virologist: b
+            opt b=false
+            Virologist->Agent:destroy()
+            Agent-->Virologist
+            Destroy Agent
+
+            end
+            Deactivate Agent
+    end
+
+Virologist-->GameControl
+deactivate Virologist
+
+
+@enduml
+
+note left of Virologist
+User input does not have an effect
+end note
