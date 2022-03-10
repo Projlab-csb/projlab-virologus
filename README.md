@@ -4,10 +4,10 @@
 
 ### Szükséges szekvencia diagrammok: 
     
-- [ ] GameFlow
+- [x] GameFlow 
 ---
-- [ ] RoundFlow - RoundRunStrategy Default
-- [ ] RoundFlow Paralyzed - RoundRunStrategy Paralyzed
+- [x] RoundFlow - RoundRunStrategy Default
+- [x] RoundFlow Paralyzed - RoundRunStrategy Paralyzed -Zoli
 ---
 ### Bálint:
 - [X] Move Default - MoveStrategy Default
@@ -21,20 +21,21 @@
 ### Bálint: 
 - [X] Create Agent
 - [ ] Use Agent
-- [ ] Refresh Agents
+- [X] Refresh Agents - 
 ---
+### Zoli
 - [ ] Steal Matter
 - [ ] Discard Matter
 - [ ] Steal Equipment
 - [ ] Discard Equipment
 ---
-- [ ] Collect Gencode
-- [ ] Collect Equipment
+### Zoli
+- [ ] Collect Gencode - Zoli
+- [ ] Collect Equipment - Zoli
 
 - [ ] Bag Apply Effect
 - [ ] Bag Remove Effect
 ---
 - [ ] Forget Apply Effect
-- [ ] Forget Remove Effect
 
 
