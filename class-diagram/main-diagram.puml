@@ -24,10 +24,10 @@ interface Collectable{
 
 class GameController {
     'Handle the turns, this knows the order of virologists, and calls the appropriate nextRound() functions
-    +endOfTurn(virologist: Virologist)
+    '+endOfTurn(virologist: Virologist)
     'Checks if the virologist won the game
-    +didIWin(virologist: Virologist): boolean
-    +gameOver()
+    +reportGenCodes(v:Virologist,g: GenCode[] )
+    '+gameOver()
 }
 
 class Field{
@@ -135,6 +135,7 @@ class Gencode {
 }
 
 GameController *-l Virologist
+GameController *-- Gencode
 
 Field <|- Lab
 Field <|-- Storage
