@@ -32,12 +32,21 @@
 ### Zoli
 - [ ] Collect Gencode - Zoli
 - [ ] Collect Equipment - Zoli
-
+---
+Lehet hogy össze lehet vonni ezeket a szekvenciákat, vagy csak a remove-et összevonni
+- [ ] Forget Apply Effect
+- [ ] VitusDance Apply Effect
+- [ ] VitusDance Remove Effect
+- [ ] Protection Apply Effect
+- [ ] Protection Remove Effect
+- [ ] Paralyzed Apply Effect
+- [ ] Paralyzed Remove Effect
+---
 - [ ] Bag Apply Effect
 - [ ] Bag Remove Effect
----
-- [ ] Forget Apply Effect
----
-- [ ] 
+- [ ] Cloak Apply Effect
+- [ ] Cloak Remove Effect
+- [ ] Gloves Apply Effect
+- [ ] Gloves Remove Effect
 
 
