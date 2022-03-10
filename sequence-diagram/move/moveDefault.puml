@@ -1,0 +1,24 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Virologist default move
+
+actor Player
+
+Player -> Virologist: move(direction)
+Activate Virologist
+Virologist -> FieldCurrent: getNeighbor(direction)
+Activate FieldCurrent
+FieldCurrent --> Virologist: FieldTarget
+Virologist -> FieldCurrent: removeVirologist(this)
+FieldCurrent --> Virologist:
+Deactivate FieldCurrent
+Virologist -> FieldTarget: acceptVirologist(this)
+Activate FieldTarget
+FieldTarget --> Virologist:
+Deactivate FieldTarget
+Virologist --> Player:
+Deactivate Virologist
+@enduml

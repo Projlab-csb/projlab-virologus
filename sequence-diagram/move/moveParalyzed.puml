@@ -3,9 +3,11 @@
 
 autonumber
 
+mainframe Virologist paralyzed move
+
 actor Player
 
-Player -> Virologist: Move(direction)
+Player -> Virologist: move(direction)
 Activate Virologist
 Virologist -> FieldCurrent: getNeighbor(direction)
 Activate FieldCurrent
