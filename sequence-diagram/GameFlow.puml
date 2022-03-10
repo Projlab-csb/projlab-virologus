@@ -8,12 +8,11 @@ autonumber
 actor GameControl
 loop while someone not won
     loop all virologists while someone not won
-        GameControl -> Virologist: nextRound()
+        GameControl -> Virologist: RoundRun()
         Activate Virologist
+
         Virologist-->GameControl
         Deactivate Virologist
-
-
     end
 end
 

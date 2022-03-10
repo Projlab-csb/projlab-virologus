@@ -4,16 +4,28 @@
 autonumber
 
 actor GameControl
-
-
-        GameControl -> Virologist: nextRound()
+GameControl -> Virologist: RoundRun()
+Activate Virologist
+loop while userinput!=EndOfTurn
+    actor Player
+    opt userinput=move
+        Player->Virologist:move()
         Activate Virologist
-        loop while userinput!=EndOfTurn
-
-        end
-
-        Virologist-->GameControl
+        Virologist-->Player
         Deactivate Virologist
-
+    end
+    opt userinput=useAgent
+        Player->Virologist:useAgent()
+        Activate Virologist
+        Virologist-->Player
+        Deactivate Virologist
+    end
+end
+Virologist->GameControl:reportGenCode()
+Activate GameControl
+GameControl-->Virologist
+deactivate GameControl
+Virologist-->GameControl
+Deactivate Virologist
 
 @enduml
