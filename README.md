@@ -15,8 +15,8 @@
 ---
 ### Bálint:
 - [X] Defense Default - DefenseStrategy Default
-- [ ] Defense Gloves - DefenseStrategy Gloves
-- [ ] Defense Cloak - DefenseStrategy Cloak
+- [X] Defense Gloves - DefenseStrategy Gloves
+- [X] Defense Cloak - DefenseStrategy Cloak
 ---
 ### Bálint: 
 - [X] Create Agent

@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Virologist gloves defense stategy
+
+
+Virologist -> TargetVirologist++: attack(Agent, Virologist, TargetVirologist)
+
+TargetVirologist -> TargetVirologist++: defese(Agent, Virologist, TargetVirologist)
+
+
+note over TargetVirologist
+    Gloves will attack back the attacker
+    At implementation, we must make sure, **no infinite loop** occurs!
+end note
+
+TargetVirologist -> Virologist++: attack(Agent, TargetVirologist, Virologist)
+Virologist --> TargetVirologist--
+
+TargetVirologist --> TargetVirologist--
+
+TargetVirologist --> Virologist --
+@enduml
