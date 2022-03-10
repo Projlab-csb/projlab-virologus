@@ -6,7 +6,7 @@ interface RoundRunStrategyInterface{
 }
 
 interface MoveStrategyInterface{
-    +move()
+    +move(direction: Integer)
 }
 
 interface DefenseStrategyInterface{
@@ -106,7 +106,7 @@ abstract class Agent{
 class VitusDance{
     +applyEffect(v: Virologist)
     +removeEffect(v: Virologist)
-    +move()
+    +move(direction: Integer)
 }
 
 class Protection{

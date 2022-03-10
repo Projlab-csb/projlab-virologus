@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor Player
+
+Player -> Virologist: createAgent(Gencode)
+Activate Virologist
+
+Virologist -> Gencode: getRequiredNucleicAcid()
+Activate Gencode
+Gencode --> Virologist: requiredNucleicAcid
+Deactivate Gencode
+
+Virologist -> Gencode: getRequiredAminoAcid()
+Activate Gencode
+Gencode --> Virologist: requiredAminoAcid
+Deactivate Gencode
+
+opt Virologist.getAminoAcid() > requiredAminoAcid && Virologist.getNucleicAcid() > requiredNucleicAcid
+    Virologist -> Virologist: aminoAcid -= requiredAminoAcid
+    Virologist -> Virologist: nucleicAcid -= requiredNucleicAcid
+end
+
+Virologist -> Agent **
+Activate Agent
+Agent --> Virologist: storeAgent(Agent)
+Deactivate Agent
+
+Virologist --> Player
+Deactivate Virologist
+
+@enduml
