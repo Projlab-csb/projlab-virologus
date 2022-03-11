@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Remove Bag Effect
+
+Virologist -> Bag++ : removeEffect(virologist)
+
+Bag -> Bag++ : getExtraInventorSize()
+Bag --> Bag-- : extraInventorSize
+
+Bag -> Virologist++ : getInventorSize()
+Virologist --> Bag-- : inventorSize
+
+note over Virologist, Bag
+**Decreas** the inventor size by the **bag's extra inventor size**
+end note
+
+Bag -> Virologist++ : setInventorySize(inventorSize - extraInventorSize)
+Virologist --> Bag--
+
+Bag --> Virologist
+
+@enduml

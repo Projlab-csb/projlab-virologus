@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Apply Gloves Effect
+
+Virologist -> Gloves++ : applyEffect(virologist)
+
+Gloves -> Gloves++ : getStrategy()
+Gloves --> Gloves-- : defenseStrategy
+
+Gloves -> Virologist++: setDefenseStrategy(defenseStrategy)
+Virologist --> Gloves--
+
+Gloves --> Virologist
+
+@enduml

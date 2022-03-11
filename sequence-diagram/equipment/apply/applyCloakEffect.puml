@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Apply Cloak Effect
+
+Virologist -> Cloak++ : applyEffect(virologist)
+
+Cloak -> Cloak++ : getStrategy()
+Cloak --> Cloak-- : defenseStrategy
+
+Cloak -> Virologist++: setDefenseStrategy(defenseStrategy)
+Virologist --> Cloak--
+
+Cloak --> Virologist
+
+@enduml

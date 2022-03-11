@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Remove Cloak Effect
+
+Virologist -> Cloak++ : removeEffect(virologist)
+
+note over Virologist, Cloak
+Reset the protection strategy to **virologists default**
+end note
+
+Cloak -> Virologist++: setProtectionStrategy()
+Virologist --> Cloak--
+
+Cloak --> Virologist
+
+@enduml

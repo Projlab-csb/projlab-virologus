@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Remove Gloves Effect
+
+Virologist -> Gloves++ : removeEffect(virologist)
+
+note over Virologist, Gloves
+Reset the protection strategy to **virologists default**
+end note
+
+Gloves -> Virologist++: setProtectionStrategy()
+Virologist --> Gloves--
+
+Gloves --> Virologist
+
+@enduml

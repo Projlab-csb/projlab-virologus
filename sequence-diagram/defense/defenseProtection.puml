@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Virologist protection agent's defense stategy
+
+
+Virologist -> TargetVirologist++: attack(Agent, Virologist, TargetVirologist)
+
+TargetVirologist -> TargetVirologist++: defese(Agent, Virologist, TargetVirologist)
+
+note over TargetVirologist
+    If the virologist have this agent, he is invincible
+end note
+
+TargetVirologist --> TargetVirologist--
+
+TargetVirologist --> Virologist --
+@enduml

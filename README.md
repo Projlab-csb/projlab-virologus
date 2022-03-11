@@ -17,6 +17,7 @@
 - [X] Defense Default - DefenseStrategy Default
 - [X] Defense Gloves - DefenseStrategy Gloves
 - [X] Defense Cloak - DefenseStrategy Cloak
+- [X] Defense Protection - DefenseStrategy Protection
 ---
 ### Bálint: 
 - [X] Create Agent
@@ -44,11 +45,11 @@ Lehet hogy össze lehet vonni ezeket a szekvenciákat, vagy csak a remove-et ös
 - [X] Paralyzed Remove Effect
 ---
 ### Bálint
-- [ ] Bag Apply Effect
-- [ ] Bag Remove Effect
-- [ ] Cloak Apply Effect
-- [ ] Cloak Remove Effect
-- [ ] Gloves Apply Effect
-- [ ] Gloves Remove Effect
+- [X] Bag Apply Effect
+- [X] Bag Remove Effect
+- [X] Cloak Apply Effect
+- [X] Cloak Remove Effect
+- [X] Gloves Apply Effect
+- [X] Gloves Remove Effect
 
 

@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Apply Bag Effect
+
+Virologist -> Bag++ : applyEffect(virologist)
+
+note over Virologist,Bag
+Clear the agents array on the virologist
+end note
+
+Bag -> Bag++ : getExtraInventorSize()
+Bag --> Bag-- : extraInventorSize
+
+Bag -> Virologist++ : getInventorSize()
+Virologist --> Bag-- : inventorSize
+
+Bag -> Virologist++ : setInventorySize(inventorSize + extraInventorSize)
+Virologist --> Bag--
+
+Bag --> Virologist
+
+@enduml
