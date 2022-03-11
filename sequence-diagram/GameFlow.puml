@@ -20,6 +20,3 @@ end
 
 @enduml
 
--Úgy, hogy a virológus hívja meg, hogy nyert-e, nincsen pl értéke visszatérésnek, plusz azt a játéknak kell tudni, hogy nyert-e, ehhez kapcsolódóan lehet jobb lenne egy GetNumberOfGencodes() a virológusnak, amit hív a GameControl)
--A CD-on jelölni kell, hogy a Gamecontrol tartalmazza (az összes) GenCode-t
--A diagramon a végén ugye itt magán hív fv-n a GameControl, tehát igazából ez privát is lehetne, tehát ilyen formában nem is kéne jelölnünk.

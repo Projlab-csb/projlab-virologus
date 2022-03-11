@@ -14,15 +14,18 @@ Activate Virologist
                 opt lifeofanagent=0
                     'TODO: A removeEffect() függvényt az ágensen kell meghívni, és nem a virológuson
                     'TODO: A lifeline-oknak legyen rendesen vége és eleje. Ne legyen egybe az egész
-                    Agent->Virologist:removeEffect()
-                    Virologist-->Agent
+                    Virologist->Agent:removeEffect()
+                    Activate Agent
+                    Agent-->Virologist
+                    Deactivate Agent
                 end
             Agent-->Virologist: b
             opt b=false
             Virologist->Agent:destroy()
+            Activate Agent
             Agent-->Virologist
+            Deactivate Agent
             Destroy Agent
-
             end
             Deactivate Agent
     end
@@ -33,6 +36,3 @@ deactivate Virologist
 
 @enduml
 
-note left of Virologist
-User input does not have an effect
-end note

@@ -13,12 +13,18 @@ end note
 Activate Virologist
 Virologist->GameControl:reportGenCode()
 Activate GameControl
-GameControl->Virologist: RefreshAgents()
-Activate Virologist
-Virologist-->GameControl
-deactivate Virologist
+
+
 GameControl-->Virologist
 deactivate GameControl
+
+
+Virologist->Virologist: RefreshAgents()
+Activate Virologist
+Virologist-->Virologist
+deactivate Virologist
+
+
 Virologist-->GameControl
 Deactivate Virologist
 
