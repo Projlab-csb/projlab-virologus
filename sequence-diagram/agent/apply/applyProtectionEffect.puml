@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Apply Protection Effect
+
+Virologist -> Protection++ : applyEffect(virologist)
+
+Protection -> Protection++ : getStrategy()
+Protection --> Protection-- : defenseStrategy
+
+Protection -> Virologist++: setDefenseStrategy(defenseStrategy)
+Virologist --> Protection--
+
+Protection --> Virologist
+
+@enduml

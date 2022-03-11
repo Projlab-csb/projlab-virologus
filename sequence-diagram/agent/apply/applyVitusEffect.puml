@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Apply VitusDance Effect
+
+Virologist -> VitusDance++ : applyEffect(virologist)
+
+VitusDance -> VitusDance++ : getStrategy()
+VitusDance --> VitusDance-- : moveStrategy
+
+VitusDance -> Virologist++: setMoveStrategy(moveStrategy)
+Virologist --> VitusDance--
+
+VitusDance --> Virologist
+
+@enduml

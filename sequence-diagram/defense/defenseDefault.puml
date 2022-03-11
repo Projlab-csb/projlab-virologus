@@ -15,7 +15,7 @@ note over TargetVirologist
     By default no defense, so just apply the agent's attack
 end note
 
-TargetVirologist -> Agent++: +applyEffect(TargetVirologist)
+TargetVirologist -> Agent++: applyEffect(TargetVirologist)
 Agent --> TargetVirologist--
 
 TargetVirologist --> TargetVirologist--

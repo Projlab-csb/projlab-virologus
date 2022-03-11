@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Remove Protection Effect
+
+Virologist -> Protection++ : removeEffect(virologist)
+
+note over Virologist, Protection
+Reset the protection strategy to **virologists default**
+end note
+
+Protection -> Virologist++: setProtectionStrategy()
+Virologist --> Protection--
+
+Protection --> Virologist
+
+@enduml

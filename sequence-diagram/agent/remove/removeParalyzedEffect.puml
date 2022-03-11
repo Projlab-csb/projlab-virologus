@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Remove Paralyzed Effect
+
+Virologist -> Paralyzed++ : removeEffect(virologist)
+
+note over Virologist, Paralyzed
+Reset the roundRun strategy to **virologists default**
+end note
+
+Paralyzed -> Virologist++: setRoundRunStrategy()
+Virologist --> Paralyzed--
+
+Paralyzed --> Virologist
+
+@enduml

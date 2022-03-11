@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Apply Forget Effect
+
+Virologist -> Forget++ : applyEffect(virologist)
+
+note over Virologist,Forget
+Clear the agents array on the virologist
+end note
+
+Forget -> Virologist++ : setAgents([])
+Virologist --> Forget--
+
+Forget --> Virologist
+
+@enduml

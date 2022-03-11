@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Remove VitusDance Effect
+
+Virologist -> VitusDance++ : removeEffect(virologist)
+
+note over Virologist, VitusDance
+Reset the move strategy to **virologists default**
+end note
+
+VitusDance -> Virologist++: setMoveStrategy()
+Virologist --> VitusDance--
+
+VitusDance --> Virologist
+
+@enduml

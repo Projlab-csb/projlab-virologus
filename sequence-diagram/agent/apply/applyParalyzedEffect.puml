@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Apply Paralyzed Effect
+
+Virologist -> Paralyzed++ : applyEffect(virologist)
+
+Paralyzed -> Paralyzed++ : getStrategy()
+Paralyzed --> Paralyzed-- : roundRunStrategy
+
+Paralyzed -> Virologist++: setRoundRunStrategy(roundRunStrategy)
+Virologist --> Paralyzed--
+
+Paralyzed --> Virologist
+
+@enduml

@@ -1,5 +1,6 @@
 @startuml
 
+'The class diagram doesn't show implicit getters and setters for fields!
 
 interface RoundRunStrategyInterface{
     +roundRun()
