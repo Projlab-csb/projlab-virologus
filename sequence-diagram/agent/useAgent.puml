@@ -10,6 +10,7 @@ actor Player
 Player -> Virologist++: useAgent(Agent, TargetVirologist)
 
 Virologist -> TargetVirologist++: attack(Agent, Virologist, TargetVirologist)
+'Itt target minek kell?
 
 note right TargetVirologist
     We call our defense strategy

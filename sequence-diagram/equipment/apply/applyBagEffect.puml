@@ -10,7 +10,7 @@ Virologist -> Bag++ : applyEffect(virologist)
 note over Virologist,Bag
 Clear the agents array on the virologist
 end note
-
+'Itt miért kéri le magától a méretét?
 Bag -> Bag++ : getExtraInventorSize()
 Bag --> Bag-- : extraInventorSize
 

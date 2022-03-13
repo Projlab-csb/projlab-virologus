@@ -8,7 +8,7 @@ mainframe Virologist gloves defense stategy
 
 Virologist -> TargetVirologist++: attack(Agent, Virologist, TargetVirologist)
 
-TargetVirologist -> TargetVirologist++: defese(Agent, Virologist, TargetVirologist)
+TargetVirologist -> TargetVirologist++: defense(Agent, Virologist, TargetVirologist)
 
 
 note over TargetVirologist

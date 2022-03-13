@@ -20,6 +20,8 @@ Activate Virologist
                     Deactivate Agent
                 end
             Agent-->Virologist: b
+
+            'biztos kell nekünk ez a rész?
             opt b=false
             Virologist->Agent:destroy()
             Activate Agent

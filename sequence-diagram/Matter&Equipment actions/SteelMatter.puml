@@ -1,0 +1,33 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+autonumber
+
+mainframe StealMatter
+
+actor Player
+
+Player -> Robber++: StealMatter(Robber, TargetVirologist)
+'Ide nem elég egy, ami csak collectable-re megy? -- Gencode játszik kicsit bele, mert az is collectable
+
+Robber -> TargetVirologist++: handleMatterSteal(Agent, Virologist, TargetVirologist)
+
+
+
+alt deafult handleStealStrategy applied on TargetVirologist
+    TargetVirologist -->Robber: null
+else paralyzed handleStealStrategy applied on TargetVirologist
+
+        note left TargetVirologist
+            The player choose the wanted amount of Nukleoid or Aminocid (eg. Nukleoid))
+        end note
+
+    TargetVirologist -> TargetVirologist: aminoAcid -= requiredAminoAcid
+
+
+    TargetVirologist -->Robber--: Matter
+    Robber->Matter++:collectby(Robber)
+    Matter-->Robber--:
+end
+
+Robber --> Player --
+@enduml

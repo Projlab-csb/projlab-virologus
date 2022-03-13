@@ -29,6 +29,7 @@ Virologist -> Agent **
 Agent --> Virologist
 
 Virologist -> Virologist: storeAgent(Agent)
+'Ide szerintem lifelineokat be kéne rajzolni (Meg a fentiekbe is)
 
 Virologist --> Player
 Deactivate Virologist

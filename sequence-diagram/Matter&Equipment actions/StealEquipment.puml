@@ -1,0 +1,33 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+autonumber
+
+mainframe StealEquipment
+
+actor Player
+
+Player -> Robber++: StealEquipment(Robber, TargetVirologist)
+'Ide nem elég egy, ami csak collectable-re megy
+
+Robber -> TargetVirologist++: handleEquipmentSteal(Agent, Virologist, TargetVirologist)
+
+
+
+alt deafult handleStealStrategy applied on TargetVirologist
+    TargetVirologist -->Robber: null
+else paralyzed handleStealStrategy applied on TargetVirologist
+
+        note left TargetVirologist
+            The player choose the wanted equipment here
+        end note
+
+        TargetVirologist->Equipment++:removeEffect()
+        Equipment-->TargetVirologist--
+
+    TargetVirologist -->Robber--: Equipment
+    Robber->Equipment++:collectby(Robber)
+    Equipment-->Robber--:
+end
+
+Robber --> Player --
+@enduml

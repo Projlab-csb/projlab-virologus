@@ -25,14 +25,14 @@
 - [X] Refresh Agents
 ---
 ### Zoli
-- [ ] Steal Matter
+- [x] Steal Matter
 - [ ] Discard Matter
-- [ ] Steal Equipment
+- [x] Steal Equipment
 - [ ] Discard Equipment
 ---
 ### Zoli
-- [ ] Collect Gencode - Zoli
-- [ ] Collect Equipment - Zoli
+- [x] Collect All things - Zoli (régit hagytam meg)
+
 ---
 ### Bálint
 Lehet hogy össze lehet vonni ezeket a szekvenciákat, vagy csak a remove-et összevonni

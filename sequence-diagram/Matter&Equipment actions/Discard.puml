@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+Mainframe Discard
+actor Player
+Player->Virologist++:discard(Virologist, Collectable)
+Virologist->Collectable++:discard(Virologist)
+Collectable-->Virologist--
+Virologist-->Player--
+
+@enduml

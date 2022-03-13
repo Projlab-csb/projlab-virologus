@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+Mainframe drop matter
+
+Mainframe Discard Matter
+Virologist->Matter++:discard(Virologist)
+note right Matter
+   For eg. we want to drop some aminoacid
+end note
+
+Matter->Virologist:SetAminoAcid
+Virologist-->Matter
+Matter-->Virologist--
+
+@enduml

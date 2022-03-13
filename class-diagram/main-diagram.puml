@@ -14,6 +14,13 @@ interface DefenseStrategyInterface{
     +defense(agent: Agent, attacker: Virologist, defender: Virologist)
 }
 
+interface HandleEquipmentStealStreategyInterface{
+    +handleEquipmentSteal(attacker: Virologist, robbed: Virologist): Collectable
+}
+interface HandleMatterStealStreategyInterface{
+    +handleMatterSteal(attacker: Virologist, robbed: Virologist): Collectable
+}
+
 interface Collectable{
     +collectBy(v: Virologist)
     +destroy()
@@ -28,7 +35,7 @@ class GameController {
 }
 
 class Field{
-    +getCollectable(): Collectable
+    +getCollectable(): <Collectable>
     +getNeighbors(): Array<Field>
     +getNeighbor(direction: Integer): Field
     +addNeighbor(neighbor: Field)
@@ -145,6 +152,8 @@ Shelter "n" o-- "0..1" Equipment
 Storage "n" o-- "0..1" Matter
 
 Virologist *-- RoundRunStrategyInterface
+Virologist *-- HandleMatterStealStreategyInterface
+Virologist *-- HandleEquipmentStealStreategyInterface
 Virologist *-- MoveStrategyInterface
 Virologist *-- DefenseStrategyInterface
 Virologist "n" --o "0..1" Field
@@ -167,6 +176,8 @@ Agent <|-- Forget
 Agent "0..1" o--o "0..1" Gencode
 
 RoundRunStrategyInterface <|.. Paralyzed
+HandleEquipmentStealStreategyInterface <|.. Paralyzed
+HandleMatterStealStreategyInterface <|.. Paralyzed
 MoveStrategyInterface <|.. VitusDance
 DefenseStrategyInterface <|.u Protection
 DefenseStrategyInterface <|.. Cloak

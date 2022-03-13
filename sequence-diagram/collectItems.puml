@@ -10,7 +10,7 @@ Activate Virologist
 
 Virologist -> Field: getCollectable()
 Activate Field
-Field -> Virologist: Collectable
+Field -> Virologist: <Collectable>
 Deactivate Field
 
 Virologist -> Collectable: collectBy(Virologist)
