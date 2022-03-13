@@ -6,15 +6,15 @@ mainframe StealEquipment
 
 actor Player
 
-Player -> Robber++: Steal(Robber, TargetVirologist)
+Player -> RobberVirologist++: Steal(Robber, TargetVirologist)
 'így csak egy interface kell, lehet ez jobb is, mint különszedve (CD-n viszont még hagytam a kettőt))
 
-Robber -> TargetVirologist++: handleSteal(Agent, Virologist, TargetVirologist)
+RobberVirologist -> TargetVirologist++: handleSteal(Agent, Virologist, TargetVirologist)
 
 
 
 alt deafult handleStealStrategy applied on TargetVirologist
-    TargetVirologist -->Robber: null
+    TargetVirologist -->RobberVirologist: null
 else paralyzed handleStealStrategy applied on TargetVirologist
 
         note left TargetVirologist
@@ -24,10 +24,10 @@ else paralyzed handleStealStrategy applied on TargetVirologist
         TargetVirologist->Collectable++:discard()
         Collectable-->TargetVirologist--
 
-    TargetVirologist -->Robber--: Collectable
-    Robber->Collectable++:collectby(Robber)
-    Collectable-->Robber--:
+    TargetVirologist -->RobberVirologist--: Collectable
+    RobberVirologist->Collectable++:collectby(Robber)
+    Collectable-->RobberVirologist--:
 end
 
-Robber --> Player --
+RobberVirologist --> Player --
 @enduml
