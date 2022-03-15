@@ -25,7 +25,7 @@ class GameController {
     'Handle the turns, this knows the order of virologists, and calls the appropriate round() functions
     '+endOfTurn(virologist: Virologist)
     'Checks if the virologist won the game
-    +reportGenCodes(v:Virologist,g: GenCode[] )
+    +reportGenCodes(v:Virologist,g: Gencode[] )
     '+gameOver()
 }
 
@@ -134,26 +134,25 @@ class Gencode {
     +collectBy(v: Virologist)
 }
 
-GameController *-l Virologist
+GameController *-d Virologist
 GameController *-- Gencode
 
 Field <|- Lab
 Field <|-- Storage
 Field <|-- Shelter
 
-Lab "n" o- "0..1" Gencode
+Lab "n" o-- "0..1" Gencode
 Shelter "n" o-- "0..1" Equipment
 Storage "n" o-- "0..1" Matter
 
-Virologist *-- ParalyzedStrategyInterface
-
+Virologist *-r- ParalyzedStrategyInterface
 Virologist *-- MoveStrategyInterface
 Virologist *-- DefenseStrategyInterface
 Virologist "n" --o "0..1" Field
 Virologist "n" *-- "0..1" Agent
-Virologist "n" *-d- "0..1" Matter
-Virologist "n" *-d- "0..1" Equipment
-Virologist "n" o-d- "0..1" Gencode
+Virologist "n" *-- "0..1" Matter
+Virologist "n" *-- "0..1" Equipment
+Virologist "n" o-u-- "0..1" Gencode
 
 Matter <|-- AminoAcid
 Matter <|-- NucleicAcid
@@ -164,18 +163,31 @@ Equipment <|-- Bag
 
 Agent <|-- VitusDance
 Agent <|- Protection
-Agent <|-- Paralyzed
+Agent <|- Paralyzed
 Agent <|-- Forget
 Agent "0..1" o--o "0..1" Gencode
 
-ParalyzedStrategyInterface <|.. Paralyzed
+ParalyzedStrategyInterface <|. Paralyzed
 MoveStrategyInterface <|.. VitusDance
-DefenseStrategyInterface <|.u Protection
+DefenseStrategyInterface <|.. Protection
 DefenseStrategyInterface <|.. Cloak
 DefenseStrategyInterface <|.. Gloves
 
-Collectable <|.l Gencode
+Collectable <|. Gencode
 Collectable <|.. Equipment
 Collectable <|. Matter
+
+'Implicit stuff, comment it out for easier readability
+ParalyzedStrategyInterface .. Collectable
+DefenseStrategyInterface .. Agent
+DefenseStrategyInterface .. Virologist
+Collectable .. Virologist
+GameController . Gencode
+Field .. Collectable
+Field .. Virologist
+Lab .. Gencode
+Storage .. AminoAcid
+Storage .. NucleicAcid
+Shelter .. Equipment
 
 @enduml
