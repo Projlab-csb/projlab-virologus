@@ -186,8 +186,5 @@ GameController . Gencode
 Field .. Collectable
 Field .. Virologist
 Lab .. Gencode
-Storage .. AminoAcid
-Storage .. NucleicAcid
-Shelter .. Equipment
 
 @enduml
