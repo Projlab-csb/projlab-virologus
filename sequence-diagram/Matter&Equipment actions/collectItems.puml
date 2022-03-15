@@ -3,6 +3,8 @@
 
 autonumber
 
+mainframe Collect Collectable
+
 actor Player
 
 Player -> Virologist: collect()

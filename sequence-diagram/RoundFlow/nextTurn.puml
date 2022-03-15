@@ -4,9 +4,9 @@
 autonumber
 
 'actor Player
+mainframe nextTurn
 
 'kell ez???
-
 
 loop while someone not won
     loop all virologists
