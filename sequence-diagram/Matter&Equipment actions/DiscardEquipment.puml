@@ -7,6 +7,6 @@ Mainframe Drop Equipment
 
 
 Virologist->Equipment++:discard(Virologist)
-Equipment->Equipment:removeEffect
+Equipment->Equipment:removeEffect(Virologist)
 Equipment-->Virologist--
 @enduml

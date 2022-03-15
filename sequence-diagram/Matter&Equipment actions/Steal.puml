@@ -6,7 +6,7 @@ mainframe Steal Default
 
 actor Player
 
-Player -> RobberVirologist++: Steal(Robber, TargetVirologist)
+Player -> RobberVirologist++: steal(Robber, TargetVirologist)
 'így csak egy interface kell, lehet ez jobb is, mint különszedve (CD-n viszont még hagytam a kettőt))
 
 RobberVirologist -> TargetVirologist++: handleSteal(Agent, Virologist, TargetVirologist)
