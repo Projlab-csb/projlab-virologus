@@ -10,7 +10,7 @@ mainframe GameFlow
 actor GameControl
 loop while someone not won
     loop all virologists while someone not won
-        GameControl -> Virologist: RoundRun()
+        GameControl -> Virologist: startOfTurn()
         Activate Virologist
 
         Virologist-->GameControl

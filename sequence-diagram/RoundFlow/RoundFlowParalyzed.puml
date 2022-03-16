@@ -3,7 +3,7 @@
 
 autonumber
 
-mainframe Virologist default round
+mainframe Virologist paralyzed round
 
 actor GameControl
 GameControl -> Virologist++: startOfTurn()
