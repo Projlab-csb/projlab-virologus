@@ -5,20 +5,38 @@ autonumber
 
 mainframe Initialize Game
 
+actor Player
 Player -> GameController++: initGame()
 
-note over Player, GameController
+note right of Player
 1. Create fields, connect them, and initialize them if needed
 end note
 
 loop for each desired field
     GameController -> Field**:
-
 end loop
 
-note over Player, GameController
+loop while each filed is not connected
+
+    note over OtherField
+        This is a random field
+    end note
+    GameController -> OtherField++: +addNeighbor(neighbor: Field)
+    OtherField -> GameController--
+end loop
+
+note right of Player
 2. Create virologists
 end note
+
+loop for each desired virologists
+    GameController -> Virologist**
+    note right of GameController
+        Set virologists to a random field
+    end note
+    GameController -> RandomField++: setVirologist(Virologist)
+    RandomField --> GameController--
+end loop
 
 GameController -> Player--
 

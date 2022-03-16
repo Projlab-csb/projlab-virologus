@@ -142,18 +142,18 @@ Field <|- Lab
 Field <|-- Storage
 Field <|-- Shelter
 
-Lab "n" o-- "0..1" Gencode
-Shelter "n" o-- "0..1" Equipment
-Storage "n" o-- "0..1" Matter
+Lab "n" o-- Gencode
+Shelter "n" o-- Equipment
+Storage "n" o-- Matter
 
 Virologist *-r- RoundRunStrategyInterface
 Virologist *-- MoveStrategyInterface
 Virologist *-- DefenseStrategyInterface
-Virologist "n" --o "0..1" Field
-Virologist "n" *-- "0..1" Agent
-Virologist "n" *-- "0..1" Matter
-Virologist "n" *-- "0..1" Equipment
-Virologist "n" o-u-- "0..1" Gencode
+Virologist --o "n" Field
+Virologist "n" *-- Agent
+Virologist "n" *-- Matter
+Virologist "n" *-- Equipment
+Virologist "n" o-u-- Gencode
 
 Matter <|-- AminoAcid
 Matter <|-- NucleicAcid
@@ -166,7 +166,7 @@ Agent <|-- VitusDance
 Agent <|- Protection
 Agent <|- Paralyzed
 Agent <|-- Forget
-Agent "0..1" o--o "0..1" Gencode
+Agent "1" *-- Gencode
 
 RoundRunStrategyInterface <|. Paralyzed
 MoveStrategyInterface <|. VitusDance
