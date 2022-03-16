@@ -26,6 +26,7 @@ class GameController {
     '+endOfTurn(virologist: Virologist)
     'Checks if the virologist won the game
     +reportGenCodes(v:Virologist,g: Gencode[] )
+    +initGame()
     '+gameOver()
 }
 
@@ -135,7 +136,7 @@ class Gencode {
 }
 
 GameController *-d Virologist
-GameController *-- Gencode
+'GameController *-- Gencode
 
 Field <|- Lab
 Field <|-- Storage
@@ -168,7 +169,7 @@ Agent <|-- Forget
 Agent "0..1" o--o "0..1" Gencode
 
 ParalyzedStrategyInterface <|. Paralyzed
-MoveStrategyInterface <|.. VitusDance
+MoveStrategyInterface <|. VitusDance
 DefenseStrategyInterface <|.. Protection
 DefenseStrategyInterface <|.. Cloak
 DefenseStrategyInterface <|.. Gloves
@@ -180,11 +181,11 @@ Collectable <|. Matter
 'Implicit stuff, comment it out for easier readability
 ParalyzedStrategyInterface .. Collectable
 DefenseStrategyInterface .. Agent
-DefenseStrategyInterface .. Virologist
+DefenseStrategyInterface .[hidden]. Virologist
 Collectable .. Virologist
 GameController . Gencode
 Field .. Collectable
-Field .. Virologist
-Lab .. Gencode
+'Field .. Virologist
+Gencode .. Matter
 
 @enduml
