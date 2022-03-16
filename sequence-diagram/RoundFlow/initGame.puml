@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Initialize Game
+
+Player -> GameController++: initGame()
+
+note over Player, GameController
+1. Create fields, connect them, and initialize them if needed
+end note
+
+loop for each desired field
+    GameController -> Field**:
+
+end loop
+
+note over Player, GameController
+2. Create virologists
+end note
+
+GameController -> Player--
+
+@enduml
+

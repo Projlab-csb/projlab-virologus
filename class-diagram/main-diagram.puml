@@ -2,7 +2,7 @@
 
 'The class diagram doesn't show implicit getters and setters for fields!
 
-interface ParalyzedStrategyInterface{
+interface RoundRunStrategyInterface{
     +roundRun()
     +handleSteal(attacker: Virologist, robbed: Virologist): Collectable
 }
@@ -146,7 +146,7 @@ Lab "n" o-- "0..1" Gencode
 Shelter "n" o-- "0..1" Equipment
 Storage "n" o-- "0..1" Matter
 
-Virologist *-r- ParalyzedStrategyInterface
+Virologist *-r- RoundRunStrategyInterface
 Virologist *-- MoveStrategyInterface
 Virologist *-- DefenseStrategyInterface
 Virologist "n" --o "0..1" Field
@@ -168,7 +168,7 @@ Agent <|- Paralyzed
 Agent <|-- Forget
 Agent "0..1" o--o "0..1" Gencode
 
-ParalyzedStrategyInterface <|. Paralyzed
+RoundRunStrategyInterface <|. Paralyzed
 MoveStrategyInterface <|. VitusDance
 DefenseStrategyInterface <|.. Protection
 DefenseStrategyInterface <|.. Cloak
@@ -179,7 +179,7 @@ Collectable <|.. Equipment
 Collectable <|. Matter
 
 'Implicit stuff, comment it out for easier readability
-ParalyzedStrategyInterface .. Collectable
+RoundRunStrategyInterface .. Collectable
 DefenseStrategyInterface .. Agent
 DefenseStrategyInterface .[hidden]. Virologist
 Collectable .. Virologist

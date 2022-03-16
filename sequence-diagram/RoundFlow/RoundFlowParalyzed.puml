@@ -3,29 +3,26 @@
 
 autonumber
 
-mainframe Virologist paralyzed round
+mainframe Virologist default round
 
 actor GameControl
-GameControl -> Virologist: RoundRun()
+GameControl -> Virologist++: startOfTurn()
+Virologist -> Virologist++: Virologist.roundRunStrategy.roundRun()
+
 note left of Virologist
 User input does not have an effect
 end note
-Activate Virologist
-Virologist->GameControl:reportGenCode()
+Virologist->GameControl:reportGenCode(Virologist, genCodes[])
 Activate GameControl
 
 
 GameControl-->Virologist
 deactivate GameControl
 
+Virologist->Virologist++: RefreshAgents()
+Virologist-->Virologist--
+Virologist-->Virologist--
+Virologist-->GameControl--
 
-Virologist->Virologist: RefreshAgents()
-Activate Virologist
-Virologist-->Virologist
-deactivate Virologist
-
-
-Virologist-->GameControl
-Deactivate Virologist
 
 @enduml

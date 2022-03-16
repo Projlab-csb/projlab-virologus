@@ -6,8 +6,9 @@ autonumber
 mainframe Virologist default round
 
 actor GameControl
-GameControl -> Virologist: RoundRun()
-Activate Virologist
+GameControl -> Virologist++: startOfTurn()
+Virologist -> Virologist++: Virologist.roundRunStrategy.roundRun()
+
 loop while userinput!=EndOfTurn
     actor Player
     opt userinput=move
@@ -23,22 +24,20 @@ loop while userinput!=EndOfTurn
         Deactivate Virologist
     end
 end
-Virologist->GameControl:reportGenCode()
+Virologist->GameControl:reportGenCode(Virologist, genCodes[])
 Activate GameControl
 
 
 GameControl-->Virologist
 deactivate GameControl
 
-
-Virologist->Virologist: RefreshAgents()
-Activate Virologist
-Virologist-->Virologist
-deactivate Virologist
+Virologist->Virologist++: RefreshAgents()
+Virologist-->Virologist--
+Virologist-->Virologist--
 
 
-Virologist-->GameControl
-Deactivate Virologist
+
+Virologist-->GameControl--
 
 
 
