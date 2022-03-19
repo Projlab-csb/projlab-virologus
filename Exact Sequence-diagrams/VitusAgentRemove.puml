@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+mainframe Paralyze Agent decreaseTTL
+
+actor GameControl
+
+
+GameControl->"virologist:Virologist"++: RefreshAgents()
+    "virologist:Virologist"->"paralyzed: Paralyzed"++:decreaseTTL()
+    "paralyzed: Paralyzed"-->"virologist:Virologist"--
+    "virologist:Virologist"->"paralyzed: Paralyzed"++:removeEffect()
+    note over "virologist:Virologist", "paralyzed: Paralyzed"
+    Reset the roundRun strategy to **virologists default**
+    end note
+
+    "paralyzed: Paralyzed" -> "virologist:Virologist"++: setRoundRunStrategy()
+    "virologist:Virologist" --> "paralyzed: Paralyzed"--
+
+    "paralyzed: Paralyzed"-->"virologist:Virologist" --
+"virologist:Virologist"-->GameControl--
+
+
+
+@enduml
+

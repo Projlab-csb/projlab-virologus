@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+mainframe Protection Agent decreaseTTL
+
+actor GameControl
+
+
+GameControl->"virologist:Virologist": RefreshAgents()
+    "virologist:Virologist"->"protection: Protection":decreaseTTL()
+    Activate "protection: Protection"
+    "protection: Protection"-->"virologist:Virologist" --
+"virologist:Virologist"-->GameControl
+
+
+
+@enduml
+

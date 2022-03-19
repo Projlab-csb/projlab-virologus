@@ -1,0 +1,27 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+mainframe Vitus Agent Remove
+
+actor GameControl
+
+
+GameControl->"virologist:Virologist"++: RefreshAgents()
+    "virologist:Virologist"->"vitusDance: VitusDance"++:decreaseTTL()
+    "vitusDance: VitusDance"-->"virologist:Virologist"--
+    "virologist:Virologist"->"vitusDance: VitusDance"++:removeEffect()
+    note over "virologist:Virologist", "vitusDance: VitusDance"
+    Reset the move strategy to **virologists default**
+    end note
+
+    "vitusDance: VitusDance" -> "virologist:Virologist"++: setMoveStrategy()
+    "virologist:Virologist" --> "vitusDance: VitusDance"--
+
+
+    "vitusDance: VitusDance"-->"virologist:Virologist" --
+"virologist:Virologist"-->GameControl--
+
+
+
+@enduml
+

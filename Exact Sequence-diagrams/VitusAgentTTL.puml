@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+mainframe VitusDance Agent decreaseTTL
+
+actor GameControl
+
+
+GameControl->"virologist:Virologist": RefreshAgents()
+    "virologist:Virologist"->"vitusDance: VitusDance":decreaseTTL()
+    Activate "vitusDance: VitusDance"
+    "vitusDance: VitusDance"-->"virologist:Virologist" --
+"virologist:Virologist"-->GameControl
+
+
+
+@enduml
+
