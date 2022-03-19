@@ -3,6 +3,11 @@
 
 :Game Controller: as GameController
 
+Player as Player
+
+(Move Virologist) <-u- Player
+(Move Virologist) <-u- GameController
+
 (GameFlow) <-u- GameController
 (RoundFlow) <-u- GameController
 (InitGame)  <-u- GameController

@@ -1,0 +1,60 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Initialize Game
+
+actor Player
+participant "controller: GameController" as GameController
+participant "f1: Field" as f1
+participant "f2: Lab" as f2
+participant "f3: Shelter" as f3
+participant "f4: Storage" as f4
+
+participant "v1: Virologist" as v1
+participant "v2: Virologist" as v2
+
+Player -> GameController++: initGame()
+
+note right of Player
+    1. Create fields, connect them, and initialize them if needed
+end note
+
+GameController -> f1**
+GameController -> f2**
+GameController -> f3**
+GameController -> f4**
+
+note right of Player
+    2. Connect fields to each other
+end note
+
+GameController -> f1++: +addNeighbor(f2)
+f1 -> GameController--
+GameController -> f2++: +addNeighbor(f3)
+f2 -> GameController--
+GameController -> f3++: +addNeighbor(f4)
+f3 -> GameController--
+GameController -> f4++: +addNeighbor(f2)
+f4 -> GameController--
+
+
+note right of Player
+    3. Create virologists
+end note
+
+GameController -> v1**
+GameController -> v2**
+note right of Player
+    4. Set virologists to a random field
+end note
+GameController -> f1++: setVirologist(v1)
+f1 --> GameController--
+GameController -> f3++: setVirologist(v2)
+f3 --> GameController--
+
+GameController -> Player--
+
+@enduml
+

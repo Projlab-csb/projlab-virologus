@@ -1,0 +1,52 @@
+2@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Virologist default round
+
+actor GameControl
+participant "v: Virologist" as Virologist
+
+actor Player
+
+GameControl -> Virologist++: startOfTurn()
+Virologist -> Virologist++: v.roundRunStrategy.roundRun()
+
+Player->Virologist:move()
+Activate Virologist
+Virologist-->Player
+Deactivate Virologist
+
+Player->Virologist:createAgent(gencode)
+Activate Virologist
+Virologist-->Player
+Deactivate Virologist
+
+Player->Virologist:useAgent(defender, agent)
+Activate Virologist
+Virologist-->Player
+Deactivate Virologist
+
+note right Virologist
+    User sent **EndOfTurn** input
+end note
+
+Virologist->GameControl:reportGenCode(v, genCodes[])
+Activate GameControl
+
+
+GameControl-->Virologist
+deactivate GameControl
+
+Virologist->Virologist++: RefreshAgents()
+Virologist-->Virologist--
+Virologist-->Virologist--
+
+
+
+Virologist-->GameControl--
+
+
+
+@enduml
