@@ -1,24 +1,24 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
-mainframe Vitus Agent Remove
+mainframe Protection Agent Remove
 
 actor GameControl
 
 
 GameControl->"virologist:Virologist"++: RefreshAgents()
-    "virologist:Virologist"->"vitusDance: VitusDance"++:decreaseTTL()
-    "vitusDance: VitusDance"-->"virologist:Virologist"--
-    "virologist:Virologist"->"vitusDance: VitusDance"++:removeEffect()
-    note over "virologist:Virologist", "vitusDance: VitusDance"
-    Reset the move strategy to **virologists default**
+    "virologist:Virologist"->"protection: Protection"++:decreaseTTL()
+    "protection: Protection"-->"virologist:Virologist"--
+    "virologist:Virologist"->"protection: Protection"++:removeEffect()
+
+    note over "virologist:Virologist", "protection: Protection"
+    Reset the protection strategy to **virologists default**
     end note
 
-    "vitusDance: VitusDance" -> "virologist:Virologist"++: setMoveStrategy()
-    "virologist:Virologist" --> "vitusDance: VitusDance"--
+    "protection: Protection" -> "virologist:Virologist"++: setProtectionStrategy()
+    "virologist:Virologist" --> "protection: Protection"--
 
-
-    "vitusDance: VitusDance"-->"virologist:Virologist" --
+"protection: Protection"-->"virologist:Virologist" --
 "virologist:Virologist"-->GameControl--
 
 
