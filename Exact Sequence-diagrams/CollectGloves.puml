@@ -1,0 +1,37 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Collect Bag
+
+actor Player
+
+Player -> "virologist: Virologist": collect()
+Activate "virologist: Virologist"
+
+"virologist: Virologist" -> "field: Field": getCollectable()
+Activate "field: Field"
+"field: Field" --> "virologist: Virologist": <Cloak>
+Deactivate "field: Field"
+
+"virologist: Virologist" -> "cloak: Cloak": collectBy(Virologist)
+Activate "cloak: Cloak"
+"cloak: Cloak" --> "virologist: Virologist":
+Deactivate "cloak: Cloak"
+
+"virologist: Virologist" -> "cloak: Cloak"++ : applyEffect(virologist)
+
+"cloak: Cloak" -> "cloak: Cloak"++ : getStrategy()
+"cloak: Cloak" --> "cloak: Cloak"-- : defenseStrategy
+
+"cloak: Cloak" -> "virologist: Virologist"++: setDefenseStrategy(defenseStrategy)
+"virologist: Virologist" --> "cloak: Cloak"--
+
+"cloak: Cloak" --> "virologist: Virologist"--
+
+
+"virologist: Virologist" --> Player
+Deactivate "virologist: Virologist"
+
+@enduml

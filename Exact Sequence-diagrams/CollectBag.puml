@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Collect Collectable
+
+actor Player
+
+Player -> Virologist: collect()
+Activate Virologist
+
+Virologist -> Field: getCollectable()
+Activate Field
+Field -> Virologist: <Collectable>
+Deactivate Field
+
+Virologist -> Collectable: collectBy(Virologist)
+Activate Collectable
+
+Collectable --> Virologist:
+Deactivate Collectable
+Virologist --> Player
+Deactivate Virologist
+
+@enduml

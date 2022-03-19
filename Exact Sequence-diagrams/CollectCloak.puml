@@ -1,0 +1,44 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Collect Bag
+
+actor Player
+
+Player -> "virologist: Virologist": collect()
+Activate "virologist: Virologist"
+
+"virologist: Virologist" -> "field: Field": getCollectable()
+Activate "field: Field"
+"field: Field" --> "virologist: Virologist": <Bag>
+Deactivate "field: Field"
+
+"virologist: Virologist" -> "bag: Bag": collectBy(Virologist)
+Activate "bag: Bag"
+"bag: Bag" --> "virologist: Virologist":
+Deactivate "bag: Bag"
+
+"virologist: Virologist" -> "bag: Bag"++ : applyEffect(virologist)
+
+note over "virologist: Virologist","bag: Bag"
+Clear the agents array on the virologist
+end note
+'Itt miért kéri le magától a méretét?
+"bag: Bag" -> "bag: Bag"++ : getExtraInventorSize()
+"bag: Bag" --> "bag: Bag"-- : extraInventorSize
+
+"bag: Bag" -> "virologist: Virologist"++ : getInventorSize()
+"virologist: Virologist" --> "bag: Bag"-- : inventorSize
+
+"bag: Bag" -> "virologist: Virologist"++ : setInventorySize(inventorSize + extraInventorSize)
+"virologist: Virologist" --> "bag: Bag"--
+
+"bag: Bag" --> "virologist: Virologist"--
+
+
+"virologist: Virologist" --> Player
+Deactivate "virologist: Virologist"
+
+@enduml

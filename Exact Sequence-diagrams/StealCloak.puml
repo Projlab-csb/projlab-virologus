@@ -1,0 +1,58 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+autonumber
+
+mainframe Steal Bag
+
+actor Player
+
+Player -> "robberVirologist: RobberVirologist"++: steal(robberVirologist, targetVirologist)
+
+"robberVirologist: RobberVirologist" ->  "targetVirologist: TargetVirologist"++: handleEquipmentSteal(robberVirologist, targetVirologist)
+
+
+        note left  "targetVirologist: TargetVirologist"
+            The player choose the wanted thing here
+        end note
+
+         "targetVirologist: TargetVirologist"->"bag: Bag"++:discard()
+        "bag: Bag"--> "targetVirologist: TargetVirologist"--
+        "targetVirologist: TargetVirologist" -> "bag: Bag"++ : removeEffect(targetVirologist)
+
+        "bag: Bag" -> "bag: Bag" ++ : getExtraInventorSize()
+        "bag: Bag"  --> "bag: Bag" -- : extraInventorSize
+
+        "bag: Bag"  -> "targetVirologist: TargetVirologist"++ : getInventorSize()
+        "targetVirologist: TargetVirologist"--> "bag: Bag" -- : inventorSize
+
+        note over "targetVirologist: TargetVirologist", "bag: Bag"
+        **Decreas** the inventor size by the **bag's extra inventor size**
+        end note
+
+        "bag: Bag"  -> "targetVirologist: TargetVirologist"++ : setInventorySize(inventorSize - extraInventorSize)
+        "targetVirologist: TargetVirologist"--> "bag: Bag" --
+        "bag: Bag"--> "targetVirologist: TargetVirologist"--
+
+     "targetVirologist: TargetVirologist" -->"robberVirologist: RobberVirologist"--: "bag: Bag"
+    "robberVirologist: RobberVirologist"->"bag: Bag"++:collectby(robberVirologist)
+    "bag: Bag" --> "robberVirologist: RobberVirologist"--
+"robberVirologist: RobberVirologist" -> "bag: Bag"++ : applyEffect(robberVirologist)
+
+note over "robberVirologist: RobberVirologist","bag: Bag"
+Clear the agents array on the virologist
+end note
+'Itt miért kéri le magától a méretét?
+"bag: Bag" -> "bag: Bag"++ : getExtraInventorSize()
+"bag: Bag" --> "bag: Bag"-- : extraInventorSize
+
+"bag: Bag" -> "robberVirologist: RobberVirologist"++ : getInventorSize()
+"robberVirologist: RobberVirologist" --> "bag: Bag"-- : inventorSize
+
+"bag: Bag" -> "robberVirologist: RobberVirologist"++ : setInventorySize(inventorSize + extraInventorSize)
+"robberVirologist: RobberVirologist" --> "bag: Bag"--
+
+"bag: Bag" --> "robberVirologist: RobberVirologist"--
+
+
+"robberVirologist: RobberVirologist" --> Player --
+@enduml
