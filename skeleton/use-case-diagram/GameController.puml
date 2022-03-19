@@ -1,0 +1,10 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+:Game Controller: as GameController
+
+(GameFlow) <-u- GameController
+(RoundFlow) <-u- GameController
+(InitGame)  <-u- GameController
+
+@enduml

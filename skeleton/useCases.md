@@ -14,6 +14,7 @@ Kommunikációs diagrammból lehet kevesebb
 - [ ] RoundFlow Paralyzed - RoundRunStrategy Paralyzed
 - [ ] Move Default - MoveStrategy Default
 - [ ] Move Vitus - MoveStrategy VitusDance
+- [ ] Init Game
 ---
 ### Olivér
 - [ ] Defense Default - DefenseStrategy Default
