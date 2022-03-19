@@ -7,31 +7,31 @@ mainframe Attack Forget Agent
 
 actor Player
 
-Player -> "virologist: Virologist"++: useAgent(forget, targetVirologist)
-"virologist: Virologist" -> TargetVirologist++: attack(forget, virologist, targetVirologist)
-TargetVirologist -> Cloak++ : applyEffect(v: Virologist)
+Player -> "virologist: Virologist"++: useAgent(vitusDance, targetVirologist)
+"virologist: Virologist" -> "targetVirologist: TargetVirologist"++: attack(vitusDance, virologist, targetVirologist)
+"targetVirologist: TargetVirologist" -> "cloak: Cloak"++ : applyEffect(targetVirologist)
 
-Cloak -> Cloak++ : getStrategy()
-Cloak --> Cloak-- : defenseStrategy
+"cloak: Cloak" -> "cloak: Cloak"++ : getStrategy()
+"cloak: Cloak" --> "cloak: Cloak"-- : defenseStrategy
 
-Cloak -> TargetVirologist++: setDefenseStrategy(defensestrategy: DefenseStrategy)
+"cloak: Cloak" -> "targetVirologist: TargetVirologist"++: setDefenseStrategy(defensestrategy)
 
-TargetVirologist -> VitusDance++ : applyEffect(virologist: Virologist)
+"targetVirologist: TargetVirologist" -> "vitusDance: VitusDance"++ : applyEffect(targetVirologist)
 
-   VitusDance -> VitusDance++ : getStrategy()
-   VitusDance --> VitusDance-- : moveStrategy
+   "vitusDance: VitusDance" -> "vitusDance: VitusDance"++ : getStrategy()
+   "vitusDance: VitusDance" --> "vitusDance: VitusDance"-- : moveStrategy
 
-   VitusDance -> TargetVirologist++: setMoveStrategy(moveStrategy)
-   TargetVirologist --> VitusDance--
+   "vitusDance: VitusDance" -> "targetVirologist: TargetVirologist"++: setMoveStrategy(moveStrategy)
+   "targetVirologist: TargetVirologist" --> "vitusDance: VitusDance"--
 
-   VitusDance --> TargetVirologist--
-
-
-TargetVirologist --> Cloak --
-Cloak --> TargetVirologist --
+   "vitusDance: VitusDance" --> "targetVirologist: TargetVirologist"--
 
 
-TargetVirologist --> Virologist --
+"targetVirologist: TargetVirologist" --> "cloak: Cloak" --
+"cloak: Cloak" --> "targetVirologist: TargetVirologist" --
 
-Virologist --> Player --
+
+"targetVirologist: TargetVirologist" --> "virologist: Virologist" --
+
+"virologist: Virologist" --> Player --
 @enduml

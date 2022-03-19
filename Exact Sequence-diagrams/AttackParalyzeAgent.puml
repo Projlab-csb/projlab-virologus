@@ -7,28 +7,27 @@ mainframe Attack Forget Agent
 
 actor Player
 
-Player -> "virologist: Virologist"++: useAgent(forget, targetVirologist)
-"virologist: Virologist" -> TargetVirologist++: attack(forget, virologist, targetVirologist)
-TargetVirologist -> Cloak++ : applyEffect(virologist: Virologist)
+Player -> "virologist: Virologist"++: useAgent(paralyzed, targetVirologist)
+"virologist: Virologist" -> "targetVirologist: TargetVirologist"++: attack(paralyzed, virologist, targetVirologist)
+"targetVirologist: TargetVirologist" -> "cloak: Cloak"++ : applyEffect(targetVirologist)
+"cloak: Cloak" -> "cloak: Cloak"++ : getStrategy()
+"cloak: Cloak" --> "cloak: Cloak"-- : defenseStrategy
 
-Cloak -> Cloak++ : getStrategy()
-Cloak --> Cloak-- : defenseStrategy
+"cloak: Cloak" -> "targetVirologist: TargetVirologist"++: setDefenseStrategy(defensestrategy: DefenseStrategy)
 
-Cloak -> TargetVirologist++: setDefenseStrategy(defensestrategy: DefenseStrategy)
+"targetVirologist: TargetVirologist" -> "paralyzed: Paralyzed"++ : applyEffect(targetVirologist)
 
-TargetVirologist -> Paralyzed++ : applyEffect(virologist: Virologist)
+"paralyzed: Paralyzed" -> "paralyzed: Paralyzed"++ : getStrategy()
+"paralyzed: Paralyzed" --> "paralyzed: Paralyzed"-- : roundRunStrategy
+"paralyzed: Paralyzed" -> "targetVirologist: TargetVirologist"++: setRoundRunStrategy(roundRunStrategy)
+"targetVirologist: TargetVirologist" --> "paralyzed: Paralyzed"--
+"paralyzed: Paralyzed" --> "targetVirologist: TargetVirologist"--
 
-Paralyzed -> Paralyzed++ : getStrategy()
-Paralyzed --> Paralyzed-- : roundRunStrategy
-Paralyzed -> TargetVirologist++: setRoundRunStrategy(roundRunStrategy)
-TargetVirologist --> Paralyzed--
-Paralyzed --> TargetVirologist--
-
-TargetVirologist --> Cloak --
-Cloak --> TargetVirologist --
+"targetVirologist: TargetVirologist" --> "cloak: Cloak" --
+"cloak: Cloak" --> "targetVirologist: TargetVirologist" --
 
 
-TargetVirologist --> Virologist --
+"targetVirologist: TargetVirologist" --> "virologist: Virologist" --
 
-Virologist --> Player --
+"virologist: Virologist" --> Player --
 @enduml

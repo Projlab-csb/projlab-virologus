@@ -7,36 +7,33 @@ mainframe Attack Forget Agent Back
 
 actor Player
 
-Player -> "virologist: Virologist"++: useAgent(forget, targetVirologist)
- "virologist: Virologist" -> "targetVirologist: TargetVirologist"++: attack(forget, virologist, targetVirologist)
+Player -> "virologist: Virologist"++: useAgent(protection, targetVirologist)
+ "virologist: Virologist" -> "targetVirologist: TargetVirologist"++: attack(protection, virologist, targetVirologist)
 
- "targetVirologist: TargetVirologist" -> "cloak: Cloak" ++ : applyEffect(virologist)
+ "targetVirologist: TargetVirologist" -> "cloak: Cloak" ++ : applyEffect(targetVirologist)
 
  "cloak: Cloak"  -> "cloak: Cloak" ++ : getStrategy()
  "cloak: Cloak"  --> "cloak: Cloak" -- : defenseStrategy
 
  "cloak: Cloak"  -> "targetVirologist: TargetVirologist"++: setDefenseStrategy(defensestrategy)
 
-"targetVirologist: TargetVirologist" -> "targetVirologist: TargetVirologist"++: defense(forget, virologist,  targetVirologist)
+"targetVirologist: TargetVirologist" -> "targetVirologist: TargetVirologist"++: defense(protection, virologist,  targetVirologist)
 
 note over "targetVirologist: TargetVirologist"
     Gloves will attack back the attacker
     At implementation, we must make sure, **no infinite loop** occurs!
 end note
 
-"targetVirologist: TargetVirologist" -> "virologist: Virologist"++: attack(forget,  targetVirologist, virologist)
-"virologist: Virologist" -> "forget: Forget"++ : applyEffect(virologist: Virologist)
+"targetVirologist: TargetVirologist" -> "virologist: Virologist"++: attack(protection,  targetVirologist, virologist)
+"virologist: Virologist" -> "protection: Protection"++ : applyEffect(targetVirologist)
 
-    note over "virologist: Virologist", "forget: Forget"
-    Clear the agents array on the virologist
-    end note
+    "protection: Protection" -> "protection: Protection"++ : getStrategy()
+    "protection: Protection" --> "protection: Protection"-- : defenseStrategy
 
-    "forget: Forget" -> "virologist: Virologist"++ : setAgents([])
-    "virologist: Virologist" --> "forget: Forget"--
-    "forget: Forget" --> "virologist: Virologist"--
+    "protection: Protection" -> "virologist: Virologist"++: setDefenseStrategy(defenseStrategy)
+    "virologist: Virologist" --> "protection: Protection"--
+ "protection: Protection" --> "virologist: Virologist"--
 "virologist: Virologist" --> "targetVirologist: TargetVirologist"--
-
-"targetVirologist: TargetVirologist" --> "targetVirologist: TargetVirologist" --
 
 "targetVirologist: TargetVirologist" --> "cloak: Cloak" --
 "cloak: Cloak" --> "targetVirologist: TargetVirologist" --

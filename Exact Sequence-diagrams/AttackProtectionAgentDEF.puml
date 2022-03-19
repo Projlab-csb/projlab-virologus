@@ -7,10 +7,10 @@ mainframe Attack Forget Agent Def
 
 actor Player
 
-Player -> "virologist: Virologist"++: useAgent(forget, targetVirologist)
- "virologist: Virologist" -> "targetVirologist: TargetVirologist"++: attack(forget, virologist, targetVirologist)
+Player -> "virologist: Virologist"++: useAgent(protection, targetVirologist)
+ "virologist: Virologist" -> "targetVirologist: TargetVirologist"++: attack(protection, virologist, targetVirologist)
 
- "targetVirologist: TargetVirologist" -> "cloak: Cloak" ++ : applyEffect(virologist)
+ "targetVirologist: TargetVirologist" -> "cloak: Cloak" ++ : applyEffect(targetVirologist)
 
  "cloak: Cloak"  -> "cloak: Cloak" ++ : getStrategy()
  "cloak: Cloak"  --> "cloak: Cloak" -- : defenseStrategy
@@ -18,7 +18,7 @@ Player -> "virologist: Virologist"++: useAgent(forget, targetVirologist)
  "cloak: Cloak"  -> "targetVirologist: TargetVirologist"++: setDefenseStrategy(defensestrategy)
 
 
-"targetVirologist: TargetVirologist" -> "targetVirologist: TargetVirologist"++: defense(forget, virologist,  targetVirologist)
+"targetVirologist: TargetVirologist" -> "targetVirologist: TargetVirologist"++: defense(protection, virologist,  targetVirologist)
 
 
 note over "targetVirologist: TargetVirologist"
@@ -33,11 +33,14 @@ end note
 "targetVirologist: TargetVirologist" -> "targetVirologist: TargetVirologist": surviveRate = generateRandomNumber()
 
 opt if (surviveRate > 0.823)
-    "targetVirologist: TargetVirologist" -> "forget: Forget"++: +applyEffect(targetVirologist)
+    "targetVirologist: TargetVirologist" -> "protection: Protection"++ : applyEffect(targetVirologist)
 
-    "forget: Forget" -> "targetVirologist: TargetVirologist"++ : setAgents([])
-    "targetVirologist: TargetVirologist" --> "forget: Forget"--
-    "forget: Forget" --> "targetVirologist: TargetVirologist"--
+        "protection: Protection" -> "protection: Protection"++ : getStrategy()
+        "protection: Protection" --> "protection: Protection"-- : defenseStrategy
+
+        "protection: Protection" -> "targetVirologist: TargetVirologist"++: setDefenseStrategy(defenseStrategy)
+        "targetVirologist: TargetVirologist" --> "protection: Protection"--
+     "protection: Protection" --> "targetVirologist: TargetVirologist"--
 end opt
 
 "targetVirologist: TargetVirologist" --> "targetVirologist: TargetVirologist" --

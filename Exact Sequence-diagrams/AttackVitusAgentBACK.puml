@@ -7,41 +7,41 @@ mainframe Attack Forget Agent Back
 
 actor Player
 
-Player -> "virologist: Virologist"++: useAgent(forget, targetVirologist)
-"virologist: Virologist" -> TargetVirologist++: attack(forget, virologist, targetVirologist)
-TargetVirologist -> Cloak++ : applyEffect(v: Virologist)
+Player -> "virologist: Virologist"++: useAgent(vitusDance, targetVirologist)
+"virologist: Virologist" -> "targetVirologist: TargetVirologist"++: attack(vitusDance, virologist, targetVirologist)
+"targetVirologist: TargetVirologist" -> "cloak: Cloak"++ : applyEffect(targetVirologist)
 
-Cloak -> Cloak++ : getStrategy()
-Cloak --> Cloak-- : defenseStrategy
+"cloak: Cloak" -> "cloak: Cloak"++ : getStrategy()
+"cloak: Cloak" --> "cloak: Cloak"-- : defenseStrategy
 
-Cloak -> TargetVirologist++: setDefenseStrategy(defensestrategy: DefenseStrategy)
+"cloak: Cloak" -> "targetVirologist: TargetVirologist"++: setDefenseStrategy(defensestrategy)
 
-TargetVirologist -> TargetVirologist++: defense(vitusDance: VitusDance, virologist: Virologist,  targetVirologist: Virologist)
+"targetVirologist: TargetVirologist" -> "targetVirologist: TargetVirologist"++: defense(vitusDance, virologist,  targetVirologist)
 
-note over TargetVirologist
+note over "targetVirologist: TargetVirologist"
     Gloves will attack back the attacker
     At implementation, we must make sure, **no infinite loop** occurs!
 end note
 
-TargetVirologist -> Virologist++: attack(vitusDance: VitusDance,  targetVirologist: Virologist, virologist: Virologist)
-Virologist -> VitusDance++ : applyEffect(virologist: Virologist)
+"targetVirologist: TargetVirologist" -> "virologist: Virologist"++: attack(vitusDance,  targetVirologist, virologist)
+"virologist: Virologist" -> "vitusDance: VitusDance"++ : applyEffect(virologist)
 
-       VitusDance -> VitusDance++ : getStrategy()
-       VitusDance --> VitusDance-- : moveStrategy
+       "vitusDance: VitusDance" -> "vitusDance: VitusDance"++ : getStrategy()
+       "vitusDance: VitusDance" --> "vitusDance: VitusDance"-- : moveStrategy
 
-       VitusDance -> Virologist++: setMoveStrategy(moveStrategy)
-       Virologist --> VitusDance--
+       "vitusDance: VitusDance" -> "virologist: Virologist"++: setMoveStrategy(moveStrategy)
+       "virologist: Virologist" --> "vitusDance: VitusDance"--
 
-       VitusDance --> Virologist--
-Virologist --> TargetVirologist--
+       "vitusDance: VitusDance" --> "virologist: Virologist"--
+"virologist: Virologist" --> "targetVirologist: TargetVirologist"--
 
-TargetVirologist --> TargetVirologist --
+"targetVirologist: TargetVirologist" --> "targetVirologist: TargetVirologist" --
 
-TargetVirologist --> Cloak --
-Cloak --> TargetVirologist --
+"targetVirologist: TargetVirologist" --> "cloak: Cloak" --
+"cloak: Cloak" --> "targetVirologist: TargetVirologist" --
 
 
-TargetVirologist --> Virologist --
+"targetVirologist: TargetVirologist" --> "virologist: Virologist" --
 
-Virologist --> Player --
+"virologist: Virologist" --> Player --
 @enduml

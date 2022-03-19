@@ -7,47 +7,48 @@ mainframe Attack Forget Agent Def
 
 actor Player
 
-Player -> "virologist: Virologist"++: useAgent(forget, targetVirologist)
-"virologist: Virologist" -> TargetVirologist++: attack(forget, virologist, targetVirologist)
-TargetVirologist -> Cloak++ : applyEffect(virologist: Virologist)
+Player -> "virologist: Virologist"++: useAgent(vitusDance, targetVirologist)
+"virologist: Virologist" -> "targetVirologist: TargetVirologist"++: attack(vitusDance, virologist, targetVirologist)
+"targetVirologist: TargetVirologist" -> "cloak: Cloak"++ : applyEffect(targetVirologist)
 
-Cloak -> Cloak++ : getStrategy()
-Cloak --> Cloak-- : defenseStrategy
+"cloak: Cloak" -> "cloak: Cloak"++ : getStrategy()
+"cloak: Cloak" --> "cloak: Cloak"-- : defenseStrategy
 
-Cloak -> TargetVirologist++: setDefenseStrategy(defensestrategy: DefenseStrategy)
+"cloak: Cloak" -> "targetVirologist: TargetVirologist"++: setDefenseStrategy(defensestrategy)
 
-TargetVirologist -> TargetVirologist++: defense(vitusDance: VitusDance, virologist: Virologist,  targetVirologist: Virologist)
+"targetVirologist: TargetVirologist" -> "targetVirologist: TargetVirologist"++: defense(vitusDance, virologist,  targetVirologist)
 
 
-note over TargetVirologist
+
+note over "targetVirologist: TargetVirologist"
     When the virologist have a cloak, there is
     an **82.3%** chance that the attack will **fail.**
 end note
 
-note right of TargetVirologist
+note right of "targetVirologist: TargetVirologist"
 Get a random number as a percentage.
 end note
 
-TargetVirologist -> TargetVirologist: surviveRate = generateRandomNumber()
+"targetVirologist: TargetVirologist" -> "targetVirologist: TargetVirologist": surviveRate = generateRandomNumber()
 
 opt if (surviveRate > 0.823)
-    TargetVirologist -> VitusDance++: +applyEffect(targetVirologist: Virologist)
+    "targetVirologist: TargetVirologist" -> "vitusDance: VitusDance"++: +applyEffect(targetVirologist)
 
-       VitusDance -> VitusDance++ : getStrategy()
-       VitusDance --> VitusDance-- : moveStrategy
+       "vitusDance: VitusDance" -> "vitusDance: VitusDance"++ : getStrategy()
+       "vitusDance: VitusDance" --> "vitusDance: VitusDance"-- : moveStrategy
 
-       VitusDance -> TargetVirologist++: setMoveStrategy(moveStrategy)
-       TargetVirologist --> VitusDance--
-       VitusDance --> TargetVirologist--
+       "vitusDance: VitusDance" -> "targetVirologist: TargetVirologist"++: setMoveStrategy(moveStrategy)
+       "targetVirologist: TargetVirologist" --> "vitusDance: VitusDance"--
+       "vitusDance: VitusDance" --> "targetVirologist: TargetVirologist"--
 end opt
 
-TargetVirologist --> TargetVirologist --
+"targetVirologist: TargetVirologist" --> "targetVirologist: TargetVirologist" --
 
-TargetVirologist --> Cloak --
-Cloak --> TargetVirologist --
+"targetVirologist: TargetVirologist" --> "cloak: Cloak" --
+"cloak: Cloak" --> "targetVirologist: TargetVirologist" --
 
 
-TargetVirologist --> Virologist --
+"targetVirologist: TargetVirologist" --> "virologist: Virologist" --
 
-Virologist --> Player --
+"virologist: Virologist" --> Player --
 @enduml

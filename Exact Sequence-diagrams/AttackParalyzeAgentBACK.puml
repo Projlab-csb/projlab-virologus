@@ -7,38 +7,36 @@ mainframe Attack Forget Agent Back
 
 actor Player
 
-Player -> "virologist: Virologist"++: useAgent(forget, targetVirologist)
-"virologist: Virologist" -> TargetVirologist++: attack(forget, virologist, targetVirologist)
-TargetVirologist -> Cloak++ : applyEffect(v: Virologist)
+Player -> "virologist: Virologist"++: useAgent(paralyzed, targetVirologist)
+"virologist: Virologist" -> "targetVirologist: TargetVirologist"++: attack(paralyzed, virologist, targetVirologist)
+"targetVirologist: TargetVirologist" -> "cloak: Cloak"++ : applyEffect(targetVirologist)
+"cloak: Cloak" -> "cloak: Cloak"++ : getStrategy()
+"cloak: Cloak" --> "cloak: Cloak"-- : defenseStrategy
 
-Cloak -> Cloak++ : getStrategy()
-Cloak --> Cloak-- : defenseStrategy
+"cloak: Cloak" -> "targetVirologist: TargetVirologist"++: setDefenseStrategy(defensestrategy: DefenseStrategy)
 
-Cloak -> TargetVirologist++: setDefenseStrategy(defensestrategy: DefenseStrategy)
+"targetVirologist: TargetVirologist" -> "targetVirologist: TargetVirologist"++: defense(paralyzed, virologist, targetVirologist)
 
-TargetVirologist -> TargetVirologist++: defense(paralyzed: Paralyzed, virologist: Virologist,  targetVirologist: Virologist)
-
-note over TargetVirologist
+note over "targetVirologist: TargetVirologist"
     Gloves will attack back the attacker
     At implementation, we must make sure, **no infinite loop** occurs!
 end note
 
-TargetVirologist -> Virologist++: attack(paralyzed: Paralyzed,  targetVirologist: Virologist, virologist: Virologist)
-Virologist -> Paralyzed++ : applyEffect(virologist: Virologist)
-Paralyzed -> Paralyzed++ : getStrategy()
-      Paralyzed --> Paralyzed-- : roundRunStrategy
-      Paralyzed -> Virologist++: setRoundRunStrategy(roundRunStrategy)
-      Virologist --> Paralyzed--
-      Paralyzed --> Virologist--
-Virologist --> TargetVirologist--
+"targetVirologist: TargetVirologist" -> "virologist: Virologist"++: attack(paralyzed, targetVirologist, virologist)
+"virologist: Virologist" -> "paralyzed: Paralyzed"++ : applyEffect(virologist)
+"paralyzed: Paralyzed" -> "paralyzed: Paralyzed"++ : getStrategy()
+      "paralyzed: Paralyzed" --> "paralyzed: Paralyzed"-- : roundRunStrategy
+      "paralyzed: Paralyzed" -> "virologist: Virologist"++: setRoundRunStrategy(roundRunStrategy)
+      "virologist: Virologist" --> "paralyzed: Paralyzed"--
+      "paralyzed: Paralyzed" --> "virologist: Virologist"--
+"virologist: Virologist" --> "targetVirologist: TargetVirologist"--
 
-TargetVirologist --> TargetVirologist --
+"targetVirologist: TargetVirologist" --> "targetVirologist: TargetVirologist" --
 
-TargetVirologist --> Cloak --
-Cloak --> TargetVirologist --
+"targetVirologist: TargetVirologist" --> "cloak: Cloak" --
+"cloak: Cloak" --> "targetVirologist: TargetVirologist" --
 
+"targetVirologist: TargetVirologist" --> "virologist: Virologist" --
 
-TargetVirologist --> Virologist --
-
-Virologist --> Player --
+"virologist: Virologist" --> Player --
 @enduml

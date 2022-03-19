@@ -10,14 +10,14 @@ actor Player
 Player -> "virologist: Virologist"++: useAgent(forget, targetVirologist)
 "virologist: Virologist" -> "targetVirologist: TargetVirologist"++: attack(forget, virologist, targetVirologist)
 
-"targetVirologist: TargetVirologist" -> "cloak: Cloak" ++ : applyEffect(virologist)
+"targetVirologist: TargetVirologist" -> "cloak: Cloak" ++ : applyEffect(targetVirologist)
 
 "cloak: Cloak"  -> "cloak: Cloak" ++ : getStrategy()
 "cloak: Cloak"  --> "cloak: Cloak" -- : defenseStrategy
 
 "cloak: Cloak"  -> "targetVirologist: TargetVirologist"++: setDefenseStrategy(defensestrategy)
 
-"targetVirologist: TargetVirologist" -> "forget: Forget"++ : applyEffect(virologist)
+"targetVirologist: TargetVirologist" -> "forget: Forget"++ : applyEffect(targetVirologist)
 
     note over "targetVirologist: TargetVirologist","forget: Forget"
     Clear the agents array on the virologist

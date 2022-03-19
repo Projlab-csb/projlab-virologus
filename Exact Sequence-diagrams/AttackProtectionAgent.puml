@@ -7,26 +7,24 @@ mainframe Attack Forget Agent
 
 actor Player
 
-Player -> "virologist: Virologist"++: useAgent(forget, targetVirologist)
-"virologist: Virologist" -> "targetVirologist: TargetVirologist"++: attack(forget, virologist, targetVirologist)
+Player -> "virologist: Virologist"++: useAgent(protection, targetVirologist)
+"virologist: Virologist" -> "targetVirologist: TargetVirologist"++: attack(protection, virologist, targetVirologist)
 
-"targetVirologist: TargetVirologist" -> "cloak: Cloak" ++ : applyEffect(virologist)
+"targetVirologist: TargetVirologist" -> "cloak: Cloak" ++ : applyEffect(targetVirologist)
 
 "cloak: Cloak"  -> "cloak: Cloak" ++ : getStrategy()
 "cloak: Cloak"  --> "cloak: Cloak" -- : defenseStrategy
 
 "cloak: Cloak"  -> "targetVirologist: TargetVirologist"++: setDefenseStrategy(defensestrategy)
 
-"targetVirologist: TargetVirologist" -> "forget: Forget"++ : applyEffect(virologist)
+"targetVirologist: TargetVirologist" -> "protection: Protection"++ : applyEffect(targetVirologist)
 
-    note over "targetVirologist: TargetVirologist","forget: Forget"
-    Clear the agents array on the virologist
-    end note
+    "protection: Protection" -> "protection: Protection"++ : getStrategy()
+    "protection: Protection" --> "protection: Protection"-- : defenseStrategy
 
-    "forget: Forget" -> "targetVirologist: TargetVirologist"++ : setAgents([])
-    "targetVirologist: TargetVirologist" --> "forget: Forget"--
-
-    "forget: Forget" --> "targetVirologist: TargetVirologist" --
+    "protection: Protection" -> "targetVirologist: TargetVirologist"++: setDefenseStrategy(defenseStrategy)
+    "targetVirologist: TargetVirologist" --> "protection: Protection"--
+ "protection: Protection" --> "targetVirologist: TargetVirologist"--
 
 "targetVirologist: TargetVirologist" --> "cloak: Cloak"  --
 "cloak: Cloak" --> "targetVirologist: TargetVirologist" --
