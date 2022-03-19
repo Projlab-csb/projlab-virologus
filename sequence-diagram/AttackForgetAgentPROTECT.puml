@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Attack Forget Agent Def
+
+actor Player
+
+Player -> Virologist++: useAgent(forget: Forget, targetVirologist: Virologist)
+Virologist -> TargetVirologist++: attack(forget: Forget, virologist: Virologist, targetVirologist: Virologist)
+
+TargetVirologist -> Cloak++ : applyEffect(v: Virologist)
+
+Cloak -> Cloak++ : getStrategy()
+Cloak --> Cloak-- : defenseStrategy
+
+Cloak -> TargetVirologist++: setDefenseStrategy(defensestrategy: DefenseStrategy)
+
+TargetVirologist -> TargetVirologist++: defense(forget: Forget, virologist: Virologist,  targetVirologist: Virologist)
+
+
+note over TargetVirologist
+    If the virologist have this agent, he is invincible
+end note
+
+TargetVirologist --> TargetVirologist --
+
+TargetVirologist --> Cloak --
+Cloak --> TargetVirologist --
+
+
+TargetVirologist --> Virologist --
+
+Virologist --> Player --
+@enduml
