@@ -1,8 +1,0 @@
-@startuml
-'https://plantuml.com/use-case-diagram
-
-Player as Player
-
-(Move Virologist) <-u- Player
-
-@enduml

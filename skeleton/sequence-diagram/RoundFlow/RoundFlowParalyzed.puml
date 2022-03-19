@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Virologist paralyzed round
+
+actor GameControl
+participant "v: Virologist" as Virologist
+
+GameControl -> Virologist++: startOfTurn()
+Virologist -> Virologist++: v.roundRunStrategy.roundRun()
+
+note left of Virologist
+User input does not have an effect
+end note
+Virologist->GameControl:reportGenCode(v, genCodes[])
+Activate GameControl
+
+
+GameControl-->Virologist
+deactivate GameControl
+
+Virologist->Virologist++: RefreshAgents()
+Virologist-->Virologist--
+Virologist-->Virologist--
+Virologist-->GameControl--
+
+
+@enduml

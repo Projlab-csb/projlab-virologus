@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Virologist paralyzed move
+
+actor Player
+participant "v: Virologist" as Virologist
+participant "currentField: Field" as currentField
+participant "targetField: Field" as targetField
+
+Player -> Virologist: move(direction)
+Activate Virologist
+
+note right of Virologist
+Get a random integer as direction
+end note
+Virologist -> Virologist: randomDirection = generateRandomNumber()
+
+Virologist -> currentField: getNeighbor(randomDirection)
+Activate currentField
+currentField --> Virologist: targetField : Field
+Deactivate currentField
+
+Virologist -> currentField: removeVirologist(v)
+Activate currentField
+currentField --> Virologist:
+Deactivate currentField
+
+Virologist -> targetField: acceptVirologist(v)
+Activate targetField
+targetField --> Virologist:
+Deactivate targetField
+Virologist --> Player:
+
+Deactivate Virologist
+@enduml

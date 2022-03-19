@@ -1,0 +1,45 @@
+by Zoli
+
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe GameFlow
+
+actor GameControl
+participant "V1 : Virologist" as V1
+participant "V2 : Virologist" as V2
+participant "V3 : Virologist" as V3
+
+GameControl -> V1: startOfTurn()
+Activate V1
+V1-->GameControl
+Deactivate V1
+
+GameControl -> V2: startOfTurn()
+Activate V2
+V2-->GameControl
+Deactivate V2
+
+GameControl -> V3: startOfTurn()
+Activate V3
+V3-->GameControl
+Deactivate V3
+
+GameControl -> V1: startOfTurn()
+Activate V1
+V1-->GameControl
+Deactivate V1
+
+GameControl -> V2: startOfTurn()
+Activate V2
+V2-->GameControl
+Deactivate V2
+
+note over V2
+    V2 has won the game
+end note
+
+@enduml
+
