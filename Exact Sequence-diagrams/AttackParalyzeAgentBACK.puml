@@ -1,0 +1,44 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Attack Forget Agent Back
+
+actor Player
+
+Player -> "virologist: Virologist"++: useAgent(forget, targetVirologist)
+"virologist: Virologist" -> TargetVirologist++: attack(forget, virologist, targetVirologist)
+TargetVirologist -> Cloak++ : applyEffect(v: Virologist)
+
+Cloak -> Cloak++ : getStrategy()
+Cloak --> Cloak-- : defenseStrategy
+
+Cloak -> TargetVirologist++: setDefenseStrategy(defensestrategy: DefenseStrategy)
+
+TargetVirologist -> TargetVirologist++: defense(paralyzed: Paralyzed, virologist: Virologist,  targetVirologist: Virologist)
+
+note over TargetVirologist
+    Gloves will attack back the attacker
+    At implementation, we must make sure, **no infinite loop** occurs!
+end note
+
+TargetVirologist -> Virologist++: attack(paralyzed: Paralyzed,  targetVirologist: Virologist, virologist: Virologist)
+Virologist -> Paralyzed++ : applyEffect(virologist: Virologist)
+Paralyzed -> Paralyzed++ : getStrategy()
+      Paralyzed --> Paralyzed-- : roundRunStrategy
+      Paralyzed -> Virologist++: setRoundRunStrategy(roundRunStrategy)
+      Virologist --> Paralyzed--
+      Paralyzed --> Virologist--
+Virologist --> TargetVirologist--
+
+TargetVirologist --> TargetVirologist --
+
+TargetVirologist --> Cloak --
+Cloak --> TargetVirologist --
+
+
+TargetVirologist --> Virologist --
+
+Virologist --> Player --
+@enduml

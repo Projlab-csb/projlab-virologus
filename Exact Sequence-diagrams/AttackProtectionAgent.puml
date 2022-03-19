@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Attack Forget Agent
+
+actor Player
+
+Player -> "virologist: Virologist"++: useAgent(forget, targetVirologist)
+"virologist: Virologist" -> "targetVirologist: TargetVirologist"++: attack(forget, virologist, targetVirologist)
+
+"targetVirologist: TargetVirologist" -> "cloak: Cloak" ++ : applyEffect(virologist)
+
+"cloak: Cloak"  -> "cloak: Cloak" ++ : getStrategy()
+"cloak: Cloak"  --> "cloak: Cloak" -- : defenseStrategy
+
+"cloak: Cloak"  -> "targetVirologist: TargetVirologist"++: setDefenseStrategy(defensestrategy)
+
+"targetVirologist: TargetVirologist" -> "forget: Forget"++ : applyEffect(virologist)
+
+    note over "targetVirologist: TargetVirologist","forget: Forget"
+    Clear the agents array on the virologist
+    end note
+
+    "forget: Forget" -> "targetVirologist: TargetVirologist"++ : setAgents([])
+    "targetVirologist: TargetVirologist" --> "forget: Forget"--
+
+    "forget: Forget" --> "targetVirologist: TargetVirologist" --
+
+"targetVirologist: TargetVirologist" --> "cloak: Cloak"  --
+"cloak: Cloak" --> "targetVirologist: TargetVirologist" --
+
+
+"targetVirologist: TargetVirologist" --> "virologist: Virologist" --
+
+"virologist: Virologist" --> Player --
+@enduml

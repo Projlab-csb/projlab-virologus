@@ -1,0 +1,52 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Attack Forget Agent Def
+
+actor Player
+
+Player -> "virologist: Virologist"++: useAgent(forget, targetVirologist)
+ "virologist: Virologist" -> "targetVirologist: TargetVirologist"++: attack(forget, virologist, targetVirologist)
+
+ "targetVirologist: TargetVirologist" -> "cloak: Cloak" ++ : applyEffect(virologist)
+
+ "cloak: Cloak"  -> "cloak: Cloak" ++ : getStrategy()
+ "cloak: Cloak"  --> "cloak: Cloak" -- : defenseStrategy
+
+ "cloak: Cloak"  -> "targetVirologist: TargetVirologist"++: setDefenseStrategy(defensestrategy)
+
+
+"targetVirologist: TargetVirologist" -> "targetVirologist: TargetVirologist"++: defense(forget, virologist,  targetVirologist)
+
+
+note over "targetVirologist: TargetVirologist"
+    When the virologist have a cloak, there is
+    an **82.3%** chance that the attack will **fail.**
+end note
+
+note right of "targetVirologist: TargetVirologist"
+Get a random number as a percentage.
+end note
+
+"targetVirologist: TargetVirologist" -> "targetVirologist: TargetVirologist": surviveRate = generateRandomNumber()
+
+opt if (surviveRate > 0.823)
+    "targetVirologist: TargetVirologist" -> "forget: Forget"++: +applyEffect(targetVirologist)
+
+    "forget: Forget" -> "targetVirologist: TargetVirologist"++ : setAgents([])
+    "targetVirologist: TargetVirologist" --> "forget: Forget"--
+    "forget: Forget" --> "targetVirologist: TargetVirologist"--
+end opt
+
+"targetVirologist: TargetVirologist" --> "targetVirologist: TargetVirologist" --
+
+"targetVirologist: TargetVirologist" --> "cloak: Cloak" --
+"cloak: Cloak" --> "targetVirologist: TargetVirologist" --
+
+
+"targetVirologist: TargetVirologist" --> "virologist: Virologist" --
+
+"virologist: Virologist" --> Player --
+@enduml

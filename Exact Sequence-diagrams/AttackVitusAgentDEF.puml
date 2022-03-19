@@ -7,17 +7,16 @@ mainframe Attack Forget Agent Def
 
 actor Player
 
-Player -> Virologist++: useAgent(forget: Forget, targetVirologist: Virologist)
-Virologist -> TargetVirologist++: attack(forget: Forget, virologist: Virologist, targetVirologist: Virologist)
-
-TargetVirologist -> Cloak++ : applyEffect(v: Virologist)
+Player -> "virologist: Virologist"++: useAgent(forget, targetVirologist)
+"virologist: Virologist" -> TargetVirologist++: attack(forget, virologist, targetVirologist)
+TargetVirologist -> Cloak++ : applyEffect(virologist: Virologist)
 
 Cloak -> Cloak++ : getStrategy()
 Cloak --> Cloak-- : defenseStrategy
 
 Cloak -> TargetVirologist++: setDefenseStrategy(defensestrategy: DefenseStrategy)
 
-TargetVirologist -> TargetVirologist++: defense(forget: Forget, virologist: Virologist,  targetVirologist: Virologist)
+TargetVirologist -> TargetVirologist++: defense(vitusDance: VitusDance, virologist: Virologist,  targetVirologist: Virologist)
 
 
 note over TargetVirologist
@@ -32,11 +31,14 @@ end note
 TargetVirologist -> TargetVirologist: surviveRate = generateRandomNumber()
 
 opt if (surviveRate > 0.823)
-    TargetVirologist -> Forget++: +applyEffect(targetVirologist: Virologist)
+    TargetVirologist -> VitusDance++: +applyEffect(targetVirologist: Virologist)
 
-    Forget -> TargetVirologist++ : setAgents([])
-    TargetVirologist --> Forget--
-    Forget --> TargetVirologist--
+       VitusDance -> VitusDance++ : getStrategy()
+       VitusDance --> VitusDance-- : moveStrategy
+
+       VitusDance -> TargetVirologist++: setMoveStrategy(moveStrategy)
+       TargetVirologist --> VitusDance--
+       VitusDance --> TargetVirologist--
 end opt
 
 TargetVirologist --> TargetVirologist --

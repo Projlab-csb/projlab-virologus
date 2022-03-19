@@ -7,9 +7,8 @@ mainframe Attack Forget Agent Def
 
 actor Player
 
-Player -> Virologist++: useAgent(forget: Forget, targetVirologist: Virologist)
-Virologist -> TargetVirologist++: attack(forget: Forget, virologist: Virologist, targetVirologist: Virologist)
-
+Player -> "virologist: Virologist"++: useAgent(forget, targetVirologist)
+"virologist: Virologist" -> TargetVirologist++: attack(forget, virologist, targetVirologist)
 TargetVirologist -> Cloak++ : applyEffect(v: Virologist)
 
 Cloak -> Cloak++ : getStrategy()
@@ -17,7 +16,7 @@ Cloak --> Cloak-- : defenseStrategy
 
 Cloak -> TargetVirologist++: setDefenseStrategy(defensestrategy: DefenseStrategy)
 
-TargetVirologist -> TargetVirologist++: defense(forget: Forget, virologist: Virologist,  targetVirologist: Virologist)
+TargetVirologist -> TargetVirologist++: defense(paralyzed: Paralyzed, virologist: Virologist,  targetVirologist: Virologist)
 
 
 note over TargetVirologist
