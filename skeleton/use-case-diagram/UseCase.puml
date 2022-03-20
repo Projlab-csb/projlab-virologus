@@ -1,10 +1,9 @@
 @startuml
 'https://plantuml.com/use-case-diagram
-
+left to right direction
 :Game Controller: as GameController
 
 Player as Player
-
 (Move Virologist) <-u- Player
 (Move Virologist) <-u- GameController
 
@@ -31,7 +30,10 @@ Player as Player
 (StealAminoAcid) <-- Player
 (CollectNucleicAcid) <-- Player
 (StealNucleicAcid) <-- Player
-(CreateAgent) <-- Player
+(CreateParalyzedAgent) <-l- Player
+(CreateForgetAgent) <-u- Player
+(CreateProtectionAgent) <-- Player
+(CreateVitusDanceAgent) <-- Player
 
 
 
