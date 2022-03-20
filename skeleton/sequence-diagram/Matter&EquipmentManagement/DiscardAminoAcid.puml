@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+Mainframe Drop AminoAcid
+
+
+"v:Virologist"->"a:AminoAcid"++:discard(Virologist)
+
+
+"a:AminoAcid"->"v:Virologist":SetAminoAcid
+activate "v:Virologist"
+"v:Virologist"-->"a:AminoAcid"
+deactivate "v:Virologist"
+"a:AminoAcid"-->"v:Virologist"--
+
+@enduml

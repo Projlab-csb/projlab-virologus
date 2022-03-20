@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Mainframe Drop Bag
+
+
+"v:Virologist"->Equipment++:discard(Virologist)
+Equipment->Equipment:removeEffect(Virologist)
+Equipment-->"v:Virologist"--
+@enduml

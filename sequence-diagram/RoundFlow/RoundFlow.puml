@@ -27,6 +27,10 @@ end
 Virologist->GameControl:reportGenCode(Virologist, genCodes[])
 Activate GameControl
 
+ note right GameControl
+            If the virologist has all the codes, the game is over
+ end note
+
 
 GameControl-->Virologist
 deactivate GameControl

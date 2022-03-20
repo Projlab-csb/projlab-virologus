@@ -1,0 +1,21 @@
+@startuml
+
+mainframe Steal
+
+skinparam linestyle ortho
+rectangle "s:Skeleton" as s
+rectangle "targetvirologist:Virologist" as t
+rectangle "robbervirologist:Virologist" as r
+rectangle "c:Cloak" as c
+rectangle "a:AminoAcid" as a
+rectangle "p:Paralyzed" as p
+
+s -down-> t:Virologist()
+s -down-> c:Cloak()
+s -down-> a:AminoAcid()
+t -down-> a:CollectBy()
+t -down-> c:CollectBy()
+s -down-> r:Virologist()
+t -down-> p:applyEffect()
+r -right-> t:steal()
+@enduml

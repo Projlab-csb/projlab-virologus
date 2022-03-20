@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Mainframe Drop Cloak
+
+
+"v:Virologist"->"b:Bag"++:discard(Virologist)
+"b:Bag"->"b:Bag":removeEffect(Virologist)
+"b:Bag"-->"v:Virologist"--
+@enduml

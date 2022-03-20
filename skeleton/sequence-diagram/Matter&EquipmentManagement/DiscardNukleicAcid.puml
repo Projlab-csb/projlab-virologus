@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+Mainframe Drop NucleicAcid
+
+
+"v:Virologist"->"n:NucleicAcid"++:discard(Virologist)
+
+
+"n:NucleicAcid"->"v:Virologist":SetNucliecAcid
+activate "v:Virologist"
+"v:Virologist"-->"n:NucleicAcid"
+deactivate "v:Virologist"
+"n:NucleicAcid"-->"v:Virologist"--
+
+@enduml

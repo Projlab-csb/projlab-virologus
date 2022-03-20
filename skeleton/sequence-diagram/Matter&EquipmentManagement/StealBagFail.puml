@@ -1,0 +1,15 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+autonumber
+
+mainframe Steal Bag Failure
+'Kell ez nekünk?
+actor Player
+
+Player -> "robberVirologist:Virologist"++: steal(Virologist, Virologist)
+
+"robberVirologist:Virologist" -> "targetvirologist:Virologist"++: handleSteal(Agent, Virologist, Virologist)
+"targetvirologist:Virologist" -->"robberVirologist:Virologist"--: null
+
+"robberVirologist:Virologist" --> Player --
+@enduml

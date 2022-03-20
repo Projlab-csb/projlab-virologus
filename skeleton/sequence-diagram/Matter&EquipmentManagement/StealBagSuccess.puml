@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+autonumber
+
+mainframe Steal Bag
+
+actor Player
+
+Player -> "robberVirologist:Virologist"++: steal(Virologist, Virologist)
+
+
+"robberVirologist:Virologist" -> "targetvirologist:Virologist"++: handleSteal(Bag, Virologist, Virologist)
+
+
+
+        note left "targetvirologist:Virologist"
+            The player chose the bag
+        end note
+
+        "targetvirologist:Virologist"->"b:Bag"++:discard(targetvirologist)
+        "b:Bag"->"b:Bag":removeEffect(targetvirologist)
+        "b:Bag"-->"targetvirologist:Virologist"--
+
+    "targetvirologist:Virologist" -->"robberVirologist:Virologist"--: b:Bag
+    "robberVirologist:Virologist"->"b:Bag"++:collectby(robbervirologist)
+     "b:Bag"->"b:Bag":applyEffect(robbervirologist)
+    "b:Bag"-->"robberVirologist:Virologist"--:
+
+
+"robberVirologist:Virologist" --> Player --
+@enduml

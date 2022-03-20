@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Collect Gencode
+
+actor Player
+
+Player -> "v:Virologist": collect()
+Activate "v:Virologist"
+
+"v:Virologist" -> "l:Lab": getCollectable()
+Activate "l:Lab"
+"l:Lab" -> "v:Virologist": <Gencode>
+Deactivate "l:Lab"
+
+"v:Virologist" -> "c:Cloak": collectBy(Virologist)
+Activate "c:Cloak"
+
+"c:Cloak" --> "v:Virologist":
+Deactivate "c:Cloak"
+"v:Virologist" --> Player
+Deactivate "v:Virologist"
+
+@enduml

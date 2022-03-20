@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Collect Bag
+
+actor Player
+
+Player -> "v:Virologist": collect()
+Activate "v:Virologist"
+
+"v:Virologist" -> "s:Shelter": getCollectable()
+Activate "s:Shelter"
+"s:Shelter" -> "v:Virologist": <Bag>
+Deactivate "s:Shelter"
+
+"v:Virologist" -> "b:Bag": collectBy(Virologist)
+Activate "b:Bag"
+
+"b:Bag" --> "v:Virologist":
+Deactivate "b:Bag"
+"v:Virologist" --> Player
+Deactivate "v:Virologist"
+
+@enduml

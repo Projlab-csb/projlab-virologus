@@ -22,6 +22,7 @@ note right of Player
 end note
 
 GameController -> f1**
+'ennek itt valahogy nem kéne visszatérnie?
 GameController -> f2**
 GameController -> f3**
 GameController -> f4**
@@ -32,6 +33,7 @@ end note
 
 GameController -> f1++: +addNeighbor(f2)
 f1 -> GameController--
+'Ezeknek itt nemm szaggatottal kéne visszajönni?
 GameController -> f2++: +addNeighbor(f3)
 f2 -> GameController--
 GameController -> f3++: +addNeighbor(f4)

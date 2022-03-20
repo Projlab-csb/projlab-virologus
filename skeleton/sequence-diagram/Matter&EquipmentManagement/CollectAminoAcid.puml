@@ -1,0 +1,27 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Collect AminoAcid
+
+actor Player
+
+Player -> "v:Virologist": collect()
+Activate "v:Virologist"
+
+"v:Virologist" -> "s:Storage": getCollectable()
+Activate "s:Storage"
+"s:Storage" -> "v:Virologist": <AminoAcid>
+'Ide sztem Matter illene jobban, csak hát az absztrakt...
+Deactivate "s:Storage"
+
+"v:Virologist" -> "a:AminoAcid": collectBy(Virologist)
+Activate "a:AminoAcid"
+
+"a:AminoAcid" --> "v:Virologist":
+Deactivate "a:AminoAcid"
+"v:Virologist" --> Player
+Deactivate "v:Virologist"
+
+@enduml
