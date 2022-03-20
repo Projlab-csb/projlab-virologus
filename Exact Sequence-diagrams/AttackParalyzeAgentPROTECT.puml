@@ -8,27 +8,27 @@ mainframe Attack Paralyze Agent Protect
 actor Player
 
 Player -> "virologist: Virologist"++: useAgent(paralyzed, targetVirologist)
-"virologist: Virologist" -> "targetVirologist: Virologist"++: attack(paralyzed, virologist, targetVirologist)
-"targetVirologist: Virologist" -> "cloak: Cloak"++ : applyEffect(targetVirologist)
+"virologist: Virologist" -> "targetVirologist: TargetVirologist"++: attack(paralyzed, virologist, targetVirologist)
+"targetVirologist: TargetVirologist" -> "cloak: Cloak"++ : applyEffect(targetVirologist)
 "cloak: Cloak" -> "cloak: Cloak"++ : getStrategy()
 "cloak: Cloak" --> "cloak: Cloak"-- : defenseStrategy
 
-"cloak: Cloak" -> "targetVirologist: Virologist"++: setDefenseStrategy(defensestrategy)
+"cloak: Cloak" -> "targetVirologist: TargetVirologist"++: setDefenseStrategy(defensestrategy)
 
-"targetVirologist: Virologist" -> "targetVirologist: Virologist"++: defense(paralyzed, virologist, targetVirologist)
+"targetVirologist: TargetVirologist" -> "targetVirologist: TargetVirologist"++: defense(paralyzed, virologist, targetVirologist)
 
 
-note over "targetVirologist: Virologist"
+note over "targetVirologist: TargetVirologist"
     If the virologist have this agent, he is invincible
 end note
 
-"targetVirologist: Virologist" --> "targetVirologist: Virologist" --
+"targetVirologist: TargetVirologist" --> "targetVirologist: TargetVirologist" --
 
-"targetVirologist: Virologist" --> "cloak: Cloak" --
-"cloak: Cloak" --> "targetVirologist: Virologist" --
+"targetVirologist: TargetVirologist" --> "cloak: Cloak" --
+"cloak: Cloak" --> "targetVirologist: TargetVirologist" --
 
 
-"targetVirologist: Virologist" --> "virologist: Virologist" --
+"targetVirologist: TargetVirologist" --> "virologist: Virologist" --
 
 "virologist: Virologist" --> Player --
 @enduml

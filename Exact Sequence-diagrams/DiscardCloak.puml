@@ -3,10 +3,21 @@
 
 autonumber
 
-Mainframe Drop Equipment
+Mainframe Drop Cloak
 
+actor Player
+Player->"virologist: Virologist"++:discard(virologist, cloak)
+"targetVirologist: Virologist"->"cloak: Cloak"++:discard()
+                   "cloak: Cloak" -> "cloak: Cloak"++ : removeEffect(targetVirologist)
+                    note over  "targetVirologist: Virologist", "cloak: Cloak"
+                    Reset the protection strategy to **virologists default**
+                     end note
 
-Virologist->Equipment++:discard(Virologist)
-Equipment->Equipment:removeEffect(Virologist)
-Equipment-->Virologist--
+                    "cloak: Cloak" ->  "targetVirologist: Virologist"++: setProtectionStrategy()
+                    "targetVirologist: Virologist" --> "cloak: Cloak"--
+
+                    "cloak: Cloak"-->  "cloak: Cloak"--
+
+                         "cloak: Cloak"--> "targetVirologist: Virologist"--
+"virologist: Virologist"-->Player--
 @enduml

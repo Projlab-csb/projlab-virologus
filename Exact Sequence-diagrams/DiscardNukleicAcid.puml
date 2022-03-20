@@ -5,9 +5,12 @@ autonumber
 Mainframe Drop NucleicAcid
 
 actor Player
-Player -> "v:Virologist" ++: collect()
+Player -> "v:Virologist" ++: discard(v, n)
 "v:Virologist"->"n:NucleicAcid"++:discard(Virologist)
-"n:NucleicAcid"->"v:Virologist":SetNucliecAcid
+ note over  "n:NucleicAcid"
+                    the player chose the wanted amount
+                     end note
+"n:NucleicAcid"->"v:Virologist":SetNucliecAcid(amount:int)
 activate "v:Virologist"
 "v:Virologist"-->"n:NucleicAcid"
 deactivate "v:Virologist"

@@ -3,19 +3,28 @@
 
 autonumber
 
-Mainframe Drop Cloak
+Mainframe Drop Bag
 
 actor Player
-Player->"virologist: Virologist"++:discard(virologist, cloak)
-"virologist: Virologist"->"cloak: Cloak"++:discard(virologist)
+Player->"virologist: Virologist"++:discard(virologist, bag)
+"virologist: Virologist"->"bag: Bag"++:discard()
 
+         "bag: Bag" -> "bag: Bag"++ : removeEffect(targetVirologist)
 
-note over "virologist: Virologist", "cloak: Cloak"
-Reset the protection strategy to **virologists default**
-end note
+                 "bag: Bag" -> "bag: Bag" ++ : getExtraInventorSize()
+                 "bag: Bag"  --> "bag: Bag" -- : extraInventorSize
 
-"cloak: Cloak" -> "virologist: Virologist"++: setProtectionStrategy()
-"virologist: Virologist" --> "cloak: Cloak"--
-"cloak: Cloak"-->"virologist: Virologist"--
+                 "bag: Bag"  -> "virologist: Virologist"++ : getInventorSize()
+                 "virologist: Virologist"--> "bag: Bag" -- : inventorSize
+
+                 note over "virologist: Virologist", "bag: Bag"
+                 **Decrease** the inventor size by the **bag's extra inventor size**
+                 end note
+
+                 "bag: Bag"  -> "virologist: Virologist"++ : setInventorySize(inventorSize - extraInventorSize)
+                 "virologist: Virologist"--> "bag: Bag" --
+                 "bag: Bag"--> "bag: Bag"--
+
+        "bag: Bag"--> "virologist: Virologist"--
 "virologist: Virologist"-->Player--
 @enduml

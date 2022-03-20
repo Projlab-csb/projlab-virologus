@@ -3,19 +3,21 @@
 
 autonumber
 
-Mainframe Drop Cloak
+Mainframe Drop Gloves
 
 actor Player
-Player->"virologist: Virologist"++:discard(virologist, cloak)
-"virologist: Virologist"->"cloak: Cloak"++:discard(virologist)
+Player->"virologist: Virologist"++:discard(virologist, gloves)
+"virologist: Virologist"->"cloak: Cloak"++:discard()
+                   "cloak: Cloak" -> "cloak: Cloak"++ : removeEffect(targetVirologist)
+                    note over  "virologist: Virologist", "cloak: Cloak"
+                    Reset the protection strategy to **virologists default**
+                     end note
 
+                    "cloak: Cloak" ->  "virologist: Virologist"++: setProtectionStrategy()
+                    "virologist: Virologist" --> "cloak: Cloak"--
 
-note over "virologist: Virologist", "cloak: Cloak"
-Reset the protection strategy to **virologists default**
-end note
+                    "cloak: Cloak"-->  "cloak: Cloak"--
 
-"cloak: Cloak" -> "virologist: Virologist"++: setProtectionStrategy()
-"virologist: Virologist" --> "cloak: Cloak"--
-"cloak: Cloak"-->"virologist: Virologist"--
+                         "cloak: Cloak"--> "virologist: Virologist"--
 "virologist: Virologist"-->Player--
 @enduml

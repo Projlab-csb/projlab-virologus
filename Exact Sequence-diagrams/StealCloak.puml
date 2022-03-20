@@ -15,32 +15,35 @@ Player -> "robberVirologist: Virologist"++: steal(robberVirologist, targetVirolo
             The player choose the wanted thing here
         end note
 
-         "targetVirologist: Virologist"->"cloak: Cloak"++:discard()
-
-        "cloak: Cloak"--> "targetVirologist: Virologist"--
-        "targetVirologist: Virologist" -> "cloak: Cloak"++ : removeEffect(targetVirologist)
-        note over  "targetVirologist: Virologist", "cloak: Cloak"
-        Reset the protection strategy to **virologists default**
-        end note
+         "targetVirologist: Virologist"->"gloves:Gloves"++:discard()
+                   "gloves:Gloves" -> "gloves:Gloves"++ : removeEffect(targetVirologist)
+                    note over  "targetVirologist: Virologist", "gloves:Gloves"
+                    Reset the protection strategy to **virologists default**
+                     end note
         
-        "cloak: Cloak" ->  "targetVirologist: Virologist"++: setProtectionStrategy()
-         "targetVirologist: Virologist" --> "cloak: Cloak"--
-
-        "cloak: Cloak"--> "targetVirologist: Virologist"--
+                    "gloves:Gloves" ->  "targetVirologist: Virologist"++: setProtectionStrategy()
+                    "targetVirologist: Virologist" --> "gloves:Gloves"--
+        
+                    "gloves:Gloves"-->  "gloves:Gloves"--
+        
+                         "gloves:Gloves"--> "targetVirologist: Virologist"--
 
      "targetVirologist: Virologist" -->"robberVirologist: Virologist"--: cloak
-    "robberVirologist: Virologist"->"cloak: Cloak"++:collectby(robberVirologist)
-    "cloak: Cloak" --> "robberVirologist: Virologist"--
-"robberVirologist: Virologist" -> "cloak: Cloak"++ : applyEffect(robberVirologist)
-
-
-
-"cloak: Cloak" -> "cloak: Cloak"++ : getStrategy()
-"cloak: Cloak" --> "cloak: Cloak"-- : defenseStrategy
-
-"cloak: Cloak" -> "robberVirologist: Virologist"++: setDefenseStrategy(defenseStrategy)
-"robberVirologist: Virologist" --> "cloak: Cloak"--
-"cloak: Cloak" --> "robberVirologist: Virologist"--
+  "robberVirologist: Virologist" -> "cloak: Cloak": collectBy(Virologist)
+    Activate "cloak: Cloak"
+ 
+     "cloak: Cloak" -> "cloak: Cloak"++ : applyEffect(virologist)
+ 
+       "cloak: Cloak" -> "cloak: Cloak"++ : getStrategy()
+       "cloak: Cloak" --> "cloak: Cloak"-- : defenseStrategy
+ 
+       "cloak: Cloak" -> "robberVirologist: Virologist"++: setDefenseStrategy(defenseStrategy)
+       "robberVirologist: Virologist" --> "cloak: Cloak"--
+ 
+       "cloak: Cloak" --> "cloak: Cloak"--
+ 
+    "cloak: Cloak" --> "robberVirologist: Virologist":
+    Deactivate "cloak: Cloak"
 
 
 "robberVirologist: Virologist" --> Player --
