@@ -1,0 +1,46 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+autonumber
+
+mainframe Steal Cloak
+
+actor Player
+
+Player -> "robberVirologist: RobberVirologist"++: steal(robberVirologist, targetVirologist)
+
+"robberVirologist: RobberVirologist" ->  "targetVirologist: TargetVirologist"++: handleEquipmentSteal(robberVirologist, targetVirologist)
+
+
+        note left  "targetVirologist: TargetVirologist"
+            The player choose the wanted thing here
+        end note
+
+         "targetVirologist: TargetVirologist"->"cloak: Cloak"++:discard()
+        "cloak: Cloak"--> "targetVirologist: TargetVirologist"--
+        "targetVirologist: TargetVirologist" -> "cloak: Cloak"++ : removeEffect(targetVirologist)
+        note over  "targetVirologist: TargetVirologist", "cloak: Cloak"
+        Reset the protection strategy to **virologists default**
+        end note
+        
+        "cloak: Cloak" ->  "targetVirologist: TargetVirologist"++: setProtectionStrategy()
+         "targetVirologist: TargetVirologist" --> "cloak: Cloak"--
+
+        "cloak: Cloak"--> "targetVirologist: TargetVirologist"--
+
+     "targetVirologist: TargetVirologist" -->"robberVirologist: RobberVirologist"--: cloak
+    "robberVirologist: RobberVirologist"->"cloak: Cloak"++:collectby(robberVirologist)
+    "cloak: Cloak" --> "robberVirologist: RobberVirologist"--
+"robberVirologist: RobberVirologist" -> "cloak: Cloak"++ : applyEffect(robberVirologist)
+
+
+
+"cloak: Cloak" -> "cloak: Cloak"++ : getStrategy()
+"cloak: Cloak" --> "cloak: Cloak"-- : defenseStrategy
+
+"cloak: Cloak" -> "robberVirologist: RobberVirologist"++: setDefenseStrategy(defenseStrategy)
+"robberVirologist: RobberVirologist" --> "cloak: Cloak"--
+"cloak: Cloak" --> "robberVirologist: RobberVirologist"--
+
+
+"robberVirologist: RobberVirologist" --> Player --
+@enduml

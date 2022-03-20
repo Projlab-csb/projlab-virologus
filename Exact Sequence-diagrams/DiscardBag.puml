@@ -1,0 +1,21 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Mainframe Drop Cloak
+
+actor Player
+Player->"virologist: Virologist"++:discard(virologist, cloak)
+"virologist: Virologist"->"cloak: Cloak"++:discard(virologist)
+
+
+note over "virologist: Virologist", "cloak: Cloak"
+Reset the protection strategy to **virologists default**
+end note
+
+"cloak: Cloak" -> "virologist: Virologist"++: setProtectionStrategy()
+"virologist: Virologist" --> "cloak: Cloak"--
+"cloak: Cloak"-->"virologist: Virologist"--
+"virologist: Virologist"-->Player--
+@enduml
