@@ -8,22 +8,22 @@ mainframe Attack VitusDance Agent Back
 actor Player
 
 Player -> "virologist: Virologist"++: useAgent(vitusDance, targetVirologist)
-"virologist: Virologist" -> "targetVirologist: TargetVirologist"++: attack(vitusDance, virologist, targetVirologist)
-"targetVirologist: TargetVirologist" -> "cloak: Cloak"++ : applyEffect(targetVirologist)
+"virologist: Virologist" -> "targetVirologist: Virologist"++: attack(vitusDance, virologist, targetVirologist)
+"targetVirologist: Virologist" -> "cloak: Cloak"++ : applyEffect(targetVirologist)
 
 "cloak: Cloak" -> "cloak: Cloak"++ : getStrategy()
 "cloak: Cloak" --> "cloak: Cloak"-- : defenseStrategy
 
-"cloak: Cloak" -> "targetVirologist: TargetVirologist"++: setDefenseStrategy(defensestrategy)
+"cloak: Cloak" -> "targetVirologist: Virologist"++: setDefenseStrategy(defensestrategy)
 
-"targetVirologist: TargetVirologist" -> "targetVirologist: TargetVirologist"++: defense(vitusDance, virologist,  targetVirologist)
+"targetVirologist: Virologist" -> "targetVirologist: Virologist"++: defense(vitusDance, virologist,  targetVirologist)
 
-note over "targetVirologist: TargetVirologist"
+note over "targetVirologist: Virologist"
     Gloves will attack back the attacker
     At implementation, we must make sure, **no infinite loop** occurs!
 end note
 
-"targetVirologist: TargetVirologist" -> "virologist: Virologist"++: attack(vitusDance,  targetVirologist, virologist)
+"targetVirologist: Virologist" -> "virologist: Virologist"++: attack(vitusDance,  targetVirologist, virologist)
 "virologist: Virologist" -> "vitusDance: VitusDance"++ : applyEffect(virologist)
 
        "vitusDance: VitusDance" -> "vitusDance: VitusDance"++ : getStrategy()
@@ -33,15 +33,15 @@ end note
        "virologist: Virologist" --> "vitusDance: VitusDance"--
 
        "vitusDance: VitusDance" --> "virologist: Virologist"--
-"virologist: Virologist" --> "targetVirologist: TargetVirologist"--
+"virologist: Virologist" --> "targetVirologist: Virologist"--
 
-"targetVirologist: TargetVirologist" --> "targetVirologist: TargetVirologist" --
+"targetVirologist: Virologist" --> "targetVirologist: Virologist" --
 
-"targetVirologist: TargetVirologist" --> "cloak: Cloak" --
-"cloak: Cloak" --> "targetVirologist: TargetVirologist" --
+"targetVirologist: Virologist" --> "cloak: Cloak" --
+"cloak: Cloak" --> "targetVirologist: Virologist" --
 
 
-"targetVirologist: TargetVirologist" --> "virologist: Virologist" --
+"targetVirologist: Virologist" --> "virologist: Virologist" --
 
 "virologist: Virologist" --> Player --
 @enduml

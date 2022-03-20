@@ -3,24 +3,39 @@
 
 autonumber
 
-mainframe Collect Collectable
+mainframe Collect Bag
 
 actor Player
 
-Player -> Virologist: collect()
-Activate Virologist
+Player -> "virologist: Virologist": collect()
+Activate "virologist: Virologist"
 
-Virologist -> Field: getCollectable()
-Activate Field
-Field -> Virologist: <Collectable>
-Deactivate Field
+"virologist: Virologist" -> "field: Field": getCollectable()
+Activate "field: Field"
+"field: Field" --> "virologist: Virologist": <Bag>
+Deactivate "field: Field"
 
-Virologist -> Collectable: collectBy(Virologist)
-Activate Collectable
+"virologist: Virologist" -> "bag: Bag": collectBy(Virologist)
+Activate "bag: Bag"
+"bag: Bag" --> "virologist: Virologist":
+Deactivate "bag: Bag"
 
-Collectable --> Virologist:
-Deactivate Collectable
-Virologist --> Player
-Deactivate Virologist
+"virologist: Virologist" -> "bag: Bag"++ : applyEffect(virologist)
+
+'Itt miért kéri le magától a méretét?
+"bag: Bag" -> "bag: Bag"++ : getExtraInventorSize()
+"bag: Bag" --> "bag: Bag"-- : extraInventorSize
+
+"bag: Bag" -> "virologist: Virologist"++ : getInventorSize()
+"virologist: Virologist" --> "bag: Bag"-- : inventorSize
+
+"bag: Bag" -> "virologist: Virologist"++ : setInventorySize(inventorSize + extraInventorSize)
+"virologist: Virologist" --> "bag: Bag"--
+
+"bag: Bag" --> "virologist: Virologist"--
+
+
+"virologist: Virologist" --> Player
+Deactivate "virologist: Virologist"
 
 @enduml

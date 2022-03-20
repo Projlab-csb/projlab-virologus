@@ -3,40 +3,32 @@
 
 autonumber
 
-mainframe Collect Bag
+mainframe Collect Cloak
 
 actor Player
 
 Player -> "virologist: Virologist": collect()
 Activate "virologist: Virologist"
 
-"virologist: Virologist" -> "field: Field": getCollectable()
-Activate "field: Field"
-"field: Field" --> "virologist: Virologist": <Bag>
-Deactivate "field: Field"
+"virologist: Virologist" -> "shelter:Shelter": getCollectable()
+Activate "shelter:Shelter"
+"shelter:Shelter" --> "virologist: Virologist": <Cloak>
+Deactivate "shelter:Shelter"
 
-"virologist: Virologist" -> "bag: Bag": collectBy(Virologist)
-Activate "bag: Bag"
-"bag: Bag" --> "virologist: Virologist":
-Deactivate "bag: Bag"
+"virologist: Virologist" -> "cloak:Cloak": collectBy(Virologist)
+Activate "cloak:Cloak"
+"cloak:Cloak" --> "virologist: Virologist":
+Deactivate "cloak:Cloak"
 
-"virologist: Virologist" -> "bag: Bag"++ : applyEffect(virologist)
+"virologist: Virologist" -> "cloak:Cloak"++ : applyEffect(virologist)
 
-note over "virologist: Virologist","bag: Bag"
-Clear the agents array on the virologist
-end note
-'Itt miért kéri le magától a méretét?
-"bag: Bag" -> "bag: Bag"++ : getExtraInventorSize()
-"bag: Bag" --> "bag: Bag"-- : extraInventorSize
+ "cloak:Cloak" -> "cloak:Cloak"++ : getStrategy()
+ "cloak:Cloak" --> "cloak:Cloak"-- : defenseStrategy
 
-"bag: Bag" -> "virologist: Virologist"++ : getInventorSize()
-"virologist: Virologist" --> "bag: Bag"-- : inventorSize
+ "cloak:Cloak" -> "virologist: Virologist"++: setDefenseStrategy(defenseStrategy)
+"virologist: Virologist" --> "cloak:Cloak"--
 
-"bag: Bag" -> "virologist: Virologist"++ : setInventorySize(inventorSize + extraInventorSize)
-"virologist: Virologist" --> "bag: Bag"--
-
-"bag: Bag" --> "virologist: Virologist"--
-
+ "cloak:Cloak" --> "virologist: Virologist"
 
 "virologist: Virologist" --> Player
 Deactivate "virologist: Virologist"

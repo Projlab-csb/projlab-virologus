@@ -8,48 +8,48 @@ mainframe Attack Protection Agent Def
 actor Player
 
 Player -> "virologist: Virologist"++: useAgent(protection, targetVirologist)
- "virologist: Virologist" -> "targetVirologist: TargetVirologist"++: attack(protection, virologist, targetVirologist)
+ "virologist: Virologist" -> "targetVirologist: Virologist"++: attack(protection, virologist, targetVirologist)
 
- "targetVirologist: TargetVirologist" -> "cloak: Cloak" ++ : applyEffect(targetVirologist)
+ "targetVirologist: Virologist" -> "cloak: Cloak" ++ : applyEffect(targetVirologist)
 
  "cloak: Cloak"  -> "cloak: Cloak" ++ : getStrategy()
  "cloak: Cloak"  --> "cloak: Cloak" -- : defenseStrategy
 
- "cloak: Cloak"  -> "targetVirologist: TargetVirologist"++: setDefenseStrategy(defensestrategy)
+ "cloak: Cloak"  -> "targetVirologist: Virologist"++: setDefenseStrategy(defensestrategy)
 
 
-"targetVirologist: TargetVirologist" -> "targetVirologist: TargetVirologist"++: defense(protection, virologist,  targetVirologist)
+"targetVirologist: Virologist" -> "targetVirologist: Virologist"++: defense(protection, virologist,  targetVirologist)
 
 
-note over "targetVirologist: TargetVirologist"
+note over "targetVirologist: Virologist"
     When the virologist have a cloak, there is
     an **82.3%** chance that the attack will **fail.**
 end note
 
-note right of "targetVirologist: TargetVirologist"
+note right of "targetVirologist: Virologist"
 Get a random number as a percentage.
 end note
 
-"targetVirologist: TargetVirologist" -> "targetVirologist: TargetVirologist": surviveRate = generateRandomNumber()
+"targetVirologist: Virologist" -> "targetVirologist: Virologist": surviveRate = generateRandomNumber()
 
 opt if (surviveRate > 0.823)
-    "targetVirologist: TargetVirologist" -> "protection: Protection"++ : applyEffect(targetVirologist)
+    "targetVirologist: Virologist" -> "protection: Protection"++ : applyEffect(targetVirologist)
 
         "protection: Protection" -> "protection: Protection"++ : getStrategy()
         "protection: Protection" --> "protection: Protection"-- : defenseStrategy
 
-        "protection: Protection" -> "targetVirologist: TargetVirologist"++: setDefenseStrategy(defenseStrategy)
-        "targetVirologist: TargetVirologist" --> "protection: Protection"--
-     "protection: Protection" --> "targetVirologist: TargetVirologist"--
+        "protection: Protection" -> "targetVirologist: Virologist"++: setDefenseStrategy(defenseStrategy)
+        "targetVirologist: Virologist" --> "protection: Protection"--
+     "protection: Protection" --> "targetVirologist: Virologist"--
 end opt
 
-"targetVirologist: TargetVirologist" --> "targetVirologist: TargetVirologist" --
+"targetVirologist: Virologist" --> "targetVirologist: Virologist" --
 
-"targetVirologist: TargetVirologist" --> "cloak: Cloak" --
-"cloak: Cloak" --> "targetVirologist: TargetVirologist" --
+"targetVirologist: Virologist" --> "cloak: Cloak" --
+"cloak: Cloak" --> "targetVirologist: Virologist" --
 
 
-"targetVirologist: TargetVirologist" --> "virologist: Virologist" --
+"targetVirologist: Virologist" --> "virologist: Virologist" --
 
 "virologist: Virologist" --> Player --
 @enduml

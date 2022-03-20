@@ -1,0 +1,56 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+autonumber
+
+mainframe Steal Bag
+
+actor Player
+
+Player -> "robberVirologist: Virologist"++: steal(robberVirologist, targetVirologist)
+
+"robberVirologist: Virologist" ->  "targetVirologist: Virologist"++: handleEquipmentSteal(robberVirologist, targetVirologist)
+
+
+        note left  "targetVirologist: Virologist"
+            The player choose the wanted thing here
+        end note
+
+         "targetVirologist: Virologist"->"bag: Bag"++:discard()
+        "bag: Bag"--> "targetVirologist: Virologist"--
+        "targetVirologist: Virologist" -> "bag: Bag"++ : removeEffect(targetVirologist)
+
+        "bag: Bag" -> "bag: Bag" ++ : getExtraInventorSize()
+        "bag: Bag"  --> "bag: Bag" -- : extraInventorSize
+
+        "bag: Bag"  -> "targetVirologist: Virologist"++ : getInventorSize()
+        "targetVirologist: Virologist"--> "bag: Bag" -- : inventorSize
+
+        note over "targetVirologist: Virologist", "bag: Bag"
+        **Decrease** the inventor size by the **bag's extra inventor size**
+        end note
+
+        "bag: Bag"  -> "targetVirologist: Virologist"++ : setInventorySize(inventorSize - extraInventorSize)
+        "targetVirologist: Virologist"--> "bag: Bag" --
+        "bag: Bag"--> "targetVirologist: Virologist"--
+
+     "targetVirologist: Virologist" -->"robberVirologist: Virologist"--: bag
+    "robberVirologist: Virologist"->"bag: Bag"++:collectby(robberVirologist)
+    "bag: Bag" --> "robberVirologist: Virologist"--
+"robberVirologist: Virologist" -> "bag: Bag"++ : applyEffect(robberVirologist)
+
+
+'Itt miért kéri le magától a méretét?
+"bag: Bag" -> "bag: Bag"++ : getExtraInventorSize()
+"bag: Bag" --> "bag: Bag"-- : extraInventorSize
+
+"bag: Bag" -> "robberVirologist: Virologist"++ : getInventorSize()
+"robberVirologist: Virologist" --> "bag: Bag"-- : inventorSize
+
+"bag: Bag" -> "robberVirologist: Virologist"++ : setInventorySize(inventorSize + extraInventorSize)
+"robberVirologist: Virologist" --> "bag: Bag"--
+
+"bag: Bag" --> "robberVirologist: Virologist"--
+
+
+"robberVirologist: Virologist" --> Player --
+@enduml

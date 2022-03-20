@@ -1,0 +1,54 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+autonumber
+
+mainframe Steal Bag
+
+actor Player
+
+Player -> "robberVirologist: Virologist"++: steal(robberVirologist, targetVirologist)
+
+"robberVirologist: Virologist" ->  "targetVirologist: Virologist"++: handleEquipmentSteal(robberVirologist, targetVirologist)
+
+
+        note left  "targetVirologist: Virologist"
+            The player choose the wanted thing here
+        end note
+
+
+           "targetVirologist: Virologist"->"gloves:Gloves"++:discard()
+           "gloves:Gloves" -> "gloves:Gloves"++ : removeEffect(targetVirologist)
+            note over  "targetVirologist: Virologist", "gloves:Gloves"
+            Reset the protection strategy to **virologists default**
+             end note
+
+            "gloves:Gloves" ->  "targetVirologist: Virologist"++: setProtectionStrategy()
+            "targetVirologist: Virologist" --> "gloves:Gloves"--
+
+            "gloves:Gloves"-->  "gloves:Gloves"--
+
+                 "gloves:Gloves"--> "targetVirologist: Virologist"--
+
+
+     "targetVirologist: Virologist" -->"robberVirologist: Virologist"--: gloves
+   "robberVirologist: Virologist" -> "gloves:Gloves": collectBy(Virologist)
+   Activate "gloves:Gloves"
+
+    "gloves:Gloves" -> "gloves:Gloves"++ : applyEffect(virologist)
+
+      "gloves:Gloves" -> "gloves:Gloves"++ : getStrategy()
+      "gloves:Gloves" --> "gloves:Gloves"-- : defenseStrategy
+
+      "gloves:Gloves" -> "robberVirologist: Virologist"++: setDefenseStrategy(defenseStrategy)
+      "robberVirologist: Virologist" --> "gloves:Gloves"--
+
+      "gloves:Gloves" --> "gloves:Gloves"--
+
+   "gloves:Gloves" --> "robberVirologist: Virologist":
+   Deactivate "gloves:Gloves"
+   
+
+
+
+"robberVirologist: Virologist" --> Player --
+@enduml

@@ -3,35 +3,37 @@
 
 autonumber
 
-mainframe Collect Bag
+mainframe Collect Gloves
 
 actor Player
 
 Player -> "virologist: Virologist": collect()
 Activate "virologist: Virologist"
 
-"virologist: Virologist" -> "field: Field": getCollectable()
-Activate "field: Field"
-"field: Field" --> "virologist: Virologist": <Cloak>
-Deactivate "field: Field"
+"virologist: Virologist" -> "shelter:Shelter": getCollectable()
+Activate "shelter:Shelter"
+"shelter:Shelter" --> "virologist: Virologist": <Gloves>
+Deactivate "shelter:Shelter"
 
-"virologist: Virologist" -> "cloak: Cloak": collectBy(Virologist)
-Activate "cloak: Cloak"
-"cloak: Cloak" --> "virologist: Virologist":
-Deactivate "cloak: Cloak"
+"virologist: Virologist" -> "gloves:Gloves": collectBy(Virologist)
 
-"virologist: Virologist" -> "cloak: Cloak"++ : applyEffect(virologist)
+Activate "gloves:Gloves"
+"gloves:Gloves" --> "virologist: Virologist":
+Deactivate "gloves:Gloves"
 
-"cloak: Cloak" -> "cloak: Cloak"++ : getStrategy()
-"cloak: Cloak" --> "cloak: Cloak"-- : defenseStrategy
+"virologist: Virologist" -> "gloves:Gloves"++ : applyEffect(virologist)
 
-"cloak: Cloak" -> "virologist: Virologist"++: setDefenseStrategy(defenseStrategy)
-"virologist: Virologist" --> "cloak: Cloak"--
+ "gloves:Gloves" -> "gloves:Gloves"++ : getStrategy()
+ "gloves:Gloves" --> "gloves:Gloves"-- : defenseStrategy
 
-"cloak: Cloak" --> "virologist: Virologist"--
+ "gloves:Gloves" -> "virologist: Virologist"++: setDefenseStrategy(defenseStrategy)
+"virologist: Virologist" --> "gloves:Gloves"--
 
+ "gloves:Gloves" --> "virologist: Virologist"
 
 "virologist: Virologist" --> Player
 Deactivate "virologist: Virologist"
+
+@enduml
 
 @enduml

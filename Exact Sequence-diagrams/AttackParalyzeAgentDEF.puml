@@ -8,44 +8,44 @@ mainframe Attack Paralyze Agent Def
 actor Player
 
 Player -> "virologist: Virologist"++: useAgent(paralyzed, targetVirologist)
-"virologist: Virologist" -> "targetVirologist: TargetVirologist"++: attack(paralyzed, virologist, targetVirologist)
-"targetVirologist: TargetVirologist" -> "cloak: Cloak"++ : applyEffect(targetVirologist)
+"virologist: Virologist" -> "targetVirologist: Virologist"++: attack(paralyzed, virologist, targetVirologist)
+"targetVirologist: Virologist" -> "cloak: Cloak"++ : applyEffect(targetVirologist)
 "cloak: Cloak" -> "cloak: Cloak"++ : getStrategy()
 "cloak: Cloak" --> "cloak: Cloak"-- : defenseStrategy
 
-"cloak: Cloak" -> "targetVirologist: TargetVirologist"++: setDefenseStrategy(defensestrategy)
+"cloak: Cloak" -> "targetVirologist: Virologist"++: setDefenseStrategy(defensestrategy)
 
-"targetVirologist: TargetVirologist" -> "targetVirologist: TargetVirologist"++: defense(paralyzed, virologist, targetVirologist)
+"targetVirologist: Virologist" -> "targetVirologist: Virologist"++: defense(paralyzed, virologist, targetVirologist)
 
 
-note over "targetVirologist: TargetVirologist"
+note over "targetVirologist: Virologist"
     When the virologist have a cloak, there is
     an **82.3%** chance that the attack will **fail.**
 end note
 
-note right of "targetVirologist: TargetVirologist"
+note right of "targetVirologist: Virologist"
 Get a random number as a percentage.
 end note
 
-"targetVirologist: TargetVirologist" -> "targetVirologist: TargetVirologist": surviveRate = generateRandomNumber()
+"targetVirologist: Virologist" -> "targetVirologist: Virologist": surviveRate = generateRandomNumber()
 
 opt if (surviveRate > 0.823)
-    "targetVirologist: TargetVirologist" -> "paralyzed: Paralyzed"++: +applyEffect(targetVirologist)
+    "targetVirologist: Virologist" -> "paralyzed: Paralyzed"++: +applyEffect(targetVirologist)
 
       "paralyzed: Paralyzed" -> "paralyzed: Paralyzed"++ : getStrategy()
       "paralyzed: Paralyzed" --> "paralyzed: Paralyzed"-- : roundRunStrategy
-      "paralyzed: Paralyzed" -> "targetVirologist: TargetVirologist"++: setRoundRunStrategy(roundRunStrategy)
-      "targetVirologist: TargetVirologist" --> "paralyzed: Paralyzed"--
-      "paralyzed: Paralyzed" --> "targetVirologist: TargetVirologist"--
+      "paralyzed: Paralyzed" -> "targetVirologist: Virologist"++: setRoundRunStrategy(roundRunStrategy)
+      "targetVirologist: Virologist" --> "paralyzed: Paralyzed"--
+      "paralyzed: Paralyzed" --> "targetVirologist: Virologist"--
 end opt
 
-"targetVirologist: TargetVirologist" --> "targetVirologist: TargetVirologist" --
+"targetVirologist: Virologist" --> "targetVirologist: Virologist" --
 
-"targetVirologist: TargetVirologist" --> "cloak: Cloak" --
-"cloak: Cloak" --> "targetVirologist: TargetVirologist" --
+"targetVirologist: Virologist" --> "cloak: Cloak" --
+"cloak: Cloak" --> "targetVirologist: Virologist" --
 
 
-"targetVirologist: TargetVirologist" --> "virologist: Virologist" --
+"targetVirologist: Virologist" --> "virologist: Virologist" --
 
 "virologist: Virologist" --> Player --
 @enduml

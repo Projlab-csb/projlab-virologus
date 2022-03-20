@@ -10,12 +10,12 @@ actor Player
 Player -> "virologist: Virologist"++: useAgent(forget, targetVirologist)
  "virologist: Virologist" -> "targetVirologist: TargetVirologist"++: attack(forget, virologist, targetVirologist)
 
- "targetVirologist: TargetVirologist" -> "cloak: Cloak" ++ : applyEffect(targetVirologist)
+ "targetVirologist: TargetVirologist" -> "gloves: Gloves" ++ : applyEffect(targetVirologist)
 
- "cloak: Cloak"  -> "cloak: Cloak" ++ : getStrategy()
- "cloak: Cloak"  --> "cloak: Cloak" -- : defenseStrategy
+ "gloves: Gloves"  -> "gloves: Gloves" ++ : getStrategy()
+ "gloves: Gloves"  --> "gloves: Gloves" -- : defenseStrategy
 
- "cloak: Cloak"  -> "targetVirologist: TargetVirologist"++: setDefenseStrategy(defensestrategy)
+ "gloves: Gloves"  -> "targetVirologist: TargetVirologist"++: setDefenseStrategy(defensestrategy)
 
 "targetVirologist: TargetVirologist" -> "targetVirologist: TargetVirologist"++: defense(forget, virologist,  targetVirologist)
 
@@ -38,8 +38,8 @@ end note
 
 "targetVirologist: TargetVirologist" --> "targetVirologist: TargetVirologist" --
 
-"targetVirologist: TargetVirologist" --> "cloak: Cloak" --
-"cloak: Cloak" --> "targetVirologist: TargetVirologist" --
+"targetVirologist: TargetVirologist" --> "gloves: Gloves" --
+"gloves: Gloves" --> "targetVirologist: TargetVirologist" --
 
 
 "targetVirologist: TargetVirologist" --> "virologist: Virologist" --
