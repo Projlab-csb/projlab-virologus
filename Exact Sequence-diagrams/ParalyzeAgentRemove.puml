@@ -1,7 +1,7 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
-mainframe Paralyzed Agent decreaseTTL
+mainframe Paralyzed Agent Remove
 
 actor GameControl
 
