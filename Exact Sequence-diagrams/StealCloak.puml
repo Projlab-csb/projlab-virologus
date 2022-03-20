@@ -29,10 +29,10 @@ Player -> "robberVirologist: Virologist"++: steal(robberVirologist, targetVirolo
                          "gloves:Gloves"--> "targetVirologist: Virologist"--
 
      "targetVirologist: Virologist" -->"robberVirologist: Virologist"--: cloak
-  "robberVirologist: Virologist" -> "cloak: Cloak": collectBy(Virologist)
+  "robberVirologist: Virologist" -> "cloak: Cloak": collectBy(robberVirologist)
     Activate "cloak: Cloak"
  
-     "cloak: Cloak" -> "cloak: Cloak"++ : applyEffect(virologist)
+     "cloak: Cloak" -> "cloak: Cloak"++ : applyEffect(robberVirologist)
  
        "cloak: Cloak" -> "cloak: Cloak"++ : getStrategy()
        "cloak: Cloak" --> "cloak: Cloak"-- : defenseStrategy

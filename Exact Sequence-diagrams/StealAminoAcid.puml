@@ -6,7 +6,7 @@ mainframe Steal AminoAcid
 
 actor Player
 
-Player -> "robberVirologist:Virologist"++: steal(Virologist, Virologist)
+Player -> "robberVirologist:Virologist"++: steal(robberVirologist, targetVirologist)
 
 
 "robberVirologist:Virologist" -> "targetvirologist:Virologist"++: handleSteal(AminoAcid, Virologist, Virologist)
@@ -17,13 +17,13 @@ Player -> "robberVirologist:Virologist"++: steal(Virologist, Virologist)
             The player chose AminoAcid
         end note
 
-        "targetvirologist:Virologist"->"a:AminoAcid"++:discard()
-        "a:AminoAcid"->"targetvirologist:Virologist"++:SetAminoAcid()
+        "targetvirologist:Virologist"->"a:AminoAcid"++:discard(targetvirologist, amount:int)
+        "a:AminoAcid"->"targetvirologist:Virologist"++:SetAminoAcid(amount:int)
         "targetvirologist:Virologist"-->"a:AminoAcid"--
         "a:AminoAcid"-->"targetvirologist:Virologist"--
 
-    "targetvirologist:Virologist" -->"robberVirologist:Virologist"--: b:Bag
-    "robberVirologist:Virologist"->"a:AminoAcid"++:collectby(Robber)
+    "targetvirologist:Virologist" -->"robberVirologist:Virologist"--: "a:AminoAcid"
+    "robberVirologist:Virologist"->"a:AminoAcid"++:collectby(robberVirologist)
       "a:AminoAcid"->"robberVirologist:Virologist"++:SetAminoAcid()
        "robberVirologist:Virologist"-->"a:AminoAcid"--
     "a:AminoAcid"-->"robberVirologist:Virologist"--:

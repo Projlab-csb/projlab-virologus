@@ -4,8 +4,8 @@
 autonumber
 Mainframe Drop AminoAcid
 actor Player
-Player -> "v:Virologist": discard(d,a)
-"v:Virologist"->"a:AminoAcid"++:discard(Virologist)
+Player -> "v:Virologist": discard(v,a)
+"v:Virologist"->"a:AminoAcid"++:discard(v:Virologist)
                     note over  "a:AminoAcid"
                     the player chose the wanted amount
                      end note

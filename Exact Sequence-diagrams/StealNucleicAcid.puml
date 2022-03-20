@@ -1,11 +1,33 @@
 @startuml
 'https://plantuml.com/sequence-diagram
-
 autonumber
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+mainframe Steal AminoAcid
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+actor Player
+
+Player -> "robberVirologist:Virologist"++: steal(robberVirologist, targetVirologist)
+
+
+"robberVirologist:Virologist" -> "targetvirologist:Virologist"++: handleSteal(AminoAcid, Virologist, Virologist)
+
+
+
+        note left "targetvirologist:Virologist"
+            The player chose AminoAcid
+        end note
+
+        "targetvirologist:Virologist"->"n:NucleicAcid"++:discard(targetvirologist, amount:int)
+        "n:NucleicAcid"->"targetvirologist:Virologist"++:SetAminoAcid(amount:int)
+        "targetvirologist:Virologist"-->"n:NucleicAcid"--
+        "n:NucleicAcid"-->"targetvirologist:Virologist"--
+
+    "targetvirologist:Virologist" -->"robberVirologist:Virologist"--: "n:NucleicAcid"
+    "robberVirologist:Virologist"->"n:NucleicAcid"++:collectby(robberVirologist)
+      "n:NucleicAcid"->"robberVirologist:Virologist"++:SetAminoAcid()
+       "robberVirologist:Virologist"-->"n:NucleicAcid"--
+    "n:NucleicAcid"-->"robberVirologist:Virologist"--:
+
+
+"robberVirologist:Virologist" --> Player --
 @enduml

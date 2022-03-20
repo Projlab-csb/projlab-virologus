@@ -31,10 +31,10 @@ Player -> "robberVirologist: Virologist"++: steal(robberVirologist, targetVirolo
 
 
      "targetVirologist: Virologist" -->"robberVirologist: Virologist"--: gloves
-   "robberVirologist: Virologist" -> "gloves:Gloves": collectBy(Virologist)
+   "robberVirologist: Virologist" -> "gloves:Gloves": collectBy(robberVirologist)
    Activate "gloves:Gloves"
 
-    "gloves:Gloves" -> "gloves:Gloves"++ : applyEffect(virologist)
+    "gloves:Gloves" -> "gloves:Gloves"++ : applyEffect(robberVirologist)
 
       "gloves:Gloves" -> "gloves:Gloves"++ : getStrategy()
       "gloves:Gloves" --> "gloves:Gloves"-- : defenseStrategy
