@@ -1,0 +1,34 @@
+@startuml
+
+mainframe Collect and Discard
+
+skinparam linestyle ortho
+rectangle "s:Skeleton" as s
+rectangle "v:Virologist" as v
+rectangle "c:Cloak" as c
+rectangle "a:AminoAcid" as a
+rectangle "g:GenCode" as g
+rectangle "l:Lab" as l
+rectangle "st:Storage" as st
+rectangle "sh:Shelter" as sh
+
+
+
+s -down-> v:Virologist()
+s -down-> sh:Shelter()
+s -down-> st:Storage()
+s -down-> l:Lab()
+v -left-> l:getCollectable()
+v -up-> sh:getCollectable()
+v -right-> st:getCollectable()
+'itt hogy kéne jelölni, hogy a Cloak is a Shelterrel() jön létre? Vagy csak egy note? - végül erre a visszatérősre jutottam
+v -down-> c:collectBy()
+v -down-> a:collectBy()
+v -down-> g:collectBy()
+v -down-> c:discard()
+v -down-> a:discard()
+
+l -[dashed]> v: GenCode
+sh -[dashed]> v: Cloak
+st -[dashed]> v: AminoAcid
+@enduml
