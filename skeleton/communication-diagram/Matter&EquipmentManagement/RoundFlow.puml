@@ -1,6 +1,6 @@
 @startuml
 
-mainframe Attack
+mainframe Round Flow
 
 skinparam linestyle ortho
 rectangle "s:Skeleton" as s

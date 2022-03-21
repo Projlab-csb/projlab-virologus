@@ -1,6 +1,6 @@
 @startuml
 
-mainframe Attack
+mainframe Agent TTL and Remove
 
 skinparam linestyle ortho
 rectangle "s:Skeleton" as s
