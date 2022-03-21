@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+mainframe Virologist paralyzed move
+
+rectangle "s:Skeleton" as s
+rectangle "v: Virologist" as Virologist
+rectangle "currentField: Field" as currentField
+rectangle "targetField: Field" as targetField
+
+s --> Virologist: move(direction)
+
+Virologist -> currentField: getNeighbor(randomDirection)
+currentField --> Virologist: targetField : Field
+
+Virologist -> currentField: removeVirologist(v)
+
+Virologist -> targetField: acceptVirologist(v)
+
+@enduml
