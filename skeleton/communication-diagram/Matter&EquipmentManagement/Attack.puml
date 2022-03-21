@@ -5,17 +5,17 @@ mainframe Attack
 skinparam linestyle ortho
 rectangle "s:Skeleton" as s
 rectangle "targetvirologist:Virologist" as t
-rectangle "robbervirologist:Virologist" as r
+rectangle "virologist:Virologist" as v
 rectangle "c:Cloak" as c
-rectangle "a:AminoAcid" as a
-rectangle "p:Paralyzed" as p
+rectangle "f:Forget" as f
 
 s -down-> t:Virologist()
 s -down-> c:Cloak()
-s -down-> a:AminoAcid()
-t -down-> a:CollectBy()
-t -down-> c:CollectBy()
-s -down-> r:Virologist()
-t -down-> p:applyEffect()
-r -right-> t:steal()
+s -down-> v:Virologist()
+t -down-> c:applyEffect()
+t -down-> f:applyEffect()
+v -right-> t:attack()
+c -right-> c:getStrategy()
+c -up-> t:setDefenseStrategy()
+f -up-> t:setAgents()
 @enduml
