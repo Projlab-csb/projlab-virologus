@@ -17,37 +17,37 @@ public class Virologist {
     }
 
     public void setDefenseStrategy(DefenseStrategyInterface defenseStrategy) {
-        Tester.getInstance().functionStart("Virologist.setDefenseStrategy");
+        Tester.getInstance().functionStart();
         this.defenseStrategy = defenseStrategy;
-        Tester.getInstance().functionEnd("Virologist.setDefenseStrategy");
+        Tester.getInstance().functionEnd();
     }
 
     public void attack(Agent agent, Virologist virologist, Virologist targetVirologist) {
-        Tester.getInstance().functionStart("Virologist.attack");
+        Tester.getInstance().functionStart();
         defenseStrategy.defense();
-        Tester.getInstance().functionEnd("Virologist.attack");
+        Tester.getInstance().functionEnd();
     }
 
     public void collect(Field field){
-        Tester.getInstance().functionStart("Virologist.collect");
+        Tester.getInstance().functionStart();
 
         ArrayList<Collectable> collectables = field.getCollectable();
         if(collectables != null) {
             collectables.get(0).collectBy(this);
         }
 
-        Tester.getInstance().functionEnd("Virologist.collect");
+        Tester.getInstance().functionEnd();
     }
 
     public int getInventorySize() {
-        Tester.getInstance().functionStart("Virologist.getInventorySize");
-        Tester.getInstance().functionEnd("Virologist.getInventorySize");
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionEnd();
         return inventorySize;
     }
 
     public void setInventorySize(int inventorySize) {
-        Tester.getInstance().functionStart("Virologist.setInventorySize");
+        Tester.getInstance().functionStart();
         this.inventorySize = inventorySize;
-        Tester.getInstance().functionEnd("Virologist.setInventorySize");
+        Tester.getInstance().functionEnd();
     }
 }

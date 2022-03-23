@@ -6,13 +6,13 @@ import com.csb.virologist.Virologist;
 public class Cloak extends Equipment {
 
     public void applyEffect(Virologist virologist) {
-        Tester.getInstance().functionStart("Gloves.applyEffect");
-        Tester.getInstance().functionEnd("Gloves.applyEffect");
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionEnd();
     }
 
     public void removeEffect(Virologist virologist) {
-        Tester.getInstance().functionStart("Gloves.removeEffect");
-        Tester.getInstance().functionEnd("Gloves.removeEffect");
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionEnd();
     }
 
     @Override

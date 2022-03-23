@@ -13,8 +13,8 @@ public class Shelter extends Field {
     }
 
     public ArrayList<Collectable> getCollectable(){
-        Tester.getInstance().functionStart("Shelter.getCollectable");
-        Tester.getInstance().functionEnd("Shelter.getCollectable");
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionEnd();
         return collectables;
     }
 

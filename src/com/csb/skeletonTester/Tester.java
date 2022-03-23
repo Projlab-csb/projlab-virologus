@@ -22,14 +22,20 @@ public class Tester {
         return _tester;
     }
 
-    public void functionStart(String functionName){
-        System.out.println("\t".repeat(indentationCount) + "--> Function Start: " + functionName);
+    public void functionStart(){
+        System.out.println("\t".repeat(indentationCount) + "--> Function Start: " + getInvokeFunctionName());
         indentationCount++;
     }
 
-    public void functionEnd(String functionName){
+    public void functionEnd(){
         indentationCount--;
-        System.out.println("\t".repeat(indentationCount) + "<-- Function End: " + functionName);
+        System.out.println("\t".repeat(indentationCount) + "<-- Function End: " + getInvokeFunctionName());
+    }
+
+    private String getInvokeFunctionName(){
+        StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+        String className = stackTrace[3].getClassName().substring(stackTrace[3].getClassName().lastIndexOf('.') + 1);
+        return className + "." + stackTrace[3].getMethodName() + "()";
     }
 
     public List<TestInterface> getTestList() {

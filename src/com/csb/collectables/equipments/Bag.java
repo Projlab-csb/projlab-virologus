@@ -8,22 +8,22 @@ public class Bag extends Equipment{
     private int extraInventorySize = 0;
 
     public void applyEffect(Virologist virologist) {
-        Tester.getInstance().functionStart("Bag.applyEffect");
+        Tester.getInstance().functionStart();
         virologist.setInventorySize(virologist.getInventorySize() + extraInventorySize);
-        Tester.getInstance().functionEnd("Bag.applyEffect");
+        Tester.getInstance().functionEnd();
     }
 
     @Override
     public void removeEffect(Virologist virologist) {
-        Tester.getInstance().functionStart("Bag.removeEffect");
+        Tester.getInstance().functionStart();
         virologist.setInventorySize(virologist.getInventorySize() - extraInventorySize);
-        Tester.getInstance().functionEnd("Bag.removeEffect");
+        Tester.getInstance().functionEnd();
     }
 
     @Override
     public void collectBy(Virologist virologist) {
-        Tester.getInstance().functionStart("Bag.collectBy");
+        Tester.getInstance().functionStart();
         applyEffect(virologist);
-        Tester.getInstance().functionEnd("Bag.collectBy");
+        Tester.getInstance().functionEnd();
     }
 }

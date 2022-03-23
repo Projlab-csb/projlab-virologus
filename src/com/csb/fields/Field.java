@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public class Field {
 
     public ArrayList<Collectable> getCollectable(){
-        Tester.getInstance().functionStart("Field.getCollectable");
-        Tester.getInstance().functionEnd("Field.getCollectable");
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionEnd();
         return null;
     }
 }
