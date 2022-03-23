@@ -3,12 +3,12 @@ package com.csb.skeletonTester.Tests;
 import com.csb.collectables.Collectable;
 import com.csb.collectables.equipments.Bag;
 import com.csb.fields.Shelter;
-import com.csb.skeletonTester.TestInterface;
+import com.csb.skeletonTester.Test;
 import com.csb.virologist.Virologist;
 
 import java.util.ArrayList;
 
-public class CollectBagTest implements TestInterface {
+public class CollectBagTest extends Test {
 
     @Override
     public String getName() {
@@ -17,7 +17,6 @@ public class CollectBagTest implements TestInterface {
 
     @Override
     public void runTest() {
-        System.out.println("Collecting bag test");
         Virologist virologist = new Virologist();
         Shelter shelter = new Shelter(new ArrayList<Collectable>(){
             {
@@ -25,7 +24,6 @@ public class CollectBagTest implements TestInterface {
                 add(new Bag());
             }
         });
-
         virologist.collect(shelter);
     }
 }

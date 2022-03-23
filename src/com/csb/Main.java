@@ -44,7 +44,7 @@ public class Main {
                 //Test if the user input is valid
                 if (userInput >= 0 && userInput < Tester.getInstance().getTestList().size()) {
                     //Run the test
-                    Tester.getInstance().getTestList().get(userInput).runTest();
+                    Tester.getInstance().getTestList().get(userInput).run();
                 }else {
                     System.out.println("Invalid input");
                 }
