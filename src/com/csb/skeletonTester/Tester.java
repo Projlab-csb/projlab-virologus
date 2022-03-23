@@ -1,14 +1,21 @@
 package com.csb.skeletonTester;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Tester {
-    private Tester _tester;
+    private static Tester _tester = null;
     private int indentationCount;
 
+    private ArrayList<TestInterface> testList;
+
     public Tester() {
+        //Init testList
+        testList = new ArrayList<>();
         int indentationCount = 0;
     }
 
-    public Tester getInstance(){
+    public static Tester getInstance(){
         if(_tester == null){
             _tester = new Tester();
         }
@@ -20,8 +27,12 @@ public class Tester {
         indentationCount++;
     }
 
-    public void FunctionEnd(String functionName){
-        System.out.println("\t".repeat(indentationCount) + "--> Function End: " + functionName);
+    public void functionEnd(String functionName){
         indentationCount--;
+        System.out.println("\t".repeat(indentationCount) + "<-- Function End: " + functionName);
+    }
+
+    public List<TestInterface> getTestList() {
+        return testList;
     }
 }

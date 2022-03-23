@@ -1,9 +1,49 @@
 package com.csb;
 
+import com.csb.skeletonTester.TestInterface;
+import com.csb.skeletonTester.Tester;
+import com.csb.skeletonTester.Tests.CollectBagTest;
+
+import java.util.List;
+import java.util.Scanner;
+
 public class Main {
 
+    /**
+     * This is the main method. It is the entry point of the program. It is the first method called when the program
+     * is run. It is responsible for initializing the program and calling the run method. It is also responsible for calling
+     * the test method. The test method is responsible for running the tests. The test method is called by the run method.
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
-	// write your code here
-        System.out.println("Hello World!");
+        // User input scanner instance
+        Scanner scanner = new Scanner(System.in);
+
+        Tester.getInstance().getTestList().add(new CollectBagTest());
+
+        while (true) {
+            //Ask user which test they want to run
+            System.out.println("Which test would you like to run?");
+            //For all tests print an id, and the name of the test
+            for (int i = 0; i < Tester.getInstance().getTestList().size(); i++) {
+                System.out.println(i + ": " + Tester.getInstance().getTestList().get(i).getName());
+            }
+            System.out.print("Enter a number between (0 and " + (Tester.getInstance().getTestList().size() - 1) + "): ");
+
+            //Get user input
+            int userInput = -1;
+            try {
+                userInput = Integer.parseInt(scanner.nextLine());
+                //Test if the user input is valid
+                if (userInput >= 0 && userInput < Tester.getInstance().getTestList().size()) {
+                    //Run the test
+                    Tester.getInstance().getTestList().get(userInput).runTest();
+                }else {
+                    System.out.println("Invalid input");
+                }
+            }  catch (Exception e) {
+                System.out.println("Invalid input (try to enter a number): " + e.getMessage());
+            }
+        }
     }
 }
