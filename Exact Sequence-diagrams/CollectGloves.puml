@@ -29,14 +29,20 @@ Activate "gloves:Gloves"
  "gloves:Gloves" -> "virologist: Virologist"++: setDefenseStrategy(defenseStrategy)
 "virologist: Virologist" --> "gloves:Gloves"--
 
-"virologist: Virologist" --> "virologist: Virologist"
+"gloves:Gloves" --> "gloves:Gloves"
+Deactivate "gloves:Gloves"
+"gloves:Gloves" --> "virologist: Virologist"
+
+
+
 
 "virologist: Virologist" --> Player
 
-Deactivate "gloves:Gloves"
 
 
 Deactivate "virologist: Virologist"
+
+
 
 @enduml
 

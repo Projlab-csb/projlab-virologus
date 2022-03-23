@@ -10,10 +10,10 @@ actor Player
 Player -> "virologist: Virologist": collect()
 Activate "virologist: Virologist"
 
-"virologist: Virologist" -> "field: Field": getCollectable()
-Activate "field: Field"
-"field: Field" --> "virologist: Virologist": <Bag>
-Deactivate "field: Field"
+"virologist: Virologist" -> "shelter:Shelter": getCollectable()
+Activate "shelter:Shelter"
+"shelter:Shelter" --> "virologist: Virologist": <Bag>
+Deactivate "shelter:Shelter"
 
 "virologist: Virologist" -> "bag: Bag": collectBy(Virologist)
 Activate "bag: Bag"
