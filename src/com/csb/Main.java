@@ -2,10 +2,9 @@ package com.csb;
 
 import com.csb.skeletonTester.TestInterface;
 import com.csb.skeletonTester.Tester;
-import com.csb.skeletonTester.Tests.CollectBagTest;
-
-import java.util.List;
 import java.util.Scanner;
+
+import static com.csb.utils.ClassLoader.findAllClassesUsingClassLoader;
 
 public class Main {
 
@@ -19,7 +18,15 @@ public class Main {
         // User input scanner instance
         Scanner scanner = new Scanner(System.in);
 
-        Tester.getInstance().getTestList().add(new CollectBagTest());
+        // Load all the test classes from skeletonTester.Tests package
+        findAllClassesUsingClassLoader("com.csb.skeletonTester.Tests").forEach(clazz -> {
+            try {
+                Tester.getInstance().getTestList().add((TestInterface) clazz.getDeclaredConstructor().newInstance());
+            } catch (Exception e) {
+                System.out.println("Error loading test class");
+                e.printStackTrace();
+            }
+        });
 
         while (true) {
             //Ask user which test they want to run
