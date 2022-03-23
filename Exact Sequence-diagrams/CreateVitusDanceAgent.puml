@@ -1,0 +1,41 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Create VitusDance Agent with sufficient acids
+
+actor Player
+
+Player -> "virologist: Virologist": createAgent(Gencode)
+Activate "virologist: Virologist"
+
+"virologist: Virologist" -> "gencode: Gencode": getRequiredNucleicAcid()
+Activate "gencode: Gencode"
+"gencode: Gencode" --> "virologist: Virologist": requiredNucleicAcid
+Deactivate "gencode: Gencode"
+
+"virologist: Virologist" -> "gencode: Gencode": getRequiredAminoAcid()
+Activate "gencode: Gencode"
+"gencode: Gencode" --> "virologist: Virologist": requiredAminoAcid
+Deactivate "gencode: Gencode"
+
+"virologist: Virologist" -> "virologist: Virologist": aminoAcid -= requiredAminoAcid
+"virologist: Virologist" -> "virologist: Virologist": nucleicAcid -= requiredNucleicAcid
+
+create "vitusDance: VitusDance"
+"virologist: Virologist" -> "vitusDance: VitusDance"
+"vitusDance: VitusDance" --> "virologist: Virologist"
+
+"virologist: Virologist" -> "virologist: Virologist": storeAgent(Agent)
+note over "vitusDance: VitusDance"
+    The Protection, Forget and Paralyzed Agents behave
+    the same way, so there's no separate sequence
+    diagram for them
+end note
+'Ide szerintem lifelineokat be kéne rajzolni (Meg a fentiekbe is)
+
+"virologist: Virologist" --> Player
+Deactivate "virologist: Virologist"
+
+@enduml

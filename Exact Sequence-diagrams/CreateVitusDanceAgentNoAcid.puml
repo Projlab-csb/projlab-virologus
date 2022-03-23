@@ -1,0 +1,33 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Create VitusDance Agent with insufficient acids
+
+actor Player
+
+Player -> "virologist: Virologist": createAgent(Gencode)
+Activate "virologist: Virologist"
+
+"virologist: Virologist" -> "gencode: Gencode": getRequiredNucleicAcid()
+Activate "gencode: Gencode"
+"gencode: Gencode" --> "virologist: Virologist": requiredNucleicAcid
+Deactivate "gencode: Gencode"
+
+"virologist: Virologist" -> "gencode: Gencode": getRequiredAminoAcid()
+Activate "gencode: Gencode"
+"gencode: Gencode" --> "virologist: Virologist": requiredAminoAcid
+Deactivate "gencode: Gencode"
+
+"virologist: Virologist" -> "virologist: Virologist": aminoAcid -= requiredAminoAcid
+"virologist: Virologist" -> "virologist: Virologist": nucleicAcid -= requiredNucleicAcid
+
+note over "virologist: Virologist"
+insufficient aminoAcid or nucleicAcid
+end note
+
+"virologist: Virologist" --> Player
+Deactivate "virologist: Virologist"
+
+@enduml

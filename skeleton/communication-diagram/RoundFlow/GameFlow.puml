@@ -1,0 +1,20 @@
+by Zoli
+
+@startuml
+'https://plantuml.com/sequence-diagram
+
+mainframe GameFlow
+
+rectangle "s:Skeleton" as s
+rectangle "V1 : Virologist" as V1
+rectangle "V2 : Virologist" as V2
+rectangle "V3 : Virologist" as V3
+
+
+s --> V1: startOfTurn()
+s --> V2: startOfTurn()
+s --> V3: startOfTurn()
+
+
+@enduml
+

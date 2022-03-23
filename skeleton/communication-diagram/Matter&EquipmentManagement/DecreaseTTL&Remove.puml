@@ -1,0 +1,15 @@
+@startuml
+
+mainframe Attack
+
+skinparam linestyle ortho
+rectangle "s:Skeleton" as s
+rectangle "virologist:Virologist" as v
+rectangle "p:Paralyzed" as p
+
+s -down-> v:Virologist()
+s -down-> p:Paralyzed()
+v -right-> p:decreaseTTL()
+v -right-> p: removeEffect()
+p -down-> v:setRoundStrategy()
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+
+mainframe Attack
+
+skinparam linestyle ortho
+rectangle "s:Skeleton" as s
+rectangle "targetvirologist:Virologist" as t
+rectangle "virologist:Virologist" as v
+rectangle "c:Cloak" as c
+rectangle "f:Forget" as f
+
+s -down-> t:Virologist()
+s -down-> c:Cloak()
+s -down-> v:Virologist()
+t -down-> c:applyEffect()
+t -down-> f:applyEffect()
+v -right-> t:attack()
+c -right-> c:getStrategy()
+c -up-> t:setDefenseStrategy()
+f -up-> t:setAgents()
+@enduml

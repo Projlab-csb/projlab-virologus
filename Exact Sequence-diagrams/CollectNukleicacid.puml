@@ -3,7 +3,7 @@
 
 autonumber
 
-mainframe Collect NukleicAcid
+mainframe Collect NucleicAcid
 
 actor Player
 
@@ -12,18 +12,18 @@ Activate "v:Virologist"
 
 "v:Virologist" -> "s:Storage": getCollectable()
 Activate "s:Storage"
-"s:Storage" -> "v:Virologist": <NukleicAcid>
+"s:Storage" -> "v:Virologist": <NucleicAcid>
 'Ide sztem Matter illene jobban, csak hát az absztrakt...
 Deactivate "s:Storage"
 
-"v:Virologist" -> "n:NukleicAcid": collectBy(Virologist)
-Activate "n:NukleicAcid"
+"v:Virologist" -> "n:NucleicAcid": collectBy(Virologist)
+Activate "n:NucleicAcid"
 
-"n:NukleicAcid" -> "v:Virologist" ++: SetNucleicAcid()
-"v:Virologist"--> "n:NukleicAcid" --
+"n:NucleicAcid" -> "v:Virologist" ++: SetNucleicAcid()
+"v:Virologist"--> "n:NucleicAcid" --
 
-"n:NukleicAcid" --> "v:Virologist":
-Deactivate "n:NukleicAcid"
+"n:NucleicAcid" --> "v:Virologist":
+Deactivate "n:NucleicAcid"
 "v:Virologist" --> Player
 Deactivate "v:Virologist"
 

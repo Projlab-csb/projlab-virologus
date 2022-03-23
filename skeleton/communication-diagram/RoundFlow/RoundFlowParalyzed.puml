@@ -1,0 +1,15 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+mainframe Virologist paralyzed round
+
+rectangle "s:Skeleton" as s
+rectangle "v: Virologist" as Virologist
+
+s ---> Virologist: startOfTurn()
+s--->Virologist:move()
+s--->Virologist:createAgent(gencode)
+s--->Virologist:useAgent(defender, agent)
+Virologist--->s:reportGenCode(v, genCodes[])
+
+@enduml

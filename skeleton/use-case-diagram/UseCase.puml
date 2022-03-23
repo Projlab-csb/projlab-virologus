@@ -1,15 +1,38 @@
 @startuml
 'https://plantuml.com/use-case-diagram
-
+left to right direction
 :Game Controller: as GameController
 
 Player as Player
-
 (Move Virologist) <-u- Player
 (Move Virologist) <-u- GameController
 
 (GameFlow) <-u- GameController
 (RoundFlow) <-u- GameController
 (InitGame)  <-u- GameController
+(ForgetAgentAttack) <-u- Player
+(VitusDanceAgentAttack) <-l- Player
+(VitusDanceAgentExpires) <-- GameController
+(ProtectAgentAttack) <-u- Player
+(ProtectAgentExpires) <-- GameController
+(ParalyzedAgentAttack) <-l- Player
+(ParalyzedAgentExpires) <-- GameController
+(CollectBag) <-u- Player
+(StealBag) <-u- Player
+(DropBag) <-u- Player
+(CollectCloak) <-r- Player
+(StealCloak) <-u- Player
+(DropCloak) <-r- Player
+(CollectGloves) <-r- Player
+(StealGloves) <-r- Player
+(DropGloves) <-- Player
+(CollectAminoAcid) <-- Player
+(StealAminoAcid) <-- Player
+(CollectNucleicAcid) <-- Player
+(StealNucleicAcid) <-- Player
+(CreateAgent) <-l- Player
+
+
+
 
 @enduml

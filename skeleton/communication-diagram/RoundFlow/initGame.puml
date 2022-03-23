@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+
+mainframe Initialize Game
+
+rectangle "s:Skeleton" as s
+
+'Elvileg ezen nincs semmi, mert ő hoz létre mindent
+
+@enduml
+
