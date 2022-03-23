@@ -23,7 +23,7 @@
 hs_err_pid*
 
 # IntelliJ IDEA project files
-.idea
+**/.idea/workspace.xml **/.idea/tasks.xml
 
 # MacOS X
 .DS_Store
