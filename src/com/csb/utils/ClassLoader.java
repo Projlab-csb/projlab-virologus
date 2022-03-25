@@ -26,11 +26,19 @@ public class ClassLoader {
             .collect(Collectors.toSet());
     }
 
+    /**
+     * Loads a given class by its name and containing package.
+     *
+     * @param className Name of the class
+     * @param packageName Name of the containing package
+     * @return Loaded class
+     */
     private static Class getClass(String className, String packageName) {
         try {
             return Class.forName(packageName + "." + className.substring(0, className.lastIndexOf('.')));
         } catch (ClassNotFoundException e) {
             // handle the exception
+            System.out.println("Class not found: " + className + " in package: " + packageName);
         }
         return null;
     }

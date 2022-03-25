@@ -1,11 +1,17 @@
 package com.csb.skeletonTester;
 
+/**
+ * This class is used to ask any required user input.
+ */
 public class UserInputHandler {
 
+    // The singleton instance of this class.
     private static UserInputHandler _instance;
 
-    private UserInputHandler() {}
-
+    /**
+     * Get the singleton instance of this class.
+     * @return The class instance.
+     */
     public static UserInputHandler getInstance() {
         if (_instance == null) {
             _instance = new UserInputHandler();
@@ -13,16 +19,33 @@ public class UserInputHandler {
         return _instance;
     }
 
-    public int getUserInputInt(String prompt) {
+    /**
+     * Ask the user for an Integer.
+     * @param prompt The prompt to display to the user.
+     * @return Integer: The user's input.
+     * @throws NumberFormatException If the user's input is not an Integer.
+     */
+    public int getUserInputInt(String prompt) throws NumberFormatException {
         System.out.print(prompt);
         return Integer.parseInt(System.console().readLine());
     }
 
+    /**
+     * Ask the user for a String.
+     * @param prompt The prompt to display to the user.
+     * @return String: The user's input.
+     */
     public String getUserInputString(String prompt) {
         System.out.print("[UserInput String]" + prompt);
         return System.console().readLine();
     }
 
+    /**
+     * Ask the user to select an option from a list of options.
+     * @param prompt The prompt to display to the user.
+     * @param options The available options.
+     * @return String: The user's input, this is one of the options.
+     */
     public String getUserInputString(String prompt, String[] options) {
         System.out.print("[UserInput String]" + prompt + "(" + String.join(", ", options) + "): ");
         String userInput = System.console().readLine();
@@ -33,6 +56,12 @@ public class UserInputHandler {
         return userInput;
     }
 
+    /**
+     * Check if the user's input is one of the options.
+     * @param userInput The user's input.
+     * @param options The available options.
+     * @return boolean: True if the user's input is one of the options, false otherwise.
+     */
     private boolean isValidOption(String userInput, String[] options) {
         for (String option : options) {
             if (option.equals(userInput)) {
@@ -42,6 +71,11 @@ public class UserInputHandler {
         return false;
     }
 
+    /**
+     * Ask the user for a Boolean.
+     * @param prompt The prompt to display to the user.
+     * @return boolean: The user's input.
+     */
     public boolean getUserInputBoolean(String prompt) {
         System.out.print("[UserInput Boolean]" + prompt + " (y/n): ");
         String userInput = System.console().readLine();
