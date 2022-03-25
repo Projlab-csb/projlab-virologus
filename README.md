@@ -14,18 +14,21 @@ npm install -g prettier prettier-plugin-java
 
 Ezután futtatható a `prettier --write "**/*.java"` parancs, ami minden .java fájlban elvégzi a formázást.
 
-2. A prettier beállítás, hogy minden mentésnél automatikusan formázza a fájlokat.
+2. Telepítsd a `File Watchers` plugin-t az IntelliJ-ben.
 
-   2.1. Az IntelliJ-ben nyitsd meg a `Preferences -> Tools -> File Watcher` ablakot. 
-   2.2. Hozz létre egy új fileWatcher-t a + gombbal.
+3. A prettier beállítás, hogy minden mentésnél automatikusan formázza a fájlokat.
+
+   3.1. Az IntelliJ-ben nyitsd meg a `Preferences -> Tools -> File Watcher` ablakot. 
+   3.2. Hozz létre egy új fileWatcher-t a + gombbal.
       - Name: **Prettier format**
       - File type: **Java**
       - Scope: **Project Files**
       - Program: **prettier**
       - Arguments: **--write "$FileName$"**
    
-   2.3 Mentsd el a fileWatcher-t, és kész is vagy.
+   3.3 Mentsd el a fileWatcher-t, és kész is vagy.
 
-### SonarLint beállítása
+### Statistic beállítása
 
-   1. Telepítsd a SonarLint-et mint egy InteliJ plugin.
+   1. Telepítsd a Statistic plugin-t az InteliJ-ben.
+   2. Az alsó fülek között megjelenik egy Statistic mező, az alatt megtekinthető a kommentek százalékos aránya, fileonként, valamint összesítve is.
