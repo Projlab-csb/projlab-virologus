@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tester {
+
     private static Tester _tester = null;
     private int indentationCount;
 
@@ -15,24 +16,24 @@ public class Tester {
         int indentationCount = 0;
     }
 
-    public static Tester getInstance(){
-        if(_tester == null){
+    public static Tester getInstance() {
+        if (_tester == null) {
             _tester = new Tester();
         }
         return _tester;
     }
 
-    public void functionStart(){
+    public void functionStart() {
         System.out.println("\t".repeat(indentationCount) + "--> Function Start: " + getInvokeFunctionName());
         indentationCount++;
     }
 
-    public void functionEnd(){
+    public void functionEnd() {
         indentationCount--;
         System.out.println("\t".repeat(indentationCount) + "<-- Function End: " + getInvokeFunctionName());
     }
 
-    private String getInvokeFunctionName(){
+    private String getInvokeFunctionName() {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         String className = stackTrace[3].getClassName().substring(stackTrace[3].getClassName().lastIndexOf('.') + 1);
         return className + "." + stackTrace[3].getMethodName() + "()";

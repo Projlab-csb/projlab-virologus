@@ -1,4 +1,3 @@
 package com.csb.agents;
 
-public abstract class Agent {
-}
+public abstract class Agent {}

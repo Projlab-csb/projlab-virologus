@@ -5,7 +5,5 @@ import com.csb.virologist.Virologist;
 public class AminoAcid extends Matter {
 
     @Override
-    public void collectBy(Virologist virologist) {
-
-    }
+    public void collectBy(Virologist virologist) {}
 }

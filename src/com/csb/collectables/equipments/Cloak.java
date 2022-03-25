@@ -16,7 +16,5 @@ public class Cloak extends Equipment {
     }
 
     @Override
-    public void collectBy(Virologist virologist) {
-
-    }
+    public void collectBy(Virologist virologist) {}
 }

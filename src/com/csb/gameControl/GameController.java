@@ -1,4 +1,3 @@
 package com.csb.gameControl;
 
-public class GameController {
-}
+public class GameController {}

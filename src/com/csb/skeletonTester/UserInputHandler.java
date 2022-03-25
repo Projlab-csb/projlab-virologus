@@ -4,8 +4,7 @@ public class UserInputHandler {
 
     private static UserInputHandler _instance;
 
-    private UserInputHandler() {
-    }
+    private UserInputHandler() {}
 
     public static UserInputHandler getInstance() {
         if (_instance == null) {
@@ -46,7 +45,7 @@ public class UserInputHandler {
     public boolean getUserInputBoolean(String prompt) {
         System.out.print("[UserInput Boolean]" + prompt + " (y/n): ");
         String userInput = System.console().readLine();
-        while (!isValidOption(userInput, new String[] {"y", "n"})) {
+        while (!isValidOption(userInput, new String[] { "y", "n" })) {
             System.out.print("Invalid input. Please try again: ");
             userInput = System.console().readLine();
         }

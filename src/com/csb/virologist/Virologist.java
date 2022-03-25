@@ -5,10 +5,10 @@ import com.csb.collectables.Collectable;
 import com.csb.fields.Field;
 import com.csb.skeletonTester.Tester;
 import com.csb.strategies.DefenseStrategyInterface;
-
 import java.util.ArrayList;
 
 public class Virologist {
+
     private DefenseStrategyInterface defenseStrategy;
     private int inventorySize;
 
@@ -28,11 +28,11 @@ public class Virologist {
         Tester.getInstance().functionEnd();
     }
 
-    public void collect(Field field){
+    public void collect(Field field) {
         Tester.getInstance().functionStart();
 
         ArrayList<Collectable> collectables = field.getCollectable();
-        if(collectables != null) {
+        if (collectables != null) {
             collectables.get(0).collectBy(this);
         }
 

@@ -1,4 +1,3 @@
 package com.csb.agents;
 
-public class Protection extends Agent {
-}
+public class Protection extends Agent {}

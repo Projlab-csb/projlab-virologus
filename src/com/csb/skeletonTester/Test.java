@@ -1,20 +1,19 @@
 package com.csb.skeletonTester;
 
-public class Test implements TestInterface{
+public class Test implements TestInterface {
+
     @Override
     public String getName() {
         return "";
     }
 
     @Override
-    public void runTest() {
-
-    }
+    public void runTest() {}
 
     @Override
     public void run() {
-        System.out.println("\n------ [ " +getName() + " ] Test started ------");
+        System.out.println("\n------ [ " + getName() + " ] Test started ------");
         runTest();
-        System.out.println("------ [ " +getName() + " ] Test finished ------\n");
+        System.out.println("------ [ " + getName() + " ] Test finished ------\n");
     }
 }

@@ -3,7 +3,7 @@ package com.csb.collectables.equipments;
 import com.csb.skeletonTester.Tester;
 import com.csb.virologist.Virologist;
 
-public class Bag extends Equipment{
+public class Bag extends Equipment {
 
     private int extraInventorySize = 0;
 

@@ -6,7 +6,5 @@ import com.csb.virologist.Virologist;
 public class Gencode implements Collectable {
 
     @Override
-    public void collectBy(Virologist virologist) {
-
-    }
+    public void collectBy(Virologist virologist) {}
 }

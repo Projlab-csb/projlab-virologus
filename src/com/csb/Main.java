@@ -1,10 +1,10 @@
 package com.csb;
 
+import static com.csb.utils.ClassLoader.findAllClassesUsingClassLoader;
+
 import com.csb.skeletonTester.TestInterface;
 import com.csb.skeletonTester.Tester;
 import java.util.Scanner;
-
-import static com.csb.utils.ClassLoader.findAllClassesUsingClassLoader;
 
 public class Main {
 
@@ -19,14 +19,15 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         // Load all the test classes from skeletonTester.Tests package
-        findAllClassesUsingClassLoader("com.csb.skeletonTester.Tests").forEach(clazz -> {
-            try {
-                Tester.getInstance().getTestList().add((TestInterface) clazz.getDeclaredConstructor().newInstance());
-            } catch (Exception e) {
-                System.out.println("Error loading test class");
-                e.printStackTrace();
-            }
-        });
+        findAllClassesUsingClassLoader("com.csb.skeletonTester.Tests")
+            .forEach(clazz -> {
+                try {
+                    Tester.getInstance().getTestList().add((TestInterface) clazz.getDeclaredConstructor().newInstance());
+                } catch (Exception e) {
+                    System.out.println("Error loading test class");
+                    e.printStackTrace();
+                }
+            });
 
         while (true) {
             //Ask user which test they want to run
@@ -45,10 +46,10 @@ public class Main {
                 if (userInput >= 0 && userInput < Tester.getInstance().getTestList().size()) {
                     //Run the test
                     Tester.getInstance().getTestList().get(userInput).run();
-                }else {
+                } else {
                     System.out.println("Invalid input");
                 }
-            }  catch (Exception e) {
+            } catch (Exception e) {
                 System.out.println("Invalid input (try to enter a number): " + e.getMessage());
             }
         }

@@ -1,4 +1,3 @@
 package com.csb.agents;
 
-public class Forget extends Agent {
-}
+public class Forget extends Agent {}

@@ -1,5 +1,3 @@
 package com.csb.agents;
 
-public class VitusDance extends Agent {
-
-}
+public class VitusDance extends Agent {}
