@@ -25,6 +25,7 @@ Ezután futtatható a `prettier --write "**/*.java"` parancs, ami minden .java f
       - Scope: **Project Files**
       - Program: **prettier**
       - Arguments: **--write "$FileName$"**
+      - Advanced Options: **Semmi ne legyen bepipálva**
    
    3.3 Mentsd el a fileWatcher-t, és kész is vagy.
 
