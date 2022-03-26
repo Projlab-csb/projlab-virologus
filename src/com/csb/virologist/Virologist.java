@@ -17,6 +17,7 @@ import com.csb.strategies.RoundRunStrategyInterface;
 
 import com.csb.strategies.*;
 
+import java.awt.image.AreaAveragingScaleFilter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -30,13 +31,16 @@ public class Virologist {
     private MoveStrategyInterface defaultMoveStrategy;
     private RoundRunStrategyInterface defaultRoundRunStrategy;
     private int inventorySize;
-    private List<Agent> agentlist = Arrays.asList(new Paralyzed(), new Protection(), new VitusDance());
     private AminoAcid aminoAcidStock;
     private NucleicAcid nucleicAcidStock;
     private ArrayList<Gencode> gencodes;
+    private ArrayList<Agent> agentlist = new ArrayList<>();
 
     public Virologist() {
         inventorySize = 0;
+        agentlist.add(new Paralyzed());
+        agentlist.add(new Protection());
+        agentlist.add(new VitusDance());
         nucleicAcidStock=new NucleicAcid(0);
         aminoAcidStock=new AminoAcid(0);
         gencodes=new ArrayList<Gencode>();
@@ -87,8 +91,6 @@ public class Virologist {
         this.moveStrategy = moveStrategy;
         Tester.getInstance().functionEnd();
     }
-
-
 
     public int getInventorySize() {
         Tester.getInstance().functionStart();
