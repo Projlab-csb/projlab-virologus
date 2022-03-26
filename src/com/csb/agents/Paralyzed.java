@@ -1,37 +1,33 @@
 package com.csb.agents;
 
-import com.csb.skeletonTester.Tester;
+import com.csb.collectables.Collectable;
 import com.csb.strategies.RoundRunStrategyInterface;
 import com.csb.virologist.Virologist;
 
-
-
-public class Paralyzed extends Agent {
-
-    private RoundRunStrategyInterface roundRound;
-
+public class Paralyzed extends Agent implements RoundRunStrategyInterface {
+    @Override
     public void applyEffect(Virologist virologist) {
-        Tester.getInstance().functionStart();
-        virologist.setRoundRunStrategy(this.getStrategy());
-        Tester.getInstance().functionEnd();
+
     }
 
     @Override
     public void decreaseTTL() {
-        Tester.getInstance().functionStart();
-        Tester.getInstance().functionEnd();
+
     }
 
     @Override
     public void removeEffect(Virologist virologist) {
-        Tester.getInstance().functionStart();
-        virologist.setRoundRunStrategy(roundRound);
-        Tester.getInstance().functionEnd();
+
     }
 
-    public RoundRunStrategyInterface getStrategy(){
-        Tester.getInstance().functionStart();
-        Tester.getInstance().functionEnd();
-        return roundRound;
+    @Override
+    public Collectable handleSteal(Collectable coll, Virologist robberVirologist, Virologist targetVirologist) {
+        coll.discard(targetVirologist);
+        return coll;
+    }
+
+    @Override
+    public void RoundRun() {
+
     }
 }

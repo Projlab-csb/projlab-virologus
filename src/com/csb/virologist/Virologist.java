@@ -6,12 +6,16 @@ import com.csb.collectables.equipments.Equipment;
 import com.csb.collectables.gencodes.Gencode;
 import com.csb.collectables.matters.AminoAcid;
 import com.csb.collectables.matters.NucleicAcid;
+import com.csb.collectables.matters.AminoAcid;
+import com.csb.collectables.matters.NucleicAcid;
+import com.csb.collectables.gencodes.Gencode;
 import com.csb.fields.Field;
 import com.csb.skeletonTester.Tester;
 import com.csb.strategies.DefenseStrategyInterface;
 import com.csb.strategies.MoveStrategyInterface;
-import com.csb.strategies.ProtectionStrategyInterface;
 import com.csb.strategies.RoundRunStrategyInterface;
+
+import com.csb.strategies.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,16 +26,27 @@ public class Virologist {
     private DefenseStrategyInterface defenseStrategy;
     private RoundRunStrategyInterface roundRunStrategy;
     private MoveStrategyInterface moveStrategy;
-    private ProtectionStrategyInterface protectionStrategy;
-    private AminoAcid aminoAcid;
-    private NucleicAcid nucleicAcid;
-
-
+    private DefenseStrategyInterface defaultDefenseStrategy;
+    private MoveStrategyInterface defaultMoveStrategy;
+    private RoundRunStrategyInterface defaultRoundRunStrategy;
     private int inventorySize;
     private List<Agent> agentlist = Arrays.asList(new Paralyzed(), new Protection(), new VitusDance());
+    private AminoAcid aminoAcidStock;
+    private NucleicAcid nucleicAcidStock;
+    private ArrayList<Gencode> gencodes;
 
     public Virologist() {
         inventorySize = 0;
+        nucleicAcidStock=new NucleicAcid(0);
+        aminoAcidStock=new AminoAcid(0);
+        gencodes=new ArrayList<Gencode>();
+        defaultDefenseStrategy=new DefaultDefense();
+        defaultRoundRunStrategy=new DefaultRoundRun();
+        defaultMoveStrategy=new DefaultMove();
+        defenseStrategy=defaultDefenseStrategy;
+        roundRunStrategy=defaultRoundRunStrategy;
+        moveStrategy=defaultMoveStrategy;
+
     }
 
     public void setDefenseStrategy(DefenseStrategyInterface defenseStrategy) {
@@ -42,14 +57,10 @@ public class Virologist {
 
     public void attack(Agent agent, Virologist virologist, Virologist targetVirologist) {
         Tester.getInstance().functionStart();
-        agent.applyEffect(targetVirologist);
+        defenseStrategy.defense();
         Tester.getInstance().functionEnd();
     }
 
-    public void setAgents() {
-        Tester.getInstance().functionStart();
-        Tester.getInstance().functionEnd();
-    }
     public void collect(Field field) {
         Tester.getInstance().functionStart();
 
@@ -79,11 +90,7 @@ public class Virologist {
         Tester.getInstance().functionEnd();
     }
 
-    public void setProtectionStrategy(ProtectionStrategyInterface protectionStrategy){
-        Tester.getInstance().functionStart();
-        this.protectionStrategy = protectionStrategy;
-        Tester.getInstance().functionEnd();
-    }
+
 
     public int getInventorySize() {
         Tester.getInstance().functionStart();
@@ -96,6 +103,56 @@ public class Virologist {
         this.inventorySize = inventorySize;
         Tester.getInstance().functionEnd();
     }
+
+    public int getAminoAcid() {
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionEnd();
+        return aminoAcidStock.getAmount();
+
+    }
+
+    public void setAminoAcid(int aminoAcid) {
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionEnd();
+        aminoAcidStock.setAmount(aminoAcid);
+    }
+
+    public int getNucleicAcid() {
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionEnd();
+        return nucleicAcidStock.getAmount();
+    }
+
+    public void setNucleicAcid(int nucleicAcid) {
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionEnd();
+        nucleicAcidStock.setAmount(nucleicAcid);
+    }
+
+    public ArrayList<Gencode> getGencodes() {
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionEnd();
+        return gencodes;
+    }
+
+    public void setGencodes(ArrayList<Gencode> gencodes) {
+        Tester.getInstance().functionStart();
+        this.gencodes = gencodes;
+        Tester.getInstance().functionEnd();
+    }
+    public void steal(Collectable coll, Virologist targetVirologist ){
+        Tester.getInstance().functionStart();
+        Collectable stolen=roundRunStrategy.handleSteal(coll, this, targetVirologist);
+        if(stolen==null) return;
+        stolen.collectBy(targetVirologist);
+        Tester.getInstance().functionStart();
+    }
+    public void discard(Collectable coll){
+        coll.discard(this);
+    };
+
+
+
 
     public void createAgent(Gencode genCode){
         Tester.getInstance().functionStart();
@@ -118,21 +175,4 @@ public class Virologist {
         Tester.getInstance().functionEnd();
     }
 
-    public void discard(Virologist virologist, Equipment equipment) {
-        Tester.getInstance().functionStart();
-        equipment.discard(virologist);
-        Tester.getInstance().functionEnd();
-    }
-
-    public void setAminoAcid(AminoAcid aminoAcid) {
-        Tester.getInstance().functionStart();
-        Tester.getInstance().functionStart();
-        aminoAcid = aminoAcid;
-        Tester.getInstance().functionEnd();
-    }
-
-    public void setNucleicAcid(NucleicAcid nucleicAcid) {
-        nucleicAcid = nucleicAcid;
-        Tester.getInstance().functionEnd();
-    }
 }
