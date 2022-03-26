@@ -308,9 +308,8 @@ public class Virologist {
        return this.roundRunStrategy.handleSteal(coll, this);
     }
 
-    public void setAgent(Agent agent){
+    public void setAgent(){
         Tester.getInstance().functionStart();
-        agentlist.remove(agent);
         Tester.getInstance().functionEnd();
     }
 }
