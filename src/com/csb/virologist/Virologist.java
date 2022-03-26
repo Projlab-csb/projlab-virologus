@@ -255,22 +255,38 @@ public class Virologist {
         this.agentlist=agentlist;
     }
 
+    /**
+     * @return - the default defending strategy
+     */
     public DefenseStrategyInterface getDefaultDefenseStrategy(){
         return defaultDefenseStrategy;
     }
 
+    /**
+     * @return - the default moving strategy
+     */
     public MoveStrategyInterface getDefaultMoveStrategy(){
         return defaultMoveStrategy;
     }
 
+    /**
+     * @return - the default RoundRun strategy
+     */
     public RoundRunStrategyInterface getDefaultRoundRunStrategy(){
         return defaultRoundRunStrategy;
     }
 
+    /**
+     * @return - the equipments owned by the Virologist
+     */
     public ArrayList<Equipment> getEquipments() {
         return equipments;
     }
 
+    /**
+     * Add an Equipment to the Virologist
+     * @param e the equipment to be added
+     */
     public void addEquipment(Equipment e){
         equipments.add(e);
     };
