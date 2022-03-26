@@ -5,13 +5,12 @@ import com.csb.strategies.MoveStrategyInterface;
 import com.csb.strategies.RoundRunStrategyInterface;
 import com.csb.virologist.Virologist;
 
-public class VitusDance extends Agent {
+public class VitusDance extends Agent implements MoveStrategyInterface{
 
 
-    private MoveStrategyInterface move;
     public void applyEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
-        virologist.setmoveStrategy(this.getStrategy());
+        virologist.setmoveStrategy(this);
         Tester.getInstance().functionEnd();
     }
 
@@ -24,13 +23,13 @@ public class VitusDance extends Agent {
     @Override
     public void removeEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
-        virologist.setmoveStrategy(move);
+        virologist.setmoveStrategy(this);
         Tester.getInstance().functionEnd();
     }
 
-    public MoveStrategyInterface getStrategy(){
-        Tester.getInstance().functionStart();
-        Tester.getInstance().functionEnd();
-        return move;
+    @Override
+    public void move() {
+
     }
+
 }
