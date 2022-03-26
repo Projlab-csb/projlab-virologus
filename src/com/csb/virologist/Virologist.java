@@ -307,4 +307,10 @@ public class Virologist {
     public Collectable handleSteal(Collectable coll){
        return this.roundRunStrategy.handleSteal(coll, this);
     }
+
+    public void setAgent(Agent agent){
+        Tester.getInstance().functionStart();
+        agentlist.remove(agent);
+        Tester.getInstance().functionEnd();
+    }
 }

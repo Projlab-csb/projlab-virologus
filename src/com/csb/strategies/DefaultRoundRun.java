@@ -26,6 +26,7 @@ public class DefaultRoundRun implements RoundRunStrategyInterface{
 
     @Override
     public void RoundRun() {
-
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionEnd();
     }
 }
