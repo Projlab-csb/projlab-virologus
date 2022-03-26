@@ -2,11 +2,15 @@ package com.csb.virologist;
 
 import com.csb.agents.*;
 import com.csb.collectables.Collectable;
+import com.csb.collectables.equipments.Equipment;
 import com.csb.collectables.gencodes.Gencode;
+import com.csb.collectables.matters.AminoAcid;
+import com.csb.collectables.matters.NucleicAcid;
 import com.csb.fields.Field;
 import com.csb.skeletonTester.Tester;
 import com.csb.strategies.DefenseStrategyInterface;
 import com.csb.strategies.MoveStrategyInterface;
+import com.csb.strategies.ProtectionStrategyInterface;
 import com.csb.strategies.RoundRunStrategyInterface;
 
 import java.util.ArrayList;
@@ -18,6 +22,11 @@ public class Virologist {
     private DefenseStrategyInterface defenseStrategy;
     private RoundRunStrategyInterface roundRunStrategy;
     private MoveStrategyInterface moveStrategy;
+    private ProtectionStrategyInterface protectionStrategy;
+    private AminoAcid aminoAcid;
+    private NucleicAcid nucleicAcid;
+
+
     private int inventorySize;
     private List<Agent> agentlist = Arrays.asList(new Paralyzed(), new Protection(), new VitusDance());
 
@@ -70,6 +79,12 @@ public class Virologist {
         Tester.getInstance().functionEnd();
     }
 
+    public void setProtectionStrategy(ProtectionStrategyInterface protectionStrategy){
+        Tester.getInstance().functionStart();
+        this.protectionStrategy = protectionStrategy;
+        Tester.getInstance().functionEnd();
+    }
+
     public int getInventorySize() {
         Tester.getInstance().functionStart();
         Tester.getInstance().functionEnd();
@@ -100,6 +115,24 @@ public class Virologist {
             agent.decreaseTTL();
             agent.removeEffect(this);
         }
+        Tester.getInstance().functionEnd();
+    }
+
+    public void discard(Virologist virologist, Equipment equipment) {
+        Tester.getInstance().functionStart();
+        equipment.discard(virologist);
+        Tester.getInstance().functionEnd();
+    }
+
+    public void setAminoAcid(AminoAcid aminoAcid) {
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionStart();
+        aminoAcid = aminoAcid;
+        Tester.getInstance().functionEnd();
+    }
+
+    public void setNucleicAcid(NucleicAcid nucleicAcid) {
+        nucleicAcid = nucleicAcid;
         Tester.getInstance().functionEnd();
     }
 }
