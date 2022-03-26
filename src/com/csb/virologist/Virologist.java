@@ -3,6 +3,7 @@ package com.csb.virologist;
 import com.csb.agents.*;
 import com.csb.collectables.Collectable;
 import com.csb.collectables.equipments.Equipment;
+import com.csb.collectables.equipments.Gloves;
 import com.csb.collectables.gencodes.Gencode;
 import com.csb.collectables.matters.AminoAcid;
 import com.csb.collectables.matters.NucleicAcid;
@@ -73,9 +74,9 @@ public class Virologist {
     }
 
 
-    public void attack(Agent agent, Virologist virologist, Virologist targetVirologist) {
+    public void attack(Agent agent, Virologist attackerVirologist) {
         Tester.getInstance().functionStart();
-        defenseStrategy.defense();
+        defenseStrategy.defense(agent,this, attackerVirologist);
         Tester.getInstance().functionEnd();
     }
 
@@ -96,8 +97,14 @@ public class Virologist {
 
     public void useAgent(Agent agent, Virologist targetVirologist) {
         Tester.getInstance().functionStart();
+        Gloves g=new Gloves();
+        if (defenseStrategy.equals(g)){
+            g.removeEffect(this);
+            targetVirologist.attack(agent,  this);
+           g.applyEffect(this);
+        }
 
-        targetVirologist.attack(agent, this,  targetVirologist);
+        else targetVirologist.attack(agent,  this);
 
         Tester.getInstance().functionEnd();
     }

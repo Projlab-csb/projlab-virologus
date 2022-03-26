@@ -30,7 +30,7 @@ public class Protection extends Agent implements DefenseStrategyInterface {
 
 
     @Override
-    public void defense() {
+    public void defense(Agent agent,Virologist attackedVirologist, Virologist attackerVirologist) {
 
     }
 }

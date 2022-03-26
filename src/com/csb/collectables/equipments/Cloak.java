@@ -1,5 +1,6 @@
 package com.csb.collectables.equipments;
 
+import com.csb.agents.Agent;
 import com.csb.skeletonTester.Tester;
 import com.csb.strategies.DefenseStrategyInterface;
 import com.csb.virologist.Virologist;
@@ -19,7 +20,7 @@ public class Cloak extends Equipment implements DefenseStrategyInterface {
     }
 
     @Override
-    public void defense() {
+    public void defense(Agent agent,Virologist attackedVirologist, Virologist attackerVirologist) {
 
     }
 }
