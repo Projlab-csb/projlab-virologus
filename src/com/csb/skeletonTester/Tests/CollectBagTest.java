@@ -2,6 +2,7 @@ package com.csb.skeletonTester.Tests;
 
 import com.csb.collectables.Collectable;
 import com.csb.collectables.equipments.Bag;
+import com.csb.collectables.equipments.Equipment;
 import com.csb.fields.Shelter;
 import com.csb.skeletonTester.Test;
 import com.csb.virologist.Virologist;

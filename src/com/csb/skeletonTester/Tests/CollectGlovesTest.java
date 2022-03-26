@@ -1,5 +1,6 @@
 package com.csb.skeletonTester.Tests;
 import com.csb.collectables.Collectable;
+import com.csb.collectables.equipments.Equipment;
 import com.csb.collectables.equipments.Gloves;
 import com.csb.fields.Shelter;
 import com.csb.skeletonTester.Test;
