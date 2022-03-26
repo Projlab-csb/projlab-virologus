@@ -1,15 +1,21 @@
 package com.csb.virologist;
 
 import com.csb.agents.Agent;
+import com.csb.agents.Forget;
 import com.csb.collectables.Collectable;
 import com.csb.fields.Field;
 import com.csb.skeletonTester.Tester;
 import com.csb.strategies.DefenseStrategyInterface;
+import com.csb.strategies.MoveStrategyInterface;
+import com.csb.strategies.RoundRunStrategyInterface;
+
 import java.util.ArrayList;
 
 public class Virologist {
 
     private DefenseStrategyInterface defenseStrategy;
+    private RoundRunStrategyInterface roundRunStrategy;
+    private MoveStrategyInterface moveStrategy;
     private int inventorySize;
 
     public Virologist() {
@@ -24,10 +30,14 @@ public class Virologist {
 
     public void attack(Agent agent, Virologist virologist, Virologist targetVirologist) {
         Tester.getInstance().functionStart();
-        defenseStrategy.defense();
+        agent.applyEffect(targetVirologist);
         Tester.getInstance().functionEnd();
     }
 
+    public void setAgents() {
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionEnd();
+    }
     public void collect(Field field) {
         Tester.getInstance().functionStart();
 
@@ -36,6 +46,24 @@ public class Virologist {
             collectables.get(0).collectBy(this);
         }
 
+        Tester.getInstance().functionEnd();
+    }
+    public void useAgent(Agent agent, Virologist targetVirologist) {
+        Tester.getInstance().functionStart();
+
+        targetVirologist.attack(agent, this,  targetVirologist);
+
+        Tester.getInstance().functionEnd();
+    }
+
+    public void setRoundRunStrategy(RoundRunStrategyInterface roundRunStrategy){
+        Tester.getInstance().functionStart();
+        this.roundRunStrategy = roundRunStrategy;
+        Tester.getInstance().functionEnd();
+    }
+    public void moveStrategy(MoveStrategyInterface moveStrategy){
+        Tester.getInstance().functionStart();
+        this.moveStrategy = moveStrategy;
         Tester.getInstance().functionEnd();
     }
 
