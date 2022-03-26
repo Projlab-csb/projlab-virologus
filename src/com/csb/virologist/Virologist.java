@@ -34,13 +34,10 @@ public class Virologist {
     private AminoAcid aminoAcidStock;
     private NucleicAcid nucleicAcidStock;
     private ArrayList<Gencode> gencodes;
-    private ArrayList<Agent> agentlist = new ArrayList<>();
+    private ArrayList<Agent> agentlist;
 
     public Virologist() {
         inventorySize = 0;
-        agentlist.add(new Paralyzed());
-        agentlist.add(new Protection());
-        agentlist.add(new VitusDance());
         nucleicAcidStock=new NucleicAcid(0);
         aminoAcidStock=new AminoAcid(0);
         gencodes=new ArrayList<Gencode>();
@@ -171,6 +168,9 @@ public class Virologist {
             agent.removeEffect(this);
         }
         Tester.getInstance().functionEnd();
+    }
+    public void setAgentlist(ArrayList<Agent> agentlist){
+        this.agentlist=agentlist;
     }
 
 }
