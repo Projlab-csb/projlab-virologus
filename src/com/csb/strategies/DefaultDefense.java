@@ -11,7 +11,7 @@ import com.csb.virologist.Virologist;
 public class DefaultDefense implements DefenseStrategyInterface{
 
     /**
-     * Default defense
+     * Default defense - the attacked virologist suffers the effect
      */
     @Override
     public void defense(Agent agent,Virologist attackedVirologist, Virologist attackerVirologist) {

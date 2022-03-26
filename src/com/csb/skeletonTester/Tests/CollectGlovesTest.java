@@ -17,6 +17,8 @@ public class CollectGlovesTest extends Test {
 
     @Override
     public void runTest() {
+
+        //Set the envirement for the test
         Virologist virologist = new Virologist();
         Shelter shelter = new Shelter(new ArrayList<Collectable>(){
             {
@@ -24,6 +26,8 @@ public class CollectGlovesTest extends Test {
                 add(new Gloves());
             }
         });
+
+        //run the function to be tested
         virologist.collect(shelter);
     }
 

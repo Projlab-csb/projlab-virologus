@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 
 /**
- * The class of what describes a shelter.
+ * The class, what describes a shelter.
  * From the shelter, Virologist can collect Equipments
  */
 public class Shelter extends Field {
@@ -22,6 +22,9 @@ public class Shelter extends Field {
         this.collectables = collectables;
     }
 
+    /**
+     * @return the items (Equipments) what are collecatble from the shelter
+     */
     public ArrayList<Collectable> getCollectable() {
         Tester.getInstance().functionStart();
         Tester.getInstance().functionEnd();

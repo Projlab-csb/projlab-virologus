@@ -16,11 +16,15 @@ public class AttackParalyzedAgentWithGloves extends Test {
      * runTest for the start the function
      */
     public void runTest() {
+
+        //Set the envirement for the test
         Virologist virologist = new Virologist();
         Virologist targetvirologist = new Virologist();
         Gloves g=new Gloves();
         g.applyEffect(targetvirologist);
         Paralyzed paralyzed = new Paralyzed();
+
+        //run the function to be tested
         virologist.useAgent(paralyzed, targetvirologist);
     }
 }

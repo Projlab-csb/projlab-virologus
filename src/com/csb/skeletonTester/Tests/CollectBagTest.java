@@ -10,13 +10,21 @@ import java.util.ArrayList;
 
 public class CollectBagTest extends Test {
 
+    /**
+     * getName for the menu
+     */
     @Override
     public String getName() {
         return "Collect Bag";
     }
 
+    /**
+     * runTest for the start the function
+     */
     @Override
     public void runTest() {
+
+        //Set the envirement for the test
         Virologist virologist = new Virologist();
         Shelter shelter = new Shelter(
             new ArrayList<Collectable>() {
@@ -26,6 +34,8 @@ public class CollectBagTest extends Test {
                 }
             }
         );
+
+        //run the function to be tested
         virologist.collect(shelter);
     }
 }
