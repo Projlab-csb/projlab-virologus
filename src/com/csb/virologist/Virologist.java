@@ -4,6 +4,8 @@ import com.csb.agents.*;
 import com.csb.collectables.Collectable;
 import com.csb.collectables.equipments.Equipment;
 import com.csb.collectables.gencodes.Gencode;
+import com.csb.collectables.matters.AminoAcid;
+import com.csb.collectables.matters.NucleicAcid;
 import com.csb.fields.Field;
 import com.csb.skeletonTester.Tester;
 import com.csb.strategies.DefenseStrategyInterface;
@@ -21,6 +23,9 @@ public class Virologist {
     private RoundRunStrategyInterface roundRunStrategy;
     private MoveStrategyInterface moveStrategy;
     private ProtectionStrategyInterface protectionStrategy;
+    private AminoAcid aminoAcid;
+    private NucleicAcid nucleicAcid;
+
 
     private int inventorySize;
     private List<Agent> agentlist = Arrays.asList(new Paralyzed(), new Protection(), new VitusDance());
@@ -116,6 +121,18 @@ public class Virologist {
     public void discard(Virologist virologist, Equipment equipment) {
         Tester.getInstance().functionStart();
         equipment.discard(virologist);
+        Tester.getInstance().functionEnd();
+    }
+
+    public void setAminoAcid(AminoAcid aminoAcid) {
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionStart();
+        aminoAcid = aminoAcid;
+        Tester.getInstance().functionEnd();
+    }
+
+    public void setNucleicAcid(NucleicAcid nucleicAcid) {
+        nucleicAcid = nucleicAcid;
         Tester.getInstance().functionEnd();
     }
 }
