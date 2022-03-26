@@ -7,11 +7,12 @@ import com.csb.virologist.Virologist;
 
 public class DiscardGloves extends Test {
     public String getName() {
-        return "Discard Gloves";
+        return "(Collect and) Discard Gloves";
     }
     public void runTest() {
         Gloves gloves = new Gloves();
         Virologist virologist = new Virologist();
+        gloves.collectBy(virologist);
         virologist.discard(gloves);
     }
 }

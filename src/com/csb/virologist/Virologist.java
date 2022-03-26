@@ -38,7 +38,7 @@ public class Virologist {
     private ArrayList<Equipment> equipments;
 
     public Virologist() {
-        inventorySize = 0;
+        inventorySize = 30;
         nucleicAcidStock=new NucleicAcid(0);
         aminoAcidStock=new AminoAcid(0);
         gencodes=new ArrayList<Gencode>();
@@ -148,7 +148,7 @@ public class Virologist {
     }
     public void discard(Collectable coll){
         coll.discard(this);
-    };
+    }
 
 
     public void createAgent(Gencode genCode){

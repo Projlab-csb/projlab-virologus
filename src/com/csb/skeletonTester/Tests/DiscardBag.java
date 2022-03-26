@@ -6,11 +6,12 @@ import com.csb.virologist.Virologist;
 
 public class DiscardBag extends Test {
     public String getName() {
-        return "Discard Bag";
+        return "(Collect and) Discard Bag";
     }
     public void runTest() {
-        Bag bag = new Bag();
         Virologist virologist = new Virologist();
+        Bag bag = new Bag();
+        bag.collectBy(virologist);
         virologist.discard(bag);
     }
 }

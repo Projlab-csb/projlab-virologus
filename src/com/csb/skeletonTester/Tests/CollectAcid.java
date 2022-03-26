@@ -13,7 +13,7 @@ public class CollectAcid extends Test {
 
     @Override
     public String getName() {
-        return "Collect Acid";
+        return "Collect and discard AminoAcid";
     }
 
     @Override
@@ -24,6 +24,8 @@ public class CollectAcid extends Test {
         Virologist virologist = new Virologist();
         Storage storage = new Storage(collectableArrayList);
         virologist.collect(storage);
+
+        virologist.discard(new AminoAcid(30));
     }
 
 }
