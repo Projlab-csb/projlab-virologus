@@ -2,7 +2,9 @@ package com.csb.virologist;
 
 import com.csb.agents.Agent;
 import com.csb.agents.Forget;
+import com.csb.agents.Paralyzed;
 import com.csb.collectables.Collectable;
+import com.csb.collectables.gencodes.Gencode;
 import com.csb.fields.Field;
 import com.csb.skeletonTester.Tester;
 import com.csb.strategies.DefenseStrategyInterface;
@@ -61,7 +63,7 @@ public class Virologist {
         this.roundRunStrategy = roundRunStrategy;
         Tester.getInstance().functionEnd();
     }
-    public void moveStrategy(MoveStrategyInterface moveStrategy){
+    public void setmoveStrategy(MoveStrategyInterface moveStrategy){
         Tester.getInstance().functionStart();
         this.moveStrategy = moveStrategy;
         Tester.getInstance().functionEnd();
@@ -76,6 +78,27 @@ public class Virologist {
     public void setInventorySize(int inventorySize) {
         Tester.getInstance().functionStart();
         this.inventorySize = inventorySize;
+        Tester.getInstance().functionEnd();
+    }
+
+    public void createAgent(Gencode genCode){
+        Tester.getInstance().functionStart();
+        genCode.getRequiredNucleicAcid();
+        genCode.getRequiredAminoAcid();
+        this.storeAgent(genCode.getAgent());
+        Tester.getInstance().functionEnd();
+    }
+    public void storeAgent(Agent agent){
+        Tester.getInstance().functionStart();
+
+        Tester.getInstance().functionEnd();
+    }
+
+    public void refreshAgents(){
+        Tester.getInstance().functionStart();
+        Paralyzed paralyzed = new Paralyzed();
+        paralyzed.decreaseTTL();
+        paralyzed.removeEffect(this);
         Tester.getInstance().functionEnd();
     }
 }

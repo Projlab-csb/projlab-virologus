@@ -14,6 +14,19 @@ public class Protection extends Agent {
         Tester.getInstance().functionEnd();
     }
 
+    @Override
+    public void decreaseTTL() {
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionEnd();
+    }
+
+    @Override
+    public void removeEffect(Virologist virologist) {
+        Tester.getInstance().functionStart();
+        virologist.setDefenseStrategy(defense);
+        Tester.getInstance().functionEnd();
+    }
+
     public DefenseStrategyInterface getStrategy(){
         Tester.getInstance().functionStart();
         Tester.getInstance().functionEnd();

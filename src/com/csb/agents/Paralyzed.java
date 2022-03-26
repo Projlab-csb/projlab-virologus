@@ -15,6 +15,20 @@ public class Paralyzed extends Agent {
         virologist.setRoundRunStrategy(this.getStrategy());
         Tester.getInstance().functionEnd();
     }
+
+    @Override
+    public void decreaseTTL() {
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionEnd();
+    }
+
+    @Override
+    public void removeEffect(Virologist virologist) {
+        Tester.getInstance().functionStart();
+        virologist.setRoundRunStrategy(roundRound);
+        Tester.getInstance().functionEnd();
+    }
+
     public RoundRunStrategyInterface getStrategy(){
         Tester.getInstance().functionStart();
         Tester.getInstance().functionEnd();

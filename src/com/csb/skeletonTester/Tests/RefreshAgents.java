@@ -2,15 +2,14 @@ package com.csb.skeletonTester.Tests;
 
 import com.csb.collectables.gencodes.Gencode;
 import com.csb.skeletonTester.Test;
-import com.csb.virologist.*;
+import com.csb.virologist.Virologist;
 
-public class CreateAgent extends Test {
+public class RefreshAgents extends Test {
     public String getName() {
-        return "Create Agent";
+        return "Refresh Agents";
     }
     public void runTest() {
         Virologist virologist = new Virologist();
-        Gencode genCode = new Gencode();
-        virologist.createAgent(genCode);
+        virologist.refreshAgents();
     }
 }
