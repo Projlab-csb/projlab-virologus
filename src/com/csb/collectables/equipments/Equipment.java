@@ -8,4 +8,6 @@ public abstract class Equipment implements Collectable {
     public abstract void applyEffect(Virologist virologist);
 
     public abstract void removeEffect(Virologist virologist);
+
+    public abstract void discard(Virologist virologist);
 }

@@ -9,16 +9,26 @@ public class Gloves extends Equipment implements DefenseStrategyInterface {
 
     @Override
     public void defense() {
-        System.out.println("Gloves custom implementation of defend()");
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionEnd();
     }
 
     public void applyEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
+        defense();
         Tester.getInstance().functionEnd();
     }
 
     public void removeEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
+        defense();
+        Tester.getInstance().functionEnd();
+    }
+
+    @Override
+    public void discard(Virologist virologist) {
+        Tester.getInstance().functionStart();
+        removeEffect(virologist);
         Tester.getInstance().functionEnd();
     }
 

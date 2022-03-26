@@ -9,14 +9,14 @@ public class Bag extends Equipment {
 
     public void applyEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
-        virologist.setInventorySize(virologist.getInventorySize() + extraInventorySize);
+        virologist.setInventorySize(virologist.getInventorySize() + getExtraInventorySize());
         Tester.getInstance().functionEnd();
     }
 
     @Override
     public void removeEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
-        virologist.setInventorySize(virologist.getInventorySize() - extraInventorySize);
+        virologist.setInventorySize(virologist.getInventorySize() - getExtraInventorySize());
         Tester.getInstance().functionEnd();
     }
 
@@ -25,5 +25,17 @@ public class Bag extends Equipment {
         Tester.getInstance().functionStart();
         applyEffect(virologist);
         Tester.getInstance().functionEnd();
+    }
+
+    public void discard(Virologist virologist) {
+        Tester.getInstance().functionStart();
+        removeEffect(virologist);
+        Tester.getInstance().functionEnd();
+    }
+
+    private int getExtraInventorySize() {
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionEnd();
+        return extraInventorySize;
     }
 }
