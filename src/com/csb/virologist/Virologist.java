@@ -1,8 +1,6 @@
 package com.csb.virologist;
 
-import com.csb.agents.Agent;
-import com.csb.agents.Forget;
-import com.csb.agents.Paralyzed;
+import com.csb.agents.*;
 import com.csb.collectables.Collectable;
 import com.csb.collectables.gencodes.Gencode;
 import com.csb.fields.Field;
@@ -12,6 +10,8 @@ import com.csb.strategies.MoveStrategyInterface;
 import com.csb.strategies.RoundRunStrategyInterface;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Virologist {
 
@@ -19,6 +19,7 @@ public class Virologist {
     private RoundRunStrategyInterface roundRunStrategy;
     private MoveStrategyInterface moveStrategy;
     private int inventorySize;
+    private List<Agent> agentlist = Arrays.asList(new Paralyzed(), new Protection(), new VitusDance());
 
     public Virologist() {
         inventorySize = 0;
@@ -90,15 +91,15 @@ public class Virologist {
     }
     public void storeAgent(Agent agent){
         Tester.getInstance().functionStart();
-
         Tester.getInstance().functionEnd();
     }
 
     public void refreshAgents(){
         Tester.getInstance().functionStart();
-        Paralyzed paralyzed = new Paralyzed();
-        paralyzed.decreaseTTL();
-        paralyzed.removeEffect(this);
+        for(Agent agent: agentlist){
+            agent.decreaseTTL();
+            agent.removeEffect(this);
+        }
         Tester.getInstance().functionEnd();
     }
 }
