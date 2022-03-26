@@ -14,11 +14,13 @@ public class Gloves extends Equipment implements DefenseStrategyInterface {
 
     public void applyEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
+        virologist.setDefenseStrategy(this);
         Tester.getInstance().functionEnd();
     }
 
     public void removeEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
+        virologist.setDefenseStrategy(this);
         Tester.getInstance().functionEnd();
     }
 
@@ -26,6 +28,13 @@ public class Gloves extends Equipment implements DefenseStrategyInterface {
     public void collectBy(Virologist virologist) {
         Tester.getInstance().functionStart();
         applyEffect(virologist);
+        Tester.getInstance().functionEnd();
+    }
+
+    @Override
+    public void discard(Virologist virologist) {
+        Tester.getInstance().functionStart();
+        removeEffect(virologist);
         Tester.getInstance().functionEnd();
     }
 }

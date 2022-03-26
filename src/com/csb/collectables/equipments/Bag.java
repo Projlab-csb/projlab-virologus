@@ -26,4 +26,9 @@ public class Bag extends Equipment {
         applyEffect(virologist);
         Tester.getInstance().functionEnd();
     }
+
+    @Override
+    public void discard(Virologist virologist) {
+        removeEffect(virologist);
+    }
 }

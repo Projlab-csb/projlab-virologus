@@ -1,3 +1,10 @@
 package com.csb.strategies;
 
-public interface RoundRunStrategyInterface {}
+import com.csb.collectables.Collectable;
+import com.csb.virologist.Virologist;
+
+public interface RoundRunStrategyInterface {
+    public Collectable handleSteal(Collectable coll, Virologist robberVirologist, Virologist targetVirologist);
+    public void RoundRun();
+
+}
