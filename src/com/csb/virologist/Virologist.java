@@ -63,12 +63,10 @@ public class Virologist {
 
     public void collect(Field field) {
         Tester.getInstance().functionStart();
-
         ArrayList<Collectable> collectables = field.getCollectable();
         if (collectables != null) {
             collectables.get(0).collectBy(this);
         }
-
         Tester.getInstance().functionEnd();
     }
     public void useAgent(Agent agent, Virologist targetVirologist) {
@@ -150,8 +148,6 @@ public class Virologist {
     public void discard(Collectable coll){
         coll.discard(this);
     };
-
-
 
 
     public void createAgent(Gencode genCode){

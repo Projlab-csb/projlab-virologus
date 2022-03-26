@@ -16,10 +16,10 @@ public class Gencode implements Collectable {
     private Agent agent;
 
 
-    public Gencode(Agent agent, int requriedAmino, int requriedNucleic){
-        producedAgent=agent;
-        requriedAminoAcid=requriedAmino;
-        requriedNucleicAcid=requriedNucleic;
+    public Gencode(Agent agent, AminoAcid requriedAmino, NucleicAcid requriedNucleic){
+        agent=agent;
+        requiredAminoAcid=requriedAmino;
+        requiredNucleicAcid=requriedNucleic;
 
     }
 

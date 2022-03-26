@@ -5,12 +5,12 @@ import com.csb.strategies.DefenseStrategyInterface;
 import com.csb.strategies.RoundRunStrategyInterface;
 import com.csb.virologist.Virologist;
 
-public class Protection extends Agent {
+public class Protection extends Agent implements DefenseStrategyInterface {
 
-    private DefenseStrategyInterface defense;
+
     public void applyEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
-        virologist.setDefenseStrategy(this.getStrategy());
+        virologist.setDefenseStrategy(this);
         Tester.getInstance().functionEnd();
     }
 
@@ -23,13 +23,14 @@ public class Protection extends Agent {
     @Override
     public void removeEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
-        virologist.setDefenseStrategy(defense);
+        virologist.setDefenseStrategy(this);
         Tester.getInstance().functionEnd();
     }
 
-    public DefenseStrategyInterface getStrategy(){
-        Tester.getInstance().functionStart();
-        Tester.getInstance().functionEnd();
-        return defense;
+
+
+    @Override
+    public void defense() {
+
     }
 }
