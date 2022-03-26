@@ -2,8 +2,18 @@ package com.csb.collectables.matters;
 
 import com.csb.collectables.Collectable;
 
+
+/**
+ * Abstact class, what describes the matter
+ */
 public abstract class Matter implements Collectable {
+
     private int amount;
+
+    /**
+     * Constructors with or without parameter
+     * the amount -1 means infinite amount
+     */
     public Matter(){
         amount=-1;
     };
@@ -11,6 +21,10 @@ public abstract class Matter implements Collectable {
         amount=n;
     };
 
+
+    /**
+     * Getters and setters for the amount variable
+     */
     public int getAmount() {
         return amount;
     }
