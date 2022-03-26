@@ -12,6 +12,6 @@ public class DiscardGloves extends Test {
     public void runTest() {
         Gloves gloves = new Gloves();
         Virologist virologist = new Virologist();
-        virologist.discard(virologist, gloves);
+        virologist.discard(gloves);
     }
 }

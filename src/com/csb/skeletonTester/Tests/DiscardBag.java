@@ -11,6 +11,6 @@ public class DiscardBag extends Test {
     public void runTest() {
         Bag bag = new Bag();
         Virologist virologist = new Virologist();
-        virologist.discard(virologist, bag);
+        virologist.discard(bag);
     }
 }

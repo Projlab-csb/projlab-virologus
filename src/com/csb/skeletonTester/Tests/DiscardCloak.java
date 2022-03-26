@@ -12,6 +12,6 @@ public class DiscardCloak extends Test {
     public void runTest() {
         Cloak cloak = new Cloak();
         Virologist virologist = new Virologist();
-        virologist.discard(virologist, cloak);
+        virologist.discard(cloak);
     }
 }

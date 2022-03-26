@@ -7,7 +7,7 @@ public class Forget extends Agent {
 
     public void applyEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
-        virologist.setAgents();
+        //kellirni valamit
         Tester.getInstance().functionEnd();
     }
 
