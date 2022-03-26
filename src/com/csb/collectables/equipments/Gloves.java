@@ -24,17 +24,5 @@ public class Gloves extends Equipment implements DefenseStrategyInterface {
         Tester.getInstance().functionEnd();
     }
 
-    @Override
-    public void collectBy(Virologist virologist) {
-        Tester.getInstance().functionStart();
-        applyEffect(virologist);
-        Tester.getInstance().functionEnd();
-    }
 
-    @Override
-    public void discard(Virologist virologist) {
-        Tester.getInstance().functionStart();
-        removeEffect(virologist);
-        Tester.getInstance().functionEnd();
-    }
 }

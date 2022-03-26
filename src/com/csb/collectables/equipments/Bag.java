@@ -20,19 +20,6 @@ public class Bag extends Equipment {
         Tester.getInstance().functionEnd();
     }
 
-    @Override
-    public void collectBy(Virologist virologist) {
-        Tester.getInstance().functionStart();
-        applyEffect(virologist);
-        Tester.getInstance().functionEnd();
-    }
-
-    public void discard(Virologist virologist) {
-        Tester.getInstance().functionStart();
-        removeEffect(virologist);
-        Tester.getInstance().functionEnd();
-    }
-
     private int getExtraInventorySize() {
         Tester.getInstance().functionStart();
         Tester.getInstance().functionEnd();

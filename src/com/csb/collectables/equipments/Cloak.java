@@ -8,7 +8,7 @@ public class Cloak extends Equipment implements DefenseStrategyInterface {
 
     public void applyEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
-        virologist.setDefenseStrategy(this);
+        virologist.setDefenseStrategy(virologist.getDefaultDefenseStrategy());
         Tester.getInstance().functionEnd();
     }
 
@@ -16,18 +16,6 @@ public class Cloak extends Equipment implements DefenseStrategyInterface {
         Tester.getInstance().functionStart();
         virologist.setDefenseStrategy(this);
         Tester.getInstance().functionEnd();
-    }
-
-    @Override
-    public void collectBy(Virologist virologist) {
-        Tester.getInstance().functionStart();
-        applyEffect(virologist);
-        Tester.getInstance().functionEnd();
-    }
-
-    @Override
-    public void discard(Virologist virologist) {
-
     }
 
     @Override

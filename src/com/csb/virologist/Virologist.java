@@ -35,6 +35,7 @@ public class Virologist {
     private NucleicAcid nucleicAcidStock;
     private ArrayList<Gencode> gencodes;
     private ArrayList<Agent> agentlist;
+    private ArrayList<Equipment> equipments;
 
     public Virologist() {
         inventorySize = 0;
@@ -47,6 +48,7 @@ public class Virologist {
         defenseStrategy=defaultDefenseStrategy;
         roundRunStrategy=defaultRoundRunStrategy;
         moveStrategy=defaultMoveStrategy;
+        equipments=new ArrayList<Equipment>(3);
 
     }
 
@@ -173,4 +175,27 @@ public class Virologist {
         this.agentlist=agentlist;
     }
 
+    public DefenseStrategyInterface getDefaultDefenseStrategy(){
+        return defaultDefenseStrategy;
+    }
+
+    public MoveStrategyInterface getDefaultMoveStrategy(){
+        return defaultMoveStrategy;
+    }
+
+    public RoundRunStrategyInterface getDefaultRoundRunStrategy(){
+        return defaultRoundRunStrategy;
+    }
+
+    public ArrayList<Equipment> getEquipments() {
+        return equipments;
+    }
+
+    public void addEquipment(Equipment e){
+        equipments.add(e);
+    };
+
+    public void removeEquipment(Equipment e){
+        equipments.remove(e);
+    };
 }

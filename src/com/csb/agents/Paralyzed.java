@@ -31,7 +31,10 @@ public class Paralyzed extends Agent implements RoundRunStrategyInterface {
 
     @Override
     public Collectable handleSteal(Collectable coll, Virologist robberVirologist, Virologist targetVirologist) {
-        return null;
+        Tester.getInstance().functionStart();
+        coll.discard(targetVirologist);
+        Tester.getInstance().functionEnd();
+        return coll;
     }
 
     @Override
