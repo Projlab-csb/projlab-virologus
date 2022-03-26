@@ -5,7 +5,7 @@ import com.csb.skeletonTester.Tester;
 import com.csb.virologist.Virologist;
 
 public class DefaultRoundRun implements RoundRunStrategyInterface{
-    public Collectable handleSteal(Collectable coll, Virologist robberVirologist, Virologist targetVirologist){
+    public Collectable handleSteal(Collectable coll,Virologist targetVirologist){
         Tester.getInstance().functionStart();
         Tester.getInstance().functionEnd();
         return null;
