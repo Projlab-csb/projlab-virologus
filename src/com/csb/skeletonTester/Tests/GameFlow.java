@@ -14,13 +14,12 @@ public class GameFlow extends Test {
 
     @Override
     public void runTest() {
-        GameController gameController = new GameController();
-        gameController.initGame();
+        GameController.getInstance().initGame();
 
         boolean isSomeoneWon = false;
 
         while (!isSomeoneWon) {
-            for (Virologist virologist : gameController.getVirologists()) {
+            for (Virologist virologist : GameController.getInstance().getVirologists()) {
                 virologist.startOfTurn();
                 if (UserInputHandler.getUserInputBoolean("Did " + virologist + " won the game?")) {
                     isSomeoneWon = true;

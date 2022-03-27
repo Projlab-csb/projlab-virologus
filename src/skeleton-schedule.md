@@ -14,7 +14,7 @@
 ### Use Case diagrammok:
 
 ### Bálint
-- [ ] GameFlow
+- [X] GameFlow
 - [ ] RoundFlow - RoundRunStrategy Default
 - [ ] RoundFlow Paralyzed - RoundRunStrategy Paralyzed
 - [ ] Move Default - MoveStrategy Default
