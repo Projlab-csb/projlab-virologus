@@ -19,26 +19,26 @@
 - [X] RoundFlow Paralyzed - RoundRunStrategy Paralyzed
 - [ ] Move Default - MoveStrategy Default
 - [ ] Move Vitus - MoveStrategy VitusDance
-- [ ] Init Game
+- [X] Init Game
 ---
 ### Olivér
-- [ ] Defense Default - DefenseStrategy Default
-- [ ] Defense Gloves - DefenseStrategy Gloves
-- [ ] Defense Cloak - DefenseStrategy Cloak
-- [ ] Defense Protection - DefenseStrategy Protection
+- [X] Defense Default - DefenseStrategy Default
+- [X] Defense Gloves - DefenseStrategy Gloves
+- [X] Defense Cloak - DefenseStrategy Cloak
+- [X] Defense Protection - DefenseStrategy Protection
 ---
 ### Gofri
-- [ ] Create Agent
-- [ ] Use Agent
-- [ ] Refresh Agents
+- [X] Create Agent
+- [X] Use Agent
+- [X] Refresh Agents
 ---
 ###Zoli
-- [ ] Steal Matter
-- [ ] Discard Matter
+- [X] Steal Matter
+- [X] Discard Matter
 ---
 ###Zoli
-- [ ] Steal Equipment
-- [ ] Discard Equipment
+- [X] Steal Equipment
+- [X] Discard Equipment
 - [ ] Collect All things
 ---
 ###Barni

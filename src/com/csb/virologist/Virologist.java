@@ -68,6 +68,11 @@ public class Virologist {
         Tester.getInstance().functionEnd();
     }
 
+    /**
+     * When the virologist gets attacked, this function handles it
+     * @param agent the agent that the virologist is attacked with
+     * @param attackerVirologist the virologist, who initiated an attack
+     */
     public void attack(Agent agent, Virologist attackerVirologist) {
         Tester.getInstance().functionStart();
         defenseStrategy.get(defenseStrategy.size() - 1).defense(agent, this, attackerVirologist);
@@ -75,7 +80,7 @@ public class Virologist {
     }
 
     /**
-     * Handles one turn of the virologist,
+     * Handles one turn of the virologist
      */
     public void startOfTurn() {
         Tester.getInstance().functionStart();
@@ -87,7 +92,7 @@ public class Virologist {
     }
 
     /**
-     *The virologist get the collectable item from the Filed where he stands, and one of the findings (int this example the first one)
+     * The virologist get the collectable item from the Filed where he stands, and one of the findings (int this example the first one)
      * @param field - the field, where the Viologist make research work after collectable items
      */
     public void collect(Field field) {
@@ -99,6 +104,12 @@ public class Virologist {
         Tester.getInstance().functionEnd();
     }
 
+    /**
+     * The virologist uses a chosen agent on a chosen virologist, this can either be another one or themselves
+     * If the user virologist has gloves on, he takes them down, to avoid a ping-pong like effect when the 2 virologists have gloves on
+     * @param agent the agent to be used by the virologist
+     * @param targetVirologist the virologist that the agent would be applied on
+     */
     public void useAgent(Agent agent, Virologist targetVirologist) {
         Tester.getInstance().functionStart();
         Gloves g = new Gloves();
@@ -239,6 +250,10 @@ public class Virologist {
         coll.discard(this);
     }
 
+    /**
+     * Create an agent if the virologist has enough materials (amino acid and nucleic acid)
+     * @param genCode
+     */
     public void createAgent(Gencode genCode) {
         Tester.getInstance().functionStart();
         genCode.getRequiredNucleicAcid();
@@ -247,11 +262,18 @@ public class Virologist {
         Tester.getInstance().functionEnd();
     }
 
+    /**
+     * Adds an agent to the current agents of the virologist
+     * @param agent the agent to be put in the bag
+     */
     public void storeAgent(Agent agent) {
         Tester.getInstance().functionStart();
         Tester.getInstance().functionEnd();
     }
 
+    /**
+     * Decrease the remaining time of the applied agents on the virologist
+     */
     public void refreshAgents() {
         Tester.getInstance().functionStart();
         for (Agent agent : agentlist) {
@@ -332,18 +354,30 @@ public class Virologist {
         Tester.getInstance().functionEnd();
     }
 
+    /**
+     * Removes the defenseStrategy given in the parameters
+     * @param defenseStrategy
+     */
     public void removeDefenseStrategy(DefenseStrategyInterface defenseStrategy) {
         Tester.getInstance().functionStart();
         this.defenseStrategy.remove(defenseStrategy);
         Tester.getInstance().functionEnd();
     }
 
+    /**
+     * Removes the moveStrategy given in the parameters
+     * @param moveStrategyInterface
+     */
     public void removeMoveStrategy(MoveStrategyInterface moveStrategyInterface) {
         Tester.getInstance().functionStart();
         this.moveStrategy.remove(moveStrategyInterface);
         Tester.getInstance().functionEnd();
     }
 
+    /**
+     * Removes the roundRunStrategy given in the parameters
+     * @param roundRunStrategyInterface
+     */
     public void removeRoundRunStrategy(RoundRunStrategyInterface roundRunStrategyInterface) {
         Tester.getInstance().functionStart();
         this.roundRunStrategy.remove(roundRunStrategyInterface);

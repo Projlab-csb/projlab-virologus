@@ -10,6 +10,10 @@ public abstract class Equipment implements Collectable {
 
     public abstract void removeEffect(Virologist virologist);
 
+    /**
+     * Handles the event when a virologist obtains this equipment
+     * @param virologist the collector virologist
+     */
     public void collectBy(Virologist virologist) {
         Tester.getInstance().functionStart();
         virologist.addEquipment(this);
@@ -17,6 +21,10 @@ public abstract class Equipment implements Collectable {
         Tester.getInstance().functionEnd();
     }
 
+    /**
+     * Handles the event when a virologist discards this equipment
+     * @param virologist the virologist that discards
+     */
     public void discard(Virologist virologist) {
         Tester.getInstance().functionStart();
         removeEffect(virologist);

@@ -8,7 +8,7 @@ import com.csb.virologist.Virologist;
 public class Paralyzed extends Agent implements RoundRunStrategyInterface {
 
     /**
-     * apply the Paralyzed effect on a virologist, now the virologist cant do anything
+     * Apply the Paralyzed effect on a virologist, now the virologist cant do anything
      */
     public void applyEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
@@ -17,7 +17,7 @@ public class Paralyzed extends Agent implements RoundRunStrategyInterface {
     }
 
     /**
-     * decrease the time to live of the agent, when it reaches zero the agent will be removed
+     * Decrease the time to live of the agent, when it reaches zero the agent will be removed
      */
     @Override
     public void decreaseTTL(Virologist virologist) {
@@ -31,7 +31,7 @@ public class Paralyzed extends Agent implements RoundRunStrategyInterface {
     }
 
     /**
-     * remove the Paralyzed effect, now the virologist can do things
+     * Remove the Paralyzed effect, now the virologist can do things
      */
     @Override
     public void removeEffect(Virologist virologist) {
@@ -41,7 +41,7 @@ public class Paralyzed extends Agent implements RoundRunStrategyInterface {
     }
 
     /**
-     * other virologist steal collectables from the paralyed virologist
+     * Other virologist steal collectables from the paralyed virologist
      */
     @Override
     public Collectable handleSteal(Collectable coll, Virologist targetVirologist) {
@@ -52,7 +52,7 @@ public class Paralyzed extends Agent implements RoundRunStrategyInterface {
     }
 
     /**
-     * this function handles the virologist's round(can or can't do things)
+     * This function handles the virologist's round(can or can't do things)
      */
     @Override
     public void RoundRun(Virologist virologist) {

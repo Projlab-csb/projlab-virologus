@@ -7,7 +7,6 @@ import com.csb.virologist.Virologist;
 
 /**
  * The class, what describe an average Round of a virologist, and the way it handles the robbing attempts
- *
  */
 public class DefaultRoundRun implements RoundRunStrategyInterface {
 
@@ -24,6 +23,10 @@ public class DefaultRoundRun implements RoundRunStrategyInterface {
         return null;
     }
 
+    /**
+     * Handles the round of the virologist by managing the possible actions issued by the player who controls the virologist
+     * @param virologist the one whose round is being handled
+     */
     @Override
     public void RoundRun(Virologist virologist) {
         Tester.getInstance().functionStart();

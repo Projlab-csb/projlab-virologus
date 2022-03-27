@@ -12,7 +12,7 @@ import com.csb.virologist.Virologist;
 public class Cloak extends Equipment implements DefenseStrategyInterface {
 
     /**
-     *apply and remove gloves effect on the virologist's defense strategy
+     * Apply and remove gloves effect on the virologist's defense strategy
      */
     public void applyEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
@@ -27,7 +27,7 @@ public class Cloak extends Equipment implements DefenseStrategyInterface {
     }
 
     /**
-     * the defense function for the defending strategy
+     * The defense function for the defending strategy
      * @param agent - agent is used by the attacker
      * @param attackedVirologist - the virologist, who uses the agent
      * @param attackerVirologist - the attacked virologist
