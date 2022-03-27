@@ -25,6 +25,8 @@ public class Test implements TestInterface {
      */
     @Override
     public void run() {
+        //At the start of every test turn on the logging system, just in case it was turned off.
+        Tester.getInstance().turnOnLogging();
         System.out.println("\n------ [ " + getName() + " ] Test started ------");
         runTest();
         System.out.println("------ [ " + getName() + " ] Test finished ------\n");

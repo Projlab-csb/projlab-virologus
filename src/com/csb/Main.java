@@ -4,6 +4,7 @@ import static com.csb.utils.ClassLoader.findAllClassesUsingClassLoader;
 
 import com.csb.skeletonTester.TestInterface;
 import com.csb.skeletonTester.Tester;
+import java.text.ParseException;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -61,8 +62,10 @@ public class Main {
                         "Input is out of range, enter and integer between (-1 and " + (Tester.getInstance().getTestList().size() - 1) + ")"
                     );
                 }
-            } catch (Exception e) {
+            } catch (NumberFormatException e) {
                 System.out.println("Invalid input (try to enter a number): " + e.getMessage());
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
