@@ -329,9 +329,9 @@ public class Virologist {
         Tester.getInstance().functionEnd();
     }
 
-    public void removeDefenseStrategy(DefenseStrategyInterface defaultDefenseStrategy) {
+    public void removeDefenseStrategy(DefenseStrategyInterface defenseStrategy) {
         Tester.getInstance().functionStart();
-        this.defenseStrategy.remove(defaultDefenseStrategy);
+        this.defenseStrategy.remove(defenseStrategy);
         Tester.getInstance().functionEnd();
     }
 

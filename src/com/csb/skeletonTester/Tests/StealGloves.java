@@ -23,6 +23,7 @@ public class StealGloves extends Test {
     public void runTest() {
 
         Tester.getInstance().turnOffLogging();
+
         //Set the envirement for the test
         Gloves gloves = new Gloves();
         Virologist robbervirologist = new Virologist();
