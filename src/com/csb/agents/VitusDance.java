@@ -43,7 +43,7 @@ public class VitusDance extends Agent implements MoveStrategyInterface {
      * this function handles the virologist's move(move random directions or not)
      */
     @Override
-    public void move() {
+    public void move(Virologist virologist, int nextTileIndex) {
         Tester.getInstance().functionStart();
 
         Tester.getInstance().functionEnd();

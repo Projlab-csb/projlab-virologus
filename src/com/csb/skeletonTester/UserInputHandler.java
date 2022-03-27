@@ -28,6 +28,21 @@ public class UserInputHandler {
         }
     }
 
+    public static int getUserInputInt(String prompt, int min, int max) {
+        while (true) {
+            System.out.print("[UserInput Int] " + prompt + ": ");
+            int input = 0;
+            try {
+                input = Integer.parseInt(br.readLine());
+            } catch (Exception e) {
+                System.out.println("Invalid input. Please try again.");
+            }
+            if (input >= min && input <= max) {
+                return input;
+            }
+        }
+    }
+
     /**
      * Ask the user for a String.
      * @param prompt The prompt to display to the user.

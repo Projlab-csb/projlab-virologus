@@ -36,11 +36,13 @@ public class Virologist {
     private ArrayList<Gencode> gencodes;
     private ArrayList<Agent> agentlist;
     private final ArrayList<Equipment> equipments;
+    private Field field;
 
     /**
      * In the constructor of the Virologist we can implement a variables, set a strategies to default, and set the starting size of the inventory
      */
     public Virologist() {
+        Tester.getInstance().turnOffLogging();
         inventorySize = 30;
         nucleicAcidStock = new NucleicAcid(0);
         aminoAcidStock = new AminoAcid(0);
@@ -56,6 +58,7 @@ public class Virologist {
         roundRunStrategy.add(defaultRoundRunStrategy);
         moveStrategy.add(defaultMoveStrategy);
         equipments = new ArrayList<Equipment>(3);
+        Tester.getInstance().turnOnLogging();
     }
 
     /**
@@ -158,7 +161,6 @@ public class Virologist {
         Tester.getInstance().functionStart();
         Tester.getInstance().functionEnd();
         return aminoAcidStock.getAmount();
-
     }
 
     /**
@@ -168,7 +170,6 @@ public class Virologist {
         Tester.getInstance().functionStart();
         aminoAcidStock.setAmount(aminoAcid);
         Tester.getInstance().functionEnd();
-
     }
 
     /**
@@ -187,7 +188,6 @@ public class Virologist {
         Tester.getInstance().functionStart();
         nucleicAcidStock.setAmount(nucleicAcid);
         Tester.getInstance().functionEnd();
-
     }
 
     /**
@@ -328,7 +328,7 @@ public class Virologist {
      */
     public void move(int nextTileIndex) {
         Tester.getInstance().functionStart();
-        //TODO: Handle move
+        this.moveStrategy.get(moveStrategy.size() - 1).move(this, nextTileIndex);
         Tester.getInstance().functionEnd();
     }
 
@@ -348,5 +348,17 @@ public class Virologist {
         Tester.getInstance().functionStart();
         this.roundRunStrategy.remove(roundRunStrategyInterface);
         Tester.getInstance().functionEnd();
+    }
+
+    public void setField(Field field) {
+        Tester.getInstance().functionStart();
+        this.field = field;
+        Tester.getInstance().functionEnd();
+    }
+
+    public Field getField() {
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionStart();
+        return field;
     }
 }

@@ -29,17 +29,17 @@
 ---
 ### Gofri
 - [ ] Create Agent
-- [ ] Use Agent
+- [x] Use Agent
 - [ ] Refresh Agents
 ---
 ###Zoli
-- [ ] Steal Matter
-- [ ] Discard Matter
+- [x] Steal Matter
+- [x] Discard Matter
 ---
 ###Zoli
-- [ ] Steal Equipment
-- [ ] Discard Equipment
-- [ ] Collect All things
+- [x] Steal Equipment
+- [x] Discard Equipment
+- [x] Collect All things
 ---
 ###Barni
 - [ ] Forget Apply Effect
