@@ -71,9 +71,7 @@ public class Virologist {
 
     public void attack(Agent agent, Virologist attackerVirologist) {
         Tester.getInstance().functionStart();
-        if(defenseStrategy.size()>1) {
-            defenseStrategy.get(1).defense(agent, this, attackerVirologist);
-        }
+        defenseStrategy.get(defenseStrategy.size()-1).defense(agent, this, attackerVirologist);
         Tester.getInstance().functionEnd();
     }
 
@@ -82,9 +80,7 @@ public class Virologist {
      */
     public void startOfTurn() {
         Tester.getInstance().functionStart();
-        if(roundRunStrategy.size()>1) {
-            this.roundRunStrategy.get(1).RoundRun();
-        }
+        this.roundRunStrategy.get(roundRunStrategy.size()-1).RoundRun();
         Tester.getInstance().functionEnd();
     }
 
@@ -313,11 +309,7 @@ public class Virologist {
      * @return
      */
     public Collectable handleSteal(Collectable coll) {
-        if(roundRunStrategy.size()>1) {
-            return this.roundRunStrategy.get(1).handleSteal(coll, this);
-        }else{
-            return this.roundRunStrategy.get(0).handleSteal(coll, this);
-        }
+        return this.roundRunStrategy.get(roundRunStrategy.size()-1).handleSteal(coll, this);
     }
 
     public void setAgent() {
