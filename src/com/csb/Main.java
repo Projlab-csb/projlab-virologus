@@ -44,23 +44,28 @@ public class Main {
 
             //For all tests print an id, and the name of the test
             System.out.println("-1:\tExit");
-            for (int i = 0; i < Tester.getInstance().getTestList().size(); i++) {
+            int testCount = Tester.getInstance().getTestList().size();
+            int maxUserInput = testCount;
+            for (int i = 0; i < testCount; i++) {
                 System.out.println(i + ":\t" + Tester.getInstance().getTestList().get(i).getName());
             }
-            System.out.print("Enter a number between (-1 and " + (Tester.getInstance().getTestList().size() - 1) + "): ");
+            System.out.println("---------------------------");
+            System.out.println(testCount + ": Run all tests\n");
+            System.out.print("Enter a number between (-1 and " + maxUserInput + "): ");
 
             try {
                 //Get user input
                 userInput = Integer.parseInt(scanner.nextLine());
                 if (userInput == -1) {
                     System.out.println("Exiting...");
-                } else if (userInput >= 0 && userInput < Tester.getInstance().getTestList().size()) {
+                } else if (userInput == maxUserInput) {
+                    //Run all tests
+                    Tester.getInstance().getTestList().forEach(TestInterface::run);
+                } else if (userInput >= 0 && userInput < testCount) {
                     //Test if the user input is in the valid range and if so run the test
                     Tester.getInstance().getTestList().get(userInput).run();
                 } else {
-                    System.out.println(
-                        "Input is out of range, enter and integer between (-1 and " + (Tester.getInstance().getTestList().size() - 1) + ")"
-                    );
+                    System.out.println("Input is out of range, enter and integer between (-1 and " + maxUserInput + ")");
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input (try to enter a number): " + e.getMessage());

@@ -116,11 +116,16 @@ public class Virologist {
     public void useAgent(Agent agent, Virologist targetVirologist) {
         Tester.getInstance().functionStart();
         Gloves g = new Gloves();
-        if (defenseStrategy.equals(g)) {
-            g.removeEffect(this);
-            targetVirologist.attack(agent, this);
-            g.applyEffect(this);
-        } else targetVirologist.attack(agent, this);
+
+        //If both virologists have gloves on, we don't use the agent
+        if (
+            defenseStrategy.stream().anyMatch(x -> x.getClass().equals(Gloves.class)) &&
+            targetVirologist.defenseStrategy.stream().anyMatch(x -> x.getClass().equals(Gloves.class))
+        ) {
+            return;
+        }
+
+        targetVirologist.attack(agent, this);
 
         Tester.getInstance().functionEnd();
     }
