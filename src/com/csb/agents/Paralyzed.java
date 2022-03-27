@@ -35,7 +35,7 @@ public class Paralyzed extends Agent implements RoundRunStrategyInterface {
     @Override
     public void removeEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
-        virologist.setRoundRunStrategy(null);
+        virologist.setRoundRunStrategy(virologist.getDefaultRoundRunStrategy());
         Tester.getInstance().functionEnd();
     }
     /**
@@ -53,6 +53,8 @@ public class Paralyzed extends Agent implements RoundRunStrategyInterface {
      */
     @Override
     public void RoundRun() {
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionEnd();
 
     }
 }
