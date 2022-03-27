@@ -2,9 +2,7 @@ package com.csb.fields;
 
 import com.csb.collectables.Collectable;
 import com.csb.skeletonTester.Tester;
-
 import java.util.ArrayList;
-
 
 /**
  * The class, what describes a laboratory.

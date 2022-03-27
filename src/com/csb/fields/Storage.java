@@ -2,7 +2,6 @@ package com.csb.fields;
 
 import com.csb.collectables.Collectable;
 import com.csb.skeletonTester.Tester;
-
 import java.util.ArrayList;
 
 /**
@@ -20,7 +19,6 @@ public class Storage extends Field {
     public Storage(ArrayList<Collectable> matters) {
         this.matters = matters;
     }
-
 
     /**
      * @return the items (matters) what a Virologist can learn from the Storage

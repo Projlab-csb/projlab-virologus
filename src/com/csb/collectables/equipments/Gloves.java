@@ -6,12 +6,10 @@ import com.csb.skeletonTester.Tester;
 import com.csb.strategies.DefenseStrategyInterface;
 import com.csb.virologist.Virologist;
 
-
 /**
  * Class for the Gloves objects. With Gloves the virologist instead of suffer the agents effect, attacks back the during an attack
  */
 public class Gloves extends Equipment implements DefenseStrategyInterface {
-
 
     /**
      * the defense function for the defending strategy
@@ -20,12 +18,11 @@ public class Gloves extends Equipment implements DefenseStrategyInterface {
      * @param attackerVirologist - the attacked virologist
      */
     @Override
-    public void defense(Agent agent,Virologist attackedVirologist, Virologist attackerVirologist) {
+    public void defense(Agent agent, Virologist attackedVirologist, Virologist attackerVirologist) {
         Tester.getInstance().functionStart();
-        attackedVirologist.useAgent(agent,attackerVirologist);
+        attackedVirologist.useAgent(agent, attackerVirologist);
         Tester.getInstance().functionEnd();
     }
-
 
     /**
      *apply and remove gloves effect on the virologist's defense strategy
@@ -41,6 +38,4 @@ public class Gloves extends Equipment implements DefenseStrategyInterface {
         virologist.removeDefenseStrategy(this);
         Tester.getInstance().functionEnd();
     }
-
-
 }
