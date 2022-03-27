@@ -65,7 +65,7 @@ public class Virologist {
      */
     public void setDefenseStrategy(DefenseStrategyInterface defenseStrategy) {
         Tester.getInstance().functionStart();
-        if(defenseStrategy != null) {
+        if (defenseStrategy != null) {
             this.defenseStrategy = defenseStrategy;
         }
         Tester.getInstance().functionEnd();
@@ -119,7 +119,7 @@ public class Virologist {
      */
     public void setRoundRunStrategy(RoundRunStrategyInterface roundRunStrategy) {
         Tester.getInstance().functionStart();
-        if(roundRunStrategy!=null) {
+        if (roundRunStrategy != null) {
             this.roundRunStrategy = roundRunStrategy;
         }
         Tester.getInstance().functionEnd();
@@ -131,7 +131,7 @@ public class Virologist {
      */
     public void setmoveStrategy(MoveStrategyInterface moveStrategy) {
         Tester.getInstance().functionStart();
-        if(moveStrategy!=null) {
+        if (moveStrategy != null) {
             this.moveStrategy = moveStrategy;
         }
         Tester.getInstance().functionEnd();
