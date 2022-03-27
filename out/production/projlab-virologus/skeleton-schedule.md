@@ -23,9 +23,9 @@
 ---
 ### Olivér
 - [X] Defense Default - DefenseStrategy Default
-- [ ] Defense Gloves - DefenseStrategy Gloves
-- [ ] Defense Cloak - DefenseStrategy Cloak
-- [ ] Defense Protection - DefenseStrategy Protection
+- [X] Defense Gloves - DefenseStrategy Gloves
+- [X] Defense Cloak - DefenseStrategy Cloak
+- [X] Defense Protection - DefenseStrategy Protection
 ---
 ### Gofri
 - [X] Create Agent

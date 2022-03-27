@@ -24,14 +24,10 @@ public class MoveVitus extends Test {
         virologist.setField(new Field());
 
         List<Field> neighbours = virologist.getField().getNeighbors();
-        int randomFieldId = UserInputHandler.getUserInputInt(
-            "What is the random generator output? (1-" + neighbours.size() + ")",
-            1,
-            neighbours.size()
-        );
 
         Tester.getInstance().turnOnLogging();
 
-        virologist.move(randomFieldId - 1);
+        //Here the user input does NOT matter, because the virologist is paralyzed.
+        virologist.move(-1);
     }
 }

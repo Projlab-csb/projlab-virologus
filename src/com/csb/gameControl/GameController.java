@@ -13,7 +13,7 @@ public class GameController {
     private List<Virologist> virologists;
     private Map<Virologist, List<Gencode>> virologistGencodesMap;
 
-    private static GameController _instance = null;
+    private static GameController _instance;
 
     public static GameController getInstance() {
         if (_instance == null) {

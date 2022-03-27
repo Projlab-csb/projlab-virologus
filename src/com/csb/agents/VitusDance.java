@@ -1,8 +1,11 @@
 package com.csb.agents;
 
+import com.csb.fields.Field;
 import com.csb.skeletonTester.Tester;
+import com.csb.skeletonTester.UserInputHandler;
 import com.csb.strategies.MoveStrategyInterface;
 import com.csb.virologist.Virologist;
+import java.util.List;
 
 public class VitusDance extends Agent implements MoveStrategyInterface {
 
@@ -45,7 +48,13 @@ public class VitusDance extends Agent implements MoveStrategyInterface {
     @Override
     public void move(Virologist virologist, int nextTileIndex) {
         Tester.getInstance().functionStart();
-
+        List<Field> neighbours = virologist.getField().getNeighbors();
+        int randomFieldId = UserInputHandler.getUserInputInt(
+            "What is the random generator output? (1-" + neighbours.size() + ")",
+            1,
+            neighbours.size()
+        );
+        virologist.setField(neighbours.get(randomFieldId - 1));
         Tester.getInstance().functionEnd();
     }
 }
