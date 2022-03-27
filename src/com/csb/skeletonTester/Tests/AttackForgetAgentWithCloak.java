@@ -18,7 +18,7 @@ public class AttackForgetAgentWithCloak extends Test {
      */
     public void runTest() {
 
-        //Set the envirement for the test
+        //Set the environment for the test
         Virologist virologist = new Virologist();
         Virologist targetvirologist = new Virologist();
         Cloak c=new Cloak();

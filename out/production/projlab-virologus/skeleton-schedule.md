@@ -22,15 +22,15 @@
 - [X] Init Game
 ---
 ### Olivér
-- [ ] Defense Default - DefenseStrategy Default
+- [X] Defense Default - DefenseStrategy Default
 - [ ] Defense Gloves - DefenseStrategy Gloves
 - [ ] Defense Cloak - DefenseStrategy Cloak
 - [ ] Defense Protection - DefenseStrategy Protection
 ---
 ### Gofri
-- [ ] Create Agent
+- [X] Create Agent
 - [x] Use Agent
-- [ ] Refresh Agents
+- [X] Refresh Agents
 ---
 ###Zoli
 - [x] Steal Matter
@@ -39,23 +39,23 @@
 ###Zoli
 - [x] Steal Equipment
 - [x] Discard Equipment
-- [x] Collect All things
+- [x] Collect All thing
 ---
 ###Barni
-- [ ] Forget Apply Effect
-- [ ] VitusDance Apply Effect
-- [ ] VitusDance Remove Effect
-- [ ] Protection Apply Effect
-- [ ] Protection Remove Effect
-- [ ] Paralyzed Apply Effect
-- [ ] Paralyzed Remove Effect
+- [X] Forget Apply Effect
+- [X] VitusDance Apply Effect
+- [X] VitusDance Remove Effect
+- [X] Protection Apply Effect
+- [X] Protection Remove Effect
+- [X] Paralyzed Apply Effect
+- [X] Paralyzed Remove Effect
 ---
 ###Barni
-- [ ] Bag Apply Effect
-- [ ] Bag Remove Effect
-- [ ] Cloak Apply Effect
-- [ ] Cloak Remove Effect
-- [ ] Gloves Apply Effect
-- [ ] Gloves Remove Effect
+- [X] Bag Apply Effect
+- [X] Bag Remove Effect
+- [X] Cloak Apply Effect
+- [X] Cloak Remove Effect
+- [X] Gloves Apply Effect
+- [X] Gloves Remove Effect
 
 
