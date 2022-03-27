@@ -13,7 +13,16 @@ public class GameController {
     private List<Virologist> virologists;
     private Map<Virologist, List<Gencode>> virologistGencodesMap;
 
-    public GameController() {
+    private static GameController _instance = null;
+
+    public static GameController getInstance() {
+        if (_instance == null) {
+            _instance = new GameController();
+        }
+        return _instance;
+    }
+
+    private GameController() {
         virologists = new ArrayList<>();
         virologistGencodesMap = new java.util.HashMap<>();
     }

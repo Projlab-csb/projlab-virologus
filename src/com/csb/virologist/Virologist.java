@@ -5,21 +5,16 @@ import com.csb.collectables.Collectable;
 import com.csb.collectables.equipments.Equipment;
 import com.csb.collectables.equipments.Gloves;
 import com.csb.collectables.gencodes.Gencode;
-import com.csb.collectables.gencodes.Gencode;
 import com.csb.collectables.matters.AminoAcid;
-import com.csb.collectables.matters.AminoAcid;
-import com.csb.collectables.matters.NucleicAcid;
 import com.csb.collectables.matters.NucleicAcid;
 import com.csb.fields.Field;
+import com.csb.gameControl.GameController;
 import com.csb.skeletonTester.Tester;
 import com.csb.strategies.*;
 import com.csb.strategies.DefenseStrategyInterface;
 import com.csb.strategies.MoveStrategyInterface;
 import com.csb.strategies.RoundRunStrategyInterface;
-import java.awt.image.AreaAveragingScaleFilter;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * This is the Virologist class. The players in the game contol Virologists, so most of the actions can be connected to this class
@@ -81,7 +76,10 @@ public class Virologist {
     public void startOfTurn() {
         Tester.getInstance().functionStart();
 
-        this.roundRunStrategy.RoundRun();
+        this.roundRunStrategy.RoundRun(this);
+
+        GameController.getInstance().reportGencodes(this, this.getGencodes());
+        this.refreshAgents();
 
         Tester.getInstance().functionEnd();
     }
@@ -125,7 +123,7 @@ public class Virologist {
      * This functions sets the move strategy of the virologist
      * @param moveStrategy the move strategy to be set on the virologist, this affects the way he moves
      */
-    public void setmoveStrategy(MoveStrategyInterface moveStrategy) {
+    public void setMoveStrategy(MoveStrategyInterface moveStrategy) {
         Tester.getInstance().functionStart();
         this.moveStrategy = moveStrategy;
         Tester.getInstance().functionEnd();
@@ -249,7 +247,7 @@ public class Virologist {
         Tester.getInstance().functionEnd();
     }
 
-    public void refreshAgents() {
+    private void refreshAgents() {
         Tester.getInstance().functionStart();
         for (Agent agent : agentlist) {
             agent.decreaseTTL(this);
@@ -316,6 +314,16 @@ public class Virologist {
 
     public void setAgent() {
         Tester.getInstance().functionStart();
+        Tester.getInstance().functionEnd();
+    }
+
+    /**
+     * Move the Virologist to a new position
+     * @param nextTileIndex - the index of the new position
+     */
+    public void move(int nextTileIndex) {
+        Tester.getInstance().functionStart();
+        //TODO: Handle move
         Tester.getInstance().functionEnd();
     }
 }

@@ -8,6 +8,6 @@ import com.csb.virologist.Virologist;
  */
 public interface RoundRunStrategyInterface {
     Collectable handleSteal(Collectable coll, Virologist targetVirologist);
-    public void RoundRun();
 
+    public void RoundRun(Virologist virologist);
 }
