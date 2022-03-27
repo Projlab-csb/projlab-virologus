@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 /**
  * This is the Virologist class. The players in the game contol Virologists, so most of the actions can be connected to this class
- *In it's variables we can found the strategies using by the Virologist at a given moment, the default strategies,
+ * In it's variables we can found the strategies using by the Virologist at a given moment, the default strategies,
  * it's Aminoacid and Nucleicacid stock, the equipments used by the virologists, and the Gencodes learned by him, and the Agents made by him.
  */
 
@@ -257,7 +257,7 @@ public class Virologist {
 
     /**
      * Create an agent if the virologist has enough materials (amino acid and nucleic acid)
-     * @param genCode
+     * @param genCode - The Gencode of the agent to be created
      */
     public void createAgent(Gencode genCode) {
         Tester.getInstance().functionStart();
@@ -338,7 +338,7 @@ public class Virologist {
     /**
      * The Virologist handles the robbing attemps based on his (roundrun) strategy
      * @param coll - the item wanted by the robber Virologist
-     * @return
+     * @return - the item, which the robber Virologist has stolen
      */
     public Collectable handleSteal(Collectable coll) {
         return this.roundRunStrategy.get(roundRunStrategy.size() - 1).handleSteal(coll, this);
@@ -361,7 +361,7 @@ public class Virologist {
 
     /**
      * Removes the defenseStrategy given in the parameters
-     * @param defenseStrategy
+     * @param defenseStrategy - the defense strategy to be removed
      */
     public void removeDefenseStrategy(DefenseStrategyInterface defenseStrategy) {
         Tester.getInstance().functionStart();
@@ -371,7 +371,7 @@ public class Virologist {
 
     /**
      * Removes the moveStrategy given in the parameters
-     * @param moveStrategyInterface
+     * @param moveStrategyInterface - the move strategy to be removed
      */
     public void removeMoveStrategy(MoveStrategyInterface moveStrategyInterface) {
         Tester.getInstance().functionStart();
@@ -381,7 +381,7 @@ public class Virologist {
 
     /**
      * Removes the roundRunStrategy given in the parameters
-     * @param roundRunStrategyInterface
+     * @param roundRunStrategyInterface - the roundrun strategy to be removed
      */
     public void removeRoundRunStrategy(RoundRunStrategyInterface roundRunStrategyInterface) {
         Tester.getInstance().functionStart();
@@ -389,6 +389,10 @@ public class Virologist {
         Tester.getInstance().functionEnd();
     }
 
+    /**
+     * Sets the filed the Virologist is on
+     * @param field - the field the Virologist is on
+     */
     public void setField(Field field) {
         Tester.getInstance().functionStart();
         this.field = field;
@@ -396,6 +400,10 @@ public class Virologist {
         Tester.getInstance().functionEnd();
     }
 
+    /**
+     * Gets the Virologist's current field
+     * @return - the Virologist's current field
+     */
     public Field getField() {
         Tester.getInstance().functionStart();
         Tester.getInstance().functionStart();

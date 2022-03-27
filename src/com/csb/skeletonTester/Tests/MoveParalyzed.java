@@ -7,6 +7,9 @@ import com.csb.skeletonTester.UserInputHandler;
 import com.csb.virologist.Virologist;
 import java.util.List;
 
+/**
+ * Tests the move, when the virologist is paralyzed.
+ */
 public class MoveParalyzed extends Test {
 
     @Override

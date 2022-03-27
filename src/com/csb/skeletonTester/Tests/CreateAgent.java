@@ -7,6 +7,9 @@ import com.csb.collectables.matters.NucleicAcid;
 import com.csb.skeletonTester.Test;
 import com.csb.virologist.*;
 
+/**
+ * This class tests the creation of a new agent.
+ */
 public class CreateAgent extends Test {
 
     public String getName() {

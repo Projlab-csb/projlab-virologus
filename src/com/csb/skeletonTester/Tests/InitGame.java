@@ -7,6 +7,10 @@ import com.csb.fields.Storage;
 import com.csb.skeletonTester.Test;
 import com.csb.virologist.Virologist;
 
+/**
+ * Tests the initialization of the game. For each required element,
+ * it creates that element
+ */
 public class InitGame extends Test {
 
     @Override

@@ -7,6 +7,9 @@ import com.csb.skeletonTester.UserInputHandler;
 import com.csb.virologist.Virologist;
 import java.util.List;
 
+/**
+ * Tests the default move of a virologist.
+ */
 public class MoveDefault extends Test {
 
     @Override

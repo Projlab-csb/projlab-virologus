@@ -5,6 +5,11 @@ import com.csb.skeletonTester.Test;
 import com.csb.skeletonTester.UserInputHandler;
 import com.csb.virologist.Virologist;
 
+/**
+ * Tests the game flow. For every virologist, the user is asked to enter the
+ * if the virologist has won the game.
+ * Until then the game continues, and calls each virologist's startOfTurn method.
+ */
 public class GameFlow extends Test {
 
     @Override

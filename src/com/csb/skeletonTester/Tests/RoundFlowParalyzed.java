@@ -5,6 +5,9 @@ import com.csb.skeletonTester.Test;
 import com.csb.skeletonTester.Tester;
 import com.csb.virologist.Virologist;
 
+/**
+ * Tests the round flow, when the Virologist is paralyzed.
+ */
 public class RoundFlowParalyzed extends Test {
 
     @Override
