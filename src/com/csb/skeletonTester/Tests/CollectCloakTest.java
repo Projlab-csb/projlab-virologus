@@ -14,8 +14,14 @@ public class CollectCloakTest extends Test {
         return "Collect Cloak";
     }
 
+
+    /**
+     * runTest for the start the function
+     */
     @Override
     public void runTest() {
+
+        //Set the envirement for the test
         Virologist virologist = new Virologist();
         Shelter shelter = new Shelter(new ArrayList<Collectable>(){
             {
@@ -23,6 +29,8 @@ public class CollectCloakTest extends Test {
                 add(new Cloak());
             }
         });
+
+        //run the function to be tested
         virologist.collect(shelter);
     }
 }

@@ -9,23 +9,35 @@ import com.csb.virologist.Virologist;
 
 import java.util.ArrayList;
 
-public class CollectAcid extends Test {
+public class CollectNucleicAcid extends Test {
 
+    /**
+     * getName for the menu
+     */
     @Override
     public String getName() {
-        return "Collect and discard AminoAcid";
+        return "Collect and discard NucleicAcid";
     }
 
+
+    /**
+     * runTest for the start the function
+     */
     @Override
     public void runTest() {
+
+        //Set the envirement for the test
         ArrayList<Collectable> collectableArrayList= new ArrayList<Collectable>();
-        collectableArrayList.add(new AminoAcid());
         collectableArrayList.add(new NucleicAcid());
+        collectableArrayList.add(new AminoAcid());
         Virologist virologist = new Virologist();
         Storage storage = new Storage(collectableArrayList);
+
+        //Collect NucleicAcid
         virologist.collect(storage);
 
-        virologist.discard(new AminoAcid(30));
+        //run the function to be tested
+        virologist.discard(new NucleicAcid(30));
     }
 
 }

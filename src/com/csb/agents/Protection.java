@@ -38,7 +38,7 @@ public class Protection extends Agent implements DefenseStrategyInterface {
      * this function handles the virologist's defense(protected or not protected)
      */
     @Override
-    public void defense() {
+    public void defense(Agent agent,Virologist attackedVirologist, Virologist attackerVirologist) {
 
     }
 }

@@ -14,6 +14,7 @@ public class AttackVitusDanceAgent extends Test {
     public String getName() {
         return "Attack with VitusDance Agent";
     }
+
     /**
      * runTest for the start the function
      */
