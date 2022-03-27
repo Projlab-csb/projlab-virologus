@@ -10,14 +10,14 @@ import com.csb.virologist.Virologist;
 
 import java.util.ArrayList;
 
-public class CollectNucleicAcid extends Test {
+public class DiscardNucleicAcid extends Test {
 
     /**
      * getName for the menu
      */
     @Override
     public String getName() {
-        return "Collect NucleicAcid";
+        return "Discard NucleicAcid";
     }
 
 
@@ -34,11 +34,12 @@ public class CollectNucleicAcid extends Test {
         collectableArrayList.add(new AminoAcid());
         Virologist virologist = new Virologist();
         Storage storage = new Storage(collectableArrayList);
-
-        Tester.getInstance().turnOnLogging();
         //Collect NucleicAcid
         virologist.collect(storage);
 
+        Tester.getInstance().turnOnLogging();
+        //run the function to be tested
+        virologist.discard(new NucleicAcid(30));
     }
 
 }

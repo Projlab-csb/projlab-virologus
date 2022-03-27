@@ -1,5 +1,6 @@
 package com.csb.skeletonTester.Tests;
 
+import com.csb.agents.Paralyzed;
 import com.csb.collectables.Collectable;
 import com.csb.collectables.matters.AminoAcid;
 import com.csb.collectables.matters.NucleicAcid;
@@ -10,21 +11,19 @@ import com.csb.virologist.Virologist;
 
 import java.util.ArrayList;
 
-public class CollectNucleicAcid extends Test {
+public class StealNuclecAcid extends Test {
 
     /**
-     * getName for the menu
+     * * getName for the menu
      */
-    @Override
-    public String getName() {
-        return "Collect NucleicAcid";
-    }
 
+    public String getName() {
+        return "Steal AminoAcid";
+    }
 
     /**
      * runTest for the start the function
      */
-    @Override
     public void runTest() {
 
         Tester.getInstance().turnOffLogging();
@@ -32,13 +31,19 @@ public class CollectNucleicAcid extends Test {
         ArrayList<Collectable> collectableArrayList= new ArrayList<Collectable>();
         collectableArrayList.add(new NucleicAcid());
         collectableArrayList.add(new AminoAcid());
-        Virologist virologist = new Virologist();
+        Virologist targetvirologist = new Virologist();
         Storage storage = new Storage(collectableArrayList);
 
-        Tester.getInstance().turnOnLogging();
         //Collect NucleicAcid
-        virologist.collect(storage);
+        targetvirologist.collect(storage);
 
+        Virologist robbervirologist = new Virologist();
+
+        Paralyzed paralyzedAgent = new Paralyzed();
+        paralyzedAgent.applyEffect(targetvirologist);
+
+        Tester.getInstance().turnOnLogging();
+        //run the function to be tested
+        robbervirologist.steal(new NucleicAcid(10), targetvirologist);
     }
-
 }

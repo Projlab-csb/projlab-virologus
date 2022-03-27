@@ -1,4 +1,4 @@
-# Virologus Enterprise
+~~# Virologus Enterprise
 
 2022 Szoftver Projekt Laboratórium - Világtalan Virológusok Világa
 

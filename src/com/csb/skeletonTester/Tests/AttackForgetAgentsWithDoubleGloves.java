@@ -19,6 +19,8 @@ public class AttackForgetAgentsWithDoubleGloves extends Test {
      * runTest for the start the function
      */
     public void runTest() {
+
+
         Virologist virologist = new Virologist();
         Virologist targetvirologist = new Virologist();
         Gloves g = new Gloves();
