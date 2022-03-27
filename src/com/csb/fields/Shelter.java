@@ -5,7 +5,6 @@ import com.csb.collectables.equipments.Equipment;
 import com.csb.skeletonTester.Tester;
 import java.util.ArrayList;
 
-
 /**
  * The class, what describes a shelter.
  * From the shelter, Virologist can collect Equipments
@@ -30,5 +29,4 @@ public class Shelter extends Field {
         Tester.getInstance().functionEnd();
         return collectables;
     }
-
 }
