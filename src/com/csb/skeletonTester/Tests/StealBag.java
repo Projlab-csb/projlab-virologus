@@ -1,6 +1,7 @@
 package com.csb.skeletonTester.Tests;
 
 import com.csb.agents.Paralyzed;
+import com.csb.collectables.equipments.Bag;
 import com.csb.collectables.equipments.Gloves;
 import com.csb.skeletonTester.Test;
 import com.csb.virologist.Virologist;
@@ -13,7 +14,7 @@ public class StealBag extends Test {
      */
 
     public String getName() {
-        return "Steal Gloves";
+        return "Steal Bag";
     }
 
     /**
@@ -21,14 +22,14 @@ public class StealBag extends Test {
      */
     public void runTest() {
         //Set the envirement for the test
-        Gloves gloves = new Gloves();
+        Bag bag = new Bag();
         Virologist robbervirologist = new Virologist();
         Virologist targetvirologist = new Virologist();
-        gloves.collectBy(targetvirologist);
+        bag.collectBy(targetvirologist);
         Paralyzed paralyzedAgent = new Paralyzed();
         paralyzedAgent.applyEffect(targetvirologist);
 
         //run the function to be tested
-        robbervirologist.steal(gloves, targetvirologist);
+        robbervirologist.steal(bag, targetvirologist);
     }
 }

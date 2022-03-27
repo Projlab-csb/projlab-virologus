@@ -1,9 +1,17 @@
 package com.csb.skeletonTester.Tests;
 
 import com.csb.agents.Paralyzed;
+import com.csb.collectables.Collectable;
 import com.csb.collectables.equipments.Gloves;
+import com.csb.collectables.gencodes.Gencode;
+import com.csb.collectables.matters.AminoAcid;
+import com.csb.collectables.matters.NucleicAcid;
+import com.csb.fields.Lab;
+import com.csb.fields.Shelter;
 import com.csb.skeletonTester.Test;
 import com.csb.virologist.Virologist;
+
+import java.util.ArrayList;
 
 //Zoli todo
 public class CollectGencode extends Test {
@@ -13,7 +21,7 @@ public class CollectGencode extends Test {
      */
 
     public String getName() {
-        return "Steal Gloves";
+        return "Collect Gencode";
     }
 
     /**
@@ -21,14 +29,17 @@ public class CollectGencode extends Test {
      */
     public void runTest() {
         //Set the envirement for the test
-        Gloves gloves = new Gloves();
-        Virologist robbervirologist = new Virologist();
-        Virologist targetvirologist = new Virologist();
-        gloves.collectBy(targetvirologist);
-        Paralyzed paralyzedAgent = new Paralyzed();
-        paralyzedAgent.applyEffect(targetvirologist);
+        AminoAcid a=new AminoAcid(30);
+        NucleicAcid n=new NucleicAcid(30);
+        Paralyzed p=new Paralyzed();
+        Virologist virologist = new Virologist();
+        Lab lab = new Lab(new ArrayList<Collectable>(){
+            {
+                add(new Gencode(p,a,n));
+            }
+        });
 
         //run the function to be tested
-        robbervirologist.steal(gloves, targetvirologist);
+        virologist.collect(lab);
     }
 }

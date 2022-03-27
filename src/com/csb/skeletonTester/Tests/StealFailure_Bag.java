@@ -13,7 +13,7 @@ public class StealFailure_Bag extends Test {
      */
 
     public String getName() {
-        return "Steal Gloves";
+        return "Steal Gloves, but it ends with failure";
     }
 
     /**
@@ -25,8 +25,6 @@ public class StealFailure_Bag extends Test {
         Virologist robbervirologist = new Virologist();
         Virologist targetvirologist = new Virologist();
         gloves.collectBy(targetvirologist);
-        Paralyzed paralyzedAgent = new Paralyzed();
-        paralyzedAgent.applyEffect(targetvirologist);
 
         //run the function to be tested
         robbervirologist.steal(gloves, targetvirologist);
