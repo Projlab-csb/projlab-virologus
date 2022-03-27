@@ -158,6 +158,7 @@ public class Virologist {
         Tester.getInstance().functionStart();
         Tester.getInstance().functionEnd();
         return aminoAcidStock.getAmount();
+
     }
 
     /**
@@ -165,8 +166,9 @@ public class Virologist {
      */
     public void setAminoAcid(int aminoAcid) {
         Tester.getInstance().functionStart();
-        Tester.getInstance().functionEnd();
         aminoAcidStock.setAmount(aminoAcid);
+        Tester.getInstance().functionEnd();
+
     }
 
     /**
@@ -183,8 +185,9 @@ public class Virologist {
      */
     public void setNucleicAcid(int nucleicAcid) {
         Tester.getInstance().functionStart();
-        Tester.getInstance().functionEnd();
         nucleicAcidStock.setAmount(nucleicAcid);
+        Tester.getInstance().functionEnd();
+
     }
 
     /**
