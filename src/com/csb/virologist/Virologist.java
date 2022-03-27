@@ -387,6 +387,7 @@ public class Virologist {
     public void setField(Field field) {
         Tester.getInstance().functionStart();
         this.field = field;
+        field.acceptVirologist(this);
         Tester.getInstance().functionEnd();
     }
 

@@ -17,9 +17,9 @@
 - [X] GameFlow
 - [X] RoundFlow - RoundRunStrategy Default
 - [X] RoundFlow Paralyzed - RoundRunStrategy Paralyzed
-- [ ] Move Default - MoveStrategy Default
-- [ ] Move Vitus - MoveStrategy VitusDance
-- [ ] Init Game
+- [X] Move Default - MoveStrategy Default
+- [X] Move Vitus - MoveStrategy VitusDance
+- [X] Init Game
 ---
 ### Olivér
 - [ ] Defense Default - DefenseStrategy Default

@@ -26,11 +26,20 @@ public class Field {
         return new Field();
     }
 
-    public void addNeighbor(Field neighbor) {}
+    public void addNeighbor(Field neighbor) {
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionEnd();
+    }
 
-    public void acceptVirologist(Virologist virologist) {}
+    public void acceptVirologist(Virologist virologist) {
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionEnd();
+    }
 
-    public void removeVirologist(Virologist virologist) {}
+    public void removeVirologist(Virologist virologist) {
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionEnd();
+    }
 
     /**
      * @return the collectable items - there are no items
