@@ -245,7 +245,7 @@ public class Virologist {
         Tester.getInstance().functionEnd();
     }
 
-    private void refreshAgents() {
+    public void refreshAgents() {
         Tester.getInstance().functionStart();
         for (Agent agent : agentlist) {
             agent.decreaseTTL(this);
