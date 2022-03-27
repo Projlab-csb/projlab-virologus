@@ -10,11 +10,11 @@ import java.util.List;
 /**
  * Tests the move, when the virologist is paralyzed.
  */
-public class MoveParalyzed extends Test {
+public class MoveVitus extends Test {
 
     @Override
     public String getName() {
-        return "Move Paralyzed";
+        return "Move Vitus";
     }
 
     @Override
