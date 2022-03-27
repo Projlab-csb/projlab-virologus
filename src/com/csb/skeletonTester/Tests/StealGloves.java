@@ -20,6 +20,7 @@ public class StealGloves extends Test {
      * runTest for the start the function
      */
     public void runTest() {
+
         //Set the envirement for the test
         Gloves gloves = new Gloves();
         Virologist robbervirologist = new Virologist();

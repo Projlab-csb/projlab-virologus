@@ -7,10 +7,13 @@ import com.csb.strategies.DefenseStrategyInterface;
 import com.csb.virologist.Virologist;
 
 /**
- * Class for the Cloak objects. With a Cloak the attacks towards the virologost can fail, with a gicen percentage
+ * Class for the Cloak objects. With a Cloak, the attacks towards the virologost can fail, with a gicen percentage
  */
 public class Cloak extends Equipment implements DefenseStrategyInterface {
 
+    /**
+     *apply and remove gloves effect on the virologist's defense strategy
+     */
     public void applyEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
         virologist.setDefenseStrategy(this);
@@ -23,6 +26,12 @@ public class Cloak extends Equipment implements DefenseStrategyInterface {
         Tester.getInstance().functionEnd();
     }
 
+    /**
+     * the defense function for the defending strategy
+     * @param agent - agent is used by the attacker
+     * @param attackedVirologist - the virologist, who uses the agent
+     * @param attackerVirologist - the attacked virologist
+     */
     @Override
     public void defense(Agent agent, Virologist attackedVirologist, Virologist attackerVirologist) {
         Tester.getInstance().functionStart();
