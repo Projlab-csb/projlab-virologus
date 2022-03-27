@@ -39,10 +39,10 @@ public class DefaultRoundRun implements RoundRunStrategyInterface {
                     virologist.move(UserInputHandler.getUserInputInt("Where to move?"));
                     break;
                 case "Create Agent":
-                    //TODO: Create Agent
+                    System.out.print("Creating agent...(see specific test)");
                     break;
                 case "Use Agent":
-                    //TODO: Use Agent
+                    System.out.print("Using Agent...(see specific test)");
                     break;
                 default:
                     break;

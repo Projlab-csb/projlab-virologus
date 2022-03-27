@@ -11,10 +11,8 @@ import com.csb.fields.Shelter;
 import com.csb.skeletonTester.Test;
 import com.csb.skeletonTester.Tester;
 import com.csb.virologist.Virologist;
-
 import java.util.ArrayList;
 
-//Zoli todo
 public class CollectGencode extends Test {
 
     /**
@@ -29,18 +27,19 @@ public class CollectGencode extends Test {
      * runTest for the start the function
      */
     public void runTest() {
-
         Tester.getInstance().turnOffLogging();
         //Set the envirement for the test
-        AminoAcid a=new AminoAcid(30);
-        NucleicAcid n=new NucleicAcid(30);
-        Paralyzed p=new Paralyzed();
+        AminoAcid a = new AminoAcid(30);
+        NucleicAcid n = new NucleicAcid(30);
+        Paralyzed p = new Paralyzed();
         Virologist virologist = new Virologist();
-        Lab lab = new Lab(new ArrayList<Collectable>(){
-            {
-                add(new Gencode(p,a,n));
+        Lab lab = new Lab(
+            new ArrayList<Collectable>() {
+                {
+                    add(new Gencode(p, a, n));
+                }
             }
-        });
+        );
 
         Tester.getInstance().turnOnLogging();
         //run the function to be tested
