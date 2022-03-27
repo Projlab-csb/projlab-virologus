@@ -14,6 +14,7 @@ public class Tester {
     private int indentationCount;
     //The list of the available tests.
     private ArrayList<TestInterface> testList;
+    private boolean isLoggingOn;
 
     /**
      * Constructor for the Tester class.
@@ -22,6 +23,7 @@ public class Tester {
     public Tester() {
         //Init testList, and indentationCount.
         testList = new ArrayList<>();
+        isLoggingOn = true;
         int indentationCount = 0;
     }
 
@@ -41,7 +43,9 @@ public class Tester {
      * Gets the invoking function name, and class from the stack trace, and prints it with the proper indentation.
      */
     public void functionStart() {
-        System.out.println("\t".repeat(indentationCount) + "--> Function Start: " + getInvokeFunctionName());
+        if (isLoggingOn) {
+            System.out.println("\t".repeat(indentationCount) + "--> Function Start: " + getInvokeFunctionName());
+        }
         indentationCount++;
     }
 
@@ -51,7 +55,9 @@ public class Tester {
      */
     public void functionEnd() {
         indentationCount--;
-        System.out.println("\t".repeat(indentationCount) + "<-- Function End: " + getInvokeFunctionName());
+        if (isLoggingOn) {
+            System.out.println("\t".repeat(indentationCount) + "<-- Function End: " + getInvokeFunctionName());
+        }
     }
 
     /**
@@ -70,5 +76,13 @@ public class Tester {
      */
     public List<TestInterface> getTestList() {
         return testList;
+    }
+
+    public void turnOffLogging() {
+        this.isLoggingOn = false;
+    }
+
+    public void turnOnLogging() {
+        this.isLoggingOn = true;
     }
 }
