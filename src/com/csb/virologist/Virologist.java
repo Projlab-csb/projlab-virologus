@@ -69,7 +69,9 @@ public class Virologist {
      */
     public void setDefenseStrategy(DefenseStrategyInterface defenseStrategy) {
         Tester.getInstance().functionStart();
-        this.defenseStrategy = defenseStrategy;
+        if(defenseStrategy != null) {
+            this.defenseStrategy = defenseStrategy;
+        }
         Tester.getInstance().functionEnd();
     }
 
@@ -101,7 +103,7 @@ public class Virologist {
         if (defenseStrategy.equals(g)){
             g.removeEffect(this);
             targetVirologist.attack(agent,  this);
-           g.applyEffect(this);
+            g.applyEffect(this);
         }
 
         else targetVirologist.attack(agent,  this);
@@ -116,7 +118,9 @@ public class Virologist {
      */
     public void setRoundRunStrategy(RoundRunStrategyInterface roundRunStrategy){
         Tester.getInstance().functionStart();
-        this.roundRunStrategy = roundRunStrategy;
+        if(roundRunStrategy!=null) {
+            this.roundRunStrategy = roundRunStrategy;
+        }
         Tester.getInstance().functionEnd();
     }
 
@@ -126,7 +130,9 @@ public class Virologist {
      */
     public void setmoveStrategy(MoveStrategyInterface moveStrategy){
         Tester.getInstance().functionStart();
-        this.moveStrategy = moveStrategy;
+        if(moveStrategy!=null) {
+            this.moveStrategy = moveStrategy;
+        }
         Tester.getInstance().functionEnd();
     }
 
@@ -253,8 +259,7 @@ public class Virologist {
     public void refreshAgents(){
         Tester.getInstance().functionStart();
         for(Agent agent: agentlist){
-            agent.decreaseTTL();
-            agent.removeEffect(this);
+            agent.decreaseTTL(this);
         }
         Tester.getInstance().functionEnd();
     }
