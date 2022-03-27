@@ -33,7 +33,7 @@ public class Protection extends Agent implements DefenseStrategyInterface {
     @Override
     public void removeEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
-        virologist.setDefenseStrategy(null);
+        virologist.setDefenseStrategy(virologist.getDefaultDefenseStrategy());
         Tester.getInstance().functionEnd();
     }
 
@@ -43,6 +43,7 @@ public class Protection extends Agent implements DefenseStrategyInterface {
      */
     @Override
     public void defense(Agent agent,Virologist attackedVirologist, Virologist attackerVirologist) {
-
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionEnd();
     }
 }
