@@ -9,6 +9,7 @@ import com.csb.collectables.matters.NucleicAcid;
 import com.csb.fields.Lab;
 import com.csb.fields.Shelter;
 import com.csb.skeletonTester.Test;
+import com.csb.skeletonTester.Tester;
 import com.csb.virologist.Virologist;
 
 import java.util.ArrayList;
@@ -28,6 +29,8 @@ public class CollectGencode extends Test {
      * runTest for the start the function
      */
     public void runTest() {
+
+        Tester.getInstance().turnOffLogging();
         //Set the envirement for the test
         AminoAcid a=new AminoAcid(30);
         NucleicAcid n=new NucleicAcid(30);
@@ -39,6 +42,7 @@ public class CollectGencode extends Test {
             }
         });
 
+        Tester.getInstance().turnOnLogging();
         //run the function to be tested
         virologist.collect(lab);
     }
