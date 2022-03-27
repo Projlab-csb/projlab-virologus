@@ -23,7 +23,7 @@ public class Gloves extends Equipment implements DefenseStrategyInterface {
 
     public void removeEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
-        virologist.setDefenseStrategy(null);
+        virologist.setDefenseStrategy(this);
         Tester.getInstance().functionEnd();
     }
 
