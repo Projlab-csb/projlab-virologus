@@ -4,7 +4,7 @@ import com.csb.skeletonTester.Tester;
 import com.csb.virologist.Virologist;
 
 /**
- * Class for the Bag objects Bag let virologists carrying more matter
+ * Class for the Bag objects. Bag let virologists carrying more matter.
  */
 public class Bag extends Equipment {
 
