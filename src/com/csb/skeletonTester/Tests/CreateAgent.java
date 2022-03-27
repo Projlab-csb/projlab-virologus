@@ -8,9 +8,11 @@ import com.csb.skeletonTester.Test;
 import com.csb.virologist.*;
 
 public class CreateAgent extends Test {
+
     public String getName() {
         return "Create Agent";
     }
+
     public void runTest() {
         Virologist virologist = new Virologist();
         Gencode genCode = new Gencode(new Paralyzed(), new AminoAcid(50), new NucleicAcid(50));
