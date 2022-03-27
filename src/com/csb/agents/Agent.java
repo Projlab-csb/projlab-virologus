@@ -15,7 +15,5 @@ public abstract class Agent {
         return TTL;
     }
 
-    public void setTTL(int TTL) {
-        this.TTL = TTL;
-    }
+    public void setTTL(int TTL) { this.TTL = TTL; }
 }

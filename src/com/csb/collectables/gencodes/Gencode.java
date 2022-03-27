@@ -33,7 +33,7 @@ public class Gencode implements Collectable {
     }
 
     /**
-     *Getters for required Amino and NoulecAcid, and the agent
+     * Getters for required Amino and NoulecAcid, and the agent
      */
     public NucleicAcid getRequiredNucleicAcid() {
         Tester.getInstance().functionStart();
@@ -66,7 +66,7 @@ public class Gencode implements Collectable {
     }
 
     /**
-     *The virologists dont't discrard their gencodes thus this have an emty function body
+     * The virologists dont't discrard their gencodes thus this have an emty function body
      */
     @Override
     public void discard(Virologist virologist) {}

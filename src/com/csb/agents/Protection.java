@@ -7,7 +7,7 @@ import com.csb.virologist.Virologist;
 public class Protection extends Agent implements DefenseStrategyInterface {
 
     /**
-     * apply the Protection effect on a virologist, now the virologist is protected from agents
+     * Apply the Protection effect on a virologist, now the virologist is protected from agents
      */
     public void applyEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
@@ -15,7 +15,7 @@ public class Protection extends Agent implements DefenseStrategyInterface {
         Tester.getInstance().functionEnd();
     }
     /**
-     * decrease the time to live of the agent, when it reaches zero the agent will be removed
+     * Decrease the time to live of the agent, when it reaches zero the agent will be removed
      */
     @Override
     public void decreaseTTL(Virologist virologist) {
@@ -28,7 +28,7 @@ public class Protection extends Agent implements DefenseStrategyInterface {
         Tester.getInstance().functionEnd();
     }
     /**
-     * removes the Protection effect, now the virologist is not protected from agents
+     * Removes the Protection effect, now the virologist is not protected from agents
      */
     @Override
     public void removeEffect(Virologist virologist) {
@@ -39,7 +39,7 @@ public class Protection extends Agent implements DefenseStrategyInterface {
 
 
     /**
-     * this function handles the virologist's defense(protected or not protected)
+     * This function handles the virologist's defense(protected or not protected)
      */
     @Override
     public void defense(Agent agent,Virologist attackedVirologist, Virologist attackerVirologist) {

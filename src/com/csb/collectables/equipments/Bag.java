@@ -11,7 +11,7 @@ public class Bag extends Equipment {
     private int extraInventorySize = 10;
 
     /**
-     *add plus space to the owners inventory
+     * Add plus space to the owners inventory
      * @param virologist - his inventory will be bigger til owns the bag
      */
     public void applyEffect(Virologist virologist) {
@@ -32,7 +32,7 @@ public class Bag extends Equipment {
     }
 
     /**
-     *getter for extrainventorysize
+     * Getter for extrainventorysize
      */
     private int getExtraInventorySize() {
         Tester.getInstance().functionStart();

@@ -15,6 +15,10 @@ public class GameController {
 
     private static GameController _instance = null;
 
+    /**
+     * Returns a singleton object of the GameController class
+     * @return
+     */
     public static GameController getInstance() {
         if (_instance == null) {
             _instance = new GameController();
@@ -22,6 +26,9 @@ public class GameController {
         return _instance;
     }
 
+    /**
+     * The constructor of this class
+     */
     private GameController() {
         virologists = new ArrayList<>();
         virologistGencodesMap = new java.util.HashMap<>();
@@ -31,6 +38,9 @@ public class GameController {
         return virologists;
     }
 
+    /**
+     * This function sets up the game to its default state and gets the number of players
+     */
     public void initGame() {
         Tester.getInstance().functionStart();
         int playerCount = UserInputHandler.getUserInputInt("How many virologists do you want to play with?");
@@ -40,6 +50,11 @@ public class GameController {
         Tester.getInstance().functionEnd();
     }
 
+    /**
+     * Maps the virologist with its gencodes
+     * @param v the virologist to be mapped
+     * @param gencodeList the list of gencodes that belong to virologist v
+     */
     public void reportGencodes(Virologist v, List<Gencode> gencodeList) {
         Tester.getInstance().functionStart();
         virologistGencodesMap.put(v, gencodeList);
