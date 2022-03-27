@@ -24,18 +24,18 @@ import java.util.ArrayList;
 
 public class Virologist {
 
-    private ArrayList<DefenseStrategyInterface> defenseStrategy;
-    private ArrayList<RoundRunStrategyInterface> roundRunStrategy;
-    private ArrayList<MoveStrategyInterface> moveStrategy;
-    private DefenseStrategyInterface defaultDefenseStrategy;
-    private MoveStrategyInterface defaultMoveStrategy;
-    private RoundRunStrategyInterface defaultRoundRunStrategy;
+    private final ArrayList<DefenseStrategyInterface> defenseStrategy;
+    private final ArrayList<RoundRunStrategyInterface> roundRunStrategy;
+    private final ArrayList<MoveStrategyInterface> moveStrategy;
+    private final DefenseStrategyInterface defaultDefenseStrategy;
+    private final MoveStrategyInterface defaultMoveStrategy;
+    private final RoundRunStrategyInterface defaultRoundRunStrategy;
     private int inventorySize;
-    private AminoAcid aminoAcidStock;
-    private NucleicAcid nucleicAcidStock;
+    private final AminoAcid aminoAcidStock;
+    private final NucleicAcid nucleicAcidStock;
     private ArrayList<Gencode> gencodes;
     private ArrayList<Agent> agentlist;
-    private ArrayList<Equipment> equipments;
+    private final ArrayList<Equipment> equipments;
 
     /**
      * In the constructor of the Virologist we can implement a variables, set a strategies to default, and set the starting size of the inventory
@@ -48,6 +48,10 @@ public class Virologist {
         defaultDefenseStrategy = new DefaultDefense();
         defaultRoundRunStrategy = new DefaultRoundRun();
         defaultMoveStrategy = new DefaultMove();
+        defenseStrategy = new ArrayList<DefenseStrategyInterface>();
+        roundRunStrategy = new ArrayList<RoundRunStrategyInterface>();
+        moveStrategy = new ArrayList<MoveStrategyInterface>();
+        agentlist = new ArrayList<Agent>();
         defenseStrategy.add(defaultDefenseStrategy);
         roundRunStrategy.add(defaultRoundRunStrategy);
         moveStrategy.add(defaultMoveStrategy);

@@ -3,7 +3,7 @@ package com.csb.utils;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Set;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class ClassLoader {
@@ -15,7 +15,7 @@ public class ClassLoader {
      * @return Set of the loaded classes
      * @author Bálint Kostyál
      */
-    public static Set<Class> findAllClassesUsingClassLoader(String packageName) {
+    public static List<Class> findAllClassesUsingClassLoader(String packageName) {
         InputStream stream = java.lang.ClassLoader.getSystemClassLoader().getResourceAsStream(packageName.replaceAll("[.]", "/"));
         BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
         return reader
@@ -23,7 +23,7 @@ public class ClassLoader {
             .filter(line -> line.endsWith(".class"))
             .filter(line -> !line.contains("$"))
             .map(line -> getClass(line, packageName))
-            .collect(Collectors.toSet());
+            .collect(Collectors.toList());
     }
 
     /**

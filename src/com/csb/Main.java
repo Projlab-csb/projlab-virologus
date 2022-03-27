@@ -4,6 +4,10 @@ import static com.csb.utils.ClassLoader.findAllClassesUsingClassLoader;
 
 import com.csb.skeletonTester.TestInterface;
 import com.csb.skeletonTester.Tester;
+import java.text.ParseException;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -21,15 +25,16 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         // Load all the test classes from skeletonTester.Tests package
-        findAllClassesUsingClassLoader("com.csb.skeletonTester.Tests")
-            .forEach(clazz -> {
-                try {
-                    Tester.getInstance().getTestList().add((TestInterface) clazz.getDeclaredConstructor().newInstance());
-                } catch (Exception e) {
-                    System.out.println("Cannot initialize test class: " + clazz.getName());
-                    e.printStackTrace();
-                }
-            });
+        List<Class> classes = findAllClassesUsingClassLoader("com.csb.skeletonTester.Tests");
+        classes.sort(Comparator.comparing(Class::getSimpleName));
+        classes.forEach(clazz -> {
+            try {
+                Tester.getInstance().getTestList().add((TestInterface) clazz.getDeclaredConstructor().newInstance());
+            } catch (Exception e) {
+                System.out.println("Cannot initialize test class: " + clazz.getName());
+                e.printStackTrace();
+            }
+        });
 
         int userInput = -2;
 
@@ -57,8 +62,10 @@ public class Main {
                         "Input is out of range, enter and integer between (-1 and " + (Tester.getInstance().getTestList().size() - 1) + ")"
                     );
                 }
-            } catch (Exception e) {
+            } catch (NumberFormatException e) {
                 System.out.println("Invalid input (try to enter a number): " + e.getMessage());
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }

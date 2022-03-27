@@ -28,12 +28,9 @@ public class DefaultRoundRun implements RoundRunStrategyInterface {
     public void RoundRun(Virologist virologist) {
         Tester.getInstance().functionStart();
 
-        String input = UserInputHandler.getUserInputString(
-            "What to do?",
-            new String[] { "Move", "Create Agent", "Use Agent", "End Round" }
-        );
-
-        while (!input.equals("End Round")) {
+        String input;
+        do {
+            input = UserInputHandler.getUserInputString("What to do?", new String[] { "Move", "Create Agent", "Use Agent", "End Round" });
             switch (input) {
                 case "Move":
                     virologist.move(UserInputHandler.getUserInputInt("Where to move?"));
@@ -47,7 +44,7 @@ public class DefaultRoundRun implements RoundRunStrategyInterface {
                 default:
                     break;
             }
-        }
+        } while (!input.equals("End Round"));
 
         Tester.getInstance().functionEnd();
     }

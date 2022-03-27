@@ -15,8 +15,8 @@
 
 ### Bálint
 - [X] GameFlow
-- [ ] RoundFlow - RoundRunStrategy Default
-- [ ] RoundFlow Paralyzed - RoundRunStrategy Paralyzed
+- [X] RoundFlow - RoundRunStrategy Default
+- [X] RoundFlow Paralyzed - RoundRunStrategy Paralyzed
 - [ ] Move Default - MoveStrategy Default
 - [ ] Move Vitus - MoveStrategy VitusDance
 - [ ] Init Game
