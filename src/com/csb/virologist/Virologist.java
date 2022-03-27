@@ -5,24 +5,21 @@ import com.csb.collectables.Collectable;
 import com.csb.collectables.equipments.Equipment;
 import com.csb.collectables.equipments.Gloves;
 import com.csb.collectables.gencodes.Gencode;
-import com.csb.collectables.matters.AminoAcid;
-import com.csb.collectables.matters.NucleicAcid;
-import com.csb.collectables.matters.AminoAcid;
-import com.csb.collectables.matters.NucleicAcid;
 import com.csb.collectables.gencodes.Gencode;
+import com.csb.collectables.matters.AminoAcid;
+import com.csb.collectables.matters.AminoAcid;
+import com.csb.collectables.matters.NucleicAcid;
+import com.csb.collectables.matters.NucleicAcid;
 import com.csb.fields.Field;
 import com.csb.skeletonTester.Tester;
+import com.csb.strategies.*;
 import com.csb.strategies.DefenseStrategyInterface;
 import com.csb.strategies.MoveStrategyInterface;
 import com.csb.strategies.RoundRunStrategyInterface;
-
-import com.csb.strategies.*;
-
 import java.awt.image.AreaAveragingScaleFilter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 
 /**
  * This is the Virologist class. The players in the game contol Virologists, so most of the actions can be connected to this class
@@ -50,17 +47,16 @@ public class Virologist {
      */
     public Virologist() {
         inventorySize = 30;
-        nucleicAcidStock=new NucleicAcid(0);
-        aminoAcidStock=new AminoAcid(0);
-        gencodes=new ArrayList<Gencode>();
-        defaultDefenseStrategy=new DefaultDefense();
-        defaultRoundRunStrategy=new DefaultRoundRun();
-        defaultMoveStrategy=new DefaultMove();
-        defenseStrategy=defaultDefenseStrategy;
-        roundRunStrategy=defaultRoundRunStrategy;
-        moveStrategy=defaultMoveStrategy;
-        equipments=new ArrayList<Equipment>(3);
-
+        nucleicAcidStock = new NucleicAcid(0);
+        aminoAcidStock = new AminoAcid(0);
+        gencodes = new ArrayList<Gencode>();
+        defaultDefenseStrategy = new DefaultDefense();
+        defaultRoundRunStrategy = new DefaultRoundRun();
+        defaultMoveStrategy = new DefaultMove();
+        defenseStrategy = defaultDefenseStrategy;
+        roundRunStrategy = defaultRoundRunStrategy;
+        moveStrategy = defaultMoveStrategy;
+        equipments = new ArrayList<Equipment>(3);
     }
 
     /**
@@ -73,13 +69,22 @@ public class Virologist {
         Tester.getInstance().functionEnd();
     }
 
-
     public void attack(Agent agent, Virologist attackerVirologist) {
         Tester.getInstance().functionStart();
-        defenseStrategy.defense(agent,this, attackerVirologist);
+        defenseStrategy.defense(agent, this, attackerVirologist);
         Tester.getInstance().functionEnd();
     }
 
+    /**
+     * Handles one turn of the virologist,
+     */
+    public void startOfTurn() {
+        Tester.getInstance().functionStart();
+
+        this.roundRunStrategy.RoundRun();
+
+        Tester.getInstance().functionEnd();
+    }
 
     /**
      *The virologist get the collectable item from the Filed where he stands, and one of the findings (int this example the first one)
@@ -94,27 +99,23 @@ public class Virologist {
         Tester.getInstance().functionEnd();
     }
 
-
     public void useAgent(Agent agent, Virologist targetVirologist) {
         Tester.getInstance().functionStart();
-        Gloves g=new Gloves();
-        if (defenseStrategy.equals(g)){
+        Gloves g = new Gloves();
+        if (defenseStrategy.equals(g)) {
             g.removeEffect(this);
-            targetVirologist.attack(agent,  this);
-           g.applyEffect(this);
-        }
-
-        else targetVirologist.attack(agent,  this);
+            targetVirologist.attack(agent, this);
+            g.applyEffect(this);
+        } else targetVirologist.attack(agent, this);
 
         Tester.getInstance().functionEnd();
     }
-
 
     /**
      * This functions sets the roundrun strategy of the virologist
      * @param roundRunStrategy the roundrun strategy to be set on the virologist, this affects his round and defense against to be robbed
      */
-    public void setRoundRunStrategy(RoundRunStrategyInterface roundRunStrategy){
+    public void setRoundRunStrategy(RoundRunStrategyInterface roundRunStrategy) {
         Tester.getInstance().functionStart();
         this.roundRunStrategy = roundRunStrategy;
         Tester.getInstance().functionEnd();
@@ -124,7 +125,7 @@ public class Virologist {
      * This functions sets the move strategy of the virologist
      * @param moveStrategy the move strategy to be set on the virologist, this affects the way he moves
      */
-    public void setmoveStrategy(MoveStrategyInterface moveStrategy){
+    public void setmoveStrategy(MoveStrategyInterface moveStrategy) {
         Tester.getInstance().functionStart();
         this.moveStrategy = moveStrategy;
         Tester.getInstance().functionEnd();
@@ -157,7 +158,6 @@ public class Virologist {
         Tester.getInstance().functionStart();
         Tester.getInstance().functionEnd();
         return aminoAcidStock.getAmount();
-
     }
 
     /**
@@ -212,14 +212,13 @@ public class Virologist {
      * @param coll - The item wanted ba the robber Virologist from the target Virologist
      * @param targetVirologist - The Virologist, who has the item wanted by the robber
      */
-    public void steal(Collectable coll, Virologist targetVirologist ){
+    public void steal(Collectable coll, Virologist targetVirologist) {
         Tester.getInstance().functionStart();
 
         //the target virologist handle the theft
-        Collectable stolen=targetVirologist.handleSteal(coll);
+        Collectable stolen = targetVirologist.handleSteal(coll);
 
-        if(stolen==null)
-        {
+        if (stolen == null) {
             Tester.getInstance().functionEnd();
             return;
         }
@@ -233,53 +232,54 @@ public class Virologist {
      * The virologist drop ang Equipment or an amount of Matter from its collection
      * @param coll - the item to be discarded
      */
-    public void discard(Collectable coll){
+    public void discard(Collectable coll) {
         coll.discard(this);
     }
 
-
-    public void createAgent(Gencode genCode){
+    public void createAgent(Gencode genCode) {
         Tester.getInstance().functionStart();
         genCode.getRequiredNucleicAcid();
         genCode.getRequiredAminoAcid();
         this.storeAgent(genCode.getAgent());
         Tester.getInstance().functionEnd();
     }
-    public void storeAgent(Agent agent){
+
+    public void storeAgent(Agent agent) {
         Tester.getInstance().functionStart();
         Tester.getInstance().functionEnd();
     }
 
-    public void refreshAgents(){
+    public void refreshAgents() {
         Tester.getInstance().functionStart();
-        for(Agent agent: agentlist){
+        for (Agent agent : agentlist) {
             agent.decreaseTTL();
             agent.removeEffect(this);
         }
         Tester.getInstance().functionEnd();
     }
-    public void setAgentlist(ArrayList<Agent> agentlist){
-        this.agentlist=agentlist;
+
+    public void setAgentlist(ArrayList<Agent> agentlist) {
+        this.agentlist = agentlist;
     }
 
     /**
      * @return - the default defending strategy
      */
-    public DefenseStrategyInterface getDefaultDefenseStrategy(){
+    public DefenseStrategyInterface getDefaultDefenseStrategy() {
         return defaultDefenseStrategy;
     }
 
     /**
      * @return - the default moving strategy
      */
-    public MoveStrategyInterface getDefaultMoveStrategy(){
+    public MoveStrategyInterface getDefaultMoveStrategy() {
         return defaultMoveStrategy;
     }
 
     /**
      * @return - the default RoundRun strategy
      */
-    public RoundRunStrategyInterface getDefaultRoundRunStrategy(){
+    public RoundRunStrategyInterface getDefaultRoundRunStrategy() {
         return defaultRoundRunStrategy;
     }
 
@@ -294,28 +294,28 @@ public class Virologist {
      * Add an Equipment to the Virologist
      * @param e the equipment to be added
      */
-    public void addEquipment(Equipment e){
+    public void addEquipment(Equipment e) {
         equipments.add(e);
-    };
+    }
 
     /**
      * Remove an Equipment from the Virologist
      * @param e the equipment to be removed
      */
-    public void removeEquipment(Equipment e){
+    public void removeEquipment(Equipment e) {
         equipments.remove(e);
-    };
+    }
 
     /**
      * The Virologist handles the robbing attemps based on his (roundrun) strategy
      * @param coll - the item wanted by the robber Virologist
      * @return
      */
-    public Collectable handleSteal(Collectable coll){
-       return this.roundRunStrategy.handleSteal(coll, this);
+    public Collectable handleSteal(Collectable coll) {
+        return this.roundRunStrategy.handleSteal(coll, this);
     }
 
-    public void setAgent(){
+    public void setAgent() {
         Tester.getInstance().functionStart();
         Tester.getInstance().functionEnd();
     }

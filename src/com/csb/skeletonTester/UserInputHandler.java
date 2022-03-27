@@ -1,9 +1,15 @@
 package com.csb.skeletonTester;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 /**
  * This class is used to ask any required user input.
  */
 public class UserInputHandler {
+
+    private static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     /**
      * Ask the user for an Integer.
@@ -11,9 +17,15 @@ public class UserInputHandler {
      * @return Integer: The user's input.
      * @throws NumberFormatException If the user's input is not an Integer.
      */
-    public static int getUserInputInt(String prompt) throws NumberFormatException {
-        System.out.print(prompt);
-        return Integer.parseInt(System.console().readLine());
+    public static int getUserInputInt(String prompt) {
+        while (true) {
+            System.out.print("[UserInput Int] " + prompt + ": ");
+            try {
+                return Integer.parseInt(br.readLine());
+            } catch (Exception e) {
+                System.out.println("Invalid input. Please try again.");
+            }
+        }
     }
 
     /**
@@ -23,7 +35,12 @@ public class UserInputHandler {
      */
     public static String getUserInputString(String prompt) {
         System.out.print("[UserInput String] " + prompt);
-        return System.console().readLine();
+        try {
+            return br.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
     /**
@@ -34,10 +51,19 @@ public class UserInputHandler {
      */
     public static String getUserInputString(String prompt, String[] options) {
         System.out.print("[UserInput String] " + prompt + "(" + String.join(", ", options) + "): ");
-        String userInput = System.console().readLine();
+        String userInput = null;
+        try {
+            userInput = br.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         while (!isValidOption(userInput, options)) {
             System.out.print("Invalid input. Please try again: ");
-            userInput = System.console().readLine();
+            try {
+                userInput = br.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return userInput;
     }
@@ -64,10 +90,19 @@ public class UserInputHandler {
      */
     public static boolean getUserInputBoolean(String prompt) {
         System.out.print("[UserInput Boolean] " + prompt + " (y/n): ");
-        String userInput = System.console().readLine();
+        String userInput = null;
+        try {
+            userInput = br.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         while (!isValidOption(userInput, new String[] { "y", "n" })) {
             System.out.print("Invalid input. Please try again: ");
-            userInput = System.console().readLine();
+            try {
+                userInput = br.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return userInput.equals("y");
     }
