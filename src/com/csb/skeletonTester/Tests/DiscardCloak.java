@@ -8,7 +8,7 @@ import com.csb.virologist.Virologist;
 
 public class DiscardCloak extends Test {
     public String getName() {
-        return "(Collect and) Discard Cloak";
+        return "Discard Cloak";
     }
 
     /**

@@ -7,7 +7,7 @@ import com.csb.virologist.Virologist;
 
 public class DiscardBag extends Test {
     public String getName() {
-        return "(Collect and) Discard Bag";
+        return "Discard Bag";
     }
 
     /**
