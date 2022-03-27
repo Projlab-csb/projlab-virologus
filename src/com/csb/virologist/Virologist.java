@@ -24,9 +24,9 @@ import java.util.ArrayList;
 
 public class Virologist {
 
-    private DefenseStrategyInterface defenseStrategy;
-    private RoundRunStrategyInterface roundRunStrategy;
-    private MoveStrategyInterface moveStrategy;
+    private ArrayList<DefenseStrategyInterface> defenseStrategy;
+    private ArrayList<RoundRunStrategyInterface> roundRunStrategy;
+    private ArrayList<MoveStrategyInterface> moveStrategy;
     private DefenseStrategyInterface defaultDefenseStrategy;
     private MoveStrategyInterface defaultMoveStrategy;
     private RoundRunStrategyInterface defaultRoundRunStrategy;
@@ -48,9 +48,9 @@ public class Virologist {
         defaultDefenseStrategy = new DefaultDefense();
         defaultRoundRunStrategy = new DefaultRoundRun();
         defaultMoveStrategy = new DefaultMove();
-        defenseStrategy = defaultDefenseStrategy;
-        roundRunStrategy = defaultRoundRunStrategy;
-        moveStrategy = defaultMoveStrategy;
+        defenseStrategy.add(defaultDefenseStrategy);
+        roundRunStrategy.add(defaultRoundRunStrategy);
+        moveStrategy.add(defaultMoveStrategy);
         equipments = new ArrayList<Equipment>(3);
     }
 
@@ -60,13 +60,13 @@ public class Virologist {
      */
     public void setDefenseStrategy(DefenseStrategyInterface defenseStrategy) {
         Tester.getInstance().functionStart();
-        this.defenseStrategy = defenseStrategy;
+        this.defenseStrategy.add(defenseStrategy);
         Tester.getInstance().functionEnd();
     }
 
     public void attack(Agent agent, Virologist attackerVirologist) {
         Tester.getInstance().functionStart();
-        defenseStrategy.defense(agent, this, attackerVirologist);
+        defenseStrategy.get(defenseStrategy.size()-1).defense(agent, this, attackerVirologist);
         Tester.getInstance().functionEnd();
     }
 
@@ -75,12 +75,10 @@ public class Virologist {
      */
     public void startOfTurn() {
         Tester.getInstance().functionStart();
-
-        this.roundRunStrategy.RoundRun(this);
+        this.roundRunStrategy.get(roundRunStrategy.size()-1).RoundRun(this);
 
         GameController.getInstance().reportGencodes(this, this.getGencodes());
         this.refreshAgents();
-
         Tester.getInstance().functionEnd();
     }
 
@@ -115,7 +113,7 @@ public class Virologist {
      */
     public void setRoundRunStrategy(RoundRunStrategyInterface roundRunStrategy) {
         Tester.getInstance().functionStart();
-        this.roundRunStrategy = roundRunStrategy;
+        this.roundRunStrategy.add(roundRunStrategy);
         Tester.getInstance().functionEnd();
     }
 
@@ -125,7 +123,7 @@ public class Virologist {
      */
     public void setMoveStrategy(MoveStrategyInterface moveStrategy) {
         Tester.getInstance().functionStart();
-        this.moveStrategy = moveStrategy;
+        this.moveStrategy.add(moveStrategy);
         Tester.getInstance().functionEnd();
     }
 
@@ -309,7 +307,7 @@ public class Virologist {
      * @return
      */
     public Collectable handleSteal(Collectable coll) {
-        return this.roundRunStrategy.handleSteal(coll, this);
+        return this.roundRunStrategy.get(roundRunStrategy.size()-1).handleSteal(coll, this);
     }
 
     public void setAgent() {
@@ -324,6 +322,22 @@ public class Virologist {
     public void move(int nextTileIndex) {
         Tester.getInstance().functionStart();
         //TODO: Handle move
+        Tester.getInstance().functionEnd();
+    }
+
+    public void removeDefenseStrategy(DefenseStrategyInterface defaultDefenseStrategy){
+        Tester.getInstance().functionStart();
+        this.defenseStrategy.remove(defaultDefenseStrategy);
+        Tester.getInstance().functionEnd();
+    }
+    public void removeMoveStrategy(MoveStrategyInterface moveStrategyInterface){
+        Tester.getInstance().functionStart();
+        this.moveStrategy.remove(moveStrategyInterface);
+        Tester.getInstance().functionEnd();
+    }
+    public void removeRoundRunStrategy(RoundRunStrategyInterface roundRunStrategyInterface){
+        Tester.getInstance().functionStart();
+        this.roundRunStrategy.remove(roundRunStrategyInterface);
         Tester.getInstance().functionEnd();
     }
 }
