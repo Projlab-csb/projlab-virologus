@@ -7,7 +7,7 @@ import com.csb.virologist.Virologist;
 public class VitusDance extends Agent implements MoveStrategyInterface{
 
     /**
-     * apply the VitudDance effect on a virologist, now the virologist moves random directions
+     * apply the VitusDance effect on a virologist, now the virologist moves random directions
      */
     public void applyEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
@@ -28,7 +28,7 @@ public class VitusDance extends Agent implements MoveStrategyInterface{
         Tester.getInstance().functionEnd();
     }
     /**
-     * removes the VitudDance effect, now the virologist does not move random directions
+     * removes the VitusDance effect, now the virologist does not move random directions
      */
     @Override
     public void removeEffect(Virologist virologist) {

@@ -10,13 +10,13 @@ public class Cloak extends Equipment implements DefenseStrategyInterface {
 
     public void applyEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
-        virologist.setDefenseStrategy(virologist.getDefaultDefenseStrategy());
+        virologist.setDefenseStrategy(this);
         Tester.getInstance().functionEnd();
     }
 
     public void removeEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
-        virologist.setDefenseStrategy(this);
+        virologist.setDefenseStrategy(null);
         Tester.getInstance().functionEnd();
     }
 
