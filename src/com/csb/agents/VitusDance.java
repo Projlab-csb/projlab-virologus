@@ -33,7 +33,7 @@ public class VitusDance extends Agent implements MoveStrategyInterface{
     @Override
     public void removeEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
-        virologist.setmoveStrategy(virologist.getDefaultMoveStrategy());
+        virologist.removeMoveStrategy(this);
         Tester.getInstance().functionEnd();
     }
     /**
@@ -42,6 +42,7 @@ public class VitusDance extends Agent implements MoveStrategyInterface{
     @Override
     public void move() {
         Tester.getInstance().functionStart();
+
         Tester.getInstance().functionEnd();
     }
 
