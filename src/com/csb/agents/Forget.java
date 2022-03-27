@@ -16,7 +16,7 @@ public class Forget extends Agent {
      * this effect can't be removed, it does not have ttl, it is an empty function
      */
     @Override
-    public void decreaseTTL() {
+    public void decreaseTTL(Virologist virologist) {
     }
     /**
      * this effect can't be removed, it is an empty function

@@ -17,9 +17,15 @@ public class RefreshAgents extends Test {
     public void runTest() {
         Virologist virologist = new Virologist();
         ArrayList<Agent> agents = new ArrayList<Agent>();
-        agents.add(new Paralyzed());
-        agents.add(new Protection());
-        agents.add(new VitusDance());
+        Paralyzed par = new Paralyzed();
+        par.setTTL(20);
+        Protection prot = new Protection();
+        prot.setTTL(0);
+        VitusDance vitusDance = new VitusDance();
+        vitusDance.setTTL(0);
+        agents.add(par);
+        agents.add(prot);
+        agents.add(vitusDance);
         virologist.setAgentlist(agents);
         virologist.refreshAgents();
     }

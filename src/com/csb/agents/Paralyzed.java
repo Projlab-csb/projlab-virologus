@@ -2,7 +2,6 @@ package com.csb.agents;
 
 import com.csb.collectables.Collectable;
 import com.csb.skeletonTester.Tester;
-import com.csb.strategies.MoveStrategyInterface;
 import com.csb.strategies.RoundRunStrategyInterface;
 import com.csb.virologist.Virologist;
 
@@ -21,8 +20,13 @@ public class Paralyzed extends Agent implements RoundRunStrategyInterface {
      * decrease the time to live of the agent, when it reaches zero the agent will be removed
      */
     @Override
-    public void decreaseTTL() {
+    public void decreaseTTL(Virologist virologist) {
         Tester.getInstance().functionStart();
+        if(getTTL()==0){
+            removeEffect(virologist);
+        }else{
+            setTTL(getTTL()-1);
+        }
         Tester.getInstance().functionEnd();
     }
     /**
@@ -31,7 +35,7 @@ public class Paralyzed extends Agent implements RoundRunStrategyInterface {
     @Override
     public void removeEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
-        virologist.setRoundRunStrategy(this);
+        virologist.setRoundRunStrategy(null);
         Tester.getInstance().functionEnd();
     }
     /**

@@ -101,7 +101,7 @@ public class Virologist {
         if (defenseStrategy.equals(g)){
             g.removeEffect(this);
             targetVirologist.attack(agent,  this);
-           g.applyEffect(this);
+            g.applyEffect(this);
         }
 
         else targetVirologist.attack(agent,  this);
@@ -253,8 +253,7 @@ public class Virologist {
     public void refreshAgents(){
         Tester.getInstance().functionStart();
         for(Agent agent: agentlist){
-            agent.decreaseTTL();
-            agent.removeEffect(this);
+            agent.decreaseTTL(this);
         }
         Tester.getInstance().functionEnd();
     }
