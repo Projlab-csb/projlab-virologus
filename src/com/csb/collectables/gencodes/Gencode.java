@@ -27,13 +27,14 @@ public class Gencode implements Collectable {
      * @param requriedNucleic - How many NucleicAcid is needed for that agent
      */
     public Gencode(Agent agent, AminoAcid requriedAmino, NucleicAcid requriedNucleic) {
-        agent = agent;
+        this.agent = agent;
         requiredAminoAcid = requriedAmino;
         requiredNucleicAcid = requriedNucleic;
     }
 
     /**
-     * Getters for required Amino and NoulecAcid, and the agent
+     * Getter for required Amino Acids
+     * @return requiredAminoAcid - How many AminoAcid is needed for that agent
      */
     public NucleicAcid getRequiredNucleicAcid() {
         Tester.getInstance().functionStart();
@@ -41,12 +42,20 @@ public class Gencode implements Collectable {
         return requiredNucleicAcid;
     }
 
+    /**
+     * Getter for required AminoAcid
+     * @return requiredAminoAcid - How many AminoAcid is needed for that agent
+     */
     public AminoAcid getRequiredAminoAcid() {
         Tester.getInstance().functionStart();
         Tester.getInstance().functionEnd();
         return requiredAminoAcid;
     }
 
+    /**
+     * Getter for the agent
+     * @return agent - what can a virologist craft from a gencode
+     */
     public Agent getAgent() {
         Tester.getInstance().functionStart();
         Tester.getInstance().functionEnd();
@@ -67,6 +76,7 @@ public class Gencode implements Collectable {
 
     /**
      * The virologists dont't discrard their gencodes thus this have an emty function body
+     * @param virologist who discards the gencode
      */
     @Override
     public void discard(Virologist virologist) {}

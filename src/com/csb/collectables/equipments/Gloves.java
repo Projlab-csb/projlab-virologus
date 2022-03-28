@@ -26,6 +26,7 @@ public class Gloves extends Equipment implements DefenseStrategyInterface {
 
     /**
      * Apply and remove gloves effect on the virologist's defense strategy
+     * @param virologist - the virologist who is using the gloves
      */
     public void applyEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
@@ -33,6 +34,10 @@ public class Gloves extends Equipment implements DefenseStrategyInterface {
         Tester.getInstance().functionEnd();
     }
 
+    /**
+     * Remove the effect of the gloves
+     * @param virologist - the virologist who is using the gloves
+     */
     public void removeEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
         virologist.removeDefenseStrategy(this);

@@ -45,7 +45,7 @@ public class AminoAcid extends Matter {
     }
 
     /**
-     *
+     * This removes the amount of amino acid from the virologist
      * @param virologist - who discard an amount of Aminoacid
      */
     @Override
