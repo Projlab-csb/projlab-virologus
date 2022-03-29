@@ -42,7 +42,6 @@ public class Virologist {
      * In the constructor of the Virologist we can implement a variables, set a strategies to default, and set the starting size of the inventory
      */
     public Virologist() {
-        Tester.getInstance().turnOffLogging();
         inventorySize = 30;
         nucleicAcidStock = new NucleicAcid(0);
         aminoAcidStock = new AminoAcid(0);
@@ -58,7 +57,6 @@ public class Virologist {
         roundRunStrategy.add(defaultRoundRunStrategy);
         moveStrategy.add(defaultMoveStrategy);
         equipments = new ArrayList<Equipment>(3);
-        Tester.getInstance().turnOnLogging();
     }
 
     /**
