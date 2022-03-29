@@ -13,6 +13,7 @@ public class Cloak extends Equipment implements DefenseStrategyInterface {
 
     /**
      * Apply and remove gloves effect on the virologist's defense strategy
+     * @param virologist - the virologist, who uses the equipment
      */
     public void applyEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
@@ -20,6 +21,10 @@ public class Cloak extends Equipment implements DefenseStrategyInterface {
         Tester.getInstance().functionEnd();
     }
 
+    /**
+     * Remove the effect of the equipment from the virologist
+     * @param virologist - the virologist, who uses the equipment
+     */
     public void removeEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
         virologist.removeDefenseStrategy(this);

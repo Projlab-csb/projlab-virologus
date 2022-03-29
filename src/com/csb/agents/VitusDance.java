@@ -11,6 +11,7 @@ public class VitusDance extends Agent implements MoveStrategyInterface {
 
     /**
      * Apply the VitusDance effect on a virologist, now the virologist moves random directions
+     * @param virologist the virologist to apply the effect on
      */
     public void applyEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
@@ -19,21 +20,8 @@ public class VitusDance extends Agent implements MoveStrategyInterface {
     }
 
     /**
-     * Decrease the time to live of the agent, when it reaches zero the agent will be removed
-     */
-    @Override
-    public void decreaseTTL(Virologist virologist) {
-        Tester.getInstance().functionStart();
-        if (getTTL() == 0) {
-            removeEffect(virologist);
-        } else {
-            setTTL(getTTL() - 1);
-        }
-        Tester.getInstance().functionEnd();
-    }
-
-    /**
      * Removes the VitusDance effect, now the virologist does not move random directions
+     * @param virologist the virologist to remove the effect from
      */
     @Override
     public void removeEffect(Virologist virologist) {
@@ -44,6 +32,7 @@ public class VitusDance extends Agent implements MoveStrategyInterface {
 
     /**
      * This function handles the virologist's move(move random directions or not)
+     * @param virologist the virologist to move
      */
     @Override
     public void move(Virologist virologist, int nextTileIndex) {

@@ -6,8 +6,16 @@ import com.csb.virologist.Virologist;
 
 public abstract class Equipment implements Collectable {
 
+    /**
+     * Applies the effect of this equipment to the virologist
+     * @param virologist the virologist that gets the effect
+     */
     public abstract void applyEffect(Virologist virologist);
 
+    /**
+     * Removes the effect of this equipment from the virologist
+     * @param virologist the virologist that gets the effect
+     */
     public abstract void removeEffect(Virologist virologist);
 
     /**
