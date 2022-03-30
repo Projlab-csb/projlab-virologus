@@ -1,0 +1,40 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Collect Cloak
+
+actor Player
+
+Player -> "virologist: Virologist": collect(Shelter shelter)
+Activate "virologist: Virologist"
+
+"virologist: Virologist" -> "shelter:Shelter": getCollectable()
+Activate "shelter:Shelter"
+"shelter:Shelter" --> "virologist: Virologist": <Cloak>
+Deactivate "shelter:Shelter"
+
+"virologist: Virologist" -> "axe:Axe": collectBy(v:Virologist)
+Activate "axe:Axe"
+
+"axe:Axe" -> "axe:Axe"++ : applyEffect(v:Virologist)
+
+ "axe:Axe" -> "axe:Axe"++ : getStrategy()
+ "axe:Axe" --> "axe:Axe"-- : murderStrategy
+
+ "axe:Axe" -> "virologist: Virologist"++: setMurderStrategy(axe:Axe)
+"virologist: Virologist" --> "axe:Axe"--
+
+
+
+"axe:Axe" --> "axe:Axe"--
+
+
+"axe:Axe" --> "virologist: Virologist"--
+
+
+"virologist: Virologist" --> Player
+Deactivate "virologist: Virologist"
+
+@enduml

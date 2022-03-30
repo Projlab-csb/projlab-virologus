@@ -1,0 +1,21 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Virologist try to kill without axe
+
+actor Player
+participant "v: Virologist" as Virologist
+participant "default: murderStrategy" as murderStrategy
+'participant "currentField: Field" as currentField
+participant "targetVirologist:Virologist" as targetVirologist
+
+Player->Virologist++:murder(targetVirologist:Virologist)
+Virologist->murderStrategy++:murder(targetVirologist:Virologist)
+note right of murderStrategy
+nothing happens, the virologist cannot kill without an Axe
+end note
+murderStrategy-->Virologist--
+Virologist-->Player--
+@enduml

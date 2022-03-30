@@ -1,0 +1,49 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Virologist bear move
+
+actor Player
+participant "v: Virologist" as Virologist
+participant "default: moveStrategy" as moveStrategy
+participant "currentField: Field" as currentField
+participant "targetField: Field" as targetField
+participant "neighborVirologist:Virologist" as neighborVirologist
+
+
+
+Player -> Virologist: move(direction)
+Activate Virologist
+
+Virologist->moveStrategy++:move(v:Virologist, direction:int)
+
+
+moveStrategy-> currentField: getNeighbor(randomDirection)
+Activate currentField
+currentField --> moveStrategy: targetField : Field
+Deactivate currentField
+
+moveStrategy -> currentField: removeVirologist(v)
+Activate currentField
+currentField --> moveStrategy:
+Deactivate currentField
+
+moveStrategy -> targetField: acceptVirologist(v)
+Activate targetField
+targetField->moveStrategy++: setField(targetfield)
+moveStrategy-->targetField--
+targetField->Virologist++:attack(beardance:BearDance, null:Virologist)
+Virologist-->targetField--
+targetField --> moveStrategy--
+
+
+
+Deactivate targetField
+
+
+moveStrategy-->Virologist--
+Virologist --> Player:
+Deactivate Virologist
+@enduml

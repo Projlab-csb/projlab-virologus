@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Virologist kills with axe
+
+actor Player
+participant "v: Virologist" as Virologist
+participant "axemurder: murderStrategy" as murderStrategy
+participant "currentField: Field" as currentField
+participant "targetVirologist:Virologist" as targetVirologist
+participant "axe:Axe" as axe
+
+Player->Virologist++:murder(targetVirologist:Virologist)
+Virologist->murderStrategy++:murder(targetVirologist:Virologist)
+murderStrategy->axe++:getLive()
+axe-->murderStrategy--:live:int
+opt live==1
+murderStrategy->Virologist++:getField()
+Virologist-->murderStrategy--:field:Field
+murderStrategy->targetVirologist++:getField()
+targetVirologist-->murderStrategy--:field2:Field
+opt field equals field2
+    murderStrategy->targetVirologist++:die()
+    targetVirologist-->murderStrategy--
+    destroy targetVirologist
+end opt
+murderStrategy->axe++:decreaseTTL()
+axe-->murderStrategy--
+end opt
+murderStrategy-->Virologist--
+Virologist-->Player--
+@enduml

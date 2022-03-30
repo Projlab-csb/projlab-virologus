@@ -1,0 +1,50 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+autonumber
+
+mainframe Steal Cloak
+
+actor Player
+
+Player -> "robberVirologist: Virologist"++: steal(axe:Axe, targetVirologist:Virologist)
+
+"robberVirologist: Virologist" ->  "targetVirologist: Virologist"++: handleSteal(axe:Axe)
+
+
+        note left  "targetVirologist: Virologist"
+            The player choose the wanted thing here
+        end note
+
+         "targetVirologist: Virologist"->"axe:Axe"++:discard()
+                   "axe:Axe" -> "axe:Axe"++ : removeEffect(targetVirologist)
+                    note over  "targetVirologist: Virologist", "axe:Axe"
+                    Reset the murder strategy to **virologists default**
+                     end note
+
+                    "axe:Axe" ->  "targetVirologist: Virologist"++: removeMurderStrategy(axe:Axe)
+                    "targetVirologist: Virologist" --> "axe:Axe"--
+
+                    "axe:Axe"-->  "axe:Axe"--
+
+                    "axe:Axe"--> "targetVirologist: Virologist"--
+
+     "targetVirologist: Virologist" -->"robberVirologist: Virologist"--: axe:Axe
+  "robberVirologist: Virologist" -> "axe:Axe": collectBy(robberVirologist)
+    Activate "axe:Axe"
+
+     "axe:Axe" -> "axe:Axe"++ : applyEffect(robberVirologist)
+
+       "axe:Axe" -> "axe:Axe"++ : getStrategy()
+       "axe:Axe" --> "axe:Axe"-- : murderStrategy()
+
+       "axe:Axe" -> "robberVirologist: Virologist"++: setMurderStrategy(axe:Axe)
+       "robberVirologist: Virologist" --> "axe:Axe"--
+
+       "axe:Axe" --> "axe:Axe"--
+
+    "axe:Axe" --> "robberVirologist: Virologist":
+    Deactivate "axe:Axe"
+
+
+"robberVirologist: Virologist" --> Player --
+@enduml

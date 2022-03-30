@@ -1,0 +1,72 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+mainframe Virologist bear move
+
+actor Player
+participant "v: Virologist" as Virologist
+participant "bearmove: moveStrategy" as moveStrategy
+participant "currentField: Field" as currentField
+participant "targetField: Field" as targetField
+participant "neighborVirologist:Virologist" as neighborVirologist
+participant "storage:Storage" as storage
+
+
+
+Player -> Virologist: move(direction)
+Activate Virologist
+
+Virologist->moveStrategy++:move(v:Virologist, direction:int)
+
+note right of moveStrategy
+Get a random integer as direction
+end note
+moveStrategy -> moveStrategy: randomDirection = generateRandomNumber()
+
+moveStrategy-> currentField: getNeighbor(randomDirection)
+Activate currentField
+currentField --> moveStrategy: targetField : Field
+Deactivate currentField
+
+moveStrategy -> currentField: removeVirologist(v)
+Activate currentField
+currentField --> moveStrategy:
+Deactivate currentField
+
+moveStrategy -> targetField: acceptVirologist(v)
+Activate targetField
+targetField->moveStrategy++: setField(targetfield)
+moveStrategy-->targetField--
+targetField --> moveStrategy--
+
+alt Field is a storage
+moveStrategy->storage++:ruin()
+note right of storage
+Destroy all the matter
+end note
+storage-->moveStrategy--
+else Field is not a shelter
+moveStrategy->targetField++:ruin()
+note right of targetField
+don't hurt anything
+end note
+targetField-->moveStrategy--
+end alt
+
+
+moveStrategy->targetField++:getVirologists()
+targetField-->moveStrategy--:<Virologist>
+loop all virologists on the same field
+        moveStrategy->neighborVirologist++:attack(beardance:BearDance, v:Vorologist)
+        neighborVirologist-->moveStrategy--
+end
+
+Deactivate targetField
+
+
+moveStrategy-->Virologist--
+Virologist --> Player:
+Deactivate Virologist
+@enduml
