@@ -98,6 +98,10 @@ class Bag{
     +applyEffect(v: Virologist)
     +removeEffect(v: Virologist)
 }
+class Axe{
+    +applyEffect(v: Virologist)
+    +removeEffect(v: Virologist)
+}
 
 abstract class Agent{
     {abstract} +applyEffect(v: Virologist)
@@ -161,6 +165,7 @@ Matter <|-- NucleicAcid
 Equipment <|-- Cloak
 Equipment <|-- Gloves
 Equipment <|-- Bag
+Equipment <|-- Axe
 
 Agent <|-- VitusDance
 Agent <|- Protection

@@ -114,7 +114,7 @@ public class Virologist {
     public void useAgent(Agent agent, Virologist targetVirologist) {
         Tester.getInstance().functionStart();
         Gloves g = new Gloves();
-
+        if (!this.field.equals(targetVirologist.field)) return;
         //If both virologists have gloves on, we don't use the agent
         if (
             defenseStrategy.stream().anyMatch(x -> x.getClass().equals(Gloves.class)) &&
