@@ -7,5 +7,5 @@ import com.csb.virologist.Virologist;
  * Interface for the functions of the defending strategy
  */
 public interface DefenseStrategyInterface {
-    public void defense(Agent agent,Virologist attackedVirologist, Virologist attackerVirologist);
+    public void defense(Agent agent,Virologist defenderVirologist, Virologist attackerVirologist);
 }

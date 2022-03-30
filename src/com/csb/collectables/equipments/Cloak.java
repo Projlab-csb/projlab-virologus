@@ -34,14 +34,14 @@ public class Cloak extends Equipment implements DefenseStrategyInterface {
     /**
      * The defense function for the defending strategy
      * @param agent - agent is used by the attacker
-     * @param attackedVirologist - the virologist, who uses the agent
-     * @param attackerVirologist - the attacked virologist
+     * @param attacker - the virologist, who uses the agent
+     * @param defender - the attacked virologist
      */
     @Override
-    public void defense(Agent agent, Virologist attackedVirologist, Virologist attackerVirologist) {
+    public void defense(Agent agent, Virologist defender, Virologist attacker) {
         Tester.getInstance().functionStart();
         if (!UserInputHandler.getUserInputBoolean("Was the coat useful?")) {
-            agent.applyEffect(attackedVirologist);
+            agent.applyEffect(defender);
         }
         Tester.getInstance().functionEnd();
     }

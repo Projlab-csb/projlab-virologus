@@ -30,11 +30,11 @@ public class Protection extends Agent implements DefenseStrategyInterface {
     /**
      * This function handles the virologist's defense(protected or not protected)
      * @param agent the virologist to handle the defense
-     * @param attackedVirologist the virologist that is being attacked
+     * @param defenderVirologist the virologist that is being attacked
      * @param attackerVirologist the virologist that is attacking
      */
     @Override
-    public void defense(Agent agent, Virologist attackedVirologist, Virologist attackerVirologist) {
+    public void defense(Agent agent, Virologist defenderVirologist, Virologist attackerVirologist) {
         Tester.getInstance().functionStart();
         Tester.getInstance().functionEnd();
     }

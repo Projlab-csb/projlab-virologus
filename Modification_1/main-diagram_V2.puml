@@ -1,0 +1,255 @@
+@startuml
+
+'The class diagram doesn't show implicit getters and setters for fields!
+
+interface RoundRunStrategyInterface{
+    +roundRun(virologist: Virologist)
+    +handleSteal(collectable: Collectable, targetVirologist: Virologist): Collectable
+}
+
+class DefaultRoundRunStrategy{
+    +roundRun(virologist: Virologist)
+    +handleSteal(collectable: Collectable, targetVirologist: Virologist): Collectable
+}
+
+interface MoveStrategyInterface{
+    +move(virologist: Virologist, direction: Integer)
+}
+
+class DefaultMoveStrategy{
+    +move(virologist: Virologist, direction: Integer)
+}
+
+interface DefenseStrategyInterface{
+    +defense(agent: Agent, defender: Virologist, attacker: Virologist)
+}
+
+class DefaultDefenseStrategy{
+    +defense(agent: Agent, defender: Virologist, attacker: Virologist)
+}
+
+
+interface Collectable{
+    +collectBy(v: Virologist)
+    +discard(v: Virologist)
+}
+
+class GameController {
+    +{static} getInstance(): GameController
+    +getVirologists(): Virologist[]
+    +reportGenCodes(v:Virologist,g: Gencode[] )
+    +initGame()
+    '+gameOver()
+}
+
+class Field{
+    +getNeighbors(): Array<Field>
+    +getNeighbor(direction: Integer): Field
+    +addNeighbor(neighbor: Field)
+    +acceptVirologist(virologist: Virologist)
+    +removeVirologist(virologist: Virologist)
+    +getCollectable(): Collectable[]
+}
+
+class Lab{
+    +getGencode(): Gencode
+}
+
+class Storage{
+    +getAminoAcid(amount: Integer): AminoAcid
+    +getNucleicAcid(amount: Integer): NucleicAcid
+}
+
+class Shelter{
+    '+getEquipmentCount(): Integer
+    +getEquipment(): Equipment
+}
+
+class Virologist {
+    +setAgent()
+    +setAgentList(agents: Agent[])
+    +setAminoAcid(amount: Integer)
+    +setDefenseStrategy(strategy: DefenseStrategyInterface)
+    +setField(field: Field)
+    +setGencodes(gencodes: Gencode[])
+    +setInventorySize(size: Integer)
+    +setMoveStrategy(strategy: MoveStrategyInterface)
+    +setNucleicAcid(amount: Integer)
+    +setRoundRunStrategy(strategy: RoundRunStrategyInterface)
+
+    +getAminoAcid(): Integer
+    +getDefaultDefenseStrategy(): DefenseStrategyInterface
+    +getDefaultMoveStrategy(): MoveStrategyInterface
+    +getDefaultRoundRunStrategy(): RoundRunStrategyInterface
+    +getEquipments(): Equipment[]
+    +getField(): Field
+    +getGencodes(): Gencode[]
+    +getInventorySize(): Integer
+    +getNucleicAcid(): Integer
+
+    +addEquipment(equipment: Equipment)
+    +attack(agent: Agent, attacker: Virologist)
+    +collect()
+    +createAgent(gencode: Gencode) : Agent
+    +discard(collectable: Collectable)
+    +handleSteal(collectable: Collectable, targetVirologist: Virologist): Collectable
+    +move(direction: Integer)
+    +refreshAgents()
+    +removeDefenseStrategy(strategy: DefenseStrategyInterface)
+    +removeEquipment(equipment: Equipment)
+    +removeMoveStrategy(strategy: MoveStrategyInterface)
+    +removeRoundRunStrategy(strategy: RoundRunStrategyInterface)
+    +startOfTurn()
+    +steal(collectable: Collectable, targetVirologist: Virologist)
+    +storeAgent(agent: Agent)
+    +useAgent(agent: Agent, targetVirologist: Virologist)
+}
+
+abstract class Matter {
+    {abstract} +collectBy(v: Virologist) 'TODO: This is not implemented in the code
+    +getAmount(): Integer
+    +setAmount(amount: Integer)
+}
+
+class AminoAcid{
+    +collectBy(v: Virologist)
+    +discard(v: Virologist)
+}
+
+class NucleicAcid{
+    +collectBy(v: Virologist)
+    +discard(v: Virologist)
+}
+
+abstract class Equipment {
+    +collectBy(v: Virologist)
+    {abstract} +applyEffect(v: Virologist)
+    {abstract} +removeEffect(v: Virologist)
+    +discard(v: Virologist)
+}
+
+class Cloak{
+    +applyEffect(v: Virologist)
+    +removeEffect(v: Virologist)
+    +defense(agent: Agent, defender: Virologist, attacker: Virologist)
+}
+
+class Gloves{
+    +defense(agent: Agent, defender: Virologist, attacker: Virologist)
+    +applyEffect(v: Virologist)
+    +removeEffect(v: Virologist)
+}
+
+class Bag{
+    +applyEffect(v: Virologist)
+    +removeEffect(v: Virologist)
+    +getExtraInventorySize(): Integer
+}
+
+class Axe{
+    +applyEffect(v: Virologist)
+    +removeEffect(v: Virologist)
+}
+
+abstract class Agent{
+    {abstract} +applyEffect(v: Virologist)
+    {abstract} +removeEffect(v: Virologist)
+    'Each agent has a time to live value, and when it reaches 0, it is destroyed
+    'The return value means if the agent is still alive
+    +decreaseTTL() : Boolean
+    +getTTL(): Integer
+    +setTTL(ttl: Integer)
+}
+
+class VitusDance{
+    +applyEffect(v: Virologist)
+    +removeEffect(v: Virologist)
+    +move(virologist: Virologist, direction: Integer)
+}
+
+class Protection{
+    +applyEffect(v: Virologist)
+    +removeEffect(v: Virologist)
+    +defense(agent: Agent, defender: Virologist, attacker: Virologist)
+}
+
+class Paralyzed{
+    +applyEffect(v: Virologist)
+    +removeEffect(v: Virologist)
+    +handleSteal(collectable: Collectable, targetVirologist: Virologist): Collectable
+    +roundRun(virologist: Virologist)
+}
+
+class Forget{
+    +applyEffect(v: Virologist)
+    +removeEffect(v: Virologist)
+}
+
+'This Gencode is basically the crafting receipt of the Agent
+class Gencode {
+    +getRequiredNucleicAcid: NucleicAcid
+    +getRequiredAminoAcid: AminoAcid
+    +getAgent: Agent
+    +collectBy(v: Virologist)
+    +discard(v: Virologist)
+}
+
+GameController *-d Virologist
+'GameController *-- Gencode
+
+Field <|-u- Lab
+Field <|-- Storage
+Field <|-- Shelter
+
+Lab -o "n" Gencode
+Shelter --o "n" Equipment
+Storage --o "n" Matter
+
+Virologist *-r- DefaultRoundRunStrategy
+Virologist *-- DefaultMoveStrategy
+Virologist *-- DefaultDefenseStrategy
+Virologist "n" o- Field
+Virologist --* "n" Agent
+Virologist --* "n" Matter
+Virologist --* "n" Equipment
+Virologist -u--o "n" Gencode
+
+Matter <|-- AminoAcid
+Matter <|-- NucleicAcid
+
+Equipment <|-- Cloak
+Equipment <|-- Gloves
+Equipment <|-- Bag
+Equipment <|-- Axe
+
+Agent <|-- VitusDance
+Agent <|- Protection
+Agent <|- Paralyzed
+Agent <|-- Forget
+Agent "1" *-- Gencode
+
+RoundRunStrategyInterface <|. Paralyzed
+MoveStrategyInterface <|. VitusDance
+DefenseStrategyInterface <|.. Protection
+DefenseStrategyInterface <|.. Cloak
+DefenseStrategyInterface <|.. Gloves
+
+DefaultRoundRunStrategy ..|> RoundRunStrategyInterface
+DefaultMoveStrategy ..|> MoveStrategyInterface
+DefaultDefenseStrategy ..|> DefenseStrategyInterface
+
+Collectable <|. Gencode
+Collectable <|.. Equipment
+Collectable <|. Matter
+
+'Implicit stuff, comment it out for easier readability
+RoundRunStrategyInterface .. Collectable
+DefenseStrategyInterface .. Agent
+DefenseStrategyInterface .[hidden]. Virologist
+Collectable .. Virologist
+GameController . Gencode
+Field .. Collectable
+'Field .. Virologist
+Gencode .. Matter
+
+@enduml

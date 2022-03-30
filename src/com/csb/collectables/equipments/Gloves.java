@@ -14,13 +14,13 @@ public class Gloves extends Equipment implements DefenseStrategyInterface {
     /**
      * The defense function for the defending strategy
      * @param agent - agent is used by the attacker
-     * @param attackedVirologist - the virologist, who uses the agent
+     * @param defenderVirologist - the virologist, who uses the agent
      * @param attackerVirologist - the attacked virologist
      */
     @Override
-    public void defense(Agent agent, Virologist attackedVirologist, Virologist attackerVirologist) {
+    public void defense(Agent agent, Virologist defenderVirologist, Virologist attackerVirologist) {
         Tester.getInstance().functionStart();
-        attackedVirologist.useAgent(agent, attackerVirologist);
+        defenderVirologist.useAgent(agent, attackerVirologist);
         Tester.getInstance().functionEnd();
     }
 
