@@ -152,10 +152,12 @@ class Cloak{
 }
 
 class Gloves{
+    -life:int
     +defense(agent: Agent, defender: Virologist, attacker: Virologist)
     +applyEffect(v: Virologist)
     +removeEffect(v: Virologist)
-    +getLive:int
+
+    +getLife():int
     +decreaseTTL()
 }
 
@@ -166,10 +168,11 @@ class Bag{
 }
 
 class Axe{
+    -life:int
     +murder(v:Virologist)
     +applyEffect(v: Virologist)
     +removeEffect(v: Virologist)
-    +getLive:int
+    +getLife():int
     +decreaseTTL()
 }
 
