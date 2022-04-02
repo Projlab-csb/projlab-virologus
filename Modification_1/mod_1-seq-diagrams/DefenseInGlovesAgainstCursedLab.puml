@@ -1,6 +1,6 @@
 @startuml
 'https://plantuml.com/sequence-diagram
-mainframe Virologist wear gloves
+mainframe Virologist wear gloves when step on Cursed Lab
 
 
 participant "cursedland:CursedLab" as CursedLab

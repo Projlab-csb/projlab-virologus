@@ -3,7 +3,7 @@
 
 autonumber
 
-mainframe Virologist bear move
+mainframe Step on Cursed lab
 
 actor Player
 participant "v: Virologist" as Virologist

@@ -3,7 +3,7 @@
 
 autonumber
 
-mainframe Collect Cloak
+mainframe Collect Axe
 
 actor Player
 
@@ -12,7 +12,7 @@ Activate "virologist: Virologist"
 
 "virologist: Virologist" -> "shelter:Shelter": getCollectable()
 Activate "shelter:Shelter"
-"shelter:Shelter" --> "virologist: Virologist": <Cloak>
+"shelter:Shelter" --> "virologist: Virologist": <Axe>
 Deactivate "shelter:Shelter"
 
 "virologist: Virologist" -> "axe:Axe": collectBy(v:Virologist)

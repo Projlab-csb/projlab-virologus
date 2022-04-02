@@ -3,7 +3,7 @@
 
 autonumber
 
-mainframe Virologist bear move
+mainframe Virologist bear move and destruct
 
 actor Player
 participant "v: Virologist" as Virologist
@@ -47,7 +47,7 @@ note right of storage
 Destroy all the matter
 end note
 storage-->moveStrategy--
-else Field is not a shelter
+else Field is not a storage
 moveStrategy->targetField++:ruin()
 note right of targetField
 don't hurt anything
