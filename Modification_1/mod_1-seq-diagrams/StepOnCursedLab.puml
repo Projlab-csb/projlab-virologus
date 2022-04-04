@@ -9,8 +9,8 @@ actor Player
 participant "v: Virologist" as Virologist
 participant "default: moveStrategy" as moveStrategy
 participant "currentField: Field" as currentField
-participant "targetField: Field" as targetField
-participant "neighborVirologist:Virologist" as neighborVirologist
+participant "targetField: CursedField" as targetField
+'participant "neighborVirologist:Virologist" as neighborVirologist
 
 
 
@@ -22,7 +22,7 @@ Virologist->moveStrategy++:move(v:Virologist, direction:int)
 
 moveStrategy-> currentField: getNeighbor(randomDirection)
 Activate currentField
-currentField --> moveStrategy: targetField : Field
+currentField --> moveStrategy: targetField
 Deactivate currentField
 
 moveStrategy -> currentField: removeVirologist(v)
