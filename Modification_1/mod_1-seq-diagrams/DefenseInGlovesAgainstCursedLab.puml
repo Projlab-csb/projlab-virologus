@@ -5,28 +5,23 @@ mainframe Virologist wear gloves when step on Cursed Lab
 
 participant "cursedland:CursedLab" as CursedLab
 participant "v: Virologist" as Virologist
-participant "glovesStrategy: defenseStrategy" as defenseStrategy
 participant "glovesOnVirologist:Gloves" as Gloves
 
 CursedLab->Virologist++:attack(bearDance:Agent, attackerVirologist:Virologist)
-Virologist->defenseStrategy++:defense(bearDance:Agent,v:Virologist, null)
-defenseStrategy->Gloves++:getLife()
-Gloves-->defenseStrategy--:life:int
+Virologist->Gloves++:defense(bearDance:Agent,v:Virologist, null)
 
-note right of defenseStrategy
+note right of Gloves
 Because the attackerVirologist parameter is "null" in attack(),
 won't be a counter attack
 end note
 
-defenseStrategy->Gloves++:decreaseTTL()
-Gloves-->defenseStrategy--
-defenseStrategy->Gloves++:getLife()
-Gloves-->defenseStrategy--:life int
+Gloves->Gloves++:decreaseTTL()
+Gloves-->Gloves--
 opt life==0
-defenseStrategy->Gloves++:discard(v:Virologist)
-Gloves-->defenseStrategy--
+Gloves->Gloves++:discard(v:Virologist)
+Gloves-->Gloves--
 end opt
-defenseStrategy-->Virologist--
+Gloves-->Virologist--
 Virologist-->CursedLab--
 
 @enduml

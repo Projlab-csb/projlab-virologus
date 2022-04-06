@@ -7,28 +7,28 @@ mainframe Virologist kills with axe
 
 actor Player
 participant "v: Virologist" as Virologist
-participant "axemurder: murderStrategy" as murderStrategy
+participant "axemurder: murderStrategy" as axe
 participant "currentField: Field" as currentField
 participant "targetVirologist:Virologist" as targetVirologist
-participant "axe:Axe" as axe
+
 
 Player->Virologist++:murder(targetVirologist:Virologist)
-Virologist->murderStrategy++:murder(targetVirologist:Virologist)
-murderStrategy->axe++:getLive()
-axe-->murderStrategy--:live:int
+Virologist->axe++:murder(targetVirologist:Virologist)
+axe->axe++:getLive()
+axe-->axe--:live:int
 opt live==1
-murderStrategy->Virologist++:getField()
-Virologist-->murderStrategy--:field:Field
-murderStrategy->targetVirologist++:getField()
-targetVirologist-->murderStrategy--:field2:Field
+axe->Virologist++:getField()
+Virologist-->axe--:field:Field
+axe->targetVirologist++:getField()
+targetVirologist-->axe--:field2:Field
 opt field equals field2
-    murderStrategy->targetVirologist++:die()
-    targetVirologist-->murderStrategy--
+    axe->targetVirologist++:die()
+    targetVirologist-->axe--
     destroy targetVirologist
 end opt
-murderStrategy->axe++:decreaseTTL()
-axe-->murderStrategy--
+axe->axe++:decreaseTTL()
+axe-->axe--
 end opt
-murderStrategy-->Virologist--
+axe-->Virologist--
 Virologist-->Player--
 @enduml

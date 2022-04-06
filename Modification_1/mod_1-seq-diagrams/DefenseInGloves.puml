@@ -5,25 +5,21 @@ mainframe Virologist wear gloves
 
 participant "attackerVirologist:Virologist" as attackerVirologist
 participant "v: Virologist" as Virologist
-participant "glovesStrategy: defenseStrategy" as defenseStrategy
 participant "glovesOnVirologist:Gloves" as Gloves
 
 attackerVirologist->Virologist++:attack(forgetAgent:Agent, attackerVirologist:Virologist)
-Virologist->defenseStrategy++:defense(forgetAgent:Agent,v:Virologist, attackerVirologist:Virologist)
-defenseStrategy->Gloves++:getLife()
-Gloves-->defenseStrategy--:life:int
+Virologist->Gloves++:defense(forgetAgent:Agent,v:Virologist, attackerVirologist:Virologist)
 
-defenseStrategy->attackerVirologist++:attack(forgetAgent:Agent, attackerVirologist:Virologist,v:Virologist)
-attackerVirologist-->defenseStrategy--
-defenseStrategy->Gloves++:decreaseTTL()
-Gloves-->defenseStrategy--
-defenseStrategy->Gloves++:getLife()
-Gloves-->defenseStrategy--:life int
+
+Gloves->attackerVirologist++:attack(forgetAgent:Agent, attackerVirologist:Virologist,v:Virologist)
+attackerVirologist-->Gloves--
+Gloves->Gloves++:decreaseTTL()
+Gloves-->Gloves--
 opt life==0
-defenseStrategy->Gloves++:discard(v:Virologist)
-Gloves-->defenseStrategy--
+Gloves->Gloves++:discard(v:Virologist)
+Gloves-->Gloves--
 end opt
-defenseStrategy-->Virologist--
+Gloves-->Virologist--
 Virologist-->attackerVirologist--
 
 @enduml

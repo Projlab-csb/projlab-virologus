@@ -229,7 +229,7 @@ GameController *-d Virologist
 'GameController *-- Gencode
 
 Field <|-u- Lab
-Field <|-u- CursedLab
+Lab <|-u- CursedLab
 Field <|-- Storage
 Field <|-- Shelter
 
