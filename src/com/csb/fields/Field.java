@@ -12,6 +12,8 @@ import java.util.List;
  */
 public class Field {
 
+    private List<Field> neighbors;
+
     public List<Field> getNeighbors() {
         Tester.getInstance().functionStart();
         Tester.getInstance().functionEnd();
