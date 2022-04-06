@@ -82,7 +82,6 @@ class Shelter{
 }
 
 class Virologist {
-    +setAgent()
     +setAgentList(agents: Agent[])
     +setAminoAcid(amount: Integer)
     +setDefenseStrategy(strategy: DefenseStrategyInterface)
@@ -107,6 +106,7 @@ class Virologist {
     +attack(agent: Agent, attacker: Virologist)
     +collect()
     +createAgent(gencode: Gencode) : Agent
+    +die()
     +discard(collectable: Collectable)
     +handleSteal(collectable: Collectable, targetVirologist: Virologist): Collectable
     +move(direction: Integer)
@@ -119,7 +119,7 @@ class Virologist {
     +steal(collectable: Collectable, targetVirologist: Virologist)
     +storeAgent(agent: Agent)
     +useAgent(agent: Agent, targetVirologist: Virologist)
-    +die()
+    +Virologist()
 }
 
 abstract class Matter {
@@ -187,6 +187,7 @@ abstract class Agent{
 }
 
 class VitusDance{
++VitusDance()
     +applyEffect(v: Virologist)
     +removeEffect(v: Virologist)
     +move(virologist: Virologist, direction: Integer)

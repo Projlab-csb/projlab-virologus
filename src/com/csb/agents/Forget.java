@@ -11,7 +11,7 @@ public class Forget extends Agent {
      */
     public void applyEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
-        virologist.setAgent();
+
         Tester.getInstance().functionEnd();
     }
 
@@ -22,7 +22,7 @@ public class Forget extends Agent {
     @Override
     public void removeEffect(Virologist virologist) {
         Tester.getInstance().functionStart();
-        virologist.setAgent();
+
         Tester.getInstance().functionEnd();
     }
 }

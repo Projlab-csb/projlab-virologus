@@ -27,9 +27,9 @@ public class Virologist {
     private final ArrayList<DefenseStrategyInterface> defenseStrategy;
     private final ArrayList<RoundRunStrategyInterface> roundRunStrategy;
     private final ArrayList<MoveStrategyInterface> moveStrategy;
-    private final DefenseStrategyInterface defaultDefenseStrategy;
-    private final MoveStrategyInterface defaultMoveStrategy;
-    private final RoundRunStrategyInterface defaultRoundRunStrategy;
+    //private final DefenseStrategyInterface defaultDefenseStrategy;
+    //private final MoveStrategyInterface defaultMoveStrategy;
+    //private final RoundRunStrategyInterface defaultRoundRunStrategy;
     private int inventorySize;
     private final AminoAcid aminoAcidStock;
     private final NucleicAcid nucleicAcidStock;
@@ -46,16 +46,16 @@ public class Virologist {
         nucleicAcidStock = new NucleicAcid(0);
         aminoAcidStock = new AminoAcid(0);
         gencodes = new ArrayList<Gencode>();
-        defaultDefenseStrategy = new DefaultDefense();
-        defaultRoundRunStrategy = new DefaultRoundRun();
-        defaultMoveStrategy = new DefaultMove();
+        // defaultDefenseStrategy = new DefaultDefense();
+        // defaultRoundRunStrategy = new DefaultRoundRun();
+        // defaultMoveStrategy = new DefaultMove();
         defenseStrategy = new ArrayList<DefenseStrategyInterface>();
         roundRunStrategy = new ArrayList<RoundRunStrategyInterface>();
         moveStrategy = new ArrayList<MoveStrategyInterface>();
         agentlist = new ArrayList<Agent>();
-        defenseStrategy.add(defaultDefenseStrategy);
-        roundRunStrategy.add(defaultRoundRunStrategy);
-        moveStrategy.add(defaultMoveStrategy);
+        defenseStrategy.add(new DefaultDefense());
+        roundRunStrategy.add(new DefaultRoundRun());
+        moveStrategy.add(new DefaultMove());
         equipments = new ArrayList<Equipment>(3);
     }
 
@@ -292,23 +292,23 @@ public class Virologist {
     /**
      * @return - the default defending strategy
      */
-    public DefenseStrategyInterface getDefaultDefenseStrategy() {
+    /*public DefenseStrategyInterface getDefaultDefenseStrategy() {
         return defaultDefenseStrategy;
-    }
+    }*/
 
     /**
      * @return - the default moving strategy
      */
-    public MoveStrategyInterface getDefaultMoveStrategy() {
+    /*public MoveStrategyInterface getDefaultMoveStrategy() {
         return defaultMoveStrategy;
-    }
+    }*/
 
     /**
      * @return - the default RoundRun strategy
      */
-    public RoundRunStrategyInterface getDefaultRoundRunStrategy() {
+    /* public RoundRunStrategyInterface getDefaultRoundRunStrategy() {
         return defaultRoundRunStrategy;
-    }
+    }*/
 
     /**
      * @return - the equipments owned by the Virologist
@@ -340,11 +340,6 @@ public class Virologist {
      */
     public Collectable handleSteal(Collectable coll) {
         return this.roundRunStrategy.get(roundRunStrategy.size() - 1).handleSteal(coll, this);
-    }
-
-    public void setAgent() {
-        Tester.getInstance().functionStart();
-        Tester.getInstance().functionEnd();
     }
 
     /**
