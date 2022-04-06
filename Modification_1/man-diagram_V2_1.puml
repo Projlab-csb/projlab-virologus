@@ -47,6 +47,7 @@ class GameController {
     +getVirologists(): Virologist[]
     +reportGenCodes(v:Virologist,g: Gencode[] )
     +initGame()
+    +reportDeath(v:Virologist)
     '+gameOver()
 }
 
