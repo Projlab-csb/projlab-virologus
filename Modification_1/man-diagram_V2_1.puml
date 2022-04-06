@@ -62,23 +62,18 @@ class Field{
 }
 
 class Lab{
-    +getGencode(): Gencode
 }
 
 class CursedLab{
-    +getGencode(): Gencode
     +acceptVirologist(virologist: Virologist)
 }
 
 class Storage{
-    +getAminoAcid(amount: Integer): AminoAcid
-    +getNucleicAcid(amount: Integer): NucleicAcid
     +ruin();
 }
 
 class Shelter{
     '+getEquipmentCount(): Integer
-    +getEquipment(): Equipment
 }
 
 class Virologist {
