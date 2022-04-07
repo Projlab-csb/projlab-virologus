@@ -63,18 +63,22 @@ class Field{
 }
 
 class Lab{
+ +getCollectable(): Collectable[]
 }
 
 class CursedLab{
     +acceptVirologist(virologist: Virologist)
+    +getCollectable(): Collectable[]
 }
 
 class Storage{
+   +getCollectable(): Collectable[]
     +ruin();
 }
 
 class Shelter{
     '+getEquipmentCount(): Integer
+    +getCollectable(): Collectable[]
 }
 
 class Virologist {

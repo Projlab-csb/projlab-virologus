@@ -13,6 +13,7 @@ import java.util.List;
 public class Field {
 
     private List<Field> neighbors;
+    private List<Virologist> virologistonField;
 
     public List<Field> getNeighbors() {
         Tester.getInstance().functionStart();
