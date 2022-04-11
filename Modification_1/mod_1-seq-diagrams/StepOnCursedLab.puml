@@ -32,8 +32,8 @@ Deactivate currentField
 
 moveStrategy -> targetField: acceptVirologist(v)
 Activate targetField
-targetField->moveStrategy++: setField(targetfield)
-moveStrategy-->targetField--
+targetField->Virologist++: setField(targetfield)
+Virologist-->targetField--
 targetField->Virologist++:attack(beardance:BearDance, null:Virologist)
 Virologist-->targetField--
 targetField --> moveStrategy--

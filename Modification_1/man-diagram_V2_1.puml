@@ -227,6 +227,7 @@ class Gencode {
 }
 
 GameController *-d Virologist
+GameController "n" *-d Field
 'GameController *-- Gencode
 
 Field <|-u- Lab
@@ -262,7 +263,7 @@ Agent <|- Protection
 Agent <|- Paralyzed
 Agent <|-- Forget
 Agent <|-- BearDance
-Agent "1" *-- Gencode
+Agent "1" o-- Gencode
 
 RoundRunStrategyInterface <|. Paralyzed
 MoveStrategyInterface <|. VitusDance
