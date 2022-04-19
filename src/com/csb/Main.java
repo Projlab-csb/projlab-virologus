@@ -70,7 +70,7 @@ public class Main {
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input (try to enter a number): " + e.getMessage());
             } catch (Exception e) {
-                e.printStackTrace(); //branch test
+                e.printStackTrace(); 
             }
         }
     }
