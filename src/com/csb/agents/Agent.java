@@ -21,12 +21,10 @@ public abstract class Agent {
      * @param virologist the virologist who has the agent
      */
     public void decreaseTTL(Virologist virologist) {
-        Tester.getInstance().functionStart();
         this.TTL--;
         if (this.TTL <= 0) {
             removeEffect(virologist);
         }
-        Tester.getInstance().functionEnd();
     }
 
     /**

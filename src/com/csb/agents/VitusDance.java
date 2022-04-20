@@ -14,9 +14,7 @@ public class VitusDance extends Agent implements MoveStrategyInterface {
      * @param virologist the virologist to apply the effect on
      */
     public void applyEffect(Virologist virologist) {
-        Tester.getInstance().functionStart();
         virologist.setMoveStrategy(this);
-        Tester.getInstance().functionEnd();
     }
 
     /**
@@ -25,9 +23,7 @@ public class VitusDance extends Agent implements MoveStrategyInterface {
      */
     @Override
     public void removeEffect(Virologist virologist) {
-        Tester.getInstance().functionStart();
         virologist.setMoveStrategy(this);
-        Tester.getInstance().functionEnd();
     }
 
     /**
@@ -36,7 +32,6 @@ public class VitusDance extends Agent implements MoveStrategyInterface {
      */
     @Override
     public void move(Virologist virologist, int nextTileIndex) {
-        Tester.getInstance().functionStart();
         List<Field> neighbours = virologist.getField().getNeighbors();
         int randomFieldId = UserInputHandler.getUserInputInt(
             "What is the random generator output? (1-" + neighbours.size() + ")",
@@ -44,6 +39,5 @@ public class VitusDance extends Agent implements MoveStrategyInterface {
             neighbours.size()
         );
         virologist.setField(neighbours.get(randomFieldId - 1));
-        Tester.getInstance().functionEnd();
     }
 }

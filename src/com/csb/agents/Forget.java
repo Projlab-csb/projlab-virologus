@@ -11,9 +11,7 @@ public class Forget extends Agent {
      * @param virologist the virologist to apply the effect on
      */
     public void applyEffect(Virologist virologist) {
-        Tester.getInstance().functionStart();
         virologist.getGencodes().clear();
-        Tester.getInstance().functionEnd();
     }
 
     /**
@@ -21,8 +19,5 @@ public class Forget extends Agent {
      * @param virologist the virologist to apply the effect on
      */
     @Override
-    public void removeEffect(Virologist virologist) {
-        Tester.getInstance().functionStart();
-        Tester.getInstance().functionEnd();
-    }
+    public void removeEffect(Virologist virologist) { }
 }
