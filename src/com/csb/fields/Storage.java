@@ -24,8 +24,6 @@ public class Storage extends Field {
      * @return the items (matters) what a Virologist can learn from the Storage
      */
     public ArrayList<Collectable> getCollectable() {
-        Tester.getInstance().functionStart();
-        Tester.getInstance().functionEnd();
         return matters;
     }
 }

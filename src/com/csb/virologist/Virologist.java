@@ -229,7 +229,6 @@ public class Virologist {
         }else{
             System.out.println("You don't have enough material.");
         }
-
     }
 
     /**
