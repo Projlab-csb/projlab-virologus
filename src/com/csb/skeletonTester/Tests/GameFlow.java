@@ -24,7 +24,7 @@ public class GameFlow extends Test {
         boolean isSomeoneWon = false;
 
         while (!isSomeoneWon) {
-            for (Virologist virologist : GameController.getInstance().getVirologists()) {
+            for (Virologist virologist : GameController.getInstance().getAllVirologists()) {
                 virologist.startOfTurn();
                 if (UserInputHandler.getUserInputBoolean("Did " + virologist + " won the game?")) {
                     isSomeoneWon = true;

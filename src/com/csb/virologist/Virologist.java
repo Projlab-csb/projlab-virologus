@@ -114,7 +114,6 @@ public class Virologist {
         }
 
         targetVirologist.attack(agent, this);
-
     }
 
     /**
@@ -199,7 +198,6 @@ public class Virologist {
      * @param targetVirologist - The Virologist, who has the item wanted by the robber
      */
     public void steal(Collectable coll, Virologist targetVirologist) {
-
         //the target virologist handle the theft
         Collectable stolen = targetVirologist.handleSteal(coll);
 
@@ -224,9 +222,12 @@ public class Virologist {
      * @param genCode - The Gencode of the agent to be created
      */
     public void createAgent(Gencode genCode) {
-        if(this.aminoAcidStock.getAmount() >= genCode.getRequiredAminoAcid().getAmount() && this.nucleicAcidStock.getAmount() >= genCode.getRequiredNucleicAcid().getAmount()){
+        if (
+            this.aminoAcidStock.getAmount() >= genCode.getRequiredAminoAcid().getAmount() &&
+            this.nucleicAcidStock.getAmount() >= genCode.getRequiredNucleicAcid().getAmount()
+        ) {
             this.storeAgent(genCode.getAgent());
-        }else{
+        } else {
             System.out.println("You don't have enough material.");
         }
     }
@@ -343,7 +344,6 @@ public class Virologist {
      */
     public void setField(Field field) {
         this.field = field;
-        field.acceptVirologist(this);
     }
 
     /**
