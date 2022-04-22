@@ -1,5 +1,6 @@
 package com.csb.fields;
 
+import com.csb.agents.BearDance;
 import com.csb.collectables.Collectable;
 import com.csb.skeletonTester.Tester;
 import com.csb.virologist.Virologist;
@@ -29,11 +30,12 @@ public class CursedLab extends Lab {
     }
 
     /**
-     *
+     *A cursedlab attack a virologist when he steps on it
      * @param virologist
      */
     @Override
     public void acceptVirologist(Virologist virologist) {
+        virologist.attack(new BearDance(), null);
         super.acceptVirologist(virologist);
     }
 }
