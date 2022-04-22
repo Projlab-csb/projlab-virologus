@@ -1,5 +1,6 @@
 package com.csb.agents;
 
+import com.csb.collectables.gencodes.Gencode;
 import com.csb.skeletonTester.Tester;
 import com.csb.virologist.Virologist;
 
@@ -10,9 +11,7 @@ public class Forget extends Agent {
      * @param virologist the virologist to apply the effect on
      */
     public void applyEffect(Virologist virologist) {
-        Tester.getInstance().functionStart();
-
-        Tester.getInstance().functionEnd();
+        virologist.getGencodes().clear();
     }
 
     /**
@@ -20,9 +19,5 @@ public class Forget extends Agent {
      * @param virologist the virologist to apply the effect on
      */
     @Override
-    public void removeEffect(Virologist virologist) {
-        Tester.getInstance().functionStart();
-
-        Tester.getInstance().functionEnd();
-    }
+    public void removeEffect(Virologist virologist) { }
 }

@@ -11,9 +11,7 @@ public class Protection extends Agent implements DefenseStrategyInterface {
      * @param virologist the virologist to apply the effect on
      */
     public void applyEffect(Virologist virologist) {
-        Tester.getInstance().functionStart();
         virologist.setDefenseStrategy(this);
-        Tester.getInstance().functionEnd();
     }
 
     /**
@@ -22,9 +20,7 @@ public class Protection extends Agent implements DefenseStrategyInterface {
      */
     @Override
     public void removeEffect(Virologist virologist) {
-        Tester.getInstance().functionStart();
         virologist.removeDefenseStrategy(this);
-        Tester.getInstance().functionEnd();
     }
 
     /**
@@ -35,7 +31,7 @@ public class Protection extends Agent implements DefenseStrategyInterface {
      */
     @Override
     public void defense(Agent agent, Virologist defenderVirologist, Virologist attackerVirologist) {
-        Tester.getInstance().functionStart();
-        Tester.getInstance().functionEnd();
+        System.out.println("The target had protection agent applied on himself, the attack was ineffective!");
+        //Nothing happens, hence this function is empty
     }
 }

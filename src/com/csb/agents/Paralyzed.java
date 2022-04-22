@@ -12,9 +12,7 @@ public class Paralyzed extends Agent implements RoundRunStrategyInterface {
      * @param virologist the virologist to apply the effect on
      */
     public void applyEffect(Virologist virologist) {
-        Tester.getInstance().functionStart();
         virologist.setRoundRunStrategy(this);
-        Tester.getInstance().functionEnd();
     }
 
     /**
@@ -23,9 +21,7 @@ public class Paralyzed extends Agent implements RoundRunStrategyInterface {
      */
     @Override
     public void removeEffect(Virologist virologist) {
-        Tester.getInstance().functionStart();
         virologist.removeRoundRunStrategy(this);
-        Tester.getInstance().functionEnd();
     }
 
     /**
@@ -35,9 +31,7 @@ public class Paralyzed extends Agent implements RoundRunStrategyInterface {
      */
     @Override
     public Collectable handleSteal(Collectable coll, Virologist targetVirologist) {
-        Tester.getInstance().functionStart();
         coll.discard(targetVirologist);
-        Tester.getInstance().functionEnd();
         return coll;
     }
 
@@ -47,8 +41,7 @@ public class Paralyzed extends Agent implements RoundRunStrategyInterface {
      */
     @Override
     public void RoundRun(Virologist virologist) {
-        Tester.getInstance().functionStart();
-
-        Tester.getInstance().functionEnd();
+        System.out.println("The virologist is paralyzed, you can do nothing to prevent your impending doom (at least for the time being)!");
+        //The virologist can't do anything, hence the function is empty
     }
 }
