@@ -15,9 +15,7 @@ public class Bag extends Equipment {
      * @param virologist - his inventory will be bigger til owns the bag
      */
     public void applyEffect(Virologist virologist) {
-        Tester.getInstance().functionStart();
         virologist.setInventorySize(virologist.getInventorySize() + getExtraInventorySize());
-        Tester.getInstance().functionEnd();
     }
 
     /**
@@ -26,17 +24,13 @@ public class Bag extends Equipment {
      */
     @Override
     public void removeEffect(Virologist virologist) {
-        Tester.getInstance().functionStart();
         virologist.setInventorySize(virologist.getInventorySize() - getExtraInventorySize());
-        Tester.getInstance().functionEnd();
     }
 
     /**
      * Getter for extrainventorysize
      */
     private int getExtraInventorySize() {
-        Tester.getInstance().functionStart();
-        Tester.getInstance().functionEnd();
         return extraInventorySize;
     }
 }

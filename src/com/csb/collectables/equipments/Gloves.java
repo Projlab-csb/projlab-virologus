@@ -11,6 +11,8 @@ import com.csb.virologist.Virologist;
  */
 public class Gloves extends Equipment implements DefenseStrategyInterface {
 
+    int life = 3;
+
     /**
      * The defense function for the defending strategy
      * @param agent - agent is used by the attacker
@@ -19,9 +21,13 @@ public class Gloves extends Equipment implements DefenseStrategyInterface {
      */
     @Override
     public void defense(Agent agent, Virologist defenderVirologist, Virologist attackerVirologist) {
-        Tester.getInstance().functionStart();
-        defenderVirologist.useAgent(agent, attackerVirologist);
-        Tester.getInstance().functionEnd();
+        if (attackerVirologist != null) {
+            defenderVirologist.useAgent(agent, attackerVirologist);
+        }
+        life--;
+        if (life == 0) {
+            attackerVirologist.discard(this);
+        }
     }
 
     /**
@@ -29,9 +35,7 @@ public class Gloves extends Equipment implements DefenseStrategyInterface {
      * @param virologist - the virologist who is using the gloves
      */
     public void applyEffect(Virologist virologist) {
-        Tester.getInstance().functionStart();
         virologist.setDefenseStrategy(this);
-        Tester.getInstance().functionEnd();
     }
 
     /**
@@ -39,8 +43,6 @@ public class Gloves extends Equipment implements DefenseStrategyInterface {
      * @param virologist - the virologist who is using the gloves
      */
     public void removeEffect(Virologist virologist) {
-        Tester.getInstance().functionStart();
         virologist.removeDefenseStrategy(this);
-        Tester.getInstance().functionEnd();
     }
 }

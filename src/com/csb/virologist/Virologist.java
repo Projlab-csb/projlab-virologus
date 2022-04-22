@@ -10,6 +10,7 @@ import com.csb.collectables.matters.NucleicAcid;
 import com.csb.fields.Field;
 import com.csb.gameControl.GameController;
 import com.csb.skeletonTester.Tester;
+import com.csb.skeletonTester.UserInputHandler;
 import com.csb.strategies.*;
 import com.csb.strategies.DefenseStrategyInterface;
 import com.csb.strategies.MoveStrategyInterface;
@@ -27,6 +28,7 @@ public class Virologist {
     private final ArrayList<DefenseStrategyInterface> defenseStrategy;
     private final ArrayList<RoundRunStrategyInterface> roundRunStrategy;
     private final ArrayList<MoveStrategyInterface> moveStrategy;
+    private final ArrayList<MurderStrategyInterface> murderStrategy;
     //private final DefenseStrategyInterface defaultDefenseStrategy;
     //private final MoveStrategyInterface defaultMoveStrategy;
     //private final RoundRunStrategyInterface defaultRoundRunStrategy;
@@ -52,10 +54,12 @@ public class Virologist {
         defenseStrategy = new ArrayList<DefenseStrategyInterface>();
         roundRunStrategy = new ArrayList<RoundRunStrategyInterface>();
         moveStrategy = new ArrayList<MoveStrategyInterface>();
+        murderStrategy = new ArrayList<MurderStrategyInterface>();
         agentlist = new ArrayList<Agent>();
         defenseStrategy.add(new DefaultDefense());
         roundRunStrategy.add(new DefaultRoundRun());
         moveStrategy.add(new DefaultMove());
+        murderStrategy.add(new DefaultMurder());
         equipments = new ArrayList<Equipment>(3);
     }
 
@@ -92,7 +96,30 @@ public class Virologist {
     public void collect(Field field) {
         ArrayList<Collectable> collectables = field.getCollectable();
         if (collectables != null) {
-            collectables.get(0).collectBy(this);
+            //List the collectables from the field
+            for (int i = 0; i < collectables.size(); i++) {
+                System.out.println("Collect: " + collectables.get(i).getClass().toString() + "Command: " + (i + 1));
+            }
+
+            //Get the one what is wanted by the player
+            int chosen = UserInputHandler.getUserInputInt("What do you want to collect?", 1, collectables.size());
+            chosen--;
+            Collectable coll = collectables.get(chosen);
+
+            //if the field is a shelter there can be restricions
+            //TODO:maybe its wrong
+            if (field.getClass().toString() == "Shelter") {
+                if (equipments.size() >= 3) {
+                    System.out.println("The inventory is full");
+                    return;
+                }
+                coll.collectBy(this);
+                field.removeCollectable(coll);
+            }
+            //if its not a shelter we can collect that thing
+            else {
+                coll.collectBy(this);
+            }
         }
     }
 
@@ -105,6 +132,7 @@ public class Virologist {
     public void useAgent(Agent agent, Virologist targetVirologist) {
         Gloves g = new Gloves();
         if (!this.field.equals(targetVirologist.field)) return;
+
         //If both virologists have gloves on, we don't use the agent
         if (
             defenseStrategy.stream().anyMatch(x -> x.getClass().equals(Gloves.class)) &&
@@ -130,6 +158,14 @@ public class Virologist {
      */
     public void setMoveStrategy(MoveStrategyInterface moveStrategy) {
         this.moveStrategy.add(moveStrategy);
+    }
+
+    /**
+     * This functions sets the move strategy of the virologist
+     * @param murderStrategy the move strategy to be set on the virologist, this affects the way he moves
+     */
+    public void setMurderStrategy(MurderStrategyInterface murderStrategy) {
+        this.murderStrategy.add(murderStrategy);
     }
 
     /**
@@ -323,6 +359,14 @@ public class Virologist {
     }
 
     /**
+     * Removes the defenseStrategy given in the parameters
+     * @param murderStrategy - the defense strategy to be removed
+     */
+    public void removeMurderStrategy(MurderStrategyInterface murderStrategy) {
+        this.murderStrategy.remove(murderStrategy);
+    }
+
+    /**
      * Removes the moveStrategy given in the parameters
      * @param moveStrategyInterface - the move strategy to be removed
      */
@@ -353,4 +397,9 @@ public class Virologist {
     public Field getField() {
         return field;
     }
+
+    /**
+     * Eliminate the virologist from the game
+     */
+    public void die() {}
 }

@@ -28,9 +28,10 @@ public class Field {
 
     public void acceptVirologist(Virologist virologist) {
         virologistonField.add(virologist);
+        virologist.setField(this);
     }
 
-    public List <Virologist> getVirologists() {
+    public List<Virologist> getVirologists() {
         return virologistonField;
     }
 
@@ -43,5 +44,9 @@ public class Field {
      */
     public ArrayList<Collectable> getCollectable() {
         return null;
+    }
+
+    public void removeCollectable(Collectable coll) {
+        return;
     }
 }
