@@ -27,9 +27,10 @@ public class Shelter extends Field {
      * @return the items (Equipments) what are collecatble from the shelter
      */
     public ArrayList<Collectable> getCollectable() {
-        ArrayList<Collectable> loot = new ArrayList<Collectable>();
-        loot.add(collectables.get(0));
-        collectables.remove(collectables.get(0));
-        return loot;
+        return collectables;
+    }
+
+    public void removeCollectable(Collectable coll) {
+        collectables.remove(coll);
     }
 }

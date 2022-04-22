@@ -5,6 +5,7 @@ import com.csb.skeletonTester.Tester;
 import com.csb.skeletonTester.UserInputHandler;
 import com.csb.strategies.DefenseStrategyInterface;
 import com.csb.virologist.Virologist;
+import java.util.Random;
 
 /**
  * Class for the Cloak objects. With a Cloak, the attacks towards the virologost can fail, with a gicen percentage
@@ -16,9 +17,7 @@ public class Cloak extends Equipment implements DefenseStrategyInterface {
      * @param virologist - the virologist, who uses the equipment
      */
     public void applyEffect(Virologist virologist) {
-        Tester.getInstance().functionStart();
         virologist.setDefenseStrategy(this);
-        Tester.getInstance().functionEnd();
     }
 
     /**
@@ -26,9 +25,7 @@ public class Cloak extends Equipment implements DefenseStrategyInterface {
      * @param virologist - the virologist, who uses the equipment
      */
     public void removeEffect(Virologist virologist) {
-        Tester.getInstance().functionStart();
         virologist.removeDefenseStrategy(this);
-        Tester.getInstance().functionEnd();
     }
 
     /**
@@ -39,10 +36,11 @@ public class Cloak extends Equipment implements DefenseStrategyInterface {
      */
     @Override
     public void defense(Agent agent, Virologist defender, Virologist attacker) {
-        Tester.getInstance().functionStart();
-        if (!UserInputHandler.getUserInputBoolean("Was the coat useful?")) {
+        Random r = new Random();
+        double chance = r.nextDouble();
+        //decide with a random whether the defending was succesful
+        if (chance > 0.843) {
             agent.applyEffect(defender);
         }
-        Tester.getInstance().functionEnd();
     }
 }

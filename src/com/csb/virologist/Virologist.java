@@ -10,6 +10,7 @@ import com.csb.collectables.matters.NucleicAcid;
 import com.csb.fields.Field;
 import com.csb.gameControl.GameController;
 import com.csb.skeletonTester.Tester;
+import com.csb.skeletonTester.UserInputHandler;
 import com.csb.strategies.*;
 import com.csb.strategies.DefenseStrategyInterface;
 import com.csb.strategies.MoveStrategyInterface;
@@ -27,6 +28,7 @@ public class Virologist {
     private final ArrayList<DefenseStrategyInterface> defenseStrategy;
     private final ArrayList<RoundRunStrategyInterface> roundRunStrategy;
     private final ArrayList<MoveStrategyInterface> moveStrategy;
+    private final ArrayList<MurderStrategyInterface> murderStrategy;
     //private final DefenseStrategyInterface defaultDefenseStrategy;
     //private final MoveStrategyInterface defaultMoveStrategy;
     //private final RoundRunStrategyInterface defaultRoundRunStrategy;
@@ -52,10 +54,12 @@ public class Virologist {
         defenseStrategy = new ArrayList<DefenseStrategyInterface>();
         roundRunStrategy = new ArrayList<RoundRunStrategyInterface>();
         moveStrategy = new ArrayList<MoveStrategyInterface>();
+        murderStrategy = new ArrayList<MurderStrategyInterface>();
         agentlist = new ArrayList<Agent>();
         defenseStrategy.add(new DefaultDefense());
         roundRunStrategy.add(new DefaultRoundRun());
         moveStrategy.add(new DefaultMove());
+        murderStrategy.add(new DefaultMurder());
         equipments = new ArrayList<Equipment>(3);
     }
 
@@ -92,7 +96,27 @@ public class Virologist {
     public void collect(Field field) {
         ArrayList<Collectable> collectables = field.getCollectable();
         if (collectables != null) {
-            collectables.get(0).collectBy(this);
+            //List the collectables from the field
+            for (int i = 0; i < collectables.size(); i++) {
+                System.out.println("Collect: " + collectables.get(i).getClass().toString() + "Command: " + (i + 1));
+            }
+
+            //Get the one what is wanted by the player
+            int chosen = UserInputHandler.getUserInputInt("What do you want to collect?", 1, collectables.size());
+            chosen--;
+            Collectable coll = collectables.get(chosen);
+
+            //TODO:maybe its wrong
+            if (field.getClass().toString() == "Shelter") {
+                if (equipments.size() >= 3) {
+                    System.out.println("The inventory is full");
+                    return;
+                }
+                coll.collectBy(this);
+                field.removeCollectable(coll);
+            } else {
+                coll.collectBy(this);
+            }
         }
     }
 
@@ -114,7 +138,6 @@ public class Virologist {
         }
 
         targetVirologist.attack(agent, this);
-
     }
 
     /**
@@ -131,6 +154,14 @@ public class Virologist {
      */
     public void setMoveStrategy(MoveStrategyInterface moveStrategy) {
         this.moveStrategy.add(moveStrategy);
+    }
+
+    /**
+     * This functions sets the move strategy of the virologist
+     * @param murderStrategy the move strategy to be set on the virologist, this affects the way he moves
+     */
+    public void setMurderStrategy(MurderStrategyInterface murderStrategy) {
+        this.murderStrategy.add(murderStrategy);
     }
 
     /**
@@ -199,7 +230,6 @@ public class Virologist {
      * @param targetVirologist - The Virologist, who has the item wanted by the robber
      */
     public void steal(Collectable coll, Virologist targetVirologist) {
-
         //the target virologist handle the theft
         Collectable stolen = targetVirologist.handleSteal(coll);
 
@@ -224,9 +254,12 @@ public class Virologist {
      * @param genCode - The Gencode of the agent to be created
      */
     public void createAgent(Gencode genCode) {
-        if(this.aminoAcidStock.getAmount() >= genCode.getRequiredAminoAcid().getAmount() && this.nucleicAcidStock.getAmount() >= genCode.getRequiredNucleicAcid().getAmount()){
+        if (
+            this.aminoAcidStock.getAmount() >= genCode.getRequiredAminoAcid().getAmount() &&
+            this.nucleicAcidStock.getAmount() >= genCode.getRequiredNucleicAcid().getAmount()
+        ) {
             this.storeAgent(genCode.getAgent());
-        }else{
+        } else {
             System.out.println("You don't have enough material.");
         }
     }
@@ -289,6 +322,13 @@ public class Virologist {
     }
 
     /**
+     * @return the number of equipments owned by the Virologist
+     */
+    public int equipmentSize() {
+        return equipments.size();
+    }
+
+    /**
      * Remove an Equipment from the Virologist
      * @param e the equipment to be removed
      */
@@ -319,6 +359,14 @@ public class Virologist {
      */
     public void removeDefenseStrategy(DefenseStrategyInterface defenseStrategy) {
         this.defenseStrategy.remove(defenseStrategy);
+    }
+
+    /**
+     * Removes the defenseStrategy given in the parameters
+     * @param murderStrategy - the defense strategy to be removed
+     */
+    public void removeMurderStrategy(MurderStrategyInterface murderStrategy) {
+        this.murderStrategy.remove(murderStrategy);
     }
 
     /**
@@ -353,4 +401,9 @@ public class Virologist {
     public Field getField() {
         return field;
     }
+
+    /**
+     * Eliminate the virologist from the game
+     */
+    public void die() {}
 }
