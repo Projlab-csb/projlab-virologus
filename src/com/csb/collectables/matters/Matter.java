@@ -15,32 +15,21 @@ public abstract class Matter implements Collectable {
      * the amount -1 means infinite amount
      */
     public Matter() {
-
-        Tester.getInstance().functionStart();
         amount = -1;
-        Tester.getInstance().functionEnd();
     }
 
     public Matter(int n) {
-
-        Tester.getInstance().functionStart();
         amount = n;
-        Tester.getInstance().functionEnd();
     }
 
     /**
      * Getters and setters for the amount variable
      */
     public int getAmount() {
-        Tester.getInstance().functionStart();
-        Tester.getInstance().functionEnd();
         return amount;
-
     }
 
     public void setAmount(int amount) {
-        Tester.getInstance().functionStart();
         this.amount = amount;
-        Tester.getInstance().functionEnd();
     }
 }

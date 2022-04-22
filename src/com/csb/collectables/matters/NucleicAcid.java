@@ -25,9 +25,10 @@ public class NucleicAcid extends Matter {
         Tester.getInstance().functionStart();
 
         //if the source is a storage, the amount is infinite, the virologist fill his stock to full capacity
-        if (this.getAmount() == -1) virologist.setNucleicAcid(
-            virologist.getNucleicAcid() + virologist.getInventorySize() - virologist.getAminoAcid()
-        );
+        if (this.getAmount() == -1) {
+            virologist.setNucleicAcid(virologist.getNucleicAcid() + virologist.getInventorySize() - virologist.getAminoAcid());
+            System.out.println("Virologist has collected NucleicAcid to full");
+        }
         //if the source is an other virologist, the source is finite, so it is the minimum of these two: his full capacity, or the sum of his owned acid and stolen acid
         else virologist.setNucleicAcid(
             Math.min(

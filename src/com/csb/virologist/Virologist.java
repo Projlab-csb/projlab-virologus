@@ -326,13 +326,6 @@ public class Virologist {
     }
 
     /**
-     * @return the number of equipments owned by the Virologist
-     */
-    public int equipmentSize() {
-        return equipments.size();
-    }
-
-    /**
      * Remove an Equipment from the Virologist
      * @param e the equipment to be removed
      */

@@ -37,8 +37,6 @@ public class Gencode implements Collectable {
      * @return requiredAminoAcid - How many AminoAcid is needed for that agent
      */
     public NucleicAcid getRequiredNucleicAcid() {
-        Tester.getInstance().functionStart();
-        Tester.getInstance().functionEnd();
         return requiredNucleicAcid;
     }
 
@@ -47,8 +45,6 @@ public class Gencode implements Collectable {
      * @return requiredAminoAcid - How many AminoAcid is needed for that agent
      */
     public AminoAcid getRequiredAminoAcid() {
-        Tester.getInstance().functionStart();
-        Tester.getInstance().functionEnd();
         return requiredAminoAcid;
     }
 
@@ -57,8 +53,6 @@ public class Gencode implements Collectable {
      * @return agent - what can a virologist craft from a gencode
      */
     public Agent getAgent() {
-        Tester.getInstance().functionStart();
-        Tester.getInstance().functionEnd();
         return agent;
     }
 
@@ -67,11 +61,10 @@ public class Gencode implements Collectable {
      * @param virologist who learns the gencode from the lab
      */
     public void collectBy(Virologist virologist) {
-        Tester.getInstance().functionStart();
         ArrayList<Gencode> gc = virologist.getGencodes();
         gc.add(this);
         virologist.setGencodes(gc);
-        Tester.getInstance().functionEnd();
+        System.out.println("Virologist has collected/learned a Gencode");
     }
 
     /**
@@ -79,5 +72,7 @@ public class Gencode implements Collectable {
      * @param virologist who discards the gencode
      */
     @Override
-    public void discard(Virologist virologist) {}
+    public void discard(Virologist virologist) {
+        return;
+    }
 }
