@@ -388,7 +388,6 @@ public class Virologist {
      */
     public void setField(Field field) {
         this.field = field;
-        field.acceptVirologist(this);
     }
 
     /**

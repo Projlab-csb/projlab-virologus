@@ -16,6 +16,11 @@ import java.util.ArrayList;
  */
 public class Gencode implements Collectable {
 
+    public static final int MIN_AMINO_ACID = 1;
+    public static final int MAX_AMINO_ACID = 3;
+    public static final int MIN_NUCLEIC_ACID = 1;
+    public static final int MAX_NUCLEIC_ACID = 3;
+
     private AminoAcid requiredAminoAcid;
     private NucleicAcid requiredNucleicAcid;
     private Agent agent;
