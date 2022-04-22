@@ -28,6 +28,7 @@ public class Field {
 
     public void acceptVirologist(Virologist virologist) {
         virologistonField.add(virologist);
+        virologist.setField(this);
     }
 
     public List<Virologist> getVirologists() {
