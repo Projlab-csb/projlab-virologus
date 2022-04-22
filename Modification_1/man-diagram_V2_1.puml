@@ -177,6 +177,7 @@ class Axe{
 }
 
 abstract class Agent{
+    +Agent()
     {abstract} +applyEffect(v: Virologist)
     {abstract} +removeEffect(v: Virologist)
     'Each agent has a time to live value, and when it reaches 0, it is destroyed
@@ -244,7 +245,7 @@ Virologist *-r- DefaultRoundRunStrategy
 Virologist *-- DefaultMoveStrategy
 Virologist *-- DefaultDefenseStrategy
 Virologist *-- DefaultMurderStrategy
-Virologist "n" o- Field
+Virologist "n" o-o Field
 Virologist --* "n" Agent
 Virologist --* "n" Matter
 Virologist --* "n" Equipment

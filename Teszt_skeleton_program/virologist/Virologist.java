@@ -64,7 +64,9 @@ public class Virologist {
      * @param defenseStrategy the defense strategy to be set on the virologist
      */
     public void setDefenseStrategy(DefenseStrategyInterface defenseStrategy) {
+        Tester.getInstance().functionStart();
         this.defenseStrategy.add(defenseStrategy);
+        Tester.getInstance().functionEnd();
     }
 
     /**
@@ -73,16 +75,21 @@ public class Virologist {
      * @param attackerVirologist the virologist, who initiated an attack
      */
     public void attack(Agent agent, Virologist attackerVirologist) {
+        Tester.getInstance().functionStart();
         defenseStrategy.get(defenseStrategy.size() - 1).defense(agent, this, attackerVirologist);
+        Tester.getInstance().functionEnd();
     }
 
     /**
      * Handles one turn of the virologist
      */
     public void startOfTurn() {
+        Tester.getInstance().functionStart();
         this.roundRunStrategy.get(roundRunStrategy.size() - 1).RoundRun(this);
+
         GameController.getInstance().reportGencodes(this, this.getGencodes());
         this.refreshAgents();
+        Tester.getInstance().functionEnd();
     }
 
     /**
@@ -90,10 +97,12 @@ public class Virologist {
      * @param field - the field, where the Viologist make research work after collectable items
      */
     public void collect(Field field) {
+        Tester.getInstance().functionStart();
         ArrayList<Collectable> collectables = field.getCollectable();
         if (collectables != null) {
             collectables.get(0).collectBy(this);
         }
+        Tester.getInstance().functionEnd();
     }
 
     /**
@@ -103,6 +112,7 @@ public class Virologist {
      * @param targetVirologist the virologist that the agent would be applied on
      */
     public void useAgent(Agent agent, Virologist targetVirologist) {
+        Tester.getInstance().functionStart();
         Gloves g = new Gloves();
         if (!this.field.equals(targetVirologist.field)) return;
         //If both virologists have gloves on, we don't use the agent
@@ -115,6 +125,7 @@ public class Virologist {
 
         targetVirologist.attack(agent, this);
 
+        Tester.getInstance().functionEnd();
     }
 
     /**
@@ -122,7 +133,9 @@ public class Virologist {
      * @param roundRunStrategy the roundrun strategy to be set on the virologist, this affects his round and defense against to be robbed
      */
     public void setRoundRunStrategy(RoundRunStrategyInterface roundRunStrategy) {
+        Tester.getInstance().functionStart();
         this.roundRunStrategy.add(roundRunStrategy);
+        Tester.getInstance().functionEnd();
     }
 
     /**
@@ -130,7 +143,9 @@ public class Virologist {
      * @param moveStrategy the move strategy to be set on the virologist, this affects the way he moves
      */
     public void setMoveStrategy(MoveStrategyInterface moveStrategy) {
+        Tester.getInstance().functionStart();
         this.moveStrategy.add(moveStrategy);
+        Tester.getInstance().functionEnd();
     }
 
     /**
@@ -138,6 +153,8 @@ public class Virologist {
      * @return - size of the Virologist's inventory - the sum of the collectable AminoAcid and NucleicAcid
      */
     public int getInventorySize() {
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionEnd();
         return inventorySize;
     }
 
@@ -146,13 +163,17 @@ public class Virologist {
      * @param inventorySize - The inventory size to be set
      */
     public void setInventorySize(int inventorySize) {
+        Tester.getInstance().functionStart();
         this.inventorySize = inventorySize;
+        Tester.getInstance().functionEnd();
     }
 
     /**
      * @return AminoAcid owned by the Virologist
      */
     public int getAminoAcid() {
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionEnd();
         return aminoAcidStock.getAmount();
     }
 
@@ -160,13 +181,17 @@ public class Virologist {
      * @param aminoAcid - the AminoAcid amount to be set
      */
     public void setAminoAcid(int aminoAcid) {
+        Tester.getInstance().functionStart();
         aminoAcidStock.setAmount(aminoAcid);
+        Tester.getInstance().functionEnd();
     }
 
     /**
      * @return NucleicAcid owned by the Virologist
      */
     public int getNucleicAcid() {
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionEnd();
         return nucleicAcidStock.getAmount();
     }
 
@@ -174,13 +199,17 @@ public class Virologist {
      * @param nucleicAcid - the NucleicAcid amount to be set
      */
     public void setNucleicAcid(int nucleicAcid) {
+        Tester.getInstance().functionStart();
         nucleicAcidStock.setAmount(nucleicAcid);
+        Tester.getInstance().functionEnd();
     }
 
     /**
      * @return - the Gencodes learned by the Virologist
      */
     public ArrayList<Gencode> getGencodes() {
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionEnd();
         return gencodes;
     }
 
@@ -189,7 +218,9 @@ public class Virologist {
      * @param gencodes the Gencode list to be set
      */
     public void setGencodes(ArrayList<Gencode> gencodes) {
+        Tester.getInstance().functionStart();
         this.gencodes = gencodes;
+        Tester.getInstance().functionEnd();
     }
 
     /**
@@ -199,16 +230,19 @@ public class Virologist {
      * @param targetVirologist - The Virologist, who has the item wanted by the robber
      */
     public void steal(Collectable coll, Virologist targetVirologist) {
+        Tester.getInstance().functionStart();
 
         //the target virologist handle the theft
         Collectable stolen = targetVirologist.handleSteal(coll);
 
         if (stolen == null) {
+            Tester.getInstance().functionEnd();
             return;
         }
 
         //the robber virologist collects the loot, if the attempt was succesful
         stolen.collectBy(this);
+        Tester.getInstance().functionEnd();
     }
 
     /**
@@ -224,11 +258,11 @@ public class Virologist {
      * @param genCode - The Gencode of the agent to be created
      */
     public void createAgent(Gencode genCode) {
-        if(this.aminoAcidStock.getAmount() >= genCode.getRequiredAminoAcid().getAmount() && this.nucleicAcidStock.getAmount() >= genCode.getRequiredNucleicAcid().getAmount()){
-            this.storeAgent(genCode.getAgent());
-        }else{
-            System.out.println("You don't have enough material.");
-        }
+        Tester.getInstance().functionStart();
+        genCode.getRequiredNucleicAcid();
+        genCode.getRequiredAminoAcid();
+        this.storeAgent(genCode.getAgent());
+        Tester.getInstance().functionEnd();
     }
 
     /**
@@ -236,16 +270,19 @@ public class Virologist {
      * @param agent the agent to be put in the bag
      */
     public void storeAgent(Agent agent) {
-        this.agentlist.add(agent);
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionEnd();
     }
 
     /**
      * Decrease the remaining time of the applied agents on the virologist
      */
     public void refreshAgents() {
+        Tester.getInstance().functionStart();
         for (Agent agent : agentlist) {
             agent.decreaseTTL(this);
         }
+        Tester.getInstance().functionEnd();
     }
 
     public void setAgentlist(ArrayList<Agent> agentlist) {
@@ -310,7 +347,9 @@ public class Virologist {
      * @param nextTileIndex - the index of the new position
      */
     public void move(int nextTileIndex) {
+        Tester.getInstance().functionStart();
         this.moveStrategy.get(moveStrategy.size() - 1).move(this, nextTileIndex);
+        Tester.getInstance().functionEnd();
     }
 
     /**
@@ -318,7 +357,9 @@ public class Virologist {
      * @param defenseStrategy - the defense strategy to be removed
      */
     public void removeDefenseStrategy(DefenseStrategyInterface defenseStrategy) {
+        Tester.getInstance().functionStart();
         this.defenseStrategy.remove(defenseStrategy);
+        Tester.getInstance().functionEnd();
     }
 
     /**
@@ -326,7 +367,9 @@ public class Virologist {
      * @param moveStrategyInterface - the move strategy to be removed
      */
     public void removeMoveStrategy(MoveStrategyInterface moveStrategyInterface) {
+        Tester.getInstance().functionStart();
         this.moveStrategy.remove(moveStrategyInterface);
+        Tester.getInstance().functionEnd();
     }
 
     /**
@@ -334,7 +377,9 @@ public class Virologist {
      * @param roundRunStrategyInterface - the roundrun strategy to be removed
      */
     public void removeRoundRunStrategy(RoundRunStrategyInterface roundRunStrategyInterface) {
+        Tester.getInstance().functionStart();
         this.roundRunStrategy.remove(roundRunStrategyInterface);
+        Tester.getInstance().functionEnd();
     }
 
     /**
@@ -342,8 +387,10 @@ public class Virologist {
      * @param field - the field the Virologist is on
      */
     public void setField(Field field) {
+        Tester.getInstance().functionStart();
         this.field = field;
         field.acceptVirologist(this);
+        Tester.getInstance().functionEnd();
     }
 
     /**
@@ -351,6 +398,8 @@ public class Virologist {
      * @return - the Virologist's current field
      */
     public Field getField() {
+        Tester.getInstance().functionStart();
+        Tester.getInstance().functionStart();
         return field;
     }
 }
