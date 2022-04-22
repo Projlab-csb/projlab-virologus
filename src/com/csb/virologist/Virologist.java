@@ -106,6 +106,7 @@ public class Virologist {
             chosen--;
             Collectable coll = collectables.get(chosen);
 
+            //if the field is a shelter there can be restricions
             //TODO:maybe its wrong
             if (field.getClass().toString() == "Shelter") {
                 if (equipments.size() >= 3) {
@@ -114,7 +115,9 @@ public class Virologist {
                 }
                 coll.collectBy(this);
                 field.removeCollectable(coll);
-            } else {
+            }
+            //if its not a shelter we can collect that thing
+            else {
                 coll.collectBy(this);
             }
         }
@@ -129,6 +132,7 @@ public class Virologist {
     public void useAgent(Agent agent, Virologist targetVirologist) {
         Gloves g = new Gloves();
         if (!this.field.equals(targetVirologist.field)) return;
+
         //If both virologists have gloves on, we don't use the agent
         if (
             defenseStrategy.stream().anyMatch(x -> x.getClass().equals(Gloves.class)) &&
