@@ -24,8 +24,6 @@ public class Lab extends Field {
      * @return the items (gencodes) what a Virologist can learn from the lab
      */
     public ArrayList<Collectable> getCollectable() {
-        Tester.getInstance().functionStart();
-        Tester.getInstance().functionEnd();
         return gencodes;
     }
 }
