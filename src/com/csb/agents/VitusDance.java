@@ -33,15 +33,14 @@ public class VitusDance extends Agent implements MoveStrategyInterface {
      */
     @Override
     public void move(Virologist virologist, int nextTileIndex) {
-
         //get a random tile to step
-        Random r=new Random();
-        int nextstep=r.randomBetween(0, virologist.getField().getNeighbors().size()-1);
+        Random r = new Random();
+        int nextstep = r.randomBetween(0, virologist.getField().getNeighbors().size() - 1);
 
         //step to the given tile
         virologist.getField().removeVirologist(virologist);
         virologist.getField().getNeighbors().get(nextstep).acceptVirologist(virologist);
 
-        System.out.println("Virologist has moved to "+virologist.getField().getClass().toString());
+        System.out.println("Virologist has moved to " + virologist.getField().getClass().toString());
     }
 }
