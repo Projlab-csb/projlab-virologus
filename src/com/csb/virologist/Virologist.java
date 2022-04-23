@@ -26,6 +26,7 @@ import java.util.List;
 
 public class Virologist {
 
+    private String name = "Bob";
     private final ArrayList<DefenseStrategyInterface> defenseStrategy;
     private final ArrayList<RoundRunStrategyInterface> roundRunStrategy;
     private final ArrayList<MoveStrategyInterface> moveStrategy;
@@ -137,6 +138,7 @@ public class Virologist {
      */
     public void useAgent(Agent agent, Virologist targetVirologist) {
         targetVirologist.attack(agent, this);
+        createdagents.remove(agent);
     }
 
     /**
@@ -411,5 +413,20 @@ public class Virologist {
      */
     public ArrayList<Agent> getCreatedAgents() {
         return createdagents;
+    }
+
+    /**
+     * @return the name of the virologist
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     *A virologist try to murder another
+     * @param victim the murder wants to kill him
+     */
+    public void murder(Virologist victim) {
+        this.murderStrategy.get(murderStrategy.size() - 1).murder(this, victim);
     }
 }

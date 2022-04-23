@@ -1,5 +1,6 @@
 package com.csb.strategies;
 
+import com.csb.agents.Agent;
 import com.csb.collectables.Collectable;
 import com.csb.collectables.gencodes.Gencode;
 import com.csb.fields.Field;
@@ -71,20 +72,46 @@ public class DefaultRoundRun implements RoundRunStrategyInterface {
 
                 case "Use Agent":
                     if (virologist.getField().getVirologists().size() == 0 || virologist.getCreatedAgents().size() == 0) System.out.println(
-                        "You can't attack now anyone"
-                    ); else {}
+                        "You can't attack anyone now!"
+                    ); else {
+                        int v = 0;
+
+                        for (Virologist vir : virologist.getField().getVirologists()) {
+                            System.out.println(vir.getName() + " commad " + v);
+                            v++;
+                        }
+                        int a = 0;
+                        for (Agent ag : virologist.getCreatedAgents()) {
+                            System.out.println(ag.getClass().toString() + " commad " + a);
+                            a++;
+                        }
+                        int selectedvirologist = UserInputHandler.getUserInputInt("Who do you want to attack", 0, v - 1);
+                        int selectedAgent = UserInputHandler.getUserInputInt("Which gencode do you want to use?", 0, a - 1);
+                        virologist.useAgent(
+                            virologist.getCreatedAgents().get(selectedAgent),
+                            virologist.getField().getVirologists().get(selectedvirologist)
+                        );
+                    }
                     break;
                 //if the player wants to collect something
 
                 case "Collect":
                     virologist.collect(virologist.getField());
-
                     break;
                 //if the player wants kill someone else
 
                 case "Kill":
-                    System.out.println("From what code do you want to create an agent");
-
+                    if (virologist.getField().getVirologists().size() == 0) System.out.println("You can't kill anyone now!"); else {
+                        int v = 0;
+                        for (Virologist vir : virologist.getField().getVirologists()) {
+                            System.out.println(vir.getName() + " commad " + v);
+                            v++;
+                        }
+                        int selectedvirologist = UserInputHandler.getUserInputInt("Who do you want to attack", 0, v - 1);
+                        if (virologist.equals(virologist.getField().getVirologists().get(selectedvirologist))) System.out.println(
+                            "If you want to do Harakiri, you have to buy the Harkir DLC"
+                        ); else virologist.murder(virologist.getField().getVirologists().get(selectedvirologist));
+                    }
                     break;
                 default:
                     break;
