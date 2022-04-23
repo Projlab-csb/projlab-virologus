@@ -16,6 +16,7 @@ import com.csb.strategies.DefenseStrategyInterface;
 import com.csb.strategies.MoveStrategyInterface;
 import com.csb.strategies.RoundRunStrategyInterface;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This is the Virologist class. The players in the game contol Virologists, so most of the actions can be connected to this class
@@ -398,7 +399,17 @@ public class Virologist {
      */
     public void die() {}
 
+    /**
+     *clear the created agents
+     */
     public void emptyCreatedAgents() {
         createdagents.clear();
+    }
+
+    /**
+     * @return the agents created by the virologist before
+     */
+    public ArrayList<Agent> getCreatedAgents() {
+        return createdagents;
     }
 }

@@ -1,6 +1,7 @@
 package com.csb.strategies;
 
 import com.csb.collectables.Collectable;
+import com.csb.collectables.gencodes.Gencode;
 import com.csb.fields.Field;
 import com.csb.skeletonTester.Tester;
 import com.csb.skeletonTester.UserInputHandler;
@@ -54,13 +55,24 @@ public class DefaultRoundRun implements RoundRunStrategyInterface {
                     break;
                 //if the player wants to create a new agent for personal use
                 case "Create Agent":
-                    if (virologist.getGencodes().size() != 0) System.out.println("From what code do you want to create an agent"); else {
+                    if (virologist.getGencodes().size() != 0) {
+                        System.out.println("From what code do you want to create an agent?");
+                        int n = 0;
+                        for (Gencode g : virologist.getGencodes()) {
+                            System.out.println(g.getAgent().getClass().toString() + "creater gencode commad" + n);
+                            n++;
+                        }
+                        virologist.createAgent(virologist.getGencodes().get(n));
+                    } else {
                         System.out.println("you don't have gencodes yet");
                     }
                     break;
                 //if the player wants to attack someone with that agent
 
                 case "Use Agent":
+                    if (virologist.getField().getVirologists().size() == 0 || virologist.getCreatedAgents().size() == 0) System.out.println(
+                        "You can't attack now anyone"
+                    ); else {}
                     break;
                 //if the player wants to collect something
 
