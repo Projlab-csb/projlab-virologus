@@ -36,7 +36,11 @@ public class Virologist {
     private final AminoAcid aminoAcidStock;
     private final NucleicAcid nucleicAcidStock;
     private ArrayList<Gencode> gencodes;
+
+    //The agents, having effect on the Virologist
     private ArrayList<Agent> agentlist;
+
+    //The agents created by the virologist
     private ArrayList<Agent> createdagents;
     private final ArrayList<Equipment> equipments;
     private Field field;
@@ -263,7 +267,7 @@ public class Virologist {
             this.aminoAcidStock.getAmount() >= genCode.getRequiredAminoAcid().getAmount() &&
             this.nucleicAcidStock.getAmount() >= genCode.getRequiredNucleicAcid().getAmount()
         ) {
-            this.storeAgent(genCode.getAgent());
+            this.createdagents.add(genCode.getAgent());
         } else {
             System.out.println("You don't have enough material.");
         }
