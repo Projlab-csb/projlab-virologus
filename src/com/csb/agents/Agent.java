@@ -8,7 +8,7 @@ import com.csb.virologist.Virologist;
  */
 public abstract class Agent {
 
-    private int TTL;
+    private int TTL = 3;
 
     /**
      * Apply the agent's effect to the virologist

@@ -41,6 +41,7 @@ public class Cloak extends Equipment implements DefenseStrategyInterface {
         //decide with a random whether the defending was succesful
         if (chance > 0.843) {
             agent.applyEffect(defender);
+            defender.storeAgent(agent);
         }
     }
 }

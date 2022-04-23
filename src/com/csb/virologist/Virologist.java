@@ -37,6 +37,7 @@ public class Virologist {
     private final NucleicAcid nucleicAcidStock;
     private ArrayList<Gencode> gencodes;
     private ArrayList<Agent> agentlist;
+    private ArrayList<Agent> createdagents;
     private final ArrayList<Equipment> equipments;
     private Field field;
 
@@ -282,6 +283,7 @@ public class Virologist {
     public void refreshAgents() {
         for (Agent agent : agentlist) {
             agent.decreaseTTL(this);
+            if (agent.getTTL() == 0) agentlist.remove(agent);
         }
     }
 
