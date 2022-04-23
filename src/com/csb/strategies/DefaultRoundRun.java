@@ -1,6 +1,7 @@
 package com.csb.strategies;
 
 import com.csb.collectables.Collectable;
+import com.csb.fields.Field;
 import com.csb.skeletonTester.Tester;
 import com.csb.skeletonTester.UserInputHandler;
 import com.csb.virologist.Virologist;
@@ -18,8 +19,6 @@ public class DefaultRoundRun implements RoundRunStrategyInterface {
      * @return null
      */
     public Collectable handleSteal(Collectable coll, Virologist targetVirologist) {
-        Tester.getInstance().functionStart();
-        Tester.getInstance().functionEnd();
         return null;
     }
 
@@ -29,14 +28,24 @@ public class DefaultRoundRun implements RoundRunStrategyInterface {
      */
     @Override
     public void RoundRun(Virologist virologist) {
-        Tester.getInstance().functionStart();
-
         String input;
+        int stepcounter = 0;
         do {
             input = UserInputHandler.getUserInputString("What to do?", new String[] { "Move", "Create Agent", "Use Agent", "End Round" });
             switch (input) {
                 case "Move":
-                    virologist.move(UserInputHandler.getUserInputInt("Where to move?"));
+                    if (stepcounter == 0) {
+                        int n = 0;
+                        for (Field f : virologist.getField().getNeighbors()) {
+                            System.out.println(f.getClass().toString() + "commadc" + n);
+                            n++;
+                        }
+                        virologist.move(
+                            UserInputHandler.getUserInputInt("Where to move?", 0, virologist.getField().getNeighbors().size() - 1)
+                        );
+                        //System.out.println("Virologist has moved to ");
+                        stepcounter++;
+                    } else System.out.println("You cannot do more steps in this round");
                     break;
                 case "Create Agent":
                     System.out.println("Creating agent...(see specific test)");
@@ -48,7 +57,5 @@ public class DefaultRoundRun implements RoundRunStrategyInterface {
                     break;
             }
         } while (!input.equals("End Round"));
-
-        Tester.getInstance().functionEnd();
     }
 }

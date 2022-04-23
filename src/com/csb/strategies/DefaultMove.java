@@ -15,8 +15,8 @@ public class DefaultMove implements MoveStrategyInterface {
      */
     @Override
     public void move(Virologist virologist, int nextTileIndex) {
-        Tester.getInstance().functionStart();
-        virologist.setField(virologist.getField().getNeighbors().get(nextTileIndex));
-        Tester.getInstance().functionEnd();
+        virologist.getField().removeVirologist(virologist);
+        virologist.getField().getNeighbors().get(nextTileIndex).acceptVirologist(virologist);
+        System.out.println("Virologist has moved to " + virologist.getField().getClass().toString());
     }
 }
