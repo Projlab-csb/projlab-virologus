@@ -49,4 +49,8 @@ public class Field {
     public void removeCollectable(Collectable coll) {
         return;
     }
+
+    public void destroy() {
+        return;
+    }
 }

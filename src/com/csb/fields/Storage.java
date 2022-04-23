@@ -26,4 +26,9 @@ public class Storage extends Field {
     public ArrayList<Collectable> getCollectable() {
         return matters;
     }
+
+    @Override
+    public void destroy() {
+        matters.clear();
+    }
 }

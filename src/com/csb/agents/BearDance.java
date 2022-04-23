@@ -3,6 +3,7 @@ package com.csb.agents;
 import com.csb.fields.Field;
 import com.csb.skeletonTester.UserInputHandler;
 import com.csb.strategies.MoveStrategyInterface;
+import com.csb.utils.Random;
 import com.csb.virologist.Virologist;
 import java.util.List;
 
@@ -31,12 +32,15 @@ public class BearDance extends Agent implements MoveStrategyInterface {
      */
     @Override
     public void move(Virologist virologist, int nextTileIndex) {
-        List<Field> neighbours = virologist.getField().getNeighbors();
-        int randomFieldId = UserInputHandler.getUserInputInt(
-            "What is the random generator output? (1-" + neighbours.size() + ")",
-            1,
-            neighbours.size()
-        );
-        virologist.setField(neighbours.get(randomFieldId - 1));
+        //get a random tile to step
+        Random r = new Random();
+        int nextstep = r.randomBetween(0, virologist.getField().getNeighbors().size() - 1);
+
+        //step to the given tile
+        virologist.getField().removeVirologist(virologist);
+        virologist.getField().getNeighbors().get(nextstep).acceptVirologist(virologist);
+        virologist.getField().destroy();
+
+        System.out.println("Virologist has moved to " + virologist.getField().getClass().toString());
     }
 }
