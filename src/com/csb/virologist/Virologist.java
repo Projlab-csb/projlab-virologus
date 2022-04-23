@@ -100,7 +100,7 @@ public class Virologist {
      */
     public void collect(Field field) {
         ArrayList<Collectable> collectables = field.getCollectable();
-        if (collectables != null) {
+        if (collectables == null || collectables.size() == 0) System.out.println("You cannot collect anything from here"); else {
             //List the collectables from the field
             for (int i = 0; i < collectables.size(); i++) {
                 System.out.println("Collect: " + collectables.get(i).getClass().toString() + "Command: " + (i + 1));
@@ -135,17 +135,6 @@ public class Virologist {
      * @param targetVirologist the virologist that the agent would be applied on
      */
     public void useAgent(Agent agent, Virologist targetVirologist) {
-        Gloves g = new Gloves();
-        if (!this.field.equals(targetVirologist.field)) return;
-
-        //If both virologists have gloves on, we don't use the agent
-        if (
-            defenseStrategy.stream().anyMatch(x -> x.getClass().equals(Gloves.class)) &&
-            targetVirologist.defenseStrategy.stream().anyMatch(x -> x.getClass().equals(Gloves.class))
-        ) {
-            return;
-        }
-
         targetVirologist.attack(agent, this);
     }
 
@@ -408,4 +397,8 @@ public class Virologist {
      * Eliminate the virologist from the game
      */
     public void die() {}
+
+    public void emptyCreatedAgents() {
+        createdagents.clear();
+    }
 }
