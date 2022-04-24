@@ -69,7 +69,9 @@ public class Gencode implements Collectable {
         ArrayList<Gencode> gc = virologist.getGencodes();
         gc.add(this);
         virologist.setGencodes(gc);
-        System.out.println("Virologist has collected/learned a Gencode");
+        System.out.println(
+            virologist.getName() + " has collected/learned a Gencode, with that, he can create ang Agent " + agent.getClass().toString()
+        );
     }
 
     /**

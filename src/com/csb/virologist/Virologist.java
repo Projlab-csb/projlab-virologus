@@ -55,9 +55,6 @@ public class Virologist {
         nucleicAcidStock = new NucleicAcid(0);
         aminoAcidStock = new AminoAcid(0);
         gencodes = new ArrayList<Gencode>();
-        // defaultDefenseStrategy = new DefaultDefense();
-        // defaultRoundRunStrategy = new DefaultRoundRun();
-        // defaultMoveStrategy = new DefaultMove();
         defenseStrategy = new ArrayList<DefenseStrategyInterface>();
         roundRunStrategy = new ArrayList<RoundRunStrategyInterface>();
         moveStrategy = new ArrayList<MoveStrategyInterface>();
@@ -137,6 +134,7 @@ public class Virologist {
      * @param targetVirologist the virologist that the agent would be applied on
      */
     public void useAgent(Agent agent, Virologist targetVirologist) {
+        System.out.println(this.getName() + " attacked");
         targetVirologist.attack(agent, this);
         createdagents.remove(agent);
     }
@@ -399,7 +397,9 @@ public class Virologist {
     /**
      * Eliminate the virologist from the game
      */
-    public void die() {}
+    public void die() {
+        GameController.getInstance().reportDeath(this);
+    }
 
     /**
      *clear the created agents
