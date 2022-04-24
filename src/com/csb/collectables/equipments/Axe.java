@@ -35,6 +35,7 @@ public class Axe extends Equipment implements MurderStrategyInterface {
         //check the neighborship and the axe
         if (life == 1 && murderedvirologist.getField().equals(murderedvirologist.getField())) {
             murderedvirologist.die();
+            System.out.println(murderervirologist.getName() + " murdered " + murderedvirologist.getName());
             life = 0;
         }
     }
