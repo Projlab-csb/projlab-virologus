@@ -63,6 +63,7 @@ public class Virologist {
         moveStrategy.add(new DefaultMove());
         murderStrategy.add(new DefaultMurder());
         equipments = new ArrayList<Equipment>(3);
+        createdagents = new ArrayList<Agent>();
         this.name = name;
     }
 

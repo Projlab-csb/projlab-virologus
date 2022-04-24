@@ -1,0 +1,51 @@
+nullWhich test would you like to run?
+-1:	Exit
+0:	Attack with Forget Agent
+1:	Attack with Forget Agent when the attacked virologist wears Cloak
+2:	Attack with Forget Agent when the attacked virologist wears Gloves
+3:	Attack with Forget Agent when the attacked virologist have Protection agent
+4:	Attack with Forget Agent when both Virologist have Gloves
+5:	Attack with Paralyzed Agent
+6:	Attack with Paralyzed Agent when the attacked virologist wears Cloak
+7:	Attack with Paralyzed Agent when the attacked virologist wears Gloves
+8:	Attack with Paralyzed Agent when the attacked virologist have Protection agent
+9:	Attack with Paralyzed Agent when both Virologist have Gloves
+10:	Attack with Protection Agent
+11:	Attack with Protection Agent when the attacked virologist wears Cloak
+12:	Attack with Protection Agent when the attacked virologist wears Gloves
+13:	Attack with Protection Agent when the attacked virologist have Protection agent
+14:	Attack with Protection Agent when both Virologist have Gloves
+15:	Attack with VitusDance Agent
+16:	Attack with VitusDance Agent when the attacked virologist wears Cloak
+17:	Attack with VitusDance Agent when the attacked virologist wears Gloves
+18:	Attack with VitusDance Agent when the attacked virologist have Protection agent
+19:	Attack with VitusDance Agent when both Virologist have Gloves
+20:	Collect AminoAcid
+21:	Collect Bag
+22:	Collect Cloak
+23:	Collect Gencode
+24:	Collect Gloves
+25:	Collect NucleicAcid
+26:	Create Agent
+27:	Discard AminoAcid
+28:	Discard Bag
+29:	Discard Cloak
+30:	Discard Gloves
+31:	Discard NucleicAcid
+32:	GameFlow
+33:	Init Game
+34:	Move Default
+35:	Move Vitus
+36:	Refresh Agents
+37:	Round Flow
+38:	Round Flow Paralyzed
+39:	Steal AminoAcid
+40:	Steal Bag
+41:	Steal Cloak
+42:	Steal Gloves, but it ends with failure
+43:	Steal Gloves
+44:	Steal AminoAcid
+---------------------------
+45: Run all tests
+
+Enter a number between (-1 and 45): Exiting...

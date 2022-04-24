@@ -131,6 +131,11 @@ public class GameMap implements Serializable {
     private void storeField(Field field) {
         Random rand = new Random();
 
+        if (fields.size() == 0) {
+            fields.add(field);
+            return;
+        }
+
         Field randomPreviousField = fields.get(rand.nextInt(fields.size()));
         if (randomPreviousField != null) {
             randomPreviousField.addNeighbor(field);

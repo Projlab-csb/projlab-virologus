@@ -67,7 +67,7 @@ public class GameController {
             String name = UserInputHandler.getUserInputString("What is the name of player " + (i + 1) + "?");
             allVirologists.add(new Virologist(name));
         }
-        map = new GameMap();
+        map = new GameMap(3, 3);
         List<Field> fields = map.getFields();
         Random random = new Random();
         for (Virologist virologist : allVirologists) {

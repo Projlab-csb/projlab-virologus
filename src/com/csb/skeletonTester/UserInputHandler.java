@@ -30,7 +30,7 @@ public class UserInputHandler {
 
     public static int getUserInputInt(String prompt, int min, int max) {
         while (true) {
-            System.out.print("[UserInput Int] " + prompt + ": ");
+            System.out.print("[UserInput Int ( " + min + " - " + max + " )]" + prompt + ": ");
             int input = 0;
             try {
                 input = Integer.parseInt(br.readLine());
