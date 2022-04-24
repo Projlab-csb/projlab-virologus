@@ -79,13 +79,13 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("What would you like to run? Enter the number of the option from below:");
+        System.out.println("Welcome to the Virologist Enterprise Game!");
         System.out.println("----------------------------------------------------------");
         System.out.println("1 - Skeleton tests");
         System.out.println("2 - Integration tests");
         System.out.println("3 - Game");
 
-        int input = UserInputHandler.getUserInputInt("Enter a number: ", 1, 3);
+        int input = UserInputHandler.getUserInputInt("What would you like to run?", 1, 3);
         switch (input) {
             case 1:
                 skeletonTest();

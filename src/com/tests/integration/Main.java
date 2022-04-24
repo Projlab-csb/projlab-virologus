@@ -1,5 +1,6 @@
 package com.tests.integration;
 
+import com.csb.skeletonTester.UserInputHandler;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -7,6 +8,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import javax.rmi.ssl.SslRMIClientSocketFactory;
 
 public class Main {
 
@@ -19,34 +21,62 @@ public class Main {
 
     public static void main(String[] args) {
         List<String> tests = getTests();
-        int passed = 0;
-        int failed = 0;
-        for (String testPath : tests) {
-            String testName = testPath.substring(testPath.lastIndexOf("/") + 1);
-            System.out.println("-----------------------------------------------------");
-            System.out.println("Running test: [" + testName + "]");
 
-            //TODO: DELETE THIS
-            if (WRITE_OUT_BEFORE_TEST) {
-                System.out.println("WRITING OUTPUT EXPECTED FILE");
-                writeTestOutputToFile(testPath);
+        int userInput = -2;
+
+        while (userInput != -1) {
+            //Ask user which test they want to run
+
+            //For all tests print an id, and the name of the test
+            System.out.println("-1:\tExit");
+            int testCount = tests.size();
+            int maxUserInput = testCount;
+            for (int i = 0; i < testCount; i++) {
+                String testName = tests.get(i).substring(tests.get(i).lastIndexOf("/") + 1);
+                System.out.println(i + ":\t" + testName);
             }
-            //END DELETE
+            System.out.println("---------------------------");
+            System.out.println(testCount + ": Run all tests\n");
 
-            boolean success = runTest(testPath);
-            if (success) {
-                passed++;
+            //Get user input
+            userInput = UserInputHandler.getUserInputInt("Which test would you like to run?", -1, maxUserInput);
+            if (userInput == -1) {
+                System.out.println("Exiting...");
+            } else if (userInput == maxUserInput) {
+                //Run all tests
+                int passed = 0;
+                int failed = 0;
+                for (String testPath : tests) {
+                    if (runTest(testPath)) {
+                        passed++;
+                    } else {
+                        failed++;
+                    }
+                }
+                System.out.println("\n-----------------------------------------------------");
+                System.out.println("Tests finished. " + passed + " passed, " + failed + " failed.");
+                break;
+            } else if (userInput >= 0 && userInput < testCount) {
+                //Test if the user input is in the valid range and if so run the test
+                runTest(tests.get(userInput));
             } else {
-                failed++;
+                System.out.println("Input is out of range, enter and integer between (-1 and " + maxUserInput + ")");
             }
-
-            System.out.println("Test finished" + (success ? " SUCCESS" : " FAILED"));
         }
-        System.out.println("\n-----------------------------------------------------");
-        System.out.println("Tests finished. " + passed + " passed, " + failed + " failed.");
     }
 
-    public static boolean runTest(String testPath) {
+    private static boolean runTest(String testPath) {
+        String testName = testPath.substring(testPath.lastIndexOf("/") + 1);
+        System.out.println("-----------------------------------------------------");
+        System.out.println("Running test: [" + testName + "]");
+
+        //TODO: DELETE THIS
+        if (WRITE_OUT_BEFORE_TEST) {
+            System.out.println("WRITING OUTPUT EXPECTED FILE");
+            writeTestOutputToFile(testPath);
+        }
+        //END DELETE
+
         File inputFile = new File(testPath + "/input.txt");
         File expectedOutputFile = new File(testPath + "/expectedOutput.txt");
 
@@ -54,8 +84,12 @@ public class Main {
         String inputString = getFullFileContent(inputFile);
         String expectedOutputString = getFullFileContent(expectedOutputFile);
 
+        //Run the test
         test.runTest(inputString);
-        return test.getOutput().equals(expectedOutputString);
+        boolean success = test.getOutput().equals(expectedOutputString);
+
+        System.out.println("Test finished" + (success ? " SUCCESS" : " FAILED"));
+        return success;
     }
 
     /**
