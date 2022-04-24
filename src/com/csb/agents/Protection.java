@@ -12,6 +12,7 @@ public class Protection extends Agent implements DefenseStrategyInterface {
      */
     public void applyEffect(Virologist virologist) {
         virologist.setDefenseStrategy(this);
+        virologist.storeAgent(this);
     }
 
     /**

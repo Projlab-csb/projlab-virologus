@@ -31,9 +31,6 @@ public class Virologist {
     private final ArrayList<RoundRunStrategyInterface> roundRunStrategy;
     private final ArrayList<MoveStrategyInterface> moveStrategy;
     private final ArrayList<MurderStrategyInterface> murderStrategy;
-    //private final DefenseStrategyInterface defaultDefenseStrategy;
-    //private final MoveStrategyInterface defaultMoveStrategy;
-    //private final RoundRunStrategyInterface defaultRoundRunStrategy;
     private int inventorySize;
     private final AminoAcid aminoAcidStock;
     private final NucleicAcid nucleicAcidStock;
@@ -153,7 +150,9 @@ public class Virologist {
      * @param moveStrategy the move strategy to be set on the virologist, this affects the way he moves
      */
     public void setMoveStrategy(MoveStrategyInterface moveStrategy) {
-        this.moveStrategy.add(moveStrategy);
+        if (!this.moveStrategy.get(this.moveStrategy.size() - 1).getClass().toString().equals("BearDance")) this.moveStrategy.add(
+                moveStrategy
+            ); else this.moveStrategy.add(0, moveStrategy);
     }
 
     /**

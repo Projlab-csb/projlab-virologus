@@ -126,8 +126,8 @@ public class DefaultRoundRun implements RoundRunStrategyInterface {
                         System.out.println("Steal from " + vir.getName() + " :commad " + v);
                         v++;
                     }
-                    int selectedvirologist = UserInputHandler.getUserInputInt("Who do you want to attack", 0, v - 1);
-                    String in = UserInputHandler.getUserInputString("What to do want to steal?", new String[] { "Matter", "Equipment" });
+                    int selectedvirologist = UserInputHandler.getUserInputInt("Who do you want to rob?", 0, v - 1);
+                    String in = UserInputHandler.getUserInputString("What do you want to steal?", new String[] { "Matter", "Equipment" });
                     if (in.equals("Matter")) {
                         if (
                             virologist.getField().getVirologists().get(selectedvirologist).getNucleicAcid() == 0 &&
@@ -176,7 +176,44 @@ public class DefaultRoundRun implements RoundRunStrategyInterface {
                             );
                         }
                     }
-
+                    break;
+                case "Discard":
+                    String discarded = UserInputHandler.getUserInputString(
+                        "What do you want to Discard?",
+                        new String[] { "Matter", "Equipment" }
+                    );
+                    if (discarded.equals("Matter")) {
+                        in = UserInputHandler.getUserInputString("What to do want to steal?", new String[] { "AminoAcid", "NucleicAcid" });
+                        if (in.equals("AminoAcid")) {
+                            if (virologist.getAminoAcid() == 0) System.out.println("You cannot discard that kind of collectable"); else {
+                                int discard = UserInputHandler.getUserInputInt(
+                                    "How many AminoAcid would you drop?",
+                                    1,
+                                    virologist.getAminoAcid()
+                                );
+                                virologist.discard(new AminoAcid(discard));
+                            }
+                        } else {
+                            if (virologist.getNucleicAcid() == 0) System.out.println("You cannot discard that kind of collectable"); else {
+                                int discard = UserInputHandler.getUserInputInt(
+                                    "How many NucleicAcid would you drop?",
+                                    1,
+                                    virologist.getNucleicAcid()
+                                );
+                                virologist.discard(new NucleicAcid(discard));
+                            }
+                        }
+                    } else {
+                        if (virologist.getEquipments().size() == 0) System.out.println("You cannot steal that kind of collectable"); else {
+                            int e = 0;
+                            for (Equipment eq : virologist.getEquipments()) {
+                                System.out.println("Steal " + eq.getClass().toString() + " :commad " + e);
+                                e++;
+                            }
+                            int selectedequipment = UserInputHandler.getUserInputInt("What do you want do steal?", 0, e - 1);
+                            virologist.discard(virologist.getEquipments().get(selectedequipment));
+                        }
+                    }
                     break;
                 default:
                     break;

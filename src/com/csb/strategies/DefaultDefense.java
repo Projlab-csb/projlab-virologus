@@ -16,6 +16,5 @@ public class DefaultDefense implements DefenseStrategyInterface {
     @Override
     public void defense(Agent agent, Virologist attackedVirologist, Virologist attackerVirologist) {
         agent.applyEffect(attackedVirologist);
-        attackedVirologist.storeAgent(agent);
     }
 }

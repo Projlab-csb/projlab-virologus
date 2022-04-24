@@ -13,6 +13,7 @@ public class Paralyzed extends Agent implements RoundRunStrategyInterface {
      */
     public void applyEffect(Virologist virologist) {
         virologist.setRoundRunStrategy(this);
+        virologist.storeAgent(this);
     }
 
     /**

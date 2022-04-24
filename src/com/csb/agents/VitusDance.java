@@ -16,6 +16,7 @@ public class VitusDance extends Agent implements MoveStrategyInterface {
      */
     public void applyEffect(Virologist virologist) {
         virologist.setMoveStrategy(this);
+        virologist.storeAgent(this);
     }
 
     /**
