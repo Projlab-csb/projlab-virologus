@@ -107,7 +107,6 @@ public class Virologist {
 
             //Get the one what is wanted by the player
             int chosen = UserInputHandler.getUserInputInt("What do you want to collect?", 0, collectables.size() - 1);
-            chosen--;
             Collectable coll = collectables.get(chosen);
 
             //if the field is a shelter there can be restricions
