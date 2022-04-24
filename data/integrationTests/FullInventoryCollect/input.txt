@@ -1,0 +1,16 @@
+3
+y
+1
+Storage
+1
+Bob
+0
+Amino Acid
+5
+Nucleic Acid
+5
+Exit
+Collect
+0
+Exit Game
+n
