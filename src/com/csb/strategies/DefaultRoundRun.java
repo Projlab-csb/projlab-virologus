@@ -65,13 +65,13 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
                         System.out.println("From what code do you want to create an agent?");
                         int n = 0;
                         for (Gencode g : virologist.getGencodes()) {
-                            System.out.println(g.getAgent().getClass().getSimpleName() + " creater gencode command " + n);
+                            System.out.println(g.getAgent().getClass().getSimpleName() + " command " + n);
                             n++;
                         }
-                        int selectedGencode = UserInputHandler.getUserInputInt("Which Gencode would you use?", 0, n - 1);
+                        int selectedGencode = UserInputHandler.getUserInputInt("Which gencode would you use?", 0, n - 1);
                         virologist.createAgent(virologist.getGencodes().get(selectedGencode));
                     } else {
-                        System.out.println("you don't have gencodes yet");
+                        System.out.println("You don't have gencodes yet");
                     }
                     break;
                 //if the player wants to attack someone with that agent
@@ -94,7 +94,7 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
                             System.out.println("Use agent on " + vir.getName() + " :command " + v);
                             v++;
                         }
-                        int selectedvirologist = UserInputHandler.getUserInputInt("Who do you want to attack", 0, v - 1);
+                        int selectedvirologist = UserInputHandler.getUserInputInt("Who do you want to attack?", 0, v - 1);
 
                         virologist.useAgent(
                             virologist.getCreatedAgents().get(selectedAgent),
@@ -116,9 +116,9 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
                             System.out.println(vir.getName() + " command " + v);
                             v++;
                         }
-                        int selectedvirologist = UserInputHandler.getUserInputInt("Who do you want to attack", 0, v - 1);
+                        int selectedvirologist = UserInputHandler.getUserInputInt("Who do you want to attack?", 0, v - 1);
                         if (virologist.equals(virologist.getField().getVirologists().get(selectedvirologist))) System.out.println(
-                            "If you want to do Harakiri, you have to buy the Harkir DLC"
+                            "If you want to commit Harakiri, you have to buy the Harakiri DLC"
                         ); else virologist.murder(virologist.getField().getVirologists().get(selectedvirologist));
                     }
                     break;
@@ -184,7 +184,7 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
                     break;
                 case "Discard":
                     String discarded = UserInputHandler.getUserInputString(
-                        "What do you want to Discard?",
+                        "What do you want to discard?",
                         new String[] { "Matter", "Equipment" }
                     );
                     if (discarded.equals("Matter")) {
@@ -193,7 +193,7 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
                         if (in.equals("AminoAcid")) {
                             if (virologist.getAminoAcid() == 0) System.out.println("You cannot discard that kind of collectable"); else {
                                 int discard = UserInputHandler.getUserInputInt(
-                                    "How many AminoAcid would you drop?",
+                                    "How much AminoAcid would you drop?",
                                     1,
                                     virologist.getAminoAcid()
                                 );
@@ -202,7 +202,7 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
                         } else {
                             if (virologist.getNucleicAcid() == 0) System.out.println("You cannot discard that kind of collectable"); else {
                                 int discard = UserInputHandler.getUserInputInt(
-                                    "How many NucleicAcid would you drop?",
+                                    "How much NucleicAcid would you drop?",
                                     1,
                                     virologist.getNucleicAcid()
                                 );
