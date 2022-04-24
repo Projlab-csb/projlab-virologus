@@ -7,6 +7,7 @@ import com.csb.collectables.matters.NucleicAcid;
 import com.csb.skeletonTester.Tester;
 import com.csb.skeletonTester.Tester;
 import com.csb.virologist.Virologist;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -14,7 +15,7 @@ import java.util.ArrayList;
  * Virologists searching for these in labs.
  * A Gencode says how many AminoAcid and NucleicAcid is needed to craft an agent
  */
-public class Gencode implements Collectable {
+public class Gencode implements Collectable, Serializable {
 
     public static final int MIN_AMINO_ACID = 1;
     public static final int MAX_AMINO_ACID = 3;

@@ -11,11 +11,12 @@ import com.csb.gameControl.GameController;
 import com.csb.skeletonTester.Tester;
 import com.csb.skeletonTester.UserInputHandler;
 import com.csb.virologist.Virologist;
+import java.io.Serializable;
 
 /**
  * The class, what describe an average Round of a virologist, and the way it handles the robbing attempts
  */
-public class DefaultRoundRun implements RoundRunStrategyInterface {
+public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable {
 
     /**
      * The Virologist react for a robbing attempt

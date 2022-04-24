@@ -6,6 +6,7 @@ import com.csb.skeletonTester.UserInputHandler;
 import com.csb.utils.Random;
 import com.csb.virologist.Virologist;
 import java.io.File;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -42,9 +43,22 @@ public class GameController {
         map = new GameMap();
     }
 
+    public List<String> listMapFiles() {
+        ArrayList<String> mapFiles = new ArrayList<>();
+        File folder = new File(MAP_LOCATION);
+        File[] listOfFiles = folder.listFiles();
+        for (File file : listOfFiles) {
+            if (file.isFile()) {
+                mapFiles.add(file.getName());
+            }
+        }
+        return mapFiles;
+    }
+
     public void loadMap(String mapName) {
-        File file = new File(MAP_LOCATION + mapName + ".map");
+        File file = new File(MAP_LOCATION + mapName);
         map = GameMap.loadMap(file);
+        System.out.println("Map loaded");
     }
 
     public void saveMap(String mapName) {
@@ -65,8 +79,12 @@ public class GameController {
     public void initGame() {
         //Prompt for the editor
         boolean isEdited = editorModePrompt();
-        //Only run regular game flow if the game has not been edited
+        boolean mapLoaded = false;
         if (!isEdited) {
+            mapLoaded = loadMapPrompt();
+        }
+        //Only run regular game flow if the game has not been edited
+        if (!isEdited && !mapLoaded) {
             int playerCount = UserInputHandler.getUserInputInt("How many virologists do you want to play with?");
             for (int i = 0; i < playerCount; i++) {
                 String name = UserInputHandler.getUserInputString("What is the name of player " + (i + 1) + "?");
@@ -93,6 +111,21 @@ public class GameController {
         }
         //Regular game flow continues
         return editorMode;
+    }
+
+    private boolean loadMapPrompt() {
+        boolean mapLoaded = UserInputHandler.getUserInputBoolean("Do you want to load a map?");
+        if (mapLoaded) {
+            List<String> maps = listMapFiles();
+            for (int i = 0; i < maps.size(); i++) {
+                System.out.println(i + ": " + maps.get(i));
+            }
+            //Load the map
+            int mapId = UserInputHandler.getUserInputInt("Which map do you want to load?", 0, maps.size() - 1);
+            loadMap(maps.get(mapId));
+        }
+        //Regular game flow continues
+        return mapLoaded;
     }
 
     /**
