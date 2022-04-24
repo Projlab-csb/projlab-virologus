@@ -7,6 +7,7 @@ import com.csb.collectables.gencodes.Gencode;
 import com.csb.collectables.matters.AminoAcid;
 import com.csb.collectables.matters.NucleicAcid;
 import com.csb.fields.Field;
+import com.csb.gameControl.GameController;
 import com.csb.skeletonTester.Tester;
 import com.csb.skeletonTester.UserInputHandler;
 import com.csb.virologist.Virologist;
@@ -218,6 +219,11 @@ public class DefaultRoundRun implements RoundRunStrategyInterface {
                     }
                     break;
                 case "Exit Game":
+                    boolean saveTheMap = UserInputHandler.getUserInputBoolean("Do you want to save the map?");
+                    if (saveTheMap) {
+                        String mapName = UserInputHandler.getUserInputString("What do you want to name the map?");
+                        GameController.getInstance().saveMap(mapName);
+                    }
                     System.out.println("You have exited the game");
                     System.exit(0);
                     return;

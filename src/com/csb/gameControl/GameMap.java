@@ -41,13 +41,13 @@ public class GameMap implements Serializable {
     public static void saveMap(File mapFile, GameMap map) {
         //Loop through the fields and save them to a file
         try {
-            if (mapFile.canWrite()) {
-                FileOutputStream fos = new FileOutputStream(mapFile);
-                ObjectOutputStream oos = new ObjectOutputStream(fos);
-                oos.writeObject(map);
-                oos.close();
-                fos.close();
-            }
+            //if (mapFile.canWrite()) {
+            FileOutputStream fos = new FileOutputStream(mapFile);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(map);
+            oos.close();
+            fos.close();
+            //}
         } catch (IOException e) {
             e.printStackTrace();
         }
