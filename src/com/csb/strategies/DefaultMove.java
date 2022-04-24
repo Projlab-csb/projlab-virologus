@@ -20,6 +20,6 @@ public class DefaultMove implements MoveStrategyInterface {
 
         //migrate to the next field
         virologist.getField().getNeighbors().get(nextTileIndex).acceptVirologist(virologist);
-        System.out.println(virologist.getName() + " has moved to " + virologist.getField().getClass().toString());
+        System.out.println(virologist.getName() + " has moved to " + virologist.getField().getClass().getSimpleName());
     }
 }

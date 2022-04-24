@@ -8,6 +8,7 @@ import com.csb.collectables.gencodes.Gencode;
 import com.csb.collectables.matters.AminoAcid;
 import com.csb.collectables.matters.NucleicAcid;
 import com.csb.fields.Field;
+import com.csb.fields.Storage;
 import com.csb.gameControl.GameController;
 import com.csb.skeletonTester.Tester;
 import com.csb.skeletonTester.UserInputHandler;
@@ -100,7 +101,7 @@ public class Virologist {
         if (collectables == null || collectables.size() == 0) System.out.println("You cannot collect anything from here"); else {
             //List the collectables from the field
             for (int i = 0; i < collectables.size(); i++) {
-                System.out.println("Collect: " + collectables.get(i).getClass().toString() + "Command: " + i);
+                System.out.println("Collect: " + collectables.get(i).getClass().getSimpleName() + "Command: " + i);
             }
 
             //Get the one what is wanted by the player
@@ -110,7 +111,7 @@ public class Virologist {
 
             //if the field is a shelter there can be restricions
             //TODO:maybe its wrong
-            if (field.getClass().toString() == "Shelter") {
+            if (field instanceof Storage) {
                 if (equipments.size() >= 3) {
                     System.out.println("The inventory is full");
                     return;
@@ -132,7 +133,7 @@ public class Virologist {
      * @param targetVirologist the virologist that the agent would be applied on
      */
     public void useAgent(Agent agent, Virologist targetVirologist) {
-        System.out.println(this.getName() + " has used agent: " + agent.getClass().toString() + " on" + targetVirologist.getName());
+        System.out.println(this.getName() + " has used agent: " + agent.getClass().getSimpleName() + " on" + targetVirologist.getName());
         targetVirologist.attack(agent, this);
         createdagents.remove(agent);
     }
@@ -150,7 +151,7 @@ public class Virologist {
      * @param moveStrategy the move strategy to be set on the virologist, this affects the way he moves
      */
     public void setMoveStrategy(MoveStrategyInterface moveStrategy) {
-        if (!this.moveStrategy.get(this.moveStrategy.size() - 1).getClass().toString().equals("BearDance")) this.moveStrategy.add(
+        if (!this.moveStrategy.get(this.moveStrategy.size() - 1).getClass().getSimpleName().equals("BearDance")) this.moveStrategy.add(
                 moveStrategy
             ); else this.moveStrategy.add(0, moveStrategy);
     }
@@ -238,7 +239,7 @@ public class Virologist {
         }
 
         //the robber virologist collects the loot, if the attempt was succesful
-        System.out.println(this.getName() + " has stolen " + stolen.getClass().toString() + " from " + targetVirologist.getName());
+        System.out.println(this.getName() + " has stolen " + stolen.getClass().getSimpleName() + " from " + targetVirologist.getName());
         stolen.collectBy(this);
     }
 

@@ -39,6 +39,6 @@ public class BearDance extends Agent implements MoveStrategyInterface {
         virologist.getField().getNeighbors().get(nextstep).acceptVirologist(virologist);
         virologist.getField().destroy();
 
-        System.out.println("Virologist has moved to " + virologist.getField().getClass().toString());
+        System.out.println("Virologist has moved to " + virologist.getField().getClass().getSimpleName());
     }
 }
