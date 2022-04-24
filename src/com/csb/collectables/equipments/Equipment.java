@@ -27,7 +27,7 @@ public abstract class Equipment implements Collectable {
         virologist.addEquipment(this);
         applyEffect(virologist);
         //TODO: maybe this don't write out the exact name, we expect the inherited class
-        System.out.println("The Virologist has collected a(n)" + getClass().toString());
+        System.out.println(virologist.getName() + " has collected a(n)" + getClass().toString());
     }
 
     /**
@@ -37,5 +37,6 @@ public abstract class Equipment implements Collectable {
     public void discard(Virologist virologist) {
         removeEffect(virologist);
         virologist.removeEquipment(this);
+        System.out.println(virologist.getName() + " has discarded a(n)" + getClass().toString());
     }
 }

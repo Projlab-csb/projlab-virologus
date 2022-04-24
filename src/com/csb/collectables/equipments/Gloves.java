@@ -21,12 +21,15 @@ public class Gloves extends Equipment implements DefenseStrategyInterface {
      */
     @Override
     public void defense(Agent agent, Virologist defenderVirologist, Virologist attackerVirologist) {
+        //if the attacker is not a cursedlab, it attacks back
         if (attackerVirologist != null) {
             defenderVirologist.useAgent(agent, attackerVirologist);
         }
         life--;
+
+        //if life goes down to 0 it melts down from hand
         if (life == 0) {
-            attackerVirologist.discard(this);
+            defenderVirologist.discard(this);
         }
     }
 

@@ -32,15 +32,18 @@ public class AminoAcid extends Matter {
         //if the source is a storage, the amount is infinite, the virologist fill his stock to full capacity
         if (this.getAmount() == -1) {
             virologist.setAminoAcid(virologist.getAminoAcid() + virologist.getInventorySize() - virologist.getNucleicAcid());
-            System.out.println("Virologist has collected AminoAcid to full");
+            System.out.println(virologist.getName() + " has collected AminoAcid to full");
         }
         //if the source is an other virologist, the source is finite, so it is the minimum of his full capacity and the sum of his owned acid and stolen acid
-        else virologist.setAminoAcid(
-            Math.min(
-                virologist.getAminoAcid() + this.getAmount(),
-                virologist.getAminoAcid() + virologist.getInventorySize() - virologist.getNucleicAcid()
-            )
-        );
+        else {
+            virologist.setAminoAcid(
+                Math.min(
+                    virologist.getAminoAcid() + this.getAmount(),
+                    virologist.getAminoAcid() + virologist.getInventorySize() - virologist.getNucleicAcid()
+                )
+            );
+            System.out.println(virologist.getName() + " has collected AminoAcid, now he has" + virologist.getAminoAcid());
+        }
     }
 
     /**
@@ -52,6 +55,8 @@ public class AminoAcid extends Matter {
         int discarded = this.getAmount();
 
         //if the player want to discard more acid than the virologist has, he discards all the virologist has
-        virologist.setAminoAcid(Math.max(virologist.getAminoAcid() - discarded, 0));
+        virologist.setAminoAcid(virologist.getAminoAcid() - discarded);
+
+        System.out.println(virologist.getName() + " has discarded AminoAcid, now he has" + virologist.getAminoAcid());
     }
 }
