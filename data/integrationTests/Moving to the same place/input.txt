@@ -2,33 +2,45 @@
 y
 4
 Field
-Field
-Field
-Field
+Shelter
+Storage
+Lab
 2
 Alice
 0
+Gencode
+Forget
+Amino Acid
+4
+Nucleic Acid
+4
 Exit
 Bob
 1
 Exit
 
 Move
+0
+End Round
+End Round
+Move
+0
+End Round
+End Round
+Move
 1
-Move
-2
-Move
-3
-End Turn
+End Round
 
 Move
 0
-End Turn
+End Round
 
 Move
 0
-
-//Alice ráken Bobra egy felejtés ágenst - rákenés nemigen megy
-
+Create Agent
+0
+Use Agent
+0
+0
 Exit Game
 n

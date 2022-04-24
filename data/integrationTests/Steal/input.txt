@@ -1,7 +1,6 @@
 3
 y
-2
-Field
+1
 Field
 2
 Alice
@@ -9,6 +8,8 @@ Alice
 Exit
 Bob
 0
+Equipment
+Axe
 Agent
 Paralyzed
 Exit

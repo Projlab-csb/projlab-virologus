@@ -1,16 +1,18 @@
 3
 y
 2
-Field
-Field
+Cursed Lab
+Cursed Lab
 2
 Alice
 0
-//hogy állítjuk be, hogy medve az illető?
+Equipment
+Axe
 Exit
 Bob
 1
-//hogy állítjuk be, hogy medve az illető?
+Equipment
+Axe
 Exit
 Move
 1

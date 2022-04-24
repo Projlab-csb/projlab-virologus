@@ -6,12 +6,12 @@ Field
 Alice
 0
 Equipment
-1
+Cloak
 Exit
 Bob
 0
 Exit
-//drops cloak
+//discards cloak
 End Turn
 Collect
 0

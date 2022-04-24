@@ -6,8 +6,7 @@ Lab
 Alice
 0
 Exit
-
-Attack
+Collect
 0
 Exit Game
 n
