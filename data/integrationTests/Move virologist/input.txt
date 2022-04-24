@@ -1,0 +1,13 @@
+3
+y
+2
+Field
+Field
+1
+Alice
+0
+Exit
+Move
+0
+Exit Game
+n

@@ -1,0 +1,26 @@
+3
+y
+2
+Shelter
+Field
+2
+Alice
+0
+Exit
+Bob
+0
+Exit
+Collect
+1
+Collect
+3
+Collect
+0
+Move
+1
+Move
+0
+// Alice -> Bob attack
+End Turn
+Exit Game
+n

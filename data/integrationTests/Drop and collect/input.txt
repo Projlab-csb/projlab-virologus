@@ -1,0 +1,23 @@
+3
+y
+1
+Field
+2
+Alice
+0
+Equipment
+1
+Exit
+Bob
+0
+Exit
+//drops cloak
+End Turn
+Collect
+0
+End Turn
+Collect
+0
+End Turn
+Exit Game
+n

@@ -70,6 +70,39 @@ public class Main {
         }
     }
 
+/*
+    17 teszteset (az előző beadásból?), ebből 16 kell (save & load nem) + 3, ami csopiba van + bonyolultak..?
+    -  az előző beadásból leszarni a részletes leírásokat,
+
+    tesztelési terv, 7. doksi 7.3-ban benne van az összes elv (+ a 3 a msg csopiból) (-a save&reload)
+
+    [esetleg segít: megnézni a 10. doksiból a végéről a be- és kimeneti nyelveket]
+
+    gyors megírni őket elvileg
+
+    GOFRINak vmi szarja
+
+    osztályok:
+    gamecontroller
+    gameeditor - pályalétrehozással kapcs. (pl. storage létrehozása: kapásból mindent fel lehet szedni)
+
+
+    gameeditor módban vagyunk játékindítás után, jönnek a beállítások
+
+    data/integrationTests/mappa létrehozása tesztenként
+
+    (3 y az eleje minden tesztnek és Exit Game n a végük)
+
+    tests.integration/IS_MUTED false-ra egyelőre
+
+    ha működik a teszt, akk ugyanitt true-ra a WRITE_OUT_IDK-t
+
+    rendes main indításakor 3 mód: skeleton tester, integration tests, game <-- próbálkozáshoz a game kell
+
+    ha vmi szar, akkor bele kell nyúlni, hogy működjön az adott teszteset
+    DE ELV MINDEN MŰKÖDIK
+     */
+
     /**
      * This is the main method. It is the entry point of the program. It is the first method called when the program
      * is run. It handles the test selection and the test execution. First all the test classes are loaded using the

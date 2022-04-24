@@ -1,0 +1,32 @@
+nullWelcome to the Virologist Enterprise Game!
+----------------------------------------------------------
+1 - Skeleton tests
+2 - Integration tests
+3 - Game
+[UserInput Int ( 1 - 3 )]What would you like to run?: 3
+[UserInput Boolean] Do you want to enter game editor mode? (y/n): y
+[UserInput Int ( 1 - 100 )]How many fields do you want to create?: 1
+[UserInput String] What is the type of the field?(Field, Storage, Lab, Cursed Lab, Shelter): Shelter
+[UserInput Int ( 1 - 10 )]How many virologists do you want to create?: 1
+[UserInput String] What is the name of the virologist?Alice
+0. Shelter
+[UserInput Int ( 0 - 0 )]What field to put the virologist on?: 0
+[UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Exit
+[UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): Collect
+Collect: Axe Command: 0
+Collect: Cloak Command: 1
+Collect: Bag Command: 2
+Collect: Gloves Command: 3
+Collect: Axe Command: 4
+Collect: Cloak Command: 5
+Collect: Bag Command: 6
+Collect: Gloves Command: 7
+Collect: Axe Command: 8
+Collect: Cloak Command: 9
+Collect: Bag Command: 10
+Collect: Gloves Command: 11
+[UserInput Int ( 0 - 11 )]What do you want to collect?: 0
+Alice has collected a(n) Axe
+[UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): Exit Game
+[UserInput Boolean] Do you want to save the map? (y/n): n
+You have exited the game

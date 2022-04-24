@@ -1,0 +1,18 @@
+3
+y
+1
+Field
+1
+Alice
+0
+Nucleic Acid
+4
+Amino Acid
+4
+Gencode
+Forget
+Exit
+Create Agent
+0
+Exit Game
+n

@@ -1,0 +1,34 @@
+3
+y
+4
+Field
+Field
+Field
+Field
+2
+Alice
+0
+Exit
+Bob
+1
+Exit
+
+Move
+1
+Move
+2
+Move
+3
+End Turn
+
+Move
+0
+End Turn
+
+Move
+0
+
+//Alice ráken Bobra egy felejtés ágenst - rákenés nemigen megy
+
+Exit Game
+n

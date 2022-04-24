@@ -1,0 +1,27 @@
+3
+y
+3
+Field
+Shelter
+Storage
+3
+Alice
+0
+Exit
+Bob
+1
+Exit
+Gandalf
+2
+Exit
+Move
+1
+End Round
+Move
+1
+End Round
+Move
+1
+End Round
+Exit Game
+n

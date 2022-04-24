@@ -1,0 +1,12 @@
+3
+y
+1
+Shelter
+1
+Alice
+0
+Exit
+Collect
+0
+Exit Game
+n
