@@ -92,6 +92,7 @@ public class Main {
                 break;
             case 2:
                 //TODO write integration tests
+                com.tests.integration.Main.main(args);
                 break;
             case 3:
                 GameController.getInstance().initGame();
