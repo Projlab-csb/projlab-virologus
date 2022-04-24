@@ -5,35 +5,33 @@ nullWelcome to the Virologist Enterprise Game!
 3 - Game
 [UserInput Int ( 1 - 3 )]What would you like to run?: 3
 [UserInput Boolean] Do you want to enter game editor mode? (y/n): y
-[UserInput Int] How many fields do you want to create?: 2
+[UserInput Int ( 1 - 100 )]How many fields do you want to create?: 2
 [UserInput String] What is the type of the field?(Field, Storage, Lab, Cursed Lab, Shelter): Field
 [UserInput String] What is the type of the field?(Field, Storage, Lab, Cursed Lab, Shelter): Field
-[UserInput Int] How many virologists do you want to create?: 2
+[UserInput Int ( 1 - 10 )]How many virologists do you want to create?: 2
 [UserInput String] What is the name of the virologist?Bob
-
 0. Field
 1. Field
 [UserInput Int ( 0 - 1 )]What field to put the virologist on?: 0
 [UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Exit
 [UserInput String] What is the name of the virologist?Alice
-
 0. Field
 1. Field
 [UserInput Int ( 0 - 1 )]What field to put the virologist on?: 1
 [UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Equipment
 [UserInput String] What equipment to put on the virologist? (Axe, Bag, Cloak, Gloves, Exit): Axe
- has collected a(n) Axe
+Alice has collected a(n) Axe
 [UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Exit
 [UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): End Round
 [UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): Move
 Field commad 0
 [UserInput Int ( 0 - 0 )]Where to move?: 0
- has moved to Field
+Alice has moved to Field
 [UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): Kill
- commad 0
- commad 1
+Bob commad 0
+Alice commad 1
 [UserInput Int ( 0 - 1 )]Who do you want to attack: 0
- murdered 
+Alice murdered Bob
 [UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): Exit Game
 [UserInput Boolean] Do you want to save the map? (y/n): n
 You have exited the game
