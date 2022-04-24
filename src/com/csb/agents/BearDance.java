@@ -18,13 +18,11 @@ public class BearDance extends Agent implements MoveStrategyInterface {
     }
 
     /**
-     * Removes the VitusDance effect, now the virologist does not move random directions
+     *Don't remove the BearDance effect
      * @param virologist the virologist to remove the effect from
      */
     @Override
-    public void removeEffect(Virologist virologist) {
-        virologist.setMoveStrategy(this);
-    }
+    public void removeEffect(Virologist virologist) {}
 
     /**
      * This function handles the virologist's move(move random directions or not)

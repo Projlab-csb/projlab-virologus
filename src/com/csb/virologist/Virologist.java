@@ -100,11 +100,11 @@ public class Virologist {
         if (collectables == null || collectables.size() == 0) System.out.println("You cannot collect anything from here"); else {
             //List the collectables from the field
             for (int i = 0; i < collectables.size(); i++) {
-                System.out.println("Collect: " + collectables.get(i).getClass().toString() + "Command: " + (i + 1));
+                System.out.println("Collect: " + collectables.get(i).getClass().toString() + "Command: " + i);
             }
 
             //Get the one what is wanted by the player
-            int chosen = UserInputHandler.getUserInputInt("What do you want to collect?", 1, collectables.size());
+            int chosen = UserInputHandler.getUserInputInt("What do you want to collect?", 0, collectables.size() - 1);
             chosen--;
             Collectable coll = collectables.get(chosen);
 
@@ -260,6 +260,7 @@ public class Virologist {
             this.nucleicAcidStock.getAmount() >= genCode.getRequiredNucleicAcid().getAmount()
         ) {
             this.createdagents.add(genCode.getAgent());
+            System.out.println(this.name + " Has cerated " + genCode.getAgent());
         } else {
             System.out.println("You don't have enough material.");
         }
@@ -286,27 +287,6 @@ public class Virologist {
     public void setAgentlist(ArrayList<Agent> agentlist) {
         this.agentlist = agentlist;
     }
-
-    /**
-     * @return - the default defending strategy
-     */
-    /*public DefenseStrategyInterface getDefaultDefenseStrategy() {
-        return defaultDefenseStrategy;
-    }*/
-
-    /**
-     * @return - the default moving strategy
-     */
-    /*public MoveStrategyInterface getDefaultMoveStrategy() {
-        return defaultMoveStrategy;
-    }*/
-
-    /**
-     * @return - the default RoundRun strategy
-     */
-    /* public RoundRunStrategyInterface getDefaultRoundRunStrategy() {
-        return defaultRoundRunStrategy;
-    }*/
 
     /**
      * @return - the equipments owned by the Virologist

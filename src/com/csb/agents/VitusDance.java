@@ -42,6 +42,6 @@ public class VitusDance extends Agent implements MoveStrategyInterface {
         virologist.getField().removeVirologist(virologist);
         virologist.getField().getNeighbors().get(nextstep).acceptVirologist(virologist);
 
-        System.out.println("Virologist has moved to " + virologist.getField().getClass().toString());
+        System.out.println(virologist.getName() + " has moved to " + virologist.getField().getClass().toString());
     }
 }

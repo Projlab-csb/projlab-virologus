@@ -66,7 +66,8 @@ public class DefaultRoundRun implements RoundRunStrategyInterface {
                             System.out.println(g.getAgent().getClass().toString() + "creater gencode commad" + n);
                             n++;
                         }
-                        virologist.createAgent(virologist.getGencodes().get(n));
+                        int selectedGencode = UserInputHandler.getUserInputInt("Which Gencode would you use?", 0, n - 1);
+                        virologist.createAgent(virologist.getGencodes().get(selectedGencode));
                     } else {
                         System.out.println("you don't have gencodes yet");
                     }
@@ -183,7 +184,8 @@ public class DefaultRoundRun implements RoundRunStrategyInterface {
                         new String[] { "Matter", "Equipment" }
                     );
                     if (discarded.equals("Matter")) {
-                        in = UserInputHandler.getUserInputString("What to do want to steal?", new String[] { "AminoAcid", "NucleicAcid" });
+                        in =
+                            UserInputHandler.getUserInputString("What to do want to discard?", new String[] { "AminoAcid", "NucleicAcid" });
                         if (in.equals("AminoAcid")) {
                             if (virologist.getAminoAcid() == 0) System.out.println("You cannot discard that kind of collectable"); else {
                                 int discard = UserInputHandler.getUserInputInt(
