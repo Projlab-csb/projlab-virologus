@@ -135,7 +135,7 @@ public class Virologist {
      * @param targetVirologist the virologist that the agent would be applied on
      */
     public void useAgent(Agent agent, Virologist targetVirologist) {
-        System.out.println(this.getName() + " attacked");
+        System.out.println(this.getName() + " has used agent: " + agent.getClass().toString() + " on" + targetVirologist.getName());
         targetVirologist.attack(agent, this);
         createdagents.remove(agent);
     }
@@ -234,10 +234,12 @@ public class Virologist {
         Collectable stolen = targetVirologist.handleSteal(coll);
 
         if (stolen == null) {
+            System.out.println("The robbery was not succesful");
             return;
         }
 
         //the robber virologist collects the loot, if the attempt was succesful
+        System.out.println(this.getName() + " has stolen " + stolen.getClass().toString() + " from " + targetVirologist.getName());
         stolen.collectBy(this);
     }
 

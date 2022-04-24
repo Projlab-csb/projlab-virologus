@@ -23,8 +23,9 @@ public class Gloves extends Equipment implements DefenseStrategyInterface {
     public void defense(Agent agent, Virologist defenderVirologist, Virologist attackerVirologist) {
         //if the attacker is not a cursedlab, it attacks back
         if (attackerVirologist != null) {
+            System.out.println("Hence the attacked virologist wears gloves, he attacks back");
             defenderVirologist.useAgent(agent, attackerVirologist);
-        }
+        } else System.out.println("The virologist is defended against a cursedlab he stepped on");
         life--;
 
         //if life goes down to 0 it melts down from hand
