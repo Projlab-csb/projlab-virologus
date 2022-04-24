@@ -1,0 +1,24 @@
+3
+y
+3
+Field
+Storage
+Lab
+2
+Bob
+1
+Equipment
+Bag
+Exit
+Alice
+0
+Gloves
+Gencode
+Paralyzed
+Nucleic Acid
+5
+Amino Acid
+4
+Exit
+Exit Game
+n

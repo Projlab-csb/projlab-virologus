@@ -1,0 +1,13 @@
+3
+y
+2
+Field
+Cursed Lab
+1
+Bob
+0
+Exit
+Move
+0
+Exit Game
+n

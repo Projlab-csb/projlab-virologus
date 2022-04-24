@@ -13,7 +13,7 @@ import javax.rmi.ssl.SslRMIClientSocketFactory;
 public class Main {
 
     //Set this to true to hide the test program child process output
-    static final boolean IS_MUTED = true;
+    static final boolean IS_MUTED = false;
 
     //Set this to true to automatically write the program's output to the expected output file
     //Note: This overwrites all the test output contents
