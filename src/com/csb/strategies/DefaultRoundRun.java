@@ -47,7 +47,7 @@ public class DefaultRoundRun implements RoundRunStrategyInterface {
                     if (stepcounter == 0) {
                         int n = 0;
                         for (Field f : virologist.getField().getNeighbors()) {
-                            System.out.println(f.getClass().getSimpleName() + "commad" + n);
+                            System.out.println(f.getClass().getSimpleName() + " commad " + n);
                             n++;
                         }
                         virologist.move(
@@ -63,7 +63,7 @@ public class DefaultRoundRun implements RoundRunStrategyInterface {
                         System.out.println("From what code do you want to create an agent?");
                         int n = 0;
                         for (Gencode g : virologist.getGencodes()) {
-                            System.out.println(g.getAgent().getClass().getSimpleName() + "creater gencode commad" + n);
+                            System.out.println(g.getAgent().getClass().getSimpleName() + " creater gencode commad " + n);
                             n++;
                         }
                         int selectedGencode = UserInputHandler.getUserInputInt("Which Gencode would you use?", 0, n - 1);

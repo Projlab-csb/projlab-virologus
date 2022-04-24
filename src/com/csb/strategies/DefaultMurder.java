@@ -17,7 +17,7 @@ public class DefaultMurder implements MurderStrategyInterface {
     @Override
     public void murder(Virologist murderervirologist, Virologist murderedvirologist) {
         System.out.println(
-            murderervirologist.getName() + " tried to kill " + murderedvirologist.getName() + "But he failed, hence he doesn't has an axe"
+            murderervirologist.getName() + " tried to kill " + murderedvirologist.getName() + " But he failed, hence he doesn't have an axe"
         );
         //nothing happens
     }

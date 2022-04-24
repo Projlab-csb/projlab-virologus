@@ -102,7 +102,7 @@ public class Virologist {
         if (collectables == null || collectables.size() == 0) System.out.println("You cannot collect anything from here"); else {
             //List the collectables from the field
             for (int i = 0; i < collectables.size(); i++) {
-                System.out.println("Collect: " + collectables.get(i).getClass().getSimpleName() + "Command: " + i);
+                System.out.println("Collect: " + collectables.get(i).getClass().getSimpleName() + " Command: " + i);
             }
 
             //Get the one what is wanted by the player
@@ -134,7 +134,7 @@ public class Virologist {
      * @param targetVirologist the virologist that the agent would be applied on
      */
     public void useAgent(Agent agent, Virologist targetVirologist) {
-        System.out.println(this.getName() + " has used agent: " + agent.getClass().getSimpleName() + " on" + targetVirologist.getName());
+        System.out.println(this.getName() + " has used agent: " + agent.getClass().getSimpleName() + " on " + targetVirologist.getName());
         targetVirologist.attack(agent, this);
         createdagents.remove(agent);
     }
@@ -262,7 +262,7 @@ public class Virologist {
             this.nucleicAcidStock.getAmount() >= genCode.getRequiredNucleicAcid().getAmount()
         ) {
             this.createdagents.add(genCode.getAgent());
-            System.out.println(this.name + " Has cerated " + genCode.getAgent());
+            System.out.println(this.name + " sas created " + genCode.getAgent());
         } else {
             System.out.println("You don't have enough material.");
         }
