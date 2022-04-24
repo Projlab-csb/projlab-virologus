@@ -2,11 +2,12 @@ package com.csb.agents;
 
 import com.csb.skeletonTester.Tester;
 import com.csb.virologist.Virologist;
+import java.io.Serializable;
 
 /**
  * The agent abstract class.
  */
-public abstract class Agent {
+public abstract class Agent implements Serializable {
 
     private int TTL = 3;
 

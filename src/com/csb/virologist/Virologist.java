@@ -16,6 +16,7 @@ import com.csb.strategies.*;
 import com.csb.strategies.DefenseStrategyInterface;
 import com.csb.strategies.MoveStrategyInterface;
 import com.csb.strategies.RoundRunStrategyInterface;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,7 @@ import java.util.List;
  * it's Aminoacid and Nucleicacid stock, the equipments used by the virologists, and the Gencodes learned by him, and the Agents made by him.
  */
 
-public class Virologist {
+public class Virologist implements Serializable {
 
     private String name;
     private final ArrayList<DefenseStrategyInterface> defenseStrategy;

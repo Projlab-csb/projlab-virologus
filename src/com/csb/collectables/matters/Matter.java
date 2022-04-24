@@ -2,11 +2,12 @@ package com.csb.collectables.matters;
 
 import com.csb.collectables.Collectable;
 import com.csb.skeletonTester.Tester;
+import java.io.Serializable;
 
 /**
  * Abstact class, what describes the matter
  */
-public abstract class Matter implements Collectable {
+public abstract class Matter implements Collectable, Serializable {
 
     private int amount;
 

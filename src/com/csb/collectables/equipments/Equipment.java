@@ -3,9 +3,10 @@ package com.csb.collectables.equipments;
 import com.csb.collectables.Collectable;
 import com.csb.skeletonTester.Tester;
 import com.csb.virologist.Virologist;
+import java.io.Serializable;
 import javax.swing.*;
 
-public abstract class Equipment implements Collectable {
+public abstract class Equipment implements Collectable, Serializable {
 
     /**
      * Applies the effect of this equipment to the virologist

@@ -2,6 +2,7 @@ package com.csb.fields;
 
 import com.csb.collectables.Collectable;
 import com.csb.virologist.Virologist;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
  * The class, what describes an average field.
  * There are no collectable items on this specific type of field
  */
-public class Field {
+public class Field implements Serializable {
 
     private List<Field> neighbors;
     private List<Virologist> virologistonField;

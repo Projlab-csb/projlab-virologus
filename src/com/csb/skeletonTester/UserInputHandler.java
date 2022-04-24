@@ -56,6 +56,7 @@ public class UserInputHandler {
         try {
             String input = br.readLine();
             System.out.println(input);
+            return input;
         } catch (IOException e) {
             e.printStackTrace();
         }
