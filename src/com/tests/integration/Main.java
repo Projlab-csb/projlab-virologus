@@ -17,7 +17,7 @@ public class Main {
 
     //Set this to true to automatically write the program's output to the expected output file
     //Note: This overwrites all the test output contents
-    static final boolean WRITE_OUT_BEFORE_TEST = false; //TODO: DELETE THIS
+    static final boolean WRITE_OUT_BEFORE_TEST = true; //TODO: DELETE THIS
 
     public static void main(String[] args) {
         List<String> tests = getTests();

@@ -18,3 +18,4 @@ Move
 Kill
 0
 Exit Game
+n
