@@ -24,8 +24,8 @@ public class StealBag extends Test {
         Tester.getInstance().turnOffLogging();
         //Set the envirement for the test
         Bag bag = new Bag();
-        Virologist robbervirologist = new Virologist();
-        Virologist targetvirologist = new Virologist();
+        Virologist robbervirologist = new Virologist("bob");
+        Virologist targetvirologist = new Virologist("bob");
         bag.collectBy(targetvirologist);
         Paralyzed paralyzedAgent = new Paralyzed();
         paralyzedAgent.applyEffect(targetvirologist);

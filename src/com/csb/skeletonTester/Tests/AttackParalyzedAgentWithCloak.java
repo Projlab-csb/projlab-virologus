@@ -7,21 +7,22 @@ import com.csb.skeletonTester.Test;
 import com.csb.virologist.Virologist;
 
 public class AttackParalyzedAgentWithCloak extends Test {
+
     /**
      * getName for the menu
      */
     public String getName() {
         return "Attack with Paralyzed Agent when the attacked virologist wears Cloak";
     }
+
     /**
      * runTest for the start the function
      */
     public void runTest() {
-
         //Set the envirement for the test
-        Virologist virologist = new Virologist();
-        Virologist targetvirologist = new Virologist();
-        Cloak c=new Cloak();
+        Virologist virologist = new Virologist("bob");
+        Virologist targetvirologist = new Virologist("james");
+        Cloak c = new Cloak();
         c.applyEffect(targetvirologist);
         Paralyzed paralyzed = new Paralyzed();
 
@@ -29,4 +30,3 @@ public class AttackParalyzedAgentWithCloak extends Test {
         virologist.useAgent(paralyzed, targetvirologist);
     }
 }
-

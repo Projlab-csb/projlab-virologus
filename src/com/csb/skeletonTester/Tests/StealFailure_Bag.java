@@ -23,8 +23,8 @@ public class StealFailure_Bag extends Test {
         Tester.getInstance().turnOffLogging();
         //Set the envirement for the test
         Gloves gloves = new Gloves();
-        Virologist robbervirologist = new Virologist();
-        Virologist targetvirologist = new Virologist();
+        Virologist robbervirologist = new Virologist("bob");
+        Virologist targetvirologist = new Virologist("james");
         gloves.collectBy(targetvirologist);
 
         Tester.getInstance().turnOnLogging();

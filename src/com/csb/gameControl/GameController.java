@@ -64,7 +64,8 @@ public class GameController {
     public void initGame() {
         int playerCount = UserInputHandler.getUserInputInt("How many virologists do you want to play with?");
         for (int i = 0; i < playerCount; i++) {
-            allVirologists.add(new Virologist());
+            String name = UserInputHandler.getUserInputString("What is the name of player " + (i + 1) + "?");
+            allVirologists.add(new Virologist(name));
         }
         map = new GameMap();
         List<Field> fields = map.getFields();

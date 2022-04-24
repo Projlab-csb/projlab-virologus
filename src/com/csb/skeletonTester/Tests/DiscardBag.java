@@ -6,6 +6,7 @@ import com.csb.skeletonTester.Tester;
 import com.csb.virologist.Virologist;
 
 public class DiscardBag extends Test {
+
     public String getName() {
         return "Discard Bag";
     }
@@ -14,10 +15,9 @@ public class DiscardBag extends Test {
      * runTest for the start the function
      */
     public void runTest() {
-
         Tester.getInstance().turnOffLogging();
         //Set the envirement for the test
-        Virologist virologist = new Virologist();
+        Virologist virologist = new Virologist("bob");
         Bag bag = new Bag();
         bag.collectBy(virologist);
 

@@ -17,7 +17,7 @@ public class CreateAgent extends Test {
     }
 
     public void runTest() {
-        Virologist virologist = new Virologist();
+        Virologist virologist = new Virologist("bob");
         Gencode genCode = new Gencode(new Paralyzed(), new AminoAcid(50), new NucleicAcid(50));
         virologist.createAgent(genCode);
     }

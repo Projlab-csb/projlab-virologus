@@ -30,8 +30,8 @@ public class InitGame extends Test {
         shelter.addNeighbor(storage);
         storage.addNeighbor(field);
 
-        Virologist virologist = new Virologist();
-        Virologist virologist2 = new Virologist();
+        Virologist virologist = new Virologist("bob");
+        Virologist virologist2 = new Virologist("james");
 
         virologist.setField(field);
         virologist2.setField(shelter);

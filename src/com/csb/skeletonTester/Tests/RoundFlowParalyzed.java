@@ -19,7 +19,7 @@ public class RoundFlowParalyzed extends Test {
     public void runTest() {
         Tester.getInstance().turnOffLogging();
         Paralyzed paralyze = new Paralyzed();
-        Virologist virologist = new Virologist();
+        Virologist virologist = new Virologist("bob");
         virologist.useAgent(paralyze, virologist);
         Tester.getInstance().turnOnLogging();
 

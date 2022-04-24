@@ -7,6 +7,7 @@ import com.csb.skeletonTester.Tester;
 import com.csb.virologist.Virologist;
 
 public class DiscardCloak extends Test {
+
     public String getName() {
         return "Discard Cloak";
     }
@@ -15,11 +16,10 @@ public class DiscardCloak extends Test {
      * runTest for the start the function
      */
     public void runTest() {
-
         Tester.getInstance().turnOffLogging();
         //Set the envirement for the test
         Cloak cloak = new Cloak();
-        Virologist virologist = new Virologist();
+        Virologist virologist = new Virologist("bob");
         cloak.collectBy(virologist);
 
         Tester.getInstance().turnOnLogging();

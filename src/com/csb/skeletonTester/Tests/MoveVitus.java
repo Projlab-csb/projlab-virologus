@@ -19,7 +19,7 @@ public class MoveVitus extends Test {
 
     @Override
     public void runTest() {
-        Virologist virologist = new Virologist();
+        Virologist virologist = new Virologist("james");
         Tester.getInstance().turnOffLogging();
         virologist.setField(new Field());
 
