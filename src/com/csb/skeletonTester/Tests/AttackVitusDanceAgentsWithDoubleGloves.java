@@ -19,8 +19,8 @@ public class AttackVitusDanceAgentsWithDoubleGloves extends Test {
      * runTest for the start the function
      */
     public void runTest() {
-        Virologist virologist = new Virologist();
-        Virologist targetvirologist = new Virologist();
+        Virologist virologist = new Virologist("bob");
+        Virologist targetvirologist = new Virologist("james");
         Gloves g = new Gloves();
         Gloves g1 = new Gloves();
         g.applyEffect(targetvirologist);

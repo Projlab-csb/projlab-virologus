@@ -23,8 +23,8 @@ public class AttackProtectionAgentWithCloak extends Test {
         Tester.getInstance().turnOffLogging();
 
         //Set the envirement for the test
-        Virologist virologist = new Virologist();
-        Virologist targetvirologist = new Virologist();
+        Virologist virologist = new Virologist("bob");
+        Virologist targetvirologist = new Virologist("james");
         Cloak c = new Cloak();
         c.applyEffect(targetvirologist);
         Protection protection = new Protection();

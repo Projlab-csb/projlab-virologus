@@ -9,7 +9,6 @@ import com.csb.fields.Storage;
 import com.csb.skeletonTester.Test;
 import com.csb.skeletonTester.Tester;
 import com.csb.virologist.Virologist;
-
 import java.util.ArrayList;
 
 public class StealAminoAcid extends Test {
@@ -26,19 +25,18 @@ public class StealAminoAcid extends Test {
      * runTest for the start the function
      */
     public void runTest() {
-
         Tester.getInstance().turnOffLogging();
         //Set the envirement for the test
-        ArrayList<Collectable> collectableArrayList= new ArrayList<Collectable>();
+        ArrayList<Collectable> collectableArrayList = new ArrayList<Collectable>();
         collectableArrayList.add(new AminoAcid());
         collectableArrayList.add(new NucleicAcid());
-        Virologist targetvirologist = new Virologist();
+        Virologist targetvirologist = new Virologist("bob");
         Storage storage = new Storage(collectableArrayList);
 
         //Collect AminoAcid
         targetvirologist.collect(storage);
 
-        Virologist robbervirologist = new Virologist();
+        Virologist robbervirologist = new Virologist("james");
 
         Paralyzed paralyzedAgent = new Paralyzed();
         paralyzedAgent.applyEffect(targetvirologist);

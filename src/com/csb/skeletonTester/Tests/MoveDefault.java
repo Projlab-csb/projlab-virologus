@@ -19,7 +19,7 @@ public class MoveDefault extends Test {
 
     @Override
     public void runTest() {
-        Virologist virologist = new Virologist();
+        Virologist virologist = new Virologist("bob");
         Tester.getInstance().turnOffLogging();
         virologist.setField(new Field());
 

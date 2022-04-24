@@ -32,7 +32,7 @@ public class CollectGencode extends Test {
         AminoAcid a = new AminoAcid(30);
         NucleicAcid n = new NucleicAcid(30);
         Paralyzed p = new Paralyzed();
-        Virologist virologist = new Virologist();
+        Virologist virologist = new Virologist("bob");
         Lab lab = new Lab(
             new ArrayList<Collectable>() {
                 {

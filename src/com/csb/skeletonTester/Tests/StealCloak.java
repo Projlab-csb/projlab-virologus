@@ -24,8 +24,8 @@ public class StealCloak extends Test {
         Tester.getInstance().turnOffLogging();
         //Set the envirement for the test
         Cloak cloak = new Cloak();
-        Virologist robbervirologist = new Virologist();
-        Virologist targetvirologist = new Virologist();
+        Virologist robbervirologist = new Virologist("bob");
+        Virologist targetvirologist = new Virologist("james");
         cloak.collectBy(targetvirologist);
         Paralyzed paralyzedAgent = new Paralyzed();
         paralyzedAgent.applyEffect(targetvirologist);

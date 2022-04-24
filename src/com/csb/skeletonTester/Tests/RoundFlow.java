@@ -15,7 +15,7 @@ public class RoundFlow extends Test {
 
     @Override
     public void runTest() {
-        Virologist virologist = new Virologist();
+        Virologist virologist = new Virologist("bob");
 
         virologist.startOfTurn();
     }

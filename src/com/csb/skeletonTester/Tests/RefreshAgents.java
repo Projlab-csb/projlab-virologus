@@ -19,7 +19,7 @@ public class RefreshAgents extends Test {
     }
 
     public void runTest() {
-        Virologist virologist = new Virologist();
+        Virologist virologist = new Virologist("bob");
         ArrayList<Agent> agents = new ArrayList<Agent>();
         Paralyzed par = new Paralyzed();
         par.setTTL(20);

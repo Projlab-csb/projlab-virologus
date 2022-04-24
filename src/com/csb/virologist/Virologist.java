@@ -26,7 +26,7 @@ import java.util.List;
 
 public class Virologist {
 
-    private String name = "Bob";
+    private String name;
     private final ArrayList<DefenseStrategyInterface> defenseStrategy;
     private final ArrayList<RoundRunStrategyInterface> roundRunStrategy;
     private final ArrayList<MoveStrategyInterface> moveStrategy;
@@ -50,7 +50,7 @@ public class Virologist {
     /**
      * In the constructor of the Virologist we can implement a variables, set a strategies to default, and set the starting size of the inventory
      */
-    public Virologist() {
+    public Virologist(String name) {
         inventorySize = 30;
         nucleicAcidStock = new NucleicAcid(0);
         aminoAcidStock = new AminoAcid(0);
@@ -68,6 +68,7 @@ public class Virologist {
         moveStrategy.add(new DefaultMove());
         murderStrategy.add(new DefaultMurder());
         equipments = new ArrayList<Equipment>(3);
+        this.name = name;
     }
 
     /**

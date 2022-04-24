@@ -24,10 +24,9 @@ public class CollectBagTest extends Test {
      */
     @Override
     public void runTest() {
-
         Tester.getInstance().turnOffLogging();
         //Set the envirement for the test
-        Virologist virologist = new Virologist();
+        Virologist virologist = new Virologist("bob");
         Shelter shelter = new Shelter(
             new ArrayList<Collectable>() {
                 {
