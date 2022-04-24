@@ -17,12 +17,12 @@ public class GameController {
     private static final int MAX_FIELD_COUNT = 8;
     private static final String MAP_LOCATION = "data/maps/";
 
-    private List<Virologist> allVirologists;
-    private List<Virologist> deadVirologists;
-    private Map<Virologist, List<Gencode>> virologistGencodesMap;
-    private List<Gencode> allGencodes;
+    List<Virologist> allVirologists;
+    List<Virologist> deadVirologists;
+    Map<Virologist, List<Gencode>> virologistGencodesMap;
+    List<Gencode> allGencodes;
     private boolean someoneWon;
-    private GameMap map;
+    GameMap map;
 
     private static GameController _instance;
 
@@ -39,6 +39,7 @@ public class GameController {
         virologistGencodesMap = new java.util.HashMap<Virologist, List<Gencode>>();
         allGencodes = new ArrayList<>();
         someoneWon = false;
+        map = new GameMap();
     }
 
     public void loadMap(String mapName) {
@@ -62,20 +63,41 @@ public class GameController {
      * Sets up the fields
      */
     public void initGame() {
-        int playerCount = UserInputHandler.getUserInputInt("How many virologists do you want to play with?");
-        for (int i = 0; i < playerCount; i++) {
-            String name = UserInputHandler.getUserInputString("What is the name of player " + (i + 1) + "?");
-            allVirologists.add(new Virologist(name));
-        }
-        map = new GameMap(3, 3);
-        List<Field> fields = map.getFields();
-        Random random = new Random();
-        for (Virologist virologist : allVirologists) {
-            //Pick a random field for each virologist
-            fields.get(random.randomBetween(0, fields.size() - 1)).acceptVirologist(virologist);
+        //Prompt for the editor
+        boolean isEdited = editorModePrompt();
+        //Only run regular game flow if the game has not been edited
+        if (!isEdited) {
+            int playerCount = UserInputHandler.getUserInputInt("How many virologists do you want to play with?");
+            for (int i = 0; i < playerCount; i++) {
+                String name = UserInputHandler.getUserInputString("What is the name of player " + (i + 1) + "?");
+                allVirologists.add(new Virologist(name));
+            }
+            map = new GameMap(3, 3);
+            List<Field> fields = map.getFields();
+            Random random = new Random();
+            for (Virologist virologist : allVirologists) {
+                //Pick a random field for each virologist
+                fields.get(random.randomBetween(0, fields.size() - 1)).acceptVirologist(virologist);
+            }
         }
     }
 
+    /**
+     * Trys to enter the game editor mode game editor state
+     */
+    public boolean editorModePrompt() {
+        boolean editorMode = UserInputHandler.getUserInputBoolean("Do you want to enter game editor mode?");
+        if (editorMode) {
+            //Enter the editor
+            GameEditor.getInstance().enterEditorMode();
+        }
+        //Regular game flow continues
+        return editorMode;
+    }
+
+    /**
+     * Start of the game process
+     */
     public void startGame() {
         while (!someoneWon) {
             for (Virologist v : allVirologists) {
@@ -85,6 +107,7 @@ public class GameController {
                 }
             }
         }
+        System.out.println("The winner is: " + allVirologists.get(0).getName());
     }
 
     /**

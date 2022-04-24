@@ -39,7 +39,7 @@ public class DefaultRoundRun implements RoundRunStrategyInterface {
             input =
                 UserInputHandler.getUserInputString(
                     "What to do?",
-                    new String[] { "Move", "Collect", "Create Agent", "Use Agent", "Kill", "End Round" }
+                    new String[] { "Move", "Collect", "Create Agent", "Use Agent", "Kill", "End Round", "Exit Game" }
                 );
             switch (input) {
                 //if the player wants to move
@@ -217,6 +217,10 @@ public class DefaultRoundRun implements RoundRunStrategyInterface {
                         }
                     }
                     break;
+                case "Exit Game":
+                    System.out.println("You have exited the game");
+                    System.exit(0);
+                    return;
                 default:
                     break;
             }

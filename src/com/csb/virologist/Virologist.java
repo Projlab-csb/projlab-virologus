@@ -216,6 +216,10 @@ public class Virologist {
         return gencodes;
     }
 
+    public void addGencode(Gencode gencode) {
+        gencodes.add(gencode);
+    }
+
     /**
      * Set the Gencodes learned by the virologist
      * @param gencodes the Gencode list to be set

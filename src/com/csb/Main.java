@@ -6,7 +6,7 @@ import com.csb.gameControl.GameController;
 import com.csb.skeletonTester.TestInterface;
 import com.csb.skeletonTester.Tester;
 import com.csb.skeletonTester.Tests.StealCloak;
-
+import com.csb.skeletonTester.UserInputHandler;
 import java.text.ParseException;
 import java.util.Collections;
 import java.util.Comparator;
@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    static void skeletonTest(){
+    static void skeletonTest() {
         // User input scanner instance
         Scanner scanner = new Scanner(System.in);
 
@@ -85,29 +85,18 @@ public class Main {
         System.out.println("2 - Integration tests");
         System.out.println("3 - Game");
 
-        Scanner scanner = new Scanner(System.in);
-        int input = -1;
-        while (input < 0 || input > 3) {
-            try {
-                input = Integer.parseInt(scanner.nextLine());
-                switch (input) {
-                    case 1:
-                        skeletonTest();
-                        break;
-                    case 2:
-                        //TODO write integration tests
-                        break;
-                    case 3:
-                        GameController.getInstance().initGame();
-                        GameController.getInstance().startGame();
-                        break;
-                    default:
-                        System.out.println("Only numbers between 1 and 3 are valid, try again");
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input (try to enter a number): " + e.getMessage());
-                input = -1;
-            }
+        int input = UserInputHandler.getUserInputInt("Enter a number: ", 1, 3);
+        switch (input) {
+            case 1:
+                skeletonTest();
+                break;
+            case 2:
+                //TODO write integration tests
+                break;
+            case 3:
+                GameController.getInstance().initGame();
+                GameController.getInstance().startGame();
+                break;
         }
     }
 }

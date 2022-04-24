@@ -9,10 +9,7 @@ import com.csb.collectables.equipments.Gloves;
 import com.csb.collectables.gencodes.Gencode;
 import com.csb.collectables.matters.AminoAcid;
 import com.csb.collectables.matters.NucleicAcid;
-import com.csb.fields.Field;
-import com.csb.fields.Lab;
-import com.csb.fields.Shelter;
-import com.csb.fields.Storage;
+import com.csb.fields.*;
 import com.csb.utils.Random;
 import java.io.*;
 import java.util.ArrayList;
@@ -21,7 +18,7 @@ import java.util.List;
 
 public class GameMap implements Serializable {
 
-    private List<Field> fields;
+    List<Field> fields;
 
     /**
      * Generate a random gencode
@@ -76,6 +73,7 @@ public class GameMap implements Serializable {
         generateField(minFieldCount, maxFieldCount);
         //Generate labs
         generateLab(minFieldCount, maxFieldCount);
+        generateCursedLab(minFieldCount, maxFieldCount);
         //Generate shelters
         generateShelter(minFieldCount, maxFieldCount);
         //Generate storage
@@ -95,6 +93,14 @@ public class GameMap implements Serializable {
         int labCount = rand.randomBetween(minCount, maxCount);
         for (int i = 0; i < labCount; i++) {
             storeField(new Lab(new ArrayList<Collectable>(List.of(generateRandomGencode()))));
+        }
+    }
+
+    private void generateCursedLab(int minCount, int maxCount) {
+        Random rand = new Random();
+        int labCount = rand.randomBetween(minCount, maxCount);
+        for (int i = 0; i < labCount; i++) {
+            storeField(new CursedLab(new ArrayList<Collectable>(List.of(generateRandomGencode()))));
         }
     }
 

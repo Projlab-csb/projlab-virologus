@@ -1,51 +1,38 @@
-nullWhich test would you like to run?
--1:	Exit
-0:	Attack with Forget Agent
-1:	Attack with Forget Agent when the attacked virologist wears Cloak
-2:	Attack with Forget Agent when the attacked virologist wears Gloves
-3:	Attack with Forget Agent when the attacked virologist have Protection agent
-4:	Attack with Forget Agent when both Virologist have Gloves
-5:	Attack with Paralyzed Agent
-6:	Attack with Paralyzed Agent when the attacked virologist wears Cloak
-7:	Attack with Paralyzed Agent when the attacked virologist wears Gloves
-8:	Attack with Paralyzed Agent when the attacked virologist have Protection agent
-9:	Attack with Paralyzed Agent when both Virologist have Gloves
-10:	Attack with Protection Agent
-11:	Attack with Protection Agent when the attacked virologist wears Cloak
-12:	Attack with Protection Agent when the attacked virologist wears Gloves
-13:	Attack with Protection Agent when the attacked virologist have Protection agent
-14:	Attack with Protection Agent when both Virologist have Gloves
-15:	Attack with VitusDance Agent
-16:	Attack with VitusDance Agent when the attacked virologist wears Cloak
-17:	Attack with VitusDance Agent when the attacked virologist wears Gloves
-18:	Attack with VitusDance Agent when the attacked virologist have Protection agent
-19:	Attack with VitusDance Agent when both Virologist have Gloves
-20:	Collect AminoAcid
-21:	Collect Bag
-22:	Collect Cloak
-23:	Collect Gencode
-24:	Collect Gloves
-25:	Collect NucleicAcid
-26:	Create Agent
-27:	Discard AminoAcid
-28:	Discard Bag
-29:	Discard Cloak
-30:	Discard Gloves
-31:	Discard NucleicAcid
-32:	GameFlow
-33:	Init Game
-34:	Move Default
-35:	Move Vitus
-36:	Refresh Agents
-37:	Round Flow
-38:	Round Flow Paralyzed
-39:	Steal AminoAcid
-40:	Steal Bag
-41:	Steal Cloak
-42:	Steal Gloves, but it ends with failure
-43:	Steal Gloves
-44:	Steal AminoAcid
----------------------------
-45: Run all tests
+nullWhat would you like to run? Enter the number of the option from below:
+----------------------------------------------------------
+1 - Skeleton tests
+2 - Integration tests
+3 - Game
+[UserInput Int ( 1 - 3 )]Enter a number: : 3
+[UserInput Boolean] Do you want to enter game editor mode? (y/n): y
+[UserInput Int] How many fields do you want to create?: 2
+[UserInput String] What is the type of the field?(Field, Storage, Lab, Cursed Lab, Shelter): Field
+[UserInput String] What is the type of the field?(Field, Storage, Lab, Cursed Lab, Shelter): Field
+[UserInput Int] How many virologists do you want to create?: 2
+[UserInput String] What is the name of the virologist?Bob
 
-Enter a number between (-1 and 45): Exiting...
+0. Field
+1. Field
+[UserInput Int ( 0 - 1 )]What field to put the virologist on?: 0
+[UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Exit
+[UserInput String] What is the name of the virologist?Alice
+
+0. Field
+1. Field
+[UserInput Int ( 0 - 1 )]What field to put the virologist on?: 1
+[UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Equipment
+[UserInput String] What equipment to put on the virologist? (Axe, Bag, Cloak, Gloves, Exit): Axe
+ has collected a(n) Axe
+[UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Exit
+[UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): End Round
+[UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): Move
+Field commad 0
+[UserInput Int ( 0 - 0 )]Where to move?: 0
+ has moved to Field
+[UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): Kill
+ commad 0
+ commad 1
+[UserInput Int ( 0 - 1 )]Who do you want to attack: 0
+ murdered 
+[UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): Exit Game
+You have exited the game

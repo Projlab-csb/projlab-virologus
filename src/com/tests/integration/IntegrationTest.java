@@ -2,13 +2,15 @@ package com.tests.integration;
 
 import java.io.*;
 import java.util.List;
+import java.util.Scanner;
 
 public class IntegrationTest {
 
     public boolean isMuted = false;
 
-    public BufferedReader br;
+    //public BufferedReader br;
     public BufferedWriter bw;
+    public Scanner inputScanner;
 
     public String output;
 
@@ -24,7 +26,8 @@ public class IntegrationTest {
         }
 
         InputStreamReader isr = new InputStreamReader(process.getInputStream());
-        br = new BufferedReader(isr);
+        //br = new BufferedReader(isr);
+        inputScanner = new Scanner(isr);
 
         OutputStreamWriter osw = new OutputStreamWriter(process.getOutputStream());
         bw = new BufferedWriter(osw);
@@ -33,22 +36,21 @@ public class IntegrationTest {
     public void runTest(String input) {
         try {
             bw.write(input);
-            bw.newLine();
+            bw.flush();
             bw.close();
+            //bw.newLine();
+            //bw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        String line;
-        try {
-            while ((line = br.readLine()) != null) {
-                if (!isMuted) {
-                    System.out.println("\t[Child process] " + line);
-                }
-                output += line + "\n";
+        String line = "";
+        while (inputScanner.hasNextLine()) {
+            line = inputScanner.nextLine();
+            if (!isMuted) {
+                System.out.println("\t[Child process] " + line);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+            output += line + "\n";
         }
     }
 

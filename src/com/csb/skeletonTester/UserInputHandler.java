@@ -21,7 +21,9 @@ public class UserInputHandler {
         while (true) {
             System.out.print("[UserInput Int] " + prompt + ": ");
             try {
-                return Integer.parseInt(br.readLine());
+                int number = Integer.parseInt(br.readLine());
+                System.out.println(number);
+                return number;
             } catch (Exception e) {
                 System.out.println("Invalid input. Please try again.");
             }
@@ -38,6 +40,7 @@ public class UserInputHandler {
                 System.out.println("Invalid input. Please try again.");
             }
             if (input >= min && input <= max) {
+                System.out.println(input);
                 return input;
             }
         }
@@ -51,10 +54,12 @@ public class UserInputHandler {
     public static String getUserInputString(String prompt) {
         System.out.print("[UserInput String] " + prompt);
         try {
-            return br.readLine();
+            String input = br.readLine();
+            System.out.println(input);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println();
         return "";
     }
 
@@ -80,6 +85,7 @@ public class UserInputHandler {
                 e.printStackTrace();
             }
         }
+        System.out.println(userInput);
         return userInput;
     }
 
@@ -119,6 +125,7 @@ public class UserInputHandler {
                 e.printStackTrace();
             }
         }
+        System.out.println(userInput);
         return userInput.equals("y");
     }
 }
