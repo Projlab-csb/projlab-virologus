@@ -65,13 +65,13 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
                         System.out.println("From what code do you want to create an agent?");
                         int n = 0;
                         for (Gencode g : virologist.getGencodes()) {
-                            System.out.println(g.getAgent().getClass().getSimpleName() + " command " + n);
+                            System.out.println(g.getAgent().getClass().getSimpleName() + " creater gencode command " + n);
                             n++;
                         }
-                        int selectedGencode = UserInputHandler.getUserInputInt("Which gencode would you use?", 0, n - 1);
+                        int selectedGencode = UserInputHandler.getUserInputInt("Which Gencode would you use?", 0, n - 1);
                         virologist.createAgent(virologist.getGencodes().get(selectedGencode));
                     } else {
-                        System.out.println("You don't have any gencodes yet");
+                        System.out.println("you don't have gencodes yet");
                     }
                     break;
                 //if the player wants to attack someone with that agent
@@ -86,7 +86,7 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
                             System.out.println("Use " + ag.getClass().getSimpleName() + " agent: command " + a);
                             a++;
                         }
-                        int selectedAgent = UserInputHandler.getUserInputInt("Which agent do you want to use?", 0, a - 1);
+                        int selectedAgent = UserInputHandler.getUserInputInt("Which gencode do you want to use?", 0, a - 1);
 
                         //select the virologist to be attacket
                         int v = 0;
@@ -94,7 +94,7 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
                             System.out.println("Use agent on " + vir.getName() + " :command " + v);
                             v++;
                         }
-                        int selectedvirologist = UserInputHandler.getUserInputInt("Who do you want to attack?", 0, v - 1);
+                        int selectedvirologist = UserInputHandler.getUserInputInt("Who do you want to attack", 0, v - 1);
 
                         virologist.useAgent(
                             virologist.getCreatedAgents().get(selectedAgent),
@@ -116,9 +116,9 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
                             System.out.println(vir.getName() + " command " + v);
                             v++;
                         }
-                        int selectedvirologist = UserInputHandler.getUserInputInt("Who do you want to attack?", 0, v - 1);
+                        int selectedvirologist = UserInputHandler.getUserInputInt("Who do you want to attack", 0, v - 1);
                         if (virologist.equals(virologist.getField().getVirologists().get(selectedvirologist))) System.out.println(
-                            "If you want to commit Harakiri, you have to buy the Harakiri DLC"
+                            "If you want to do Harakiri, you have to buy the Harkir DLC"
                         ); else virologist.murder(virologist.getField().getVirologists().get(selectedvirologist));
                     }
                     break;
@@ -126,7 +126,9 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
                     Collectable coll = null;
                     int v = 0;
                     for (Virologist vir : virologist.getField().getVirologists()) {
-                        System.out.println("Steal from " + vir.getName() + " :command " + v);
+                        if (!vir.getName().equals(virologist.getName())) System.out.println(
+                            "Steal from " + vir.getName() + " :command " + v
+                        );
                         v++;
                     }
                     int selectedvirologist = UserInputHandler.getUserInputInt("Who do you want to rob?", 0, v - 1);
@@ -172,7 +174,7 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
                                 System.out.println("Steal " + eq.getClass().getSimpleName() + " :command " + e);
                                 e++;
                             }
-                            int selectedequipment = UserInputHandler.getUserInputInt("What do you want to steal?", 0, e - 1);
+                            int selectedequipment = UserInputHandler.getUserInputInt("What do you want do steal?", 0, e - 1);
                             virologist.steal(
                                 virologist.getField().getVirologists().get(selectedvirologist).getEquipments().get(selectedequipment),
                                 virologist.getField().getVirologists().get(selectedvirologist)

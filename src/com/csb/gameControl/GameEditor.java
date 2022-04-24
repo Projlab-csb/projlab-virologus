@@ -36,7 +36,7 @@ public class GameEditor {
     private void create() {
         createField();
         GameController.getInstance().allGencodes.addAll(getGencodes());
-        int virologistCount = UserInputHandler.getUserInputInt("How many virologists do you want to create?");
+        int virologistCount = UserInputHandler.getUserInputInt("How many virologists do you want to create?", 1, 10);
         for (int i = 0; i < virologistCount; i++) {
             createVirologist();
         }
@@ -46,7 +46,7 @@ public class GameEditor {
      * Create field, every field is connected to all the other fields
      */
     private void createField() {
-        int fieldCount = UserInputHandler.getUserInputInt("How many fields do you want to create?");
+        int fieldCount = UserInputHandler.getUserInputInt("How many fields do you want to create?", 1, 100);
         for (int i = 0; i < fieldCount; i++) {
             String name = UserInputHandler.getUserInputString(
                 "What is the type of the field?",
