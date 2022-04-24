@@ -10,23 +10,47 @@ import java.util.stream.Collectors;
 
 public class Main {
 
+    //Set this to true to hide the test program child process output
+    static final boolean IS_MUTED = true;
+
+    //Set this to true to automatically write the program's output to the expected output file
+    //Note: This overwrites all the test output contents
+    static final boolean WRITE_OUT_BEFORE_TEST = true; //TODO: DELETE THIS
+
     public static void main(String[] args) {
         List<String> tests = getTests();
+        int passed = 0;
+        int failed = 0;
         for (String testPath : tests) {
             String testName = testPath.substring(testPath.lastIndexOf("/") + 1);
             System.out.println("-----------------------------------------------------");
-            System.out.println("Running test: " + testName);
+            System.out.println("Running test: [" + testName + "]");
 
-            System.out.println("Test finished");
-            System.out.println("-----------------------------------------------------\n\n");
+            //TODO: DELETE THIS
+            if (WRITE_OUT_BEFORE_TEST) {
+                System.out.println("WRITING OUTPUT EXPECTED FILE");
+                writeTestOutputToFile(testPath);
+            }
+            //END DELETE
+
+            boolean success = runTest(testPath);
+            if (success) {
+                passed++;
+            } else {
+                failed++;
+            }
+
+            System.out.println("Test finished" + (success ? " SUCCESS" : " FAILED"));
         }
+        System.out.println("\n-----------------------------------------------------");
+        System.out.println("Tests finished. " + passed + " passed, " + failed + " failed.");
     }
 
     public static boolean runTest(String testPath) {
         File inputFile = new File(testPath + "/input.txt");
         File expectedOutputFile = new File(testPath + "/expectedOutput.txt");
 
-        IntegrationTest test = new IntegrationTest();
+        IntegrationTest test = new IntegrationTest(IS_MUTED);
         String inputString = getFullFileContent(inputFile);
         String expectedOutputString = getFullFileContent(expectedOutputFile);
 
@@ -36,18 +60,26 @@ public class Main {
 
     /**
      * THIS METHOD MUST BE DELETED BEFORE SUBMISSION
-     * //TODO: Delete this method
+     * //TODO: DELETE THIS
      * @param testPath
      */
     public static void writeTestOutputToFile(String testPath) {
         File inputFile = new File(testPath + "/input.txt");
         File expectedOutputFile = new File(testPath + "/expectedOutput.txt");
 
-        IntegrationTest test = new IntegrationTest();
+        IntegrationTest test = new IntegrationTest(true);
         String inputString = getFullFileContent(inputFile);
 
         test.runTest(inputString);
         String output = test.getOutput();
+
+        try {
+            FileWriter fw = new FileWriter(expectedOutputFile);
+            fw.write(output);
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static List<String> getTests() {

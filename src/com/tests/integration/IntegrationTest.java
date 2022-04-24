@@ -12,7 +12,8 @@ public class IntegrationTest {
 
     public String output;
 
-    public IntegrationTest() {
+    public IntegrationTest(boolean isMuted) {
+        this.isMuted = isMuted;
         ProcessBuilder builder = JavaProcess.exec(com.csb.Main.class, List.of("-Xmx200m"), List.of(""));
         builder.redirectErrorStream(true);
         Process process = null;
@@ -42,7 +43,7 @@ public class IntegrationTest {
         try {
             while ((line = br.readLine()) != null) {
                 if (!isMuted) {
-                    System.out.println("[Child process] " + line);
+                    System.out.println("\t[Child process] " + line);
                 }
                 output += line + "\n";
             }
