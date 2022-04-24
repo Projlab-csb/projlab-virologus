@@ -49,7 +49,7 @@ public class Virologist {
      * In the constructor of the Virologist we can implement a variables, set a strategies to default, and set the starting size of the inventory
      */
     public Virologist(String name) {
-        inventorySize = 30;
+        inventorySize = 10;
         nucleicAcidStock = new NucleicAcid(0);
         aminoAcidStock = new AminoAcid(0);
         gencodes = new ArrayList<Gencode>();
