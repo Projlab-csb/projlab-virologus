@@ -266,9 +266,9 @@ public class Virologist implements Serializable {
             this.nucleicAcidStock.getAmount() >= genCode.getRequiredNucleicAcid().getAmount()
         ) {
             this.createdagents.add(genCode.getAgent());
-            System.out.println(this.name + " sas created " + genCode.getAgent());
+            System.out.println(this.name + " has created " + genCode.getAgent());
         } else {
-            System.out.println("You don't have enough material.");
+            System.out.println("You don't have enough materials.");
         }
     }
 
