@@ -7,7 +7,7 @@ Alice
 0
 Exit
 Collect
-0
+1
 Exit Game
 y
-000_testname
+000

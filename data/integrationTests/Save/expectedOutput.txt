@@ -12,7 +12,7 @@ nullWelcome to the Virologist Enterprise Game!
 0. Shelter
 [UserInput Int ( 0 - 0 )]What field to put the virologist on?: 0
 [UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Exit
-[UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): Collect
+[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Collect
 Collect: Axe Command: 0
 Collect: Cloak Command: 1
 Collect: Bag Command: 2
@@ -27,6 +27,8 @@ Collect: Bag Command: 10
 Collect: Gloves Command: 11
 [UserInput Int ( 0 - 11 )]What do you want to collect?: 0
 Alice has collected a(n) Axe
-[UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): Exit Game
-[UserInput Boolean] Do you want to save the map? (y/n): n
+[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Exit Game
+[UserInput Boolean] Do you want to save the game state? (y/n): y
+[UserInput String] Enter a name for the save: 000
+Game saved
 You have exited the game
