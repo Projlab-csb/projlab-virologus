@@ -31,48 +31,48 @@ nullWelcome to the Virologist Enterprise Game!
 3. Lab
 [UserInput Int ( 0 - 3 )]What field to put the virologist on?: 1
 [UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Exit
-[UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): Invalid input. Please try again: Move
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Invalid input. Please try again: Move
 Shelter command 0
 Storage command 1
 Lab command 2
 [UserInput Int ( 0 - 2 )]Where to move?: 0
 Alice has moved to Shelter
-[UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): End Round
-[UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): End Round
-[UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): Move
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): End Round
+[UserInput String] What to do dear Bob?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): End Round
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Move
 Field command 0
 Storage command 1
 Lab command 2
 [UserInput Int ( 0 - 2 )]Where to move?: 0
 Alice has moved to Field
-[UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): End Round
-[UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): End Round
-[UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): Move
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): End Round
+[UserInput String] What to do dear Bob?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): End Round
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Move
 Shelter command 0
 Storage command 1
 Lab command 2
 [UserInput Int ( 0 - 2 )]Where to move?: 1
 Alice has moved to Storage
-[UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): End Round
-[UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): Invalid input. Please try again: Move
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): End Round
+[UserInput String] What to do dear Bob?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Invalid input. Please try again: Move
 Field command 0
 Storage command 1
 Lab command 2
 [UserInput Int ( 0 - 2 )]Where to move?: 0
 Bob has moved to Field
-[UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): End Round
-[UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): Invalid input. Please try again: Move
+[UserInput String] What to do dear Bob?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): End Round
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Invalid input. Please try again: Move
 Field command 0
 Shelter command 1
 Lab command 2
 [UserInput Int ( 0 - 2 )]Where to move?: 0
 Alice has moved to Field
-[UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): Create Agent
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Create Agent
 From what code do you want to create an agent?
 Forget command 0
 [UserInput Int ( 0 - 0 )]Which gencode would you use?: 0
-Alice has created com.csb.agents.Forget@7530d0a
-[UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): Use Agent
+Alice has created Forget
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Use Agent
 Use Forget agent: command 0
 [UserInput Int ( 0 - 0 )]Which gencode do you want to use?: 0
 Use agent on Bob :command 0
@@ -80,6 +80,6 @@ Use agent on Alice :command 1
 [UserInput Int ( 0 - 1 )]Who do you want to attack?: 0
 Alice has used agent: Forget on Bob
 Bob get Forget from Alice
-[UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): Exit Game
-[UserInput Boolean] Do you want to save the map? (y/n): n
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Exit Game
+[UserInput Boolean] Do you want to save the game state? (y/n): n
 You have exited the game

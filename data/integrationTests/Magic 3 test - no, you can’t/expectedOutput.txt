@@ -5,66 +5,105 @@ nullWelcome to the Virologist Enterprise Game!
 3 - Game
 [UserInput Int ( 1 - 3 )]What would you like to run?: 3
 [UserInput Boolean] Do you want to enter game editor mode? (y/n): y
-[UserInput Int ( 1 - 100 )]How many fields do you want to create?: 3
+[UserInput Int ( 1 - 100 )]How many fields do you want to create?: 9
+[UserInput String] What is the type of the field?(Field, Storage, Lab, Cursed Lab, Shelter): Field
+[UserInput String] What is the type of the field?(Field, Storage, Lab, Cursed Lab, Shelter): Field
 [UserInput String] What is the type of the field?(Field, Storage, Lab, Cursed Lab, Shelter): Field
 [UserInput String] What is the type of the field?(Field, Storage, Lab, Cursed Lab, Shelter): Shelter
+[UserInput String] What is the type of the field?(Field, Storage, Lab, Cursed Lab, Shelter): Shelter
+[UserInput String] What is the type of the field?(Field, Storage, Lab, Cursed Lab, Shelter): Shelter
+[UserInput String] What is the type of the field?(Field, Storage, Lab, Cursed Lab, Shelter): Storage
+[UserInput String] What is the type of the field?(Field, Storage, Lab, Cursed Lab, Shelter): Storage
 [UserInput String] What is the type of the field?(Field, Storage, Lab, Cursed Lab, Shelter): Storage
 [UserInput Int ( 1 - 10 )]How many virologists do you want to create?: 3
 [UserInput String] What is the name of the virologist?Alice
 0. Field
-1. Shelter
-2. Storage
-[UserInput Int ( 0 - 2 )]What field to put the virologist on?: 0
+1. Field
+2. Field
+3. Shelter
+4. Shelter
+5. Shelter
+6. Storage
+7. Storage
+8. Storage
+[UserInput Int ( 0 - 8 )]What field to put the virologist on?: 0
 [UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Invalid input. Please try again: Exit
 [UserInput String] What is the name of the virologist?Bob
 0. Field
-1. Shelter
-2. Storage
-[UserInput Int ( 0 - 2 )]What field to put the virologist on?: 1
+1. Field
+2. Field
+3. Shelter
+4. Shelter
+5. Shelter
+6. Storage
+7. Storage
+8. Storage
+[UserInput Int ( 0 - 8 )]What field to put the virologist on?: 1
 [UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Exit
 [UserInput String] What is the name of the virologist?Gandalf
 0. Field
-1. Shelter
-2. Storage
-[UserInput Int ( 0 - 2 )]What field to put the virologist on?: 2
+1. Field
+2. Field
+3. Shelter
+4. Shelter
+5. Shelter
+6. Storage
+7. Storage
+8. Storage
+[UserInput Int ( 0 - 8 )]What field to put the virologist on?: 2
 [UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Exit
-[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Create Agent
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Create Agent
 You don't have gencodes yet
-[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Move
-Shelter command 0
-Storage command 1
-[UserInput Int ( 0 - 1 )]Where to move?: 1
-Alice has moved to Storage
-[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): End Round
-[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Move
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Move
 Field command 0
-Storage command 1
-[UserInput Int ( 0 - 1 )]Where to move?: 1
-Bob has moved to Storage
-[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Use Agent
+Field command 1
+Shelter command 2
+Shelter command 3
+Shelter command 4
+Storage command 5
+Storage command 6
+Storage command 7
+[UserInput Int ( 0 - 7 )]Where to move?: 1
+Alice has moved to Field
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): End Round
+[UserInput String] What to do dear Bob?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Move
+Field command 0
+Field command 1
+Shelter command 2
+Shelter command 3
+Shelter command 4
+Storage command 5
+Storage command 6
+Storage command 7
+[UserInput Int ( 0 - 7 )]Where to move?: 1
+Bob has moved to Field
+[UserInput String] What to do dear Bob?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Use Agent
 You can't attack anyone now!
-[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Collect
-Collect: AminoAcid Command: 0
-Collect: NucleicAcid Command: 1
-[UserInput Int ( 0 - 1 )]What do you want to collect?: 1
-Virologist has collected NucleicAcid to full
-[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): End Round
-[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Kill
+[UserInput String] What to do dear Bob?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Collect
+You cannot collect anything from here
+[UserInput String] What to do dear Bob?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Invalid input. Please try again: End Round
+[UserInput String] What to do dear Gandalf?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Kill
 Gandalf command 0
 Alice command 1
 Bob command 2
 [UserInput Int ( 0 - 2 )]Who do you want to attack?: 0
 If you want to commit Harakiri, you have to buy the Harakiri DLC
-[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Move
+[UserInput String] What to do dear Gandalf?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Move
 Field command 0
-Shelter command 1
-[UserInput Int ( 0 - 1 )]Where to move?: 1
-Gandalf has moved to Shelter
-[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Kill
+Field command 1
+Shelter command 2
+Shelter command 3
+Shelter command 4
+Storage command 5
+Storage command 6
+Storage command 7
+[UserInput Int ( 0 - 7 )]Where to move?: 1
+Gandalf has moved to Field
+[UserInput String] What to do dear Gandalf?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Kill
 Gandalf command 0
 [UserInput Int ( 0 - 0 )]Who do you want to attack?: 0
 If you want to commit Harakiri, you have to buy the Harakiri DLC
-[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): End Round
-[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Exit Game
+[UserInput String] What to do dear Gandalf?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): End Round
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Exit Game
 [UserInput Boolean] Do you want to save the game state? (y/n): n
 You have exited the game

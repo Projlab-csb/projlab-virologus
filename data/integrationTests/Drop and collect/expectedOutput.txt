@@ -19,17 +19,18 @@ Alice has collected a(n) Cloak
 0. Field
 [UserInput Int ( 0 - 0 )]What field to put the virologist on?: 0
 [UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Exit
-[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Discard
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Discard
 [UserInput String] What do you want to discard?(Matter, Equipment): Equipment
-Steal Cloak :command 0
+Discard Cloak :command 0
 [UserInput Int ( 0 - 0 )]What do you want do discard?: 0
 Alice has discarded a(n) Cloak
-[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): End Round
-[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Collect
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): End Round
+[UserInput String] What to do dear Bob?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Collect
 You cannot collect anything from here
-[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): End Round
-[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Collect
+[UserInput String] What to do dear Bob?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): End Round
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Collect
 You cannot collect anything from here
-[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Invalid input. Please try again: Exit Game
-[UserInput Boolean] Do you want to save the map? (y/n): n
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): End Round
+[UserInput String] What to do dear Bob?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Exit Game
+[UserInput Boolean] Do you want to save the game state? (y/n): n
 You have exited the game

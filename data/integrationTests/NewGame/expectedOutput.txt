@@ -16,7 +16,7 @@ nullWelcome to the Virologist Enterprise Game!
 2. Lab
 [UserInput Int ( 0 - 2 )]What field to put the virologist on?: 1
 [UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Equipment
-[UserInput String] What equipment to put on the virologist? (Axe, Bag, Cloak, Gloves, Exit): Bag
+[UserInput String] What equipment to put on the virologist? (Axe, Bag, Cloak, Gloves): Bag
 Bob has collected a(n) Bag
 [UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Exit
 [UserInput String] What is the name of the virologist?Alice
@@ -31,6 +31,6 @@ Bob has collected a(n) Bag
 [UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Amino Acid
 [UserInput Int ( 0 - 5 )]How much amino acid?: 4
 [UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Exit
-[UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): Exit Game
-[UserInput Boolean] Do you want to save the map? (y/n): n
+[UserInput String] What to do dear Bob?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Exit Game
+[UserInput Boolean] Do you want to save the game state? (y/n): n
 You have exited the game

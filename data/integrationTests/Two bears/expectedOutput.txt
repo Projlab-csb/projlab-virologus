@@ -27,13 +27,13 @@ The cursedLab attacked with Beardance Bob
 [UserInput String] What equipment to put on the virologist? (Axe, Bag, Cloak, Gloves): Axe
 Bob has collected a(n) Axe
 [UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Exit
-[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Move
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Move
 CursedLab command 0
 [UserInput Int ( 0 - 0 )]Where to move?: 0
 The cursedLab attacked with Beardance Alice
 Virologist has moved to CursedLab
 Alice has used agent: BearDance on Bob
 Bob get BearDance from Alice
-[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Exit Game
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Exit Game
 [UserInput Boolean] Do you want to save the game state? (y/n): n
 You have exited the game

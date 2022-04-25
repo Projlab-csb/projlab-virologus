@@ -14,11 +14,11 @@ nullWelcome to the Virologist Enterprise Game!
 1. CursedLab
 [UserInput Int ( 0 - 1 )]What field to put the virologist on?: 0
 [UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Exit
-[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Move
+[UserInput String] What to do dear Bob?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Move
 CursedLab command 0
 [UserInput Int ( 0 - 0 )]Where to move?: 0
 The cursedLab attacked with Beardance Bob
 Bob has moved to CursedLab
-[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Exit Game
-[UserInput Boolean] Do you want to save the map? (y/n): n
+[UserInput String] What to do dear Bob?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Exit Game
+[UserInput Boolean] Do you want to save the game state? (y/n): n
 You have exited the game

@@ -5,6 +5,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -122,6 +123,17 @@ public class Main {
         List<String> tests = null;
         try {
             tests = Files.list(path).filter(Files::isDirectory).map(Path::toString).collect(Collectors.toList());
+            tests.sort(Comparator.naturalOrder());
+            tests.forEach(test -> {
+                System.out.println("-----------------------------------------------------");
+                System.out.println(test);
+                System.out.println("Bemenet: ");
+                System.out.println(getFullFileContent(new File(test + "/input.txt")));
+                System.out.println();
+                System.out.println("Elvárt kimenet: ");
+                System.out.println(getFullFileContent(new File(test + "/expectedOutput.txt")));
+                System.out.println();
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -14,10 +14,10 @@ nullWelcome to the Virologist Enterprise Game!
 1. Field
 [UserInput Int ( 0 - 1 )]What field to put the virologist on?: 0
 [UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Exit
-[UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): Move
-Field commad 0
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Move
+Field command 0
 [UserInput Int ( 0 - 0 )]Where to move?: 0
 Alice has moved to Field
-[UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): Exit Game
-[UserInput Boolean] Do you want to save the map? (y/n): n
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Exit Game
+[UserInput Boolean] Do you want to save the game state? (y/n): n
 You have exited the game
