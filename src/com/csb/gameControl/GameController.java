@@ -149,8 +149,13 @@ public class GameController implements Serializable {
                 System.out.println(i + ": " + gameSaves.get(i));
             }
             //Load the save
-            int mapId = UserInputHandler.getUserInputInt("Which game save you want to load?", 0, gameSaves.size() - 1);
-            loadGame(gameSaves.get(mapId));
+            if (gameSaves.size() > 0) {
+                int mapId = UserInputHandler.getUserInputInt("Which game save you want to load?", 0, gameSaves.size() - 1);
+                loadGame(gameSaves.get(mapId));
+            } else {
+                System.out.println("No game saves found");
+                return false;
+            }
         }
         //Regular game flow continues
         return mapLoaded;
