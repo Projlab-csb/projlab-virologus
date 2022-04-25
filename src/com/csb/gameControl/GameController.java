@@ -7,6 +7,7 @@ import com.csb.utils.Random;
 import com.csb.virologist.Virologist;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -46,10 +47,15 @@ public class GameController implements Serializable {
         ArrayList<String> gameFiles = new ArrayList<>();
         File folder = new File(GAME_SAVE_LOCATION);
         File[] listOfFiles = folder.listFiles();
-        for (File file : listOfFiles) {
-            if (file.isFile()) {
-                gameFiles.add(file.getName());
-            }
+        if (listOfFiles != null) {
+            Arrays
+                .stream(listOfFiles)
+                .sorted()
+                .forEach(file -> {
+                    if (file.isFile()) {
+                        gameFiles.add(file.getName());
+                    }
+                });
         }
         return gameFiles;
     }
