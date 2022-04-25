@@ -20,7 +20,7 @@ public class GameController implements Serializable {
     //Each type of field must have at least MIN_FIELD_COUNT number of fields
     private static final int MIN_FIELD_COUNT = 2;
     private static final int MAX_FIELD_COUNT = 8;
-    private static final String GAME_SAVE_LOCATION = "data/saves/";
+    private static final String GAME_SAVE_LOCATION = "../data/saves/";
 
     List<Virologist> allVirologists;
     List<Virologist> deadVirologists;

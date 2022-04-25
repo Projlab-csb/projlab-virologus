@@ -16,10 +16,6 @@ public class Main {
     //Set this to true to hide the test program child process output
     static final boolean IS_MUTED = false;
 
-    //Set this to true to automatically write the program's output to the expected output file
-    //Note: This overwrites all the test output contents
-    static final boolean WRITE_OUT_BEFORE_TEST = true; //TODO: DELETE THIS
-
     public static void main(String[] args) {
         List<String> tests = getTests();
 
@@ -71,13 +67,6 @@ public class Main {
         System.out.println("-----------------------------------------------------");
         System.out.println("Running test: [" + testName + "]");
 
-        //TODO: DELETE THIS
-        if (WRITE_OUT_BEFORE_TEST) {
-            System.out.println("WRITING OUTPUT EXPECTED FILE");
-            writeTestOutputToFile(testPath);
-        }
-        //END DELETE
-
         File inputFile = new File(testPath + "/input.txt");
         File expectedOutputFile = new File(testPath + "/expectedOutput.txt");
 
@@ -93,47 +82,12 @@ public class Main {
         return success;
     }
 
-    /**
-     * THIS METHOD MUST BE DELETED BEFORE SUBMISSION
-     * //TODO: DELETE THIS
-     * @param testPath
-     */
-    public static void writeTestOutputToFile(String testPath) {
-        File inputFile = new File(testPath + "/input.txt");
-        File expectedOutputFile = new File(testPath + "/expectedOutput.txt");
-
-        IntegrationTest test = new IntegrationTest(true);
-        String inputString = getFullFileContent(inputFile);
-
-        test.runTest(inputString);
-        String output = test.getOutput();
-
-        try {
-            FileWriter fw = new FileWriter(expectedOutputFile);
-            fw.write(output);
-            fw.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public static List<String> getTests() {
         //Read all directories in the tests folder
         Path path = Paths.get("../data/integrationTests");
         List<String> tests = null;
         try {
             tests = Files.list(path).filter(Files::isDirectory).map(Path::toString).collect(Collectors.toList());
-            tests.sort(Comparator.naturalOrder());
-            tests.forEach(test -> {
-                System.out.println("-----------------------------------------------------");
-                System.out.println(test);
-                System.out.println("Bemenet: ");
-                System.out.println(getFullFileContent(new File(test + "/input.txt")));
-                System.out.println();
-                System.out.println("Elvárt kimenet: ");
-                System.out.println(getFullFileContent(new File(test + "/expectedOutput.txt")));
-                System.out.println();
-            });
         } catch (IOException e) {
             e.printStackTrace();
         }
