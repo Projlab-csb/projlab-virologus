@@ -18,6 +18,6 @@ End Round
 Collect
 End Round
 Collect
-End Turn
+End Round
 Exit Game
 n

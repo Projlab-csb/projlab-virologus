@@ -17,10 +17,13 @@ Collect
 Collect
 0
 Move
-1
+0
+End Round
+End Round
 Move
 0
-// Alice -> Bob attack
-End Turn
+Kill
+0
+End Round
 Exit Game
 n
