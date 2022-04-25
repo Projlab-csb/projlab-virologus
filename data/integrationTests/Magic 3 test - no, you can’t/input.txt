@@ -1,8 +1,14 @@
 3
 y
-3
+9
+Field
+Field
 Field
 Shelter
+Shelter
+Shelter
+Storage
+Storage
 Storage
 3
 Alice
