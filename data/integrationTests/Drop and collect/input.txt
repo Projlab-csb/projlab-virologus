@@ -11,7 +11,7 @@ Exit
 Bob
 0
 Exit
-//discards cloak
+discard
 End Turn
 Collect
 0
