@@ -120,9 +120,13 @@ public class Main {
 
         int input = UserInputHandler.getUserInputInt("What would you like to run?", 2, 3);
         switch (input) {
+            //its depricated
+            /*
             case 1:
                 skeletonTest();
                 break;
+                
+             */
             case 2:
                 //TODO write integration tests
                 com.tests.integration.Main.main(args);
