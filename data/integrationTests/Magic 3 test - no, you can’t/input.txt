@@ -7,12 +7,6 @@ Storage
 3
 Alice
 0
-Gencode
-Protection
-Amino Acid
-4
-Nucleic Acid
-4
 0
 Exit
 Bob
@@ -22,19 +16,21 @@ Gandalf
 2
 Exit
 Create Agent
-0
 Move
 1
 End Round
 Move
 1
+Use Agent
 Collect
 1
 End Round
 Kill
-1
+0
 Move
 1
+Kill
+0
 End Round
 Exit Game
 n
