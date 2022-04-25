@@ -5,18 +5,17 @@ import com.csb.fields.Field;
 import com.csb.skeletonTester.UserInputHandler;
 import com.csb.utils.Random;
 import com.csb.virologist.Virologist;
-import java.io.File;
-import java.lang.reflect.Array;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class GameController {
+public class GameController implements Serializable {
 
     //Each type of field must have at least MIN_FIELD_COUNT number of fields
     private static final int MIN_FIELD_COUNT = 2;
     private static final int MAX_FIELD_COUNT = 8;
-    private static final String MAP_LOCATION = "data/maps/";
+    private static final String GAME_SAVE_LOCATION = "data/saves/";
 
     List<Virologist> allVirologists;
     List<Virologist> deadVirologists;
@@ -43,28 +42,46 @@ public class GameController {
         map = new GameMap();
     }
 
-    public List<String> listMapFiles() {
-        ArrayList<String> mapFiles = new ArrayList<>();
-        File folder = new File(MAP_LOCATION);
+    public List<String> listGameSaves() {
+        ArrayList<String> gameFiles = new ArrayList<>();
+        File folder = new File(GAME_SAVE_LOCATION);
         File[] listOfFiles = folder.listFiles();
         for (File file : listOfFiles) {
             if (file.isFile()) {
-                mapFiles.add(file.getName());
+                gameFiles.add(file.getName());
             }
         }
-        return mapFiles;
+        return gameFiles;
     }
 
-    public void loadMap(String mapName) {
-        File file = new File(MAP_LOCATION + mapName);
-        map = GameMap.loadMap(file);
-        System.out.println("Map loaded");
+    public void saveGame(String fileName) {
+        File file = new File(GAME_SAVE_LOCATION + fileName + ".ser");
+        //Loop through the fields and save them to a file
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(getInstance());
+            oos.close();
+            fos.close();
+            System.out.println("Game saved");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void saveMap(String mapName) {
-        //TODO: Check if the map name is valid
-        File file = new File(MAP_LOCATION + mapName + ".map");
-        GameMap.saveMap(file, map);
+    public void loadGame(String fileName) {
+        try {
+            FileInputStream fis = new FileInputStream(new File(GAME_SAVE_LOCATION + fileName));
+            byte[] data = fis.readAllBytes();
+            ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(data));
+            Object o = ois.readObject();
+            ois.close();
+            GameController gameController = (GameController) o;
+            _instance = gameController;
+            System.out.println("Game loaded");
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public List<Virologist> getAllVirologists() {
@@ -114,15 +131,15 @@ public class GameController {
     }
 
     private boolean loadMapPrompt() {
-        boolean mapLoaded = UserInputHandler.getUserInputBoolean("Do you want to load a map?");
+        boolean mapLoaded = UserInputHandler.getUserInputBoolean("Do you want to load a game?");
         if (mapLoaded) {
-            List<String> maps = listMapFiles();
-            for (int i = 0; i < maps.size(); i++) {
-                System.out.println(i + ": " + maps.get(i));
+            List<String> gameSaves = listGameSaves();
+            for (int i = 0; i < gameSaves.size(); i++) {
+                System.out.println(i + ": " + gameSaves.get(i));
             }
-            //Load the map
-            int mapId = UserInputHandler.getUserInputInt("Which map do you want to load?", 0, maps.size() - 1);
-            loadMap(maps.get(mapId));
+            //Load the save
+            int mapId = UserInputHandler.getUserInputInt("Which game save you want to load?", 0, gameSaves.size() - 1);
+            loadGame(gameSaves.get(mapId));
         }
         //Regular game flow continues
         return mapLoaded;
@@ -133,8 +150,9 @@ public class GameController {
      */
     public void startGame() {
         while (!someoneWon) {
-            for (Virologist v : allVirologists) {
-                v.startOfTurn();
+            for (int i = 0; i < allVirologists.size(); i++) {
+                allVirologists.get(i).startOfTurn();
+                if(i >= allVirologists.size() || allVirologists.get(i) == null) continue;
                 if (someoneWon) {
                     break;
                 }
