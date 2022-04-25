@@ -55,6 +55,11 @@ public class GameController implements Serializable {
     }
 
     public void saveGame(String fileName) {
+        File directory = new File(GAME_SAVE_LOCATION);
+        if (!directory.exists()) {
+            directory.mkdirs();
+        }
+
         File file = new File(GAME_SAVE_LOCATION + fileName + ".ser");
         //Loop through the fields and save them to a file
         try {
@@ -152,7 +157,7 @@ public class GameController implements Serializable {
         while (!someoneWon) {
             for (int i = 0; i < allVirologists.size(); i++) {
                 allVirologists.get(i).startOfTurn();
-                if(i >= allVirologists.size() || allVirologists.get(i) == null) continue;
+                if (i >= allVirologists.size() || allVirologists.get(i) == null) continue;
                 if (someoneWon) {
                     break;
                 }
