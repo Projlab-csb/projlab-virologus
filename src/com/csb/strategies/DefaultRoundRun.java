@@ -41,7 +41,7 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
             input =
                 UserInputHandler.getUserInputString(
                     "What to do?",
-                    new String[] { "Move", "Collect", "Create Agent", "Use Agent", "Kill", "End Round", "Exit Game" }
+                    new String[] { "Move", "Collect", "Steal", "Discard", "Create Agent", "Use Agent", "Kill", "End Round", "Exit Game" }
                 );
             switch (input) {
                 //if the player wants to move

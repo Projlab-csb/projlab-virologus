@@ -42,7 +42,9 @@ public class Cloak extends Equipment implements DefenseStrategyInterface {
         if (chance > 0.843) {
             agent.applyEffect(defender);
             defender.storeAgent(agent);
-            System.out.println(defender.getName() + " get " + agent.getClass().getSimpleName() + " from " + attacker.getName());
+            if (defender != null) System.out.println(
+                defender.getName() + " get " + agent.getClass().getSimpleName() + " from " + attacker.getName()
+            ); else System.out.println("The cursedLab attacked with Beardance " + defender.getName());
         } else System.out.println("The cloak defended the virologist");
     }
 }
