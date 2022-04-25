@@ -70,7 +70,7 @@ public class Main {
         }
     }
 
-/*
+    /*
     17 teszteset (az előző beadásból?), ebből 16 kell (save & load nem) + 3, ami csopiba van + bonyolultak..?
     -  az előző beadásból leszarni a részletes leírásokat,
 
@@ -114,11 +114,11 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Welcome to the Virologist Enterprise Game!");
         System.out.println("----------------------------------------------------------");
-        System.out.println("1 - Skeleton tests");
+        System.out.println("1 - Skeleton tests - depricated legacy function");
         System.out.println("2 - Integration tests");
         System.out.println("3 - Game");
 
-        int input = UserInputHandler.getUserInputInt("What would you like to run?", 1, 3);
+        int input = UserInputHandler.getUserInputInt("What would you like to run?", 2, 3);
         switch (input) {
             case 1:
                 skeletonTest();
