@@ -40,7 +40,7 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
         do {
             input =
                 UserInputHandler.getUserInputString(
-                    "What to do?",
+                    "What to do dear " + virologist.getName() + "?",
                     new String[] { "Move", "Collect", "Steal", "Discard", "Create Agent", "Use Agent", "Kill", "End Round", "Exit Game" }
                 );
             switch (input) {
@@ -213,7 +213,7 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
                         if (virologist.getEquipments().size() == 0) System.out.println("You cannot steal that kind of collectable"); else {
                             int e = 0;
                             for (Equipment eq : virologist.getEquipments()) {
-                                System.out.println("Steal " + eq.getClass().getSimpleName() + " :command " + e);
+                                System.out.println("Discard " + eq.getClass().getSimpleName() + " :command " + e);
                                 e++;
                             }
                             int selectedequipment = UserInputHandler.getUserInputInt("What do you want do discard?", 0, e - 1);

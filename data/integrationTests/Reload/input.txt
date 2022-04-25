@@ -2,14 +2,8 @@
 n
 y
 0
-1
-Shelter
-1
-Alice
-0
-Exit
-Collect
+Discard
+Equipment
 0
 Exit Game
-y
-testname
+n

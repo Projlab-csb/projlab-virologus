@@ -8,6 +8,7 @@ import com.csb.collectables.gencodes.Gencode;
 import com.csb.collectables.matters.AminoAcid;
 import com.csb.collectables.matters.NucleicAcid;
 import com.csb.fields.Field;
+import com.csb.fields.Shelter;
 import com.csb.fields.Storage;
 import com.csb.gameControl.GameController;
 import com.csb.skeletonTester.Tester;
@@ -103,7 +104,14 @@ public class Virologist implements Serializable {
         if (collectables == null || collectables.size() == 0) System.out.println("You cannot collect anything from here"); else {
             //List the collectables from the field
             for (int i = 0; i < collectables.size(); i++) {
-                System.out.println("Collect: " + collectables.get(i).getClass().getSimpleName() + " Command: " + i);
+                if (collectables.get(i) instanceof Gencode) System.out.println(
+                    "Collect: the gencode for " +
+                    ((Gencode) collectables.get(i)).getAgent().getClass().getSimpleName() +
+                    "agent. Command: " +
+                    i
+                ); else {
+                    System.out.println("Collect: " + collectables.get(i).getClass().getSimpleName() + " Command: " + i);
+                }
             }
 
             //Get the one what is wanted by the player
@@ -112,7 +120,7 @@ public class Virologist implements Serializable {
 
             //if the field is a shelter there can be restricions
             //TODO:maybe its wrong
-            if (field instanceof Storage) {
+            if (field instanceof Shelter) {
                 if (equipments.size() >= 3) {
                     System.out.println("The inventory is full");
                     return;
@@ -266,7 +274,7 @@ public class Virologist implements Serializable {
             this.nucleicAcidStock.getAmount() >= genCode.getRequiredNucleicAcid().getAmount()
         ) {
             this.createdagents.add(genCode.getAgent());
-            System.out.println(this.name + " has created " + genCode.getAgent());
+            System.out.println(this.name + " has created " + genCode.getAgent().getClass().getSimpleName());
         } else {
             System.out.println("You don't have enough materials.");
         }
