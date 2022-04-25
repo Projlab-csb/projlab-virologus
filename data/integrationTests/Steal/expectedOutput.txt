@@ -21,7 +21,7 @@ Bob has collected a(n) Axe
 [UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Agent
 [UserInput String] What agent do you want to apply? (Forget, Paralyzed, Vitus Dance, Protection): Paralyzed
 [UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Exit
-[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Steal
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Steal
 Steal from Bob :command 1
 [UserInput Int ( 0 - 1 )]Who do you want to rob?: 1
 [UserInput String] What do you want to steal?(Matter, Equipment): Equipment
@@ -30,6 +30,6 @@ Steal Axe :command 0
 Bob has discarded a(n) Axe
 Alice has stolen Axe from Bob
 Alice has collected a(n) Axe
-[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Exit Game
-[UserInput Boolean] Do you want to save the map? (y/n): n
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Exit Game
+[UserInput Boolean] Do you want to save the game state? (y/n): n
 You have exited the game

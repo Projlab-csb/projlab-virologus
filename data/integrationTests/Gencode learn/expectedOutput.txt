@@ -12,13 +12,13 @@ nullWelcome to the Virologist Enterprise Game!
 0. Lab
 [UserInput Int ( 0 - 0 )]What field to put the virologist on?: 0
 [UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Exit
-[UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): Collect
-Collect: Gencode Command: 0
-Collect: Gencode Command: 1
-Collect: Gencode Command: 2
-Collect: Gencode Command: 3
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Collect
+Collect: the gencode for Forgetagent. Command: 0
+Collect: the gencode for Paralyzedagent. Command: 1
+Collect: the gencode for VitusDanceagent. Command: 2
+Collect: the gencode for Protectionagent. Command: 3
 [UserInput Int ( 0 - 3 )]What do you want to collect?: 0
 Alice has collected/learned a Gencode, with that, he can create ang Agent Forget
-[UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): Exit Game
-[UserInput Boolean] Do you want to save the map? (y/n): n
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Exit Game
+[UserInput Boolean] Do you want to save the game state? (y/n): n
 You have exited the game

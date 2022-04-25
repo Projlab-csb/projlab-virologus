@@ -22,12 +22,12 @@ nullWelcome to the Virologist Enterprise Game!
 0. Field
 [UserInput Int ( 0 - 0 )]What field to put the virologist on?: 0
 [UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Exit
-[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Create Agent
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Create Agent
 From what code do you want to create an agent?
 Paralyzed command 0
 [UserInput Int ( 0 - 0 )]Which gencode would you use?: 0
-Alice has created com.csb.agents.Paralyzed@7291c18f
-[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Use Agent
+Alice has created Paralyzed
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Use Agent
 Use Paralyzed agent: command 0
 [UserInput Int ( 0 - 0 )]Which gencode do you want to use?: 0
 Use agent on Alice :command 0
@@ -35,8 +35,8 @@ Use agent on Bob :command 1
 [UserInput Int ( 0 - 1 )]Who do you want to attack?: 1
 Alice has used agent: Paralyzed on Bob
 Bob get Paralyzed from Alice
-[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): End Round
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): End Round
 The virologist is paralyzed, you can do nothing to prevent your impending doom (at least for the time being)!
-[UserInput String] What to do?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Exit Game
+[UserInput String] What to do dear Bob?(End Round, Exit Game): Exit Game
 [UserInput Boolean] Do you want to save the game state? (y/n): n
 You have exited the game

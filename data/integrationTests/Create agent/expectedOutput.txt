@@ -18,11 +18,11 @@ nullWelcome to the Virologist Enterprise Game!
 [UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Gencode
 [UserInput String] What gencode to put on the virologist? (Forget, Paralyzed, VitusDance, Protection): Forget
 [UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Exit
-[UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): Create Agent
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Create Agent
 From what code do you want to create an agent?
-Forget creater gencode commad 0
-[UserInput Int ( 0 - 0 )]Which Gencode would you use?: 0
-Alice sas created com.csb.agents.Forget@7291c18f
-[UserInput String] What to do?(Move, Collect, Create Agent, Use Agent, Kill, End Round, Exit Game): Exit Game
-[UserInput Boolean] Do you want to save the map? (y/n): n
+Forget command 0
+[UserInput Int ( 0 - 0 )]Which gencode would you use?: 0
+Alice has created Forget
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Exit Game
+[UserInput Boolean] Do you want to save the game state? (y/n): n
 You have exited the game
