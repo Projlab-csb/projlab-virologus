@@ -11,6 +11,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The GameController class is the main class of the game. It controls the
+ * game flow and the game state.
+ */
 public class GameController implements Serializable {
 
     //Each type of field must have at least MIN_FIELD_COUNT number of fields
@@ -25,8 +29,13 @@ public class GameController implements Serializable {
     private boolean someoneWon;
     GameMap map;
 
+    //Instance of the singleton class
     private static GameController _instance;
 
+    /**
+     * Returns the instance of the GameController class.
+     * @return The instance of the GameController class.
+     */
     public static GameController getInstance() {
         if (_instance == null) {
             _instance = new GameController();
@@ -34,6 +43,10 @@ public class GameController implements Serializable {
         return _instance;
     }
 
+    /**
+     * GameController constructor.
+     * Initializes the game.
+     */
     private GameController() {
         allVirologists = new ArrayList<>();
         deadVirologists = new ArrayList<>();
@@ -43,6 +56,10 @@ public class GameController implements Serializable {
         map = new GameMap();
     }
 
+    /**
+     * Loads all the available game saves
+     * @return A list of all the available game saves
+     */
     public List<String> listGameSaves() {
         ArrayList<String> gameFiles = new ArrayList<>();
         File folder = new File(GAME_SAVE_LOCATION);
@@ -60,6 +77,10 @@ public class GameController implements Serializable {
         return gameFiles;
     }
 
+    /**
+     * Saves the current game state.
+     * @param fileName The name of the file to save the game state to.
+     */
     public void saveGame(String fileName) {
         File directory = new File(GAME_SAVE_LOCATION);
         if (!directory.exists()) {
@@ -80,6 +101,10 @@ public class GameController implements Serializable {
         }
     }
 
+    /**
+     * Loads a game state from a file.
+     * @param fileName
+     */
     public void loadGame(String fileName) {
         try {
             FileInputStream fis = new FileInputStream(new File(GAME_SAVE_LOCATION + fileName));

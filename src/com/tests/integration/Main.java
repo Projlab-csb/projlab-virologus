@@ -119,7 +119,7 @@ public class Main {
 
     public static List<String> getTests() {
         //Read all directories in the tests folder
-        Path path = Paths.get("data/integrationTests");
+        Path path = Paths.get("../data/integrationTests");
         List<String> tests = null;
         try {
             tests = Files.list(path).filter(Files::isDirectory).map(Path::toString).collect(Collectors.toList());
