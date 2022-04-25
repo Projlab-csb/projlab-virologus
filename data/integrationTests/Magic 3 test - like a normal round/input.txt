@@ -32,15 +32,6 @@ Move
 0
 Collect
 3
-End Round
-Move
-5
-Collect
-1
-Move
-0
-Collect
-3
 Create Agent
 0
 Use Agent
@@ -55,7 +46,7 @@ End Round
 Move
 0
 Collect
-1
+3
 Create Agent
 0
 Use Agent
