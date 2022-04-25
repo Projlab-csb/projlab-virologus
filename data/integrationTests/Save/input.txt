@@ -10,5 +10,4 @@ Collect
 0
 Exit Game
 y
-testname
-//belép, betölt, eldob
+000_testname
