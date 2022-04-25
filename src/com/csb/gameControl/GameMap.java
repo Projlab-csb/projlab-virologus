@@ -38,36 +38,6 @@ public class GameMap implements Serializable {
         return fields;
     }
 
-    public static void saveMap(File mapFile, GameMap map) {
-        //Loop through the fields and save them to a file
-        try {
-            //if (mapFile.canWrite()) {
-            FileOutputStream fos = new FileOutputStream(mapFile);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(map);
-            oos.close();
-            fos.close();
-            //}
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    static GameMap loadMap(File mapFile) {
-        try {
-            FileInputStream fis = new FileInputStream(mapFile);
-            byte[] data = fis.readAllBytes();
-            ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(data));
-            Object o = ois.readObject();
-            ois.close();
-            GameMap map = (GameMap) o;
-            return map;
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
     public void generateMap(int minFieldCount, int maxFieldCount) {
         //Generate regular fields
         generateField(minFieldCount, maxFieldCount);

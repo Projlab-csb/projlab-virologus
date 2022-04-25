@@ -222,10 +222,10 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
                     }
                     break;
                 case "Exit Game":
-                    boolean saveTheMap = UserInputHandler.getUserInputBoolean("Do you want to save the map?");
-                    if (saveTheMap) {
-                        String mapName = UserInputHandler.getUserInputString("What do you want to name the map?");
-                        GameController.getInstance().saveMap(mapName);
+                    boolean shouldSaveGame = UserInputHandler.getUserInputBoolean("Do you want to save the game state?");
+                    if (shouldSaveGame) {
+                        String mapName = UserInputHandler.getUserInputString("Enter a name for the save: ");
+                        GameController.getInstance().saveGame(mapName);
                     }
                     System.out.println("You have exited the game");
                     System.exit(0);
