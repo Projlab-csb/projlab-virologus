@@ -22,6 +22,11 @@ public class NucleicAcid extends Matter {
 
     @Override
     public void collectBy(Virologist virologist) {
+        if (virologist.getInventorySize() <= virologist.getAminoAcid() + virologist.getNucleicAcid()) {
+            System.out.println("The inventory is full, you won't get more matter");
+            return;
+        }
+
         //if the source is a storage, the amount is infinite, the virologist fill his stock to full capacity
         if (this.getAmount() == -1) {
             virologist.setNucleicAcid(virologist.getNucleicAcid() + virologist.getInventorySize() - virologist.getAminoAcid());
