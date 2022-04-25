@@ -133,8 +133,9 @@ public class GameController {
      */
     public void startGame() {
         while (!someoneWon) {
-            for (Virologist v : allVirologists) {
-                v.startOfTurn();
+            for (int i = 0; i < allVirologists.size(); i++) {
+                allVirologists.get(i).startOfTurn();
+                if(i >= allVirologists.size() || allVirologists.get(i) == null) continue;
                 if (someoneWon) {
                     break;
                 }
