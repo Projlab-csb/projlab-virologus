@@ -85,4 +85,8 @@ public class Gencode implements Collectable, Serializable {
     public void discard(Virologist virologist) {
         return;
     }
+
+    public String toString() {
+        return agent.getClass().getSimpleName();
+    }
 }

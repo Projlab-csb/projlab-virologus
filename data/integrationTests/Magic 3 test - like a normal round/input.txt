@@ -1,0 +1,42 @@
+3
+y
+9
+Lab
+Lab
+Lab
+Field
+Field
+Field
+Shelter
+Shelter
+Shelter
+3
+Alice
+3
+Amino Acid
+5
+Nucleic Acid
+5
+Exit
+Bob
+4
+Exit
+Cecil
+5
+Amino Acid
+5
+Nucleic Acid
+5
+3
+Exit
+Move
+0
+Collect
+3
+End Round
+Move
+5
+Collect
+1
+Move
+0
