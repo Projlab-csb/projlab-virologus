@@ -18,7 +18,7 @@ public class DefaultDefense implements DefenseStrategyInterface, Serializable {
     public void defense(Agent agent, Virologist attackedVirologist, Virologist attackerVirologist) {
         agent.applyEffect(attackedVirologist);
         attackedVirologist.storeAgent(agent);
-        if (attackedVirologist != null) System.out.println(
+        if (attackerVirologist != null) System.out.println(
             attackedVirologist.getName() + " get " + agent.getClass().getSimpleName() + " from " + attackerVirologist.getName()
         ); else System.out.println("The cursedLab attacked with Beardance " + attackedVirologist.getName());
     }

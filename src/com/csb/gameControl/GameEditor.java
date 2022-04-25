@@ -181,7 +181,7 @@ public class GameEditor {
         command =
             UserInputHandler.getUserInputString(
                 "What agent do you want to apply? ",
-                new String[] { "Forget", "Paralyzed", "Vitus Dance", "Protection", "Exit" }
+                new String[] { "Forget", "Paralyzed", "Vitus Dance", "Protection" }
             );
         switch (command) {
             case "Forget":
@@ -207,7 +207,7 @@ public class GameEditor {
         command =
             UserInputHandler.getUserInputString(
                 "What equipment to put on the virologist? ",
-                new String[] { "Axe", "Bag", "Cloak", "Gloves", "Exit" }
+                new String[] { "Axe", "Bag", "Cloak", "Gloves" }
             );
         switch (command) {
             case "Axe":
