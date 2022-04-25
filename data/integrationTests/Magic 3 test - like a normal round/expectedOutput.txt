@@ -1,0 +1,187 @@
+nullWelcome to the Virologist Enterprise Game!
+----------------------------------------------------------
+1 - Skeleton tests
+2 - Integration tests
+3 - Game
+[UserInput Int ( 1 - 3 )]What would you like to run?: 3
+[UserInput Boolean] Do you want to enter game editor mode? (y/n): y
+[UserInput Int ( 1 - 100 )]How many fields do you want to create?: 9
+[UserInput String] What is the type of the field?(Field, Storage, Lab, Cursed Lab, Shelter): Lab
+[UserInput String] What is the type of the field?(Field, Storage, Lab, Cursed Lab, Shelter): Lab
+[UserInput String] What is the type of the field?(Field, Storage, Lab, Cursed Lab, Shelter): Lab
+[UserInput String] What is the type of the field?(Field, Storage, Lab, Cursed Lab, Shelter): Field
+[UserInput String] What is the type of the field?(Field, Storage, Lab, Cursed Lab, Shelter): Field
+[UserInput String] What is the type of the field?(Field, Storage, Lab, Cursed Lab, Shelter): Field
+[UserInput String] What is the type of the field?(Field, Storage, Lab, Cursed Lab, Shelter): Shelter
+[UserInput String] What is the type of the field?(Field, Storage, Lab, Cursed Lab, Shelter): Shelter
+[UserInput String] What is the type of the field?(Field, Storage, Lab, Cursed Lab, Shelter): Shelter
+[UserInput Int ( 1 - 10 )]How many virologists do you want to create?: 3
+[UserInput String] What is the name of the virologist?Alice
+0. Lab
+1. Lab
+2. Lab
+3. Field
+4. Field
+5. Field
+6. Shelter
+7. Shelter
+8. Shelter
+[UserInput Int ( 0 - 8 )]What field to put the virologist on?: 3
+[UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Amino Acid
+[UserInput Int ( 0 - 5 )]How much amino acid?: 5
+[UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Nucleic Acid
+[UserInput Int ( 0 - 5 )]How much nucleic acid?: 5
+[UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Exit
+[UserInput String] What is the name of the virologist?Bob
+0. Lab
+1. Lab
+2. Lab
+3. Field
+4. Field
+5. Field
+6. Shelter
+7. Shelter
+8. Shelter
+[UserInput Int ( 0 - 8 )]What field to put the virologist on?: 4
+[UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Exit
+[UserInput String] What is the name of the virologist?Cecil
+0. Lab
+1. Lab
+2. Lab
+3. Field
+4. Field
+5. Field
+6. Shelter
+7. Shelter
+8. Shelter
+[UserInput Int ( 0 - 8 )]What field to put the virologist on?: 5
+[UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Amino Acid
+[UserInput Int ( 0 - 5 )]How much amino acid?: 5
+[UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Nucleic Acid
+[UserInput Int ( 0 - 5 )]How much nucleic acid?: 5
+[UserInput String] What do you want to put on the virologist? (Equipment, Gencode, Nucleic Acid, Amino Acid, Agent, Exit): Exit
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Move
+Lab command 0
+Lab command 1
+Lab command 2
+Field command 3
+Field command 4
+Shelter command 5
+Shelter command 6
+Shelter command 7
+[UserInput Int ( 0 - 7 )]Where to move?: 0
+Alice has moved to Lab
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Collect
+Collect: the gencode for Forgetagent. Command: 0
+Collect: the gencode for Paralyzedagent. Command: 1
+Collect: the gencode for VitusDanceagent. Command: 2
+Collect: the gencode for Protectionagent. Command: 3
+[UserInput Int ( 0 - 3 )]What do you want to collect?: 3
+Alice has collected/learned a Gencode, with that, he can create ang Agent Protection
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): End Round
+[UserInput String] What to do dear Bob?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Move
+Lab command 0
+Lab command 1
+Lab command 2
+Field command 3
+Field command 4
+Shelter command 5
+Shelter command 6
+Shelter command 7
+[UserInput Int ( 0 - 7 )]Where to move?: 5
+Bob has moved to Shelter
+[UserInput String] What to do dear Bob?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Collect
+Collect: Axe Command: 0
+Collect: Cloak Command: 1
+Collect: Bag Command: 2
+Collect: Gloves Command: 3
+Collect: Axe Command: 4
+Collect: Cloak Command: 5
+Collect: Bag Command: 6
+Collect: Gloves Command: 7
+Collect: Axe Command: 8
+Collect: Cloak Command: 9
+Collect: Bag Command: 10
+Collect: Gloves Command: 11
+[UserInput Int ( 0 - 11 )]What do you want to collect?: 1
+Bob has collected a(n) Cloak
+[UserInput String] What to do dear Bob?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Move
+You cannot do more steps in this round
+[UserInput String] What to do dear Bob?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Invalid input. Please try again: Collect
+Collect: Axe Command: 0
+Collect: Bag Command: 1
+Collect: Gloves Command: 2
+Collect: Axe Command: 3
+Collect: Cloak Command: 4
+Collect: Bag Command: 5
+Collect: Gloves Command: 6
+Collect: Axe Command: 7
+Collect: Cloak Command: 8
+Collect: Bag Command: 9
+Collect: Gloves Command: 10
+[UserInput Int ( 0 - 10 )]What do you want to collect?: 3
+Bob has collected a(n) Axe
+[UserInput String] What to do dear Bob?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Create Agent
+You don't have gencodes yet
+[UserInput String] What to do dear Bob?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Invalid input. Please try again: Use Agent
+You can't attack anyone now!
+[UserInput String] What to do dear Bob?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Invalid input. Please try again: Invalid input. Please try again: End Round
+[UserInput String] What to do dear Cecil?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Move
+Lab command 0
+Lab command 1
+Lab command 2
+Field command 3
+Field command 4
+Shelter command 5
+Shelter command 6
+Shelter command 7
+[UserInput Int ( 0 - 7 )]Where to move?: 5
+Cecil has moved to Shelter
+[UserInput String] What to do dear Cecil?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Collect
+Collect: Axe Command: 0
+Collect: Bag Command: 1
+Collect: Gloves Command: 2
+Collect: Cloak Command: 3
+Collect: Bag Command: 4
+Collect: Gloves Command: 5
+Collect: Axe Command: 6
+Collect: Cloak Command: 7
+Collect: Bag Command: 8
+Collect: Gloves Command: 9
+[UserInput Int ( 0 - 9 )]What do you want to collect?: 1
+Cecil has collected a(n) Bag
+[UserInput String] What to do dear Cecil?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): End Round
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Move
+Lab command 0
+Lab command 1
+Field command 2
+Field command 3
+Field command 4
+Shelter command 5
+Shelter command 6
+Shelter command 7
+[UserInput Int ( 0 - 7 )]Where to move?: 0
+Alice has moved to Lab
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Collect
+Collect: the gencode for Forgetagent. Command: 0
+Collect: the gencode for Paralyzedagent. Command: 1
+Collect: the gencode for VitusDanceagent. Command: 2
+Collect: the gencode for Protectionagent. Command: 3
+[UserInput Int ( 0 - 3 )]What do you want to collect?: 1
+Alice has collected/learned a Gencode, with that, he can create ang Agent Paralyzed
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Create Agent
+From what code do you want to create an agent?
+Protection command 0
+Paralyzed command 1
+[UserInput Int ( 0 - 1 )]Which gencode would you use?: 0
+Alice has created Protection
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Use Agent
+Use Protection agent: command 0
+[UserInput Int ( 0 - 0 )]Which gencode do you want to use?: 0
+Use agent on Alice :command 0
+[UserInput Int ( 0 - 0 )]Who do you want to attack?: 0
+Alice has used agent: Protection on Alice
+Alice get Protection from Alice
+[UserInput String] What to do dear Alice?(Move, Collect, Steal, Discard, Create Agent, Use Agent, Kill, End Round, Exit Game): Exit Game
+[UserInput Boolean] Do you want to save the game state? (y/n): n
+You have exited the game
