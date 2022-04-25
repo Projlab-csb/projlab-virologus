@@ -11,13 +11,13 @@ Exit
 Bob
 0
 Exit
-discard
-End Turn
-Collect
+Discard
+Equipment
 0
-End Turn
+End Round
 Collect
-0
+End Round
+Collect
 End Turn
 Exit Game
 n

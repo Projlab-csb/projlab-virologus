@@ -13,7 +13,9 @@ Axe
 Agent
 Paralyzed
 Exit
-Collect
+Steal
+1
+Equipment
 0
 Exit Game
 n

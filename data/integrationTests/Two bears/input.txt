@@ -15,7 +15,6 @@ Equipment
 Axe
 Exit
 Move
-1
-End Turn
+0
 Exit Game
 n

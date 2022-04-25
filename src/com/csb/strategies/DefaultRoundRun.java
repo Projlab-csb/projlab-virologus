@@ -216,7 +216,7 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
                                 System.out.println("Steal " + eq.getClass().getSimpleName() + " :command " + e);
                                 e++;
                             }
-                            int selectedequipment = UserInputHandler.getUserInputInt("What do you want do steal?", 0, e - 1);
+                            int selectedequipment = UserInputHandler.getUserInputInt("What do you want do discard?", 0, e - 1);
                             virologist.discard(virologist.getEquipments().get(selectedequipment));
                         }
                     }
