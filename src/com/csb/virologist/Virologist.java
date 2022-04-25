@@ -292,9 +292,10 @@ public class Virologist implements Serializable {
      * Decrease the remaining time of the applied agents on the virologist
      */
     public void refreshAgents() {
-        for (Agent agent : agentlist) {
-            agent.decreaseTTL(this);
-            if (agent.getTTL() == 0) agentlist.remove(agent);
+        for (int i = 0; i < agentlist.size(); i++) {
+            agentlist.get(i).decreaseTTL(this);
+            if (agentlist.get(i).getTTL() == 0) agentlist.remove(agentlist.get(i));
+            //if(agentlist.get(i) == null) continue;
         }
     }
 
