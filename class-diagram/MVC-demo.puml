@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+note top of VirologistController{
+    **moveEventListener** acts as an event listener
+}
+
+class VirologistController{
+    +moveEventListener(Event e)
+}
+
+class Virologist{
+    -roundRunStrategy : RoundRunStrategy
+}
+
+interface RoundRunStrategy {
+    +move(int nextField)
+    +collect(...)
+    +steal(...)
+    //etc..()
+}
+
+class VirologistView {
+
+}
+
+RoundRunStrategy --|> Virologist
+
+Virologist -* VirologistController
+VirologistController *- VirologistView
+@enduml

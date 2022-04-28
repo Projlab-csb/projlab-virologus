@@ -1,9 +1,11 @@
 package com.csb.gameControl;
 
 import com.csb.collectables.gencodes.Gencode;
+import com.csb.controller.VirologistController;
 import com.csb.fields.Field;
 import com.csb.skeletonTester.UserInputHandler;
 import com.csb.utils.Random;
+import com.csb.view.GameView;
 import com.csb.virologist.Virologist;
 import java.io.*;
 import java.util.ArrayList;
@@ -28,6 +30,9 @@ public class GameController implements Serializable {
     List<Gencode> allGencodes;
     private boolean someoneWon;
     GameMap map;
+
+    GameView gameView;
+    public VirologistController virologistController; //TODO: This should be private, only for test purposes
 
     //Instance of the singleton class
     private static GameController _instance;
@@ -54,6 +59,7 @@ public class GameController implements Serializable {
         allGencodes = new ArrayList<>();
         someoneWon = false;
         map = new GameMap();
+        gameView = new GameView();
     }
 
     /**
@@ -130,6 +136,8 @@ public class GameController implements Serializable {
      * Sets up the fields
      */
     public void initGame() {
+        virologistController = new VirologistController(null, gameView.getVirologistView());
+
         //Prompt for the editor
         boolean isEdited = editorModePrompt();
         boolean mapLoaded = false;
@@ -192,13 +200,16 @@ public class GameController implements Serializable {
     public void startGame() {
         while (!someoneWon) {
             for (int i = 0; i < allVirologists.size(); i++) {
-                allVirologists.get(i).startOfTurn();
+                Virologist currentVirologist = allVirologists.get(i);
+                virologistController.setVirologist(currentVirologist);
+                currentVirologist.startOfTurn();
                 if (i >= allVirologists.size() || allVirologists.get(i) == null) continue;
                 if (someoneWon) {
                     break;
                 }
             }
         }
+        //TODO: Properly determine the winner, this looks bad
         System.out.println("The winner is: " + allVirologists.get(0).getName());
     }
 
