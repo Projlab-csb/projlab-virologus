@@ -6,8 +6,8 @@ note top of VirologistController{
 }
 
 note top of VirologistView{
-    ***renderActionMenu** acts as a menu renderer for actions except move
-    ***renderActionMenu** acts as a virologist renderer on a field for move action
+    **renderActionMenu** acts as a menu renderer for actions except move
+    **renderActionMenu** acts as a virologist renderer on a field for move action
 }
 
 class VirologistController{
