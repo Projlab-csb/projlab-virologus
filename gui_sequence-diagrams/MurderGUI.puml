@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Actor Player
+Player->"vc: VirologistController"++: murderEventListener(e: Event)
+"vc: VirologistController"->"v:Virologist"++: getRoundRunStrategy()
+
+"v:Virologist"-->"vc: VirologistController"--: rrs
+"vc: VirologistController"->"rrs:RoundRunStrategy"++: murder(victim: Virologist)
+"rrs:RoundRunStrategy"-->"vc: VirologistController"--
+
+"vc: VirologistController"->"vw:VirologistView"++: renderVirologistonField(v)
+
+"vw:VirologistView"-->"vc: VirologistController"--
+"vc: VirologistController"-->Player--
+@enduml
