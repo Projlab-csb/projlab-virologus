@@ -2,13 +2,23 @@ Field.puml@startuml
 'https://plantuml.com/class-diagram
 
 note top of VirologistController{
-    **moveEventListener** acts as an event listener
-    **murderEventListener** acts as an event listener
+    ***EventListener** acts as an event listener
+}
+
+note top of VirologistView{
+    ***renderActionMenu** acts as a menu renderer for actions except move
+    ***renderActionMenu** acts as a virologist renderer on a field for move action
 }
 
 class VirologistController{
     +moveEventListener(Event e)
     +murderEventListener(Event e)
+    +stealEventListener(Event e)
+    +discardEventListener(Event e)
+    +createAgentEventListener(Event e)
+    +useAgentEventListener(Event e)
+    +attackEventListener(Event e)
+    +collectEventListener(Event e)
 }
 
 class Virologist{
@@ -18,10 +28,17 @@ class Virologist{
 interface RoundRunStrategy {
     +move(int nextField)
     +murder(Virologist victim)
+    +steal(Collectable coll, Virologist targetVirologist)
+    +discard(Collectable coll)
+    +createAgent(Gencode genCode)
+    +useAgent(Agent agent, Virologist targetVirologist)
+    +collect(Field field)
+    +attack(Agent agent, Virologist attackerVirologist)
 }
 
 class VirologistView {
     -renderVirologistonField : void
+    -renderActionMenu : void
 }
 
 RoundRunStrategy --|> Virologist
