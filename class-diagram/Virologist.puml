@@ -3,12 +3,12 @@ Field.puml@startuml
 
 note top of VirologistController{
     **moveEventListener** acts as an event listener
-    **killEventListener** acts as an event listener
+    **murderEventListener** acts as an event listener
 }
 
 class VirologistController{
     +moveEventListener(Event e)
-    +killEventListener(Event e)
+    +murderEventListener(Event e)
 }
 
 class Virologist{

@@ -2,15 +2,25 @@
 'https://plantuml.com/class-diagram
 
 
+note top of MapController{
+    **initEventListener** acts as an event listener
+}
+
 class GameController {
     +initGame()
 }
 
 class MapView {
-    +renderFields: void
-    +renderConnections: void
+    -renderFields: void
+    -renderConnections: void
+}
+class MapController {
+    +initEventListener(Event e)
+
 }
 
-GameController <.- MapView
+GameController <.- MapController
+
+MapController *- MapView
 
 @enduml
