@@ -37,8 +37,8 @@ interface RoundRunStrategy {
 }
 
 class VirologistView {
-    -renderVirologistonField : void
-    -renderActionMenu : void
+    -renderVirologistonField() : void
+    -renderActionMenu(): void
 }
 
 RoundRunStrategy --|> Virologist

@@ -11,8 +11,8 @@ class GameController {
 }
 
 class MapView {
-    -renderFields: void
-    -renderConnections: void
+    -renderFields(): void
+    -renderConnections(): void
 }
 class MapController {
     +initEventListener(Event e)
