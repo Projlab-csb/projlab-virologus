@@ -1,13 +1,15 @@
-Field.puml@startuml
+@startuml
 'https://plantuml.com/class-diagram
 
 note top of VirologistController{
-    ***EventListener** acts as an event listener
+    Each exposed controller function
+    can be attached to a SWING component
+    as an evetlistener
 }
 
 note top of VirologistView{
-    **renderActionMenu** acts as a menu renderer for actions except move
-    **renderActionMenu** acts as a virologist renderer on a field for move action
+    **renderVirologistonField** renders the current field, and neighbours
+    **renderActionMenu** renders the sidebar menu
 }
 
 class VirologistController{
@@ -37,11 +39,36 @@ interface RoundRunStrategy {
 }
 
 class VirologistView {
-    -renderVirologistonField() : void
-    -renderActionMenu(): void
+    +renderVirologistonField() : void
+    +renderActionMenu(): void
 }
 
-RoundRunStrategy --|> Virologist
+class Paralyzed{
+    +move(int nextField)
+    +murder(Virologist victim)
+    +steal(Collectable coll, Virologist targetVirologist)
+    +discard(Collectable coll)
+    +createAgent(Gencode genCode)
+    +useAgent(Agent agent, Virologist targetVirologist)
+    +collect(Field field)
+    +attack(Agent agent, Virologist attackerVirologist)
+}
+
+class DefaultRoundRun{
+    +move(int nextField)
+    +murder(Virologist victim)
+    +steal(Collectable coll, Virologist targetVirologist)
+    +discard(Collectable coll)
+    +createAgent(Gencode genCode)
+    +useAgent(Agent agent, Virologist targetVirologist)
+    +collect(Field field)
+    +attack(Agent agent, Virologist attackerVirologist)
+}
+
+DefaultRoundRun <|.. RoundRunStrategy
+Paralyzed <|.. RoundRunStrategy
+
+RoundRunStrategy --* Virologist
 
 Virologist -* VirologistController
 VirologistController *- VirologistView
