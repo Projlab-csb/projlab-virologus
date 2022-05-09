@@ -12,17 +12,13 @@ public class GameView extends JFrame {
     private VirologistView virologistView;
 
     public GameView() {
-        setTitle("CSB - Virologist Enterprise Game");
+        setTitle("CSB - Enterprise Virologist  Game");
         setBounds(300, 90, 900, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
 
         container = getContentPane();
         container.setLayout(new BorderLayout());
-
-        Label label = new Label("Virologist Demo Name");
-        label.setFont(new Font("Arial", Font.BOLD, 30));
-        container.add(label, BorderLayout.NORTH);
 
         //This update is required to refresh the UI state, but will not be called like this.
         //After each user action, we can call this method in the specific view
@@ -32,26 +28,24 @@ public class GameView extends JFrame {
         });
         container.add(button, BorderLayout.SOUTH);
 
-        virologistView = new VirologistView(label);
-
-        initializeView();
+        initializeView(this);
         setVisible(true);
     }
 
-    private void initializeView(){
+    private void initializeView(JFrame frame) {
+        JPanel mainPanel = new JPanel(new BorderLayout());
+        JPanel leftPanel = new JPanel(new FlowLayout());
 
-            JFrame frame = new JFrame("CSB Enterprise Virologist Game");
-            JPanel mainPanel = new JPanel(new BorderLayout());
-            JPanel leftPanel = new JPanel(new FlowLayout());
+        mainPanel.add(leftPanel, BorderLayout.WEST);
+        frame.add(mainPanel);
 
-            mainPanel.add(leftPanel, BorderLayout.WEST);
-            frame.add(mainPanel);
+        createMenuBar(frame);
 
-            createMenuBar(frame);
-
-            frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-            frame.pack();
-            frame.setVisible(true);
+        DrawCircle d = new DrawCircle();
+        mainPanel.add(d);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
     }
 
     private void createMenuBar(JFrame frame) {
@@ -75,53 +69,37 @@ public class GameView extends JFrame {
         fileMenu.add(saveItem);
 
         JMenuItem exitItem = new JMenuItem("Exit");
-        exitItem.addActionListener(x -> {
-            ;
-        });
+        exitItem.addActionListener(x -> {});
         fileMenu.add(exitItem);
 
         //Game Menu
         JMenuItem endRoundItem = new JMenuItem("End round");
-        endRoundItem.addActionListener(x -> {
-
-        });
+        endRoundItem.addActionListener(x -> {});
         gameMenu.add(endRoundItem);
 
         //Action Menu
         JMenuItem collectItem = new JMenuItem("Collect");
-        collectItem.addActionListener(x -> {
-
-        });
+        collectItem.addActionListener(x -> {});
         actionMenu.add(collectItem);
-        
-        JMenuItem stealItem = new JMenuItem("Steal");
-        stealItem.addActionListener(x -> {
 
-        });
+        JMenuItem stealItem = new JMenuItem("Steal");
+        stealItem.addActionListener(x -> {});
         actionMenu.add(stealItem);
 
         JMenuItem killItem = new JMenuItem("Kill");
-        killItem.addActionListener(x -> {
-
-        });
+        killItem.addActionListener(x -> {});
         actionMenu.add(killItem);
 
         JMenuItem createAgentItem = new JMenuItem("Create agent");
-        createAgentItem.addActionListener(x -> {
-
-        });
+        createAgentItem.addActionListener(x -> {});
         actionMenu.add(createAgentItem);
 
         JMenuItem useAgentsItem = new JMenuItem("Use agents");
-        useAgentsItem.addActionListener(x -> {
-
-        });
+        useAgentsItem.addActionListener(x -> {});
         actionMenu.add(useAgentsItem);
 
         JMenuItem discardItem = new JMenuItem("Discard");
-        discardItem.addActionListener(x -> {
-
-        });
+        discardItem.addActionListener(x -> {});
         actionMenu.add(discardItem);
 
         menuBar.add(fileMenu);
