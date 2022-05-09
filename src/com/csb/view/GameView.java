@@ -40,12 +40,41 @@ public class GameView extends JFrame {
         frame.add(mainPanel);
 
         createMenuBar(frame);
+        createStatusLabels(frame);
 
         DrawCircle d = new DrawCircle();
         mainPanel.add(d);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setResizable(true);
         frame.pack();
         frame.setVisible(true);
+    }
+
+    private void createStatusLabels(JFrame frame) {
+        JPanel dataPanel = new JPanel(new GridLayout(2, 7));
+        dataPanel.setSize(1200, 500);
+        dataPanel.setBorder(BorderFactory.createTitledBorder("Virologist data"));
+
+        JLabel matterLabel = new JLabel("Matter count:");
+        dataPanel.add(matterLabel);
+        JLabel aminoLabel = new JLabel("Amino acid:");
+        dataPanel.add(aminoLabel);
+        JLabel nucleicLabel = new JLabel("Nucleic acid:");
+        dataPanel.add(nucleicLabel);
+        JLabel inventoryLabel = new JLabel("Inventory:");
+        dataPanel.add(inventoryLabel);
+        JLabel gencodeLabel = new JLabel("Genetic codes:");
+        dataPanel.add(gencodeLabel);
+        JLabel createdLabel = new JLabel("Created things:");
+        dataPanel.add(createdLabel);
+        JLabel effectLabel  = new JLabel("Effects on player:");
+        dataPanel.add(effectLabel);
+
+        JLabel nextPlayerLabel = new JLabel("Next player:");
+        nextPlayerLabel.setFont(new Font("Serif", Font.BOLD, 20));
+        dataPanel.add(nextPlayerLabel);
+
+        frame.add(dataPanel, BorderLayout.WEST);
     }
 
     private void createMenuBar(JFrame frame) {
