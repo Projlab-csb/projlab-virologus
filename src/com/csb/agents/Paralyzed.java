@@ -10,6 +10,7 @@ import com.csb.gameControl.GameController;
 import com.csb.skeletonTester.Tester;
 import com.csb.skeletonTester.UserInputHandler;
 import com.csb.strategies.RoundRunStrategyInterface;
+import com.csb.view.PopUpView;
 import com.csb.virologist.Virologist;
 
 public class Paralyzed extends Agent implements RoundRunStrategyInterface {
@@ -43,11 +44,40 @@ public class Paralyzed extends Agent implements RoundRunStrategyInterface {
         return coll;
     }
 
+    @Override
+    public void roundRun() {
+        // do nothing
+        PopUpView.showError(
+            "The virologist is paralyzed, you can do nothing to prevent your impending doom (at least for the time being)!",
+            "Paralyzed"
+        );
+    }
+
+    @Override
+    public void move(Virologist virologist) {}
+
+    @Override
+    public void murder(Virologist virologist) {}
+
+    @Override
+    public void steal(Virologist virologist) {}
+
+    @Override
+    public void discard(Virologist virologist) {}
+
+    @Override
+    public void createAgent(Virologist virologist) {}
+
+    @Override
+    public void useAgent(Virologist virologist) {}
+
+    @Override
+    public void collect(Virologist virologist) {}
     /**
      * This function handles the virologist's round(can or can't do things)
      * @param virologist the virologist that is doing the round
      */
-    @Override
+    /*@Override
     public void RoundRun(Virologist virologist) {
         System.out.println("The virologist is paralyzed, you can do nothing to prevent your impending doom (at least for the time being)!");
         String input;
@@ -74,5 +104,6 @@ public class Paralyzed extends Agent implements RoundRunStrategyInterface {
         } while (!input.equals("End Round"));
         virologist.emptyCreatedAgents();
         //The virologist can't do anything, hence the function is empty
-    }
+    }*/
+
 }

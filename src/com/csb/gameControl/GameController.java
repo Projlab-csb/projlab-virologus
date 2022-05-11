@@ -29,6 +29,7 @@ public class GameController implements Serializable {
     Map<Virologist, List<Gencode>> virologistGencodesMap;
     List<Gencode> allGencodes;
     private boolean someoneWon;
+    int currentVirologistIndex;
     GameMap map;
 
     GameView gameView;
@@ -198,19 +199,30 @@ public class GameController implements Serializable {
      * Start of the game process
      */
     public void startGame() {
-        while (!someoneWon) {
-            for (int i = 0; i < allVirologists.size(); i++) {
-                Virologist currentVirologist = allVirologists.get(i);
-                virologistController.setVirologist(currentVirologist);
-                currentVirologist.startOfTurn();
-                if (i >= allVirologists.size() || allVirologists.get(i) == null) continue;
-                if (someoneWon) {
-                    break;
-                }
-            }
+        currentVirologistIndex = 0;
+        Virologist currentVirologist = allVirologists.get(currentVirologistIndex);
+        virologistController.setVirologist(currentVirologist);
+        currentVirologist.startOfTurn();
+    }
+
+    public void nextPlayersTurn() {
+        //Check if the last virologist has won
+        if (currentVirologistIndex <= 0) {
+            someoneWon = isWinner(allVirologists.get(allVirologists.size() - 1));
+        } else {
+            someoneWon = isWinner(allVirologists.get(currentVirologistIndex - 1));
         }
-        //TODO: Properly determine the winner, this looks bad
-        System.out.println("The winner is: " + allVirologists.get(0).getName());
+        if (someoneWon) {
+            //TODO: Stop the game, report the winner
+        } else {
+            currentVirologistIndex++;
+            if (currentVirologistIndex >= allVirologists.size()) {
+                currentVirologistIndex = 0;
+            }
+            Virologist currentVirologist = allVirologists.get(currentVirologistIndex);
+            virologistController.setVirologist(currentVirologist);
+            currentVirologist.startOfTurn(); //Start of turn method MUST return immediately when using UI
+        }
     }
 
     /**
@@ -238,6 +250,10 @@ public class GameController implements Serializable {
 
     private boolean isWinner(Virologist v) {
         //Check if the virologist has all the possible gencodes
-        return virologistGencodesMap.get(v).containsAll(allGencodes);
+        List<Gencode> gencodes = virologistGencodesMap.get(v);
+        if (gencodes != null) {
+            return gencodes.containsAll(allGencodes);
+        }
+        return false; //No gencodes collected yet!
     }
 }

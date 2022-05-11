@@ -55,6 +55,9 @@ public class GameView extends JFrame {
         dataPanel.setSize(1200, 500);
         dataPanel.setBorder(BorderFactory.createTitledBorder("Virologist data"));
 
+        JLabel nameLabel = new JLabel("Name");
+        dataPanel.add(nameLabel);
+
         JLabel matterLabel = new JLabel("Matter count:");
         dataPanel.add(matterLabel);
         JLabel aminoLabel = new JLabel("Amino acid:");
@@ -67,7 +70,7 @@ public class GameView extends JFrame {
         dataPanel.add(gencodeLabel);
         JLabel createdLabel = new JLabel("Created things:");
         dataPanel.add(createdLabel);
-        JLabel effectLabel  = new JLabel("Effects on player:");
+        JLabel effectLabel = new JLabel("Effects on player:");
         dataPanel.add(effectLabel);
 
         JLabel nextPlayerLabel = new JLabel("Next player:");
@@ -75,6 +78,7 @@ public class GameView extends JFrame {
         dataPanel.add(nextPlayerLabel);
 
         frame.add(dataPanel, BorderLayout.WEST);
+        virologistView = new VirologistView(nameLabel);
     }
 
     private void createMenuBar(JFrame frame) {
@@ -103,32 +107,46 @@ public class GameView extends JFrame {
 
         //Game Menu
         JMenuItem endRoundItem = new JMenuItem("End round");
-        endRoundItem.addActionListener(x -> {});
+        endRoundItem.addActionListener(x -> {
+            GameController.getInstance().virologistController.roundEnd();
+        });
         gameMenu.add(endRoundItem);
 
         //Action Menu
         JMenuItem collectItem = new JMenuItem("Collect");
-        collectItem.addActionListener(x -> {});
+        collectItem.addActionListener(x -> {
+            GameController.getInstance().virologistController.collect();
+        });
         actionMenu.add(collectItem);
 
         JMenuItem stealItem = new JMenuItem("Steal");
-        stealItem.addActionListener(x -> {});
+        stealItem.addActionListener(x -> {
+            GameController.getInstance().virologistController.steal();
+        });
         actionMenu.add(stealItem);
 
         JMenuItem killItem = new JMenuItem("Kill");
-        killItem.addActionListener(x -> {});
+        killItem.addActionListener(x -> {
+            GameController.getInstance().virologistController.murder();
+        });
         actionMenu.add(killItem);
 
         JMenuItem createAgentItem = new JMenuItem("Create agent");
-        createAgentItem.addActionListener(x -> {});
+        createAgentItem.addActionListener(x -> {
+            GameController.getInstance().virologistController.createAgent();
+        });
         actionMenu.add(createAgentItem);
 
         JMenuItem useAgentsItem = new JMenuItem("Use agents");
-        useAgentsItem.addActionListener(x -> {});
+        useAgentsItem.addActionListener(x -> {
+            GameController.getInstance().virologistController.useAgent();
+        });
         actionMenu.add(useAgentsItem);
 
         JMenuItem discardItem = new JMenuItem("Discard");
-        discardItem.addActionListener(x -> {});
+        discardItem.addActionListener(x -> {
+            GameController.getInstance().virologistController.discard();
+        });
         actionMenu.add(discardItem);
 
         menuBar.add(fileMenu);

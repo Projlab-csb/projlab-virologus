@@ -3,15 +3,12 @@ package com.csb.virologist;
 import com.csb.agents.*;
 import com.csb.collectables.Collectable;
 import com.csb.collectables.equipments.Equipment;
-import com.csb.collectables.equipments.Gloves;
 import com.csb.collectables.gencodes.Gencode;
 import com.csb.collectables.matters.AminoAcid;
 import com.csb.collectables.matters.NucleicAcid;
 import com.csb.fields.Field;
 import com.csb.fields.Shelter;
-import com.csb.fields.Storage;
 import com.csb.gameControl.GameController;
-import com.csb.skeletonTester.Tester;
 import com.csb.skeletonTester.UserInputHandler;
 import com.csb.strategies.*;
 import com.csb.strategies.DefenseStrategyInterface;
@@ -19,7 +16,6 @@ import com.csb.strategies.MoveStrategyInterface;
 import com.csb.strategies.RoundRunStrategyInterface;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This is the Virologist class. The players in the game contol Virologists, so most of the actions can be connected to this class
@@ -90,9 +86,17 @@ public class Virologist implements Serializable {
      * Handles one turn of the virologist
      */
     public void startOfTurn() {
-        this.roundRunStrategy.get(roundRunStrategy.size() - 1).RoundRun(this);
+        getRoundRunStrategy().roundRun();
         GameController.getInstance().reportGencodes(this, this.getGencodes());
         this.refreshAgents();
+    }
+
+    /**
+     * Get the current used RoundRunStrategy from the virologist
+     * @return the current used RoundRunStrategy
+     */
+    public RoundRunStrategyInterface getRoundRunStrategy() {
+        return roundRunStrategy.get(roundRunStrategy.size() - 1);
     }
 
     /**

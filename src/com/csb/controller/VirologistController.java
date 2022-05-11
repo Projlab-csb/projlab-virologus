@@ -1,5 +1,6 @@
 package com.csb.controller;
 
+import com.csb.gameControl.GameController;
 import com.csb.view.VirologistView;
 import com.csb.virologist.Virologist;
 
@@ -23,10 +24,48 @@ public class VirologistController {
 
     //End setter/getter -----------------------------------------------------------
 
-    //For each user action we must create a function like this one in the specific controller
-    //And from the defaultRoundRun strategy we can call these functions
-    public void move(int nextTileId) {
-        virologist.move(nextTileId);
+    public void roundRun() {
+        virologist.startOfTurn();
+        updateView();
+    }
+
+    public void roundEnd() {
+        GameController.getInstance().nextPlayersTurn();
+        updateView();
+    }
+
+    public void move() {
+        virologist.getRoundRunStrategy().move(virologist);
+        updateView();
+    }
+
+    public void murder() {
+        virologist.getRoundRunStrategy().murder(virologist);
+        updateView();
+    }
+
+    public void steal() {
+        virologist.getRoundRunStrategy().steal(virologist);
+        updateView();
+    }
+
+    public void discard() {
+        virologist.getRoundRunStrategy().discard(virologist);
+        updateView();
+    }
+
+    public void createAgent() {
+        virologist.getRoundRunStrategy().createAgent(virologist);
+        updateView();
+    }
+
+    public void useAgent() {
+        virologist.getRoundRunStrategy().useAgent(virologist);
+        updateView();
+    }
+
+    public void collect() {
+        virologist.getRoundRunStrategy().collect(virologist);
         updateView();
     }
 
