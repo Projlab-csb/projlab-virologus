@@ -14,7 +14,7 @@ public class GameView extends JFrame {
 
     public GameView() {
         setTitle("CSB - Enterprise Virologist  Game");
-        setBounds(300, 90, 900, 600);
+        this.setSize(1000, 1000);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
 
@@ -35,16 +35,14 @@ public class GameView extends JFrame {
 
     private void initializeView(JFrame frame) {
         JPanel mainPanel = new JPanel(new BorderLayout());
-        JPanel leftPanel = new JPanel(new FlowLayout());
-
-        mainPanel.add(leftPanel, BorderLayout.WEST);
         frame.add(mainPanel);
 
         createMenuBar(frame);
         createStatusLabels(frame);
 
         MapPanel d = new MapPanel();
-        mainPanel.add(d);
+        d.setPreferredSize(new Dimension(500, 500));
+        frame.add(d);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setResizable(true);
         frame.pack();
@@ -55,37 +53,36 @@ public class GameView extends JFrame {
         ArrayList<JLabel> labels = new ArrayList<JLabel>();
         JPanel dataPanel = new JPanel();
         dataPanel.setLayout(new BoxLayout(dataPanel, BoxLayout.Y_AXIS));
-        dataPanel.setSize(1200, 500);
+        dataPanel.setPreferredSize(new Dimension(200, 500));
         dataPanel.setBorder(BorderFactory.createTitledBorder("Virologist data"));
-
         JLabel nameLabel = new JLabel("Name");
+
         dataPanel.add(nameLabel);
         labels.add(nameLabel);
-
         JLabel aminoLabel = new JLabel("Amino acid:");
+
         dataPanel.add(aminoLabel);
         labels.add(aminoLabel);
-
         JLabel nucleicLabel = new JLabel("Nucleic acid:");
+
         dataPanel.add(nucleicLabel);
         labels.add(nucleicLabel);
-
         JLabel inventoryLabel = new JLabel("Inventory:");
+
         dataPanel.add(inventoryLabel);
         labels.add(inventoryLabel);
-
         JLabel gencodeLabel = new JLabel("Genetic codes:");
+
         dataPanel.add(gencodeLabel);
         labels.add(gencodeLabel);
+        JLabel createdLabel = new JLabel("Created agents:");
 
-        JLabel createdLabel = new JLabel("Created things:");
         dataPanel.add(createdLabel);
         labels.add(createdLabel);
-
         JLabel effectLabel = new JLabel("Effects on player:");
+
         dataPanel.add(effectLabel);
         labels.add(effectLabel);
-
         /*
         JLabel nextPlayerLabel = new JLabel("Next player:");
         nextPlayerLabel.setFont(new Font("Serif", Font.BOLD, 20));
@@ -94,6 +91,7 @@ public class GameView extends JFrame {
         */
 
         frame.add(dataPanel, BorderLayout.WEST);
+
         virologistView = new VirologistView(labels);
     }
 
