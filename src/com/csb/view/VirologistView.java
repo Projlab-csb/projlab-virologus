@@ -46,7 +46,7 @@ public class VirologistView {
 
         out = "";
         for (int i = 0; i < v.getGencodes().size(); i++) {
-            out += "\n" + v.getGencodes().get(i).getClass().getSimpleName().getClass().getSimpleName();
+            out += "\n" + v.getGencodes().get(i).getClass().getSimpleName();
         }
         this.labels.get(4).setText("Genetic codes: " + out + "\n");
 

@@ -127,6 +127,12 @@ public class GameView extends JFrame {
         });
         actionMenu.add(collectItem);
 
+        JMenuItem moveItem = new JMenuItem("Move");
+        moveItem.addActionListener(x -> {
+            GameController.getInstance().virologistController.move();
+        });
+        actionMenu.add(moveItem);
+
         JMenuItem stealItem = new JMenuItem("Steal");
         stealItem.addActionListener(x -> {
             GameController.getInstance().virologistController.steal();
