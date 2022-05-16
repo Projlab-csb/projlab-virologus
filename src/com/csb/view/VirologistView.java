@@ -40,25 +40,25 @@ public class VirologistView {
         for (int i = 0; i < v.getEquipments().size(); i++) {
             out += "\n" + v.getEquipments().get(i).getClass().getSimpleName();
         }
-        this.labels.get(3).setText("Inventory: " + out + "\n");
+        this.labels.get(3).setText("Inventory: \n" + out + "\n");
 
         out = "";
         for (int i = 0; i < v.getGencodes().size(); i++) {
             out += "\n" + v.getGencodes().get(i).getClass().getSimpleName();
         }
-        this.labels.get(4).setText("Genetic codes: " + out + "\n");
+        this.labels.get(4).setText("Genetic codes: \n" + out + "\n");
 
         out = "";
         for (int i = 0; i < v.getCreatedAgents().size(); i++) {
             out += "\n" + v.getCreatedAgents().get(i).getClass().getSimpleName();
         }
-        this.labels.get(5).setText("Created agents: " + out + "\n");
+        this.labels.get(5).setText("Created agents: \n" + out + "\n");
 
         out = "";
         for (int i = 0; i < v.getAgentlist().size(); i++) {
             out += "\n" + v.getAgentlist().get(i).getClass().getSimpleName();
         }
-        this.labels.get(6).setText("Effects on player:" + out + "\n");
+        this.labels.get(6).setText("Effects on player: \n" + out + "\n");
     }
 
     /**
