@@ -7,6 +7,7 @@ import com.csb.skeletonTester.TestInterface;
 import com.csb.skeletonTester.Tester;
 import com.csb.skeletonTester.Tests.StealCloak;
 import com.csb.skeletonTester.UserInputHandler;
+import com.csb.view.WelcomeForm;
 import java.text.ParseException;
 import java.util.Collections;
 import java.util.Comparator;
@@ -85,25 +86,23 @@ public class Main {
         System.out.println("2 - Integration tests");
         System.out.println("3 - Game");
 
+        WelcomeForm welcomeForm = new WelcomeForm();
+        welcomeForm.setVisible(true);
         //int input = UserInputHandler.getUserInputInt("What would you like to run?", 2, 3);
         //TODO: Revert this to the above line
-        int input = 3;
+        /*int input = 3;
         switch (input) {
             //its depricated
-            /*
             case 1:
                 skeletonTest();
                 break;
-                
-             */
             case 2:
-                //TODO write integration tests
                 com.tests.integration.Main.main(args);
                 break;
             case 3:
                 GameController.getInstance().initGame();
                 GameController.getInstance().startGame();
                 break;
-        }
+        }*/
     }
 }

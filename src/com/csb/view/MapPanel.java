@@ -55,9 +55,6 @@ public class MapPanel extends JPanel {
             case STORAGE:
                 g.setColor(Color.YELLOW);
                 break;
-            case CURSED_LAB:
-                g.setColor(Color.PINK);
-                break;
         }
         g.fillOval(x, y, size, size);
 

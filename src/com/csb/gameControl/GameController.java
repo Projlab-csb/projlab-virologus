@@ -136,37 +136,17 @@ public class GameController implements Serializable {
      * Sets up the virologists
      * Sets up the fields
      */
-    public void initGame() {
+
+    public void initGame(List<String> virologistNames) {
         virologistController = new VirologistController(null, gameView.getVirologistView());
 
-        //Prompt for the editor
-        //boolean isEdited = editorModePrompt();
-        //TODO: Revert this back to the original
-        boolean isEdited = false;
-
-        boolean mapLoaded = false;
-        if (!isEdited) {
-            //mapLoaded = loadMapPrompt();
-        }
-        //Only run regular game flow if the game has not been edited
-        if (!isEdited && !mapLoaded) {
-            /*int playerCount = UserInputHandler.getUserInputInt("How many virologists do you want to play with?");
-            for (int i = 0; i < playerCount; i++) {
-                String name = UserInputHandler.getUserInputString("What is the name of player " + (i + 1) + "?");
-                allVirologists.add(new Virologist(name));
-            }*/
-            //TODO: Revert this back to the above line when the game is ready to be played
-            allVirologists.add(new Virologist("Player 1"));
-            allVirologists.add(new Virologist("Player 2"));
-            allVirologists.add(new Virologist("Player 3"));
-
-            map = new GameMap(3, 3);
-            List<Field> fields = map.getFields();
-            Random random = new Random();
-            for (Virologist virologist : allVirologists) {
-                //Pick a random field for each virologist
-                fields.get(random.randomBetween(0, fields.size() - 1)).acceptVirologist(virologist);
-            }
+        virologistNames.forEach(name -> allVirologists.add(new Virologist(name)));
+        map = new GameMap(3, 3);
+        List<Field> fields = map.getFields();
+        Random random = new Random();
+        for (Virologist virologist : allVirologists) {
+            //Pick a random field for each virologist
+            fields.get(random.randomBetween(0, fields.size() - 1)).acceptVirologist(virologist);
         }
     }
 

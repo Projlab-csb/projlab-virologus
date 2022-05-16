@@ -20,7 +20,6 @@ public class Field implements Serializable {
         LAB,
         SHELTER,
         STORAGE,
-        CURSED_LAB,
     }
 
     public Field() {

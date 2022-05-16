@@ -41,6 +41,6 @@ public class CursedLab extends Lab {
 
     @Override
     public FIELD_TYPE getType() {
-        return FIELD_TYPE.CURSED_LAB;
+        return FIELD_TYPE.LAB;
     }
 }
