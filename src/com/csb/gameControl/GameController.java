@@ -6,8 +6,10 @@ import com.csb.fields.Field;
 import com.csb.skeletonTester.UserInputHandler;
 import com.csb.utils.Random;
 import com.csb.view.GameView;
+import com.csb.view.PopUpView;
 import com.csb.virologist.Virologist;
 import java.io.*;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -203,7 +205,10 @@ public class GameController implements Serializable {
             someoneWon = isWinner(allVirologists.get(currentVirologistIndex - 1));
         }
         if (someoneWon) {
-            //TODO: Stop the game, report the winner
+            System.out.println("asdasdasda");
+            String[] options = {"Ok!"};
+            PopUpView.selectOption("Congratulations!", "The winner is:" + allVirologists.get(currentVirologistIndex), options);
+            System.exit(0);
         } else {
             currentVirologistIndex++;
             if (currentVirologistIndex >= allVirologists.size()) {
@@ -242,7 +247,15 @@ public class GameController implements Serializable {
         //Check if the virologist has all the possible gencodes
         List<Gencode> gencodes = virologistGencodesMap.get(v);
         if (gencodes != null) {
-            return gencodes.containsAll(allGencodes);
+            boolean isEqual = true;
+            System.out.println(allGencodes);
+            System.out.println(gencodes);
+            for(int i=0; i< gencodes.size(); i++){
+                if(!gencodes.get(i).toString().equals(allGencodes.get(i).toString())){
+                    isEqual = false;
+                }
+            }
+            return isEqual;
         }
         return false; //No gencodes collected yet!
     }
