@@ -6,8 +6,10 @@ import com.csb.fields.Field;
 import com.csb.skeletonTester.UserInputHandler;
 import com.csb.utils.Random;
 import com.csb.view.GameView;
+import com.csb.view.PopUpView;
 import com.csb.virologist.Virologist;
 import java.io.*;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -203,7 +205,9 @@ public class GameController implements Serializable {
             someoneWon = isWinner(allVirologists.get(currentVirologistIndex - 1));
         }
         if (someoneWon) {
-            //TODO: Stop the game, report the winner
+            String[] options = {"Ok!"};
+            PopUpView.selectOption("Congratulations! The winner is:" + allVirologists.get(currentVirologistIndex).getName(), "Game Over" , options);
+            System.exit(0);
         } else {
             currentVirologistIndex++;
             if (currentVirologistIndex >= allVirologists.size()) {
@@ -241,8 +245,31 @@ public class GameController implements Serializable {
     private boolean isWinner(Virologist v) {
         //Check if the virologist has all the possible gencodes
         List<Gencode> gencodes = virologistGencodesMap.get(v);
+        ArrayList<String> gencodenames=new ArrayList<>();;
+        ArrayList<String> allgencodenames= new ArrayList<>();;
+        boolean isEqual = true;
         if (gencodes != null) {
-            return gencodes.containsAll(allGencodes);
+            if(gencodes.isEmpty()){
+                return false;
+            }else{
+                System.out.println(gencodes);
+                System.out.println(allGencodes);
+
+                for(int i=0; i< gencodes.size();i++){
+                    gencodenames.add(gencodes.get(i).toString());
+                }
+
+                for(int i=0; i< allGencodes.size();i++){
+                    allgencodenames.add(allGencodes.get(i).toString());
+                }
+                for(int i=0; i<allgencodenames.size(); i++){
+                    if(!gencodenames.contains(allgencodenames.get(i))){
+                        System.out.println(allgencodenames.get(i));
+                        return false;
+                    }
+                }
+                return true;
+            }
         }
         return false; //No gencodes collected yet!
     }
