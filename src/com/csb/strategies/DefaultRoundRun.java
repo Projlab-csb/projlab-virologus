@@ -35,7 +35,9 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
     }
 
     @Override
-    public void roundRun() {}
+    public void roundRun() {
+        stepcounter = 0;
+    }
 
     @Override
     public void move(Virologist virologist) {
@@ -151,7 +153,7 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
             );
             if (discardAcidType.equals("AminoAcid")) {
                 if (virologist.getAminoAcid() == 0) {
-                    PopUpView.showError("You cannot discard that kind of collectable", "Virologist Discard");
+                    PopUpView.showError("You don't have any Amino Acid to discard", "Virologist Discard");
                 } else {
                     int discard = PopUpView.numberInput(
                         "How much AminoAcid would you drop?",
@@ -163,7 +165,7 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
                 }
             } else {
                 if (virologist.getNucleicAcid() == 0) {
-                    PopUpView.showError("You cannot discard that kind of collectable", "Virologist Discard");
+                    PopUpView.showError("You don't have any Nucleic Acid to discard", "Virologist Discard");
                 } else {
                     int discard = PopUpView.numberInput(
                         "How much NucleicAcid would you drop?",
@@ -176,7 +178,7 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
             }
         } else {
             if (virologist.getEquipments().size() == 0) {
-                PopUpView.showError("You cannot steal that kind of collectable", "Virologist Discard");
+                PopUpView.showError("You don't have any Equipment to discard", "Virologist Discard");
             } else {
                 String[] options = virologist.getEquipments().stream().map(e -> e.getClass().getSimpleName()).toArray(String[]::new);
                 int selectedEquipment = PopUpView.selectOption("What do you want do discard?", "Virologist Discard", options);
