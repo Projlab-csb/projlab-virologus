@@ -40,27 +40,28 @@ public class VirologistView {
         this.labels.get(2).setText("Nucleic Acid Level: " + v.getNucleicAcid() + "\n");
 
         for (int i = 0; i < v.getEquipments().size(); i++) {
-            out += "\n" + v.getEquipments().get(i).getClass().getSimpleName();
+            out += "<br/>" + v.getEquipments().get(i).getClass().getSimpleName();
         }
-        this.labels.get(3).setText("Inventory: \n" + out + "\n");
+
+        this.labels.get(3).setText("<html>Inventory: <br/>" + out + "<br/></html>");
 
         out = "";
         for (int i = 0; i < v.getGencodes().size(); i++) {
-            out += "\n" + v.getGencodes().get(i).getAgent().getClass().getSimpleName();
+            out += "<br/>" + v.getGencodes().get(i).getAgent().getClass().getSimpleName();
         }
-        this.labels.get(4).setText("Genetic codes: \n" + out + "\n");
+        this.labels.get(4).setText("<html>Genetic codes: <br/>" + out + "<br/></html>");
 
         out = "";
         for (int i = 0; i < v.getCreatedAgents().size(); i++) {
-            out += "\n" + v.getCreatedAgents().get(i).getClass().getSimpleName();
+            out += "<br/>" + v.getCreatedAgents().get(i).getClass().getSimpleName();
         }
-        this.labels.get(5).setText("Created agents: \n" + out + "\n");
+        this.labels.get(5).setText("<html>Created agents: <br/>" + out + "<br/></html>");
 
         out = "";
         for (int i = 0; i < v.getAgentlist().size(); i++) {
-            out += "\n" + v.getAgentlist().get(i).getClass().getSimpleName();
+            out += "<br/>" + v.getAgentlist().get(i).getClass().getSimpleName();
         }
-        this.labels.get(6).setText("Effects on player: \n" + out + "\n");
+        this.labels.get(6).setText("<html>Effects on player: <br/>" + out + "<br/></html>");
     }
 
     /**
