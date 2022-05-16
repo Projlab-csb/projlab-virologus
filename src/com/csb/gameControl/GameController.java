@@ -140,18 +140,26 @@ public class GameController implements Serializable {
         virologistController = new VirologistController(null, gameView.getVirologistView());
 
         //Prompt for the editor
-        boolean isEdited = editorModePrompt();
+        //boolean isEdited = editorModePrompt();
+        //TODO: Revert this back to the original
+        boolean isEdited = false;
+
         boolean mapLoaded = false;
         if (!isEdited) {
-            mapLoaded = loadMapPrompt();
+            //mapLoaded = loadMapPrompt();
         }
         //Only run regular game flow if the game has not been edited
         if (!isEdited && !mapLoaded) {
-            int playerCount = UserInputHandler.getUserInputInt("How many virologists do you want to play with?");
+            /*int playerCount = UserInputHandler.getUserInputInt("How many virologists do you want to play with?");
             for (int i = 0; i < playerCount; i++) {
                 String name = UserInputHandler.getUserInputString("What is the name of player " + (i + 1) + "?");
                 allVirologists.add(new Virologist(name));
-            }
+            }*/
+            //TODO: Revert this back to the above line when the game is ready to be played
+            allVirologists.add(new Virologist("Player 1"));
+            allVirologists.add(new Virologist("Player 2"));
+            allVirologists.add(new Virologist("Player 3"));
+
             map = new GameMap(3, 3);
             List<Field> fields = map.getFields();
             Random random = new Random();

@@ -1,6 +1,5 @@
 package com.csb.view;
 
-import com.csb.controller.VirologistController;
 import com.csb.gameControl.GameController;
 import java.awt.*;
 import javax.swing.*;
@@ -42,7 +41,7 @@ public class GameView extends JFrame {
         createMenuBar(frame);
         createStatusLabels(frame);
 
-        DrawCircle d = new DrawCircle();
+        MapPanel d = new MapPanel();
         mainPanel.add(d);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setResizable(true);
