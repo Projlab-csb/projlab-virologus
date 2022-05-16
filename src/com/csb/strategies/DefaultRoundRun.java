@@ -44,6 +44,7 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
         if (stepcounter == 0) {
             String[] options = virologist.getField().getNeighbors().stream().map((field -> field.getType().name())).toArray(String[]::new);
             int fieldId = PopUpView.selectOption("Select a field to move to", "Virologist Move", options);
+            if (fieldId == -1) return;
             virologist.move(fieldId);
 
             stepcounter++;
@@ -60,6 +61,7 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
         } else {
             String[] options = virologist.getField().getVirologists().stream().map(Virologist::getName).toArray(String[]::new);
             int virologistId = PopUpView.selectOption("Select a virologist to kill", "Virologist Kill", options);
+            if (virologistId == -1) return;
 
             Virologist selectedVirologist = virologist.getField().getVirologists().get(virologistId);
             if (virologist.equals(selectedVirologist)) {
@@ -76,6 +78,7 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
 
         String[] options = virologist.getField().getVirologists().stream().map(Virologist::getName).toArray(String[]::new);
         int virologistId = PopUpView.selectOption("Select a virologist to rob", "Virologist Steal", options);
+        if (virologistId == -1) return;
 
         String stealType = PopUpView.selectOptionString(
             "What do you want to steal?",
@@ -129,11 +132,12 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
                         .map(e -> e.getClass().getSimpleName())
                         .toArray(String[]::new);
                 int selectedEquipment = PopUpView.selectOption("What do you want do steal?", "Virologist Steal", options);
-
-                virologist.steal(
-                    virologist.getField().getVirologists().get(virologistId).getEquipments().get(selectedEquipment),
-                    virologist.getField().getVirologists().get(virologistId)
-                );
+                if (selectedEquipment != -1) {
+                    virologist.steal(
+                        virologist.getField().getVirologists().get(virologistId).getEquipments().get(selectedEquipment),
+                        virologist.getField().getVirologists().get(virologistId)
+                    );
+                }
             }
         }
     }
@@ -182,6 +186,7 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
             } else {
                 String[] options = virologist.getEquipments().stream().map(e -> e.getClass().getSimpleName()).toArray(String[]::new);
                 int selectedEquipment = PopUpView.selectOption("What do you want do discard?", "Virologist Discard", options);
+                if (selectedEquipment == -1) return;
                 virologist.discard(virologist.getEquipments().get(selectedEquipment));
             }
         }
@@ -192,6 +197,7 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
         if (virologist.getGencodes().size() != 0) {
             String[] options = virologist.getGencodes().stream().map(a -> a.getAgent().getClass().getSimpleName()).toArray(String[]::new);
             int selectedGencode = PopUpView.selectOption("Which gencode would you use?", "Virologist Create Agent", options);
+            if (selectedGencode == -1) return;
             virologist.createAgent(virologist.getGencodes().get(selectedGencode));
         } else {
             PopUpView.showError("You don't have gencodes yet", "Virologist Create Agents");
@@ -209,7 +215,7 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
 
             options = virologist.getField().getVirologists().stream().map(Virologist::getName).toArray(String[]::new);
             int selectedTarget = PopUpView.selectOption("Who would you attack?", "Virologist Use Agent", options);
-
+            if (selectedTarget == -1 || selectedAgent == -1) return;
             virologist.useAgent(
                 virologist.getCreatedAgents().get(selectedAgent),
                 virologist.getField().getVirologists().get(selectedTarget)
@@ -238,6 +244,7 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
                 .toArray(String[]::new);
             //Get the one what is wanted by the player
             int chosen = PopUpView.selectOption("What do you want to collect?", "Virologist Collect", options);
+            if (chosen == -1) return;
             Collectable coll = collectables.get(chosen);
 
             //If the field is a shelter there can be restrictions

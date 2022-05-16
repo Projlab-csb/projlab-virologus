@@ -124,6 +124,8 @@ public class GameController implements Serializable {
             ois.close();
             GameController gameController = (GameController) o;
             _instance = gameController;
+
+            this.gameView.getVirologistView();
             System.out.println("Game loaded");
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -205,8 +207,12 @@ public class GameController implements Serializable {
             someoneWon = isWinner(allVirologists.get(currentVirologistIndex - 1));
         }
         if (someoneWon) {
-            String[] options = {"Ok!"};
-            PopUpView.selectOption("Congratulations! The winner is:" + allVirologists.get(currentVirologistIndex).getName(), "Game Over" , options);
+            String[] options = { "Ok!" };
+            PopUpView.selectOption(
+                "Congratulations! The winner is:" + allVirologists.get(currentVirologistIndex).getName(),
+                "Game Over",
+                options
+            );
             System.exit(0);
         } else {
             currentVirologistIndex++;
@@ -245,25 +251,25 @@ public class GameController implements Serializable {
     private boolean isWinner(Virologist v) {
         //Check if the virologist has all the possible gencodes
         List<Gencode> gencodes = virologistGencodesMap.get(v);
-        ArrayList<String> gencodenames=new ArrayList<>();;
-        ArrayList<String> allgencodenames= new ArrayList<>();;
+        ArrayList<String> gencodenames = new ArrayList<>();
+        ArrayList<String> allgencodenames = new ArrayList<>();
         boolean isEqual = true;
         if (gencodes != null) {
-            if(gencodes.isEmpty()){
+            if (gencodes.isEmpty()) {
                 return false;
-            }else{
+            } else {
                 System.out.println(gencodes);
                 System.out.println(allGencodes);
 
-                for(int i=0; i< gencodes.size();i++){
+                for (int i = 0; i < gencodes.size(); i++) {
                     gencodenames.add(gencodes.get(i).toString());
                 }
 
-                for(int i=0; i< allGencodes.size();i++){
+                for (int i = 0; i < allGencodes.size(); i++) {
                     allgencodenames.add(allGencodes.get(i).toString());
                 }
-                for(int i=0; i<allgencodenames.size(); i++){
-                    if(!gencodenames.contains(allgencodenames.get(i))){
+                for (int i = 0; i < allgencodenames.size(); i++) {
+                    if (!gencodenames.contains(allgencodenames.get(i))) {
                         System.out.println(allgencodenames.get(i));
                         return false;
                     }

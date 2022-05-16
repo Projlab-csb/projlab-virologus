@@ -57,7 +57,7 @@ public class GameView extends JFrame implements Serializable {
 
         dataPanel.add(nameLabel);
         labels.add(nameLabel);
-        JLabel aminoLabel = new JLabel("Amino acis:");
+        JLabel aminoLabel = new JLabel("Amino acid:");
 
         dataPanel.add(aminoLabel);
         labels.add(aminoLabel);

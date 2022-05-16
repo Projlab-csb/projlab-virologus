@@ -28,6 +28,7 @@ public class WelcomeForm extends JFrame {
         namePanel.add(headerLabel);
         this.add(namePanel, BorderLayout.CENTER);
 
+        JPanel buttonPanel = new JPanel();
         JButton addNameButton = new JButton("Add name");
         addNameButton.addActionListener(e -> {
             //Get name from the user
@@ -44,7 +45,6 @@ public class WelcomeForm extends JFrame {
 
         Button gameButton = new Button("Start new game");
         Button loadButton = new Button("Load game");
-
 
         gameButton.addActionListener(e -> {
             //If there are no names, show an error message
@@ -63,15 +63,16 @@ public class WelcomeForm extends JFrame {
             JFileChooser FileChooserView = new JFileChooser();
             FileChooserView.setCurrentDirectory(new File("data\\saves"));
             var dialogResult = FileChooserView.showOpenDialog(this);
-            if(dialogResult == JFileChooser.APPROVE_OPTION) {
+            if (dialogResult == JFileChooser.APPROVE_OPTION) {
                 GameController.getInstance().loadGame(FileChooserView.getSelectedFile().getAbsolutePath());
                 GameController.getInstance().startGame();
                 this.setVisible(false);
             }
-           });
+        });
 
         this.add(headerLabel, BorderLayout.NORTH);
-        this.add(gameButton, BorderLayout.SOUTH);
-        this.add(loadButton, BorderLayout.EAST);
+        this.add(buttonPanel, BorderLayout.SOUTH);
+        buttonPanel.add(loadButton, BorderLayout.EAST);
+        buttonPanel.add(gameButton, BorderLayout.EAST);
     }
 }
