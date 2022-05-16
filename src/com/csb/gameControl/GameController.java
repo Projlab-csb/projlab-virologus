@@ -114,7 +114,8 @@ public class GameController implements Serializable {
      */
     public void loadGame(String fileName) {
         try {
-            FileInputStream fis = new FileInputStream(new File(GAME_SAVE_LOCATION + fileName));
+            //FileInputStream fis = new FileInputStream(new File(GAME_SAVE_LOCATION + fileName));
+            FileInputStream fis = new FileInputStream(new File(fileName));
             byte[] data = fis.readAllBytes();
             ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(data));
             Object o = ois.readObject();

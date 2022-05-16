@@ -3,13 +3,14 @@ package com.csb.view;
 import com.csb.fields.Field;
 import com.csb.virologist.Virologist;
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.swing.*;
 
 /**
  * TODO: Maybe this should be a renderable panel, and the view should hold all the virologist's dependent UI element
  */
-public class VirologistView {
+public class VirologistView implements Serializable {
 
     private ArrayList<JLabel> labels = new ArrayList<JLabel>();
     private MapPanel mapPanel;

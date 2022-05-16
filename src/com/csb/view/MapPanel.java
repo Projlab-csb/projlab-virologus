@@ -6,10 +6,11 @@ import com.csb.virologist.Virologist;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.io.Serializable;
 import java.util.concurrent.atomic.AtomicInteger;
 import javax.swing.JPanel;
 
-public class MapPanel extends JPanel {
+public class MapPanel extends JPanel implements Serializable {
 
     @Override
     public void paint(Graphics g) {

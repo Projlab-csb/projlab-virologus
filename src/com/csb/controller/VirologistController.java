@@ -4,7 +4,10 @@ import com.csb.gameControl.GameController;
 import com.csb.view.VirologistView;
 import com.csb.virologist.Virologist;
 
-public class VirologistController {
+import java.io.Serial;
+import java.io.Serializable;
+
+public class VirologistController implements Serializable {
 
     private Virologist virologist;
     private final VirologistView view;

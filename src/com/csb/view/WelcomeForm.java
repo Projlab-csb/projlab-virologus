@@ -1,9 +1,12 @@
 package com.csb.view;
 
+import com.csb.collectables.gencodes.Gencode;
 import com.csb.gameControl.GameController;
 import java.awt.*;
+import java.io.File;
 import java.util.ArrayList;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class WelcomeForm extends JFrame {
 
@@ -39,7 +42,9 @@ public class WelcomeForm extends JFrame {
         });
         namePanel.add(addNameButton);
 
-        Button gameButton = new Button("Start the game");
+        Button gameButton = new Button("Start new game");
+        Button loadButton = new Button("Load game");
+
 
         gameButton.addActionListener(e -> {
             //If there are no names, show an error message
@@ -54,7 +59,19 @@ public class WelcomeForm extends JFrame {
             }
         });
 
+        loadButton.addActionListener(e -> {
+            JFileChooser FileChooserView = new JFileChooser();
+            FileChooserView.setCurrentDirectory(new File("data\\saves"));
+            var dialogResult = FileChooserView.showOpenDialog(this);
+            if(dialogResult == JFileChooser.APPROVE_OPTION) {
+                GameController.getInstance().loadGame(FileChooserView.getSelectedFile().getAbsolutePath());
+                GameController.getInstance().startGame();
+                this.setVisible(false);
+            }
+           });
+
         this.add(headerLabel, BorderLayout.NORTH);
         this.add(gameButton, BorderLayout.SOUTH);
+        this.add(loadButton, BorderLayout.EAST);
     }
 }

@@ -3,10 +3,12 @@ package com.csb.view;
 import com.csb.controller.VirologistController;
 import com.csb.gameControl.GameController;
 import java.awt.*;
+import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.swing.*;
 
-public class GameView extends JFrame {
+public class GameView extends JFrame implements Serializable {
 
     private Container container;
     //private VirologistController virologistController;
@@ -106,7 +108,12 @@ public class GameView extends JFrame {
 
         JMenuItem saveItem = new JMenuItem("Save");
         saveItem.addActionListener(x -> {
-            //GameController.getInstance().saveGame();
+            JFileChooser FileChooserView = new JFileChooser();
+            FileChooserView.setCurrentDirectory(new File("data\\saves"));
+            var dialogResult = FileChooserView.showSaveDialog(this);
+            if(dialogResult == JFileChooser.APPROVE_OPTION) {
+                GameController.getInstance().saveGame(FileChooserView.getSelectedFile().getName().split("\\.")[0]);
+            }
         });
         fileMenu.add(saveItem);
 
