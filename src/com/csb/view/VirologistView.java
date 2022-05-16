@@ -33,32 +33,32 @@ public class VirologistView {
      */
     public void printVirologist(Virologist v) {
         String out = "";
-        this.labels.get(0).setText("Name: " + v.getName());
-        this.labels.get(1).setText("Amino Acid Level: " + v.getAminoAcid());
-        this.labels.get(2).setText("Nucleic Acid Level: " + v.getNucleicAcid());
+        this.labels.get(0).setText("Name: " + v.getName() + "\n");
+        this.labels.get(1).setText("Amino Acid Level: " + v.getAminoAcid() + "\n");
+        this.labels.get(2).setText("Nucleic Acid Level: " + v.getNucleicAcid() + "\n");
 
         for (int i = 0; i < v.getEquipments().size(); i++) {
-            out += "\n" + v.getEquipments().get(i);
+            out += "\n" + v.getEquipments().get(i).getClass().getSimpleName();
         }
-        this.labels.get(3).setText("Inventory: " + out);
+        this.labels.get(3).setText("Inventory: " + out + "\n");
 
         out = "";
         for (int i = 0; i < v.getGencodes().size(); i++) {
-            out += "\n" + v.getGencodes().get(i);
+            out += "\n" + v.getGencodes().get(i).getClass().getSimpleName().getClass().getSimpleName();
         }
-        this.labels.get(4).setText("Genetic codes: " + out);
+        this.labels.get(4).setText("Genetic codes: " + out + "\n");
 
         out = "";
         for (int i = 0; i < v.getCreatedAgents().size(); i++) {
-            out += "\n" + v.getCreatedAgents().get(i);
+            out += "\n" + v.getCreatedAgents().get(i).getClass().getSimpleName();
         }
-        this.labels.get(5).setText("Created agents: " + out);
+        this.labels.get(5).setText("Created agents: " + out + "\n");
 
         out = "";
         for (int i = 0; i < v.getAgentlist().size(); i++) {
-            out += "\n" + v.getAgentlist().get(i);
+            out += "\n" + v.getAgentlist().get(i).getClass().getSimpleName();
         }
-        this.labels.get(6).setText("Effects on player:" + out);
+        this.labels.get(6).setText("Effects on player:" + out + "\n");
     }
 
     /**

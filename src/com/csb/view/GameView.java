@@ -53,7 +53,8 @@ public class GameView extends JFrame {
 
     private void createStatusLabels(JFrame frame) {
         ArrayList<JLabel> labels = new ArrayList<JLabel>();
-        JPanel dataPanel = new JPanel(new GridLayout(2, 7));
+        JPanel dataPanel = new JPanel();
+        dataPanel.setLayout(new BoxLayout(dataPanel, BoxLayout.Y_AXIS));
         dataPanel.setSize(1200, 500);
         dataPanel.setBorder(BorderFactory.createTitledBorder("Virologist data"));
 
