@@ -80,29 +80,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Welcome to the Virologist Enterprise Game!");
-        System.out.println("----------------------------------------------------------");
-        System.out.println("1 - Skeleton tests - depricated legacy function");
-        System.out.println("2 - Integration tests");
-        System.out.println("3 - Game");
-
         WelcomeForm welcomeForm = new WelcomeForm();
         welcomeForm.setVisible(true);
-        //int input = UserInputHandler.getUserInputInt("What would you like to run?", 2, 3);
-        //TODO: Revert this to the above line
-        /*int input = 3;
-        switch (input) {
-            //its depricated
-            case 1:
-                skeletonTest();
-                break;
-            case 2:
-                com.tests.integration.Main.main(args);
-                break;
-            case 3:
-                GameController.getInstance().initGame();
-                GameController.getInstance().startGame();
-                break;
-        }*/
     }
 }
