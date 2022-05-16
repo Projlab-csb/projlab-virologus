@@ -44,16 +44,16 @@ public class MapPanel extends JPanel {
         //TODO: Use the proper colors
         switch (field.getType()) {
             case FIELD:
-                g.setColor(Color.BLUE);
-                break;
-            case LAB:
-                g.setColor(Color.RED);
-                break;
-            case SHELTER:
                 g.setColor(Color.GREEN);
                 break;
+            case LAB:
+                g.setColor(Color.BLUE);
+                break;
+            case SHELTER:
+                g.setColor(Color.RED);
+                break;
             case STORAGE:
-                g.setColor(Color.YELLOW);
+                g.setColor(new Color(51, 204, 255));
                 break;
         }
         g.fillOval(x, y, size, size);
