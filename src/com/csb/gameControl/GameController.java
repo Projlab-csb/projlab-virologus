@@ -206,7 +206,7 @@ public class GameController implements Serializable {
         }
         if (someoneWon) {
             String[] options = {"Ok!"};
-            PopUpView.selectOption("Congratulations!", "The winner is:" + allVirologists.get(currentVirologistIndex), options);
+            PopUpView.selectOption("Congratulations! The winner is:" + allVirologists.get(currentVirologistIndex).getName(), "Game Over" , options);
             System.exit(0);
         } else {
             currentVirologistIndex++;
@@ -247,8 +247,6 @@ public class GameController implements Serializable {
         List<Gencode> gencodes = virologistGencodesMap.get(v);
         if (gencodes != null) {
             boolean isEqual = true;
-            System.out.println(allGencodes);
-            System.out.println(gencodes);
             for(int i=0; i< gencodes.size(); i++){
                 if(!gencodes.get(i).toString().equals(allGencodes.get(i).toString())){
                     isEqual = false;
