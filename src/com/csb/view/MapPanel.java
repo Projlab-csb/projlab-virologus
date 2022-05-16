@@ -42,7 +42,6 @@ public class MapPanel extends JPanel implements Serializable {
     private void drawField(Graphics g, int x, int y, int centerX, int centerY, int size, Field field, Integer fieldId) {
         g.setColor(Color.BLACK);
         g.drawLine(x + size / 2, y + size / 2, centerX + size / 2, centerY + size / 2);
-        //TODO: Use the proper colors
         switch (field.getType()) {
             case FIELD:
                 g.setColor(Color.GREEN);

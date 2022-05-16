@@ -123,7 +123,6 @@ public class Virologist implements Serializable {
             Collectable coll = collectables.get(chosen);
 
             //if the field is a shelter there can be restricions
-            //TODO:maybe its wrong
             if (field instanceof Shelter) {
                 if (equipments.size() >= 3) {
                     System.out.println("The inventory is full");

@@ -2,10 +2,7 @@ package com.csb.gameControl;
 
 import com.csb.agents.*;
 import com.csb.collectables.Collectable;
-import com.csb.collectables.equipments.Bag;
-import com.csb.collectables.equipments.Cloak;
-import com.csb.collectables.equipments.Equipment;
-import com.csb.collectables.equipments.Gloves;
+import com.csb.collectables.equipments.*;
 import com.csb.collectables.gencodes.Gencode;
 import com.csb.collectables.matters.AminoAcid;
 import com.csb.collectables.matters.NucleicAcid;
@@ -129,13 +126,13 @@ public class GameMap implements Serializable {
         //Get random gencode Forget, Paralyzed, Protection, VitusDance
         Agent agent;
         switch (rand.nextInt(4)) {
-            case 1:
+            case 3:
                 agent = new Paralyzed();
                 break;
             case 2:
                 agent = new Protection();
                 break;
-            case 3:
+            case 1:
                 agent = new VitusDance();
                 break;
             default:
@@ -155,12 +152,15 @@ public class GameMap implements Serializable {
         Random rand = new Random();
         //Get random equipment, Bag, Cloak, Gloves
         Equipment equipment;
-        switch (rand.nextInt(3)) {
+        switch (rand.nextInt(4)) {
             case 1:
                 equipment = new Cloak();
                 break;
             case 2:
                 equipment = new Gloves();
+                break;
+            case 3:
+                equipment = new Axe();
                 break;
             default:
                 equipment = new Bag();

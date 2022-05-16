@@ -22,14 +22,6 @@ public class VirologistView implements Serializable {
         this.mapPanel = mapPanel;
     }
 
-    JLabel inventoryLabel = new JLabel("Inventory:");
-
-    JLabel gencodeLabel = new JLabel("Genetic codes:");
-
-    JLabel createdLabel = new JLabel("Created things:");
-
-    JLabel effectLabel = new JLabel("Effects on player:");
-
     /**
      * Render label with the given name
      * @param v the virologist to be rendered

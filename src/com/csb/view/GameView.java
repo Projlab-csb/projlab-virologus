@@ -12,11 +12,13 @@ public class GameView extends JFrame implements Serializable {
 
     private Container container;
     //private VirologistController virologistController;
-    private VirologistView virologistView;
+    private VirologistView virologistView = null;
     private MapPanel mapPanel;
     private ArrayList<JLabel> labels = new ArrayList<>();
+
     public GameView() {
         setTitle("CSB - CSAK A BALÁZS");
+
         this.setSize(1000, 1000);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
@@ -55,7 +57,7 @@ public class GameView extends JFrame implements Serializable {
 
         dataPanel.add(nameLabel);
         labels.add(nameLabel);
-        JLabel aminoLabel = new JLabel("Amino acid:");
+        JLabel aminoLabel = new JLabel("Amino acis:");
 
         dataPanel.add(aminoLabel);
         labels.add(aminoLabel);
@@ -104,7 +106,7 @@ public class GameView extends JFrame implements Serializable {
             JFileChooser FileChooserView = new JFileChooser();
             FileChooserView.setCurrentDirectory(new File("data\\saves"));
             var dialogResult = FileChooserView.showOpenDialog(this);
-            if(dialogResult == JFileChooser.APPROVE_OPTION) {
+            if (dialogResult == JFileChooser.APPROVE_OPTION) {
                 GameController.getInstance().loadGame(FileChooserView.getSelectedFile().getAbsolutePath());
                 GameController.getInstance().startGame();
             }

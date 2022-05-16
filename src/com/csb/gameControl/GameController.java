@@ -30,9 +30,9 @@ public class GameController implements Serializable {
     List<Gencode> allGencodes;
     private boolean someoneWon;
     int currentVirologistIndex;
-    GameMap map;
+    GameMap map = null;
 
-    GameView gameView;
+    GameView gameView = null;
     public VirologistController virologistController; //TODO: This should be private, only for test purposes
 
     //Instance of the singleton class
