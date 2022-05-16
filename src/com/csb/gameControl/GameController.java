@@ -245,14 +245,13 @@ public class GameController implements Serializable {
     private boolean isWinner(Virologist v) {
         //Check if the virologist has all the possible gencodes
         List<Gencode> gencodes = virologistGencodesMap.get(v);
+        boolean isEqual = true;
         if (gencodes != null) {
-            boolean isEqual = true;
-            for(int i=0; i< gencodes.size(); i++){
-                if(!gencodes.get(i).toString().equals(allGencodes.get(i).toString())){
-                    isEqual = false;
-                }
+            if(allGencodes.containsAll(gencodes)){
+                return true;
+            }else{
+                return false;
             }
-            return isEqual;
         }
         return false; //No gencodes collected yet!
     }
