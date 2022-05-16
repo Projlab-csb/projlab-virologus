@@ -75,7 +75,7 @@ public class VirologistController {
     public void updateView() {
         if (virologist != null) {
             view.printVirologist(virologist);
-            view.renderMap(virologist.getField());
+            view.renderMap();
         }
     }
 }

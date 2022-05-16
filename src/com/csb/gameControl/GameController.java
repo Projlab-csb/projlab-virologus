@@ -190,6 +190,7 @@ public class GameController implements Serializable {
         currentVirologistIndex = 0;
         Virologist currentVirologist = allVirologists.get(currentVirologistIndex);
         virologistController.setVirologist(currentVirologist);
+        virologistController.updateView();
         currentVirologist.startOfTurn();
     }
 

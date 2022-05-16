@@ -12,11 +12,13 @@ import javax.swing.*;
 public class VirologistView {
 
     private ArrayList<JLabel> labels = new ArrayList<JLabel>();
+    private MapPanel mapPanel;
 
-    public VirologistView(ArrayList<JLabel> label) {
+    public VirologistView(ArrayList<JLabel> label, MapPanel mapPanel) {
         for (int i = 0; i < 7; i++) {
             this.labels.add(label.get(i));
         }
+        this.mapPanel = mapPanel;
     }
 
     JLabel inventoryLabel = new JLabel("Inventory:");
@@ -64,7 +66,11 @@ public class VirologistView {
     /**
      * Render out the filed which the current virologist is standing on
      * Also render all the neighbours of this field
-     * @param field the field to be rendered
      */
-    public void renderMap(Field field) {}
+    public void renderMap() {
+        if (mapPanel != null) {
+            mapPanel.revalidate();
+            mapPanel.repaint();
+        }
+    }
 }

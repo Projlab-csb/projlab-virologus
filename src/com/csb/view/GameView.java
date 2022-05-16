@@ -11,23 +11,16 @@ public class GameView extends JFrame {
     private Container container;
     //private VirologistController virologistController;
     private VirologistView virologistView;
+    private MapPanel mapPanel;
 
     public GameView() {
-        setTitle("CSB - Enterprise Virologist  Game");
+        setTitle("CSB - CSAK A BALÁZS");
         this.setSize(1000, 1000);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
 
         container = getContentPane();
         container.setLayout(new BorderLayout());
-
-        //This update is required to refresh the UI state, but will not be called like this.
-        //After each user action, we can call this method in the specific view
-        Button button = new Button("Render");
-        button.addActionListener(e -> {
-            GameController.getInstance().virologistController.updateView();
-        });
-        container.add(button, BorderLayout.SOUTH);
 
         initializeView(this);
         setVisible(true);
@@ -37,12 +30,13 @@ public class GameView extends JFrame {
         JPanel mainPanel = new JPanel(new BorderLayout());
         frame.add(mainPanel);
 
+        mapPanel = new MapPanel();
+        mainPanel.setPreferredSize(new Dimension(500, 500));
+
         createMenuBar(frame);
         createStatusLabels(frame);
 
-        MapPanel d = new MapPanel();
-        d.setPreferredSize(new Dimension(500, 500));
-        frame.add(d);
+        frame.add(mapPanel);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setResizable(true);
         frame.pack();
@@ -92,7 +86,7 @@ public class GameView extends JFrame {
 
         frame.add(dataPanel, BorderLayout.WEST);
 
-        virologistView = new VirologistView(labels);
+        virologistView = new VirologistView(labels, mapPanel);
     }
 
     private void createMenuBar(JFrame frame) {
