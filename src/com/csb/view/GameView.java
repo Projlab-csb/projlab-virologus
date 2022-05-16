@@ -31,7 +31,8 @@ public class GameView extends JFrame {
         frame.add(mainPanel);
 
         mapPanel = new MapPanel();
-        mainPanel.setPreferredSize(new Dimension(500, 500));
+        mapPanel.setPreferredSize(new Dimension(500, 500));
+        //mainPanel.setPreferredSize(new Dimension(500, 500));
 
         createMenuBar(frame);
         createStatusLabels(frame);
