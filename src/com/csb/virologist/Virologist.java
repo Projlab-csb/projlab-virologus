@@ -309,6 +309,10 @@ public class Virologist implements Serializable {
         this.agentlist = agentlist;
     }
 
+    public ArrayList<Agent> getAgentlist() {
+        return this.agentlist;
+    }
+
     /**
      * @return - the equipments owned by the Virologist
      */

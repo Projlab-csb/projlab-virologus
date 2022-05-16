@@ -1,7 +1,9 @@
 package com.csb.view;
 
+import com.csb.controller.VirologistController;
 import com.csb.gameControl.GameController;
 import java.awt.*;
+import java.util.ArrayList;
 import javax.swing.*;
 
 public class GameView extends JFrame {
@@ -50,34 +52,48 @@ public class GameView extends JFrame {
     }
 
     private void createStatusLabels(JFrame frame) {
+        ArrayList<JLabel> labels = new ArrayList<JLabel>();
         JPanel dataPanel = new JPanel(new GridLayout(2, 7));
         dataPanel.setSize(1200, 500);
         dataPanel.setBorder(BorderFactory.createTitledBorder("Virologist data"));
 
         JLabel nameLabel = new JLabel("Name");
         dataPanel.add(nameLabel);
+        labels.add(nameLabel);
 
-        JLabel matterLabel = new JLabel("Matter count:");
-        dataPanel.add(matterLabel);
         JLabel aminoLabel = new JLabel("Amino acid:");
         dataPanel.add(aminoLabel);
+        labels.add(aminoLabel);
+
         JLabel nucleicLabel = new JLabel("Nucleic acid:");
         dataPanel.add(nucleicLabel);
+        labels.add(nucleicLabel);
+
         JLabel inventoryLabel = new JLabel("Inventory:");
         dataPanel.add(inventoryLabel);
+        labels.add(inventoryLabel);
+
         JLabel gencodeLabel = new JLabel("Genetic codes:");
         dataPanel.add(gencodeLabel);
+        labels.add(gencodeLabel);
+
         JLabel createdLabel = new JLabel("Created things:");
         dataPanel.add(createdLabel);
+        labels.add(createdLabel);
+
         JLabel effectLabel = new JLabel("Effects on player:");
         dataPanel.add(effectLabel);
+        labels.add(effectLabel);
 
+        /*
         JLabel nextPlayerLabel = new JLabel("Next player:");
         nextPlayerLabel.setFont(new Font("Serif", Font.BOLD, 20));
         dataPanel.add(nextPlayerLabel);
+        labels.add(nextPlayerLabel);
+        */
 
         frame.add(dataPanel, BorderLayout.WEST);
-        virologistView = new VirologistView(nameLabel);
+        virologistView = new VirologistView(labels);
     }
 
     private void createMenuBar(JFrame frame) {
