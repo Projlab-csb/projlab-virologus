@@ -30,3 +30,5 @@ hs_err_pid*
 class-diagram/export
 sequence-diagrams/export
 .idea/misc.xml
+
+data/

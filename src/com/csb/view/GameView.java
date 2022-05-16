@@ -14,7 +14,7 @@ public class GameView extends JFrame implements Serializable {
     //private VirologistController virologistController;
     private VirologistView virologistView;
     private MapPanel mapPanel;
-
+    private ArrayList<JLabel> labels = new ArrayList<>();
     public GameView() {
         setTitle("CSB - CSAK A BALÁZS");
         this.setSize(1000, 1000);
@@ -47,7 +47,6 @@ public class GameView extends JFrame implements Serializable {
     }
 
     private void createStatusLabels(JFrame frame) {
-        ArrayList<JLabel> labels = new ArrayList<JLabel>();
         JPanel dataPanel = new JPanel();
         dataPanel.setLayout(new BoxLayout(dataPanel, BoxLayout.Y_AXIS));
         dataPanel.setPreferredSize(new Dimension(200, 500));
@@ -102,18 +101,20 @@ public class GameView extends JFrame implements Serializable {
         //File Menu
         JMenuItem loadItem = new JMenuItem("Load");
         loadItem.addActionListener(x -> {
-            //GameController.getInstance().loadGame();
+            JFileChooser FileChooserView = new JFileChooser();
+            FileChooserView.setCurrentDirectory(new File("data\\saves"));
+            var dialogResult = FileChooserView.showOpenDialog(this);
+            if(dialogResult == JFileChooser.APPROVE_OPTION) {
+                GameController.getInstance().loadGame(FileChooserView.getSelectedFile().getAbsolutePath());
+                GameController.getInstance().startGame();
+            }
         });
         fileMenu.add(loadItem);
 
         JMenuItem saveItem = new JMenuItem("Save");
         saveItem.addActionListener(x -> {
-            JFileChooser FileChooserView = new JFileChooser();
-            FileChooserView.setCurrentDirectory(new File("data\\saves"));
-            var dialogResult = FileChooserView.showSaveDialog(this);
-            if(dialogResult == JFileChooser.APPROVE_OPTION) {
-                GameController.getInstance().saveGame(FileChooserView.getSelectedFile().getName().split("\\.")[0]);
-            }
+            String fileName = JOptionPane.showInputDialog(frame, "Enter file name (without extension)");
+            GameController.getInstance().saveGame(fileName);
         });
         fileMenu.add(saveItem);
 
