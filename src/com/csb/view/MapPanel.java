@@ -47,13 +47,13 @@ public class MapPanel extends JPanel {
                 g.setColor(Color.GREEN);
                 break;
             case LAB:
-                g.setColor(Color.BLUE);
+                g.setColor(new Color(51, 204, 255));
                 break;
             case SHELTER:
                 g.setColor(Color.RED);
                 break;
             case STORAGE:
-                g.setColor(new Color(51, 204, 255));
+                g.setColor(Color.ORANGE);
                 break;
         }
         g.fillOval(x, y, size, size);
