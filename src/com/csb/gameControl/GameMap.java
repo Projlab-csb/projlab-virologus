@@ -19,6 +19,7 @@ import java.util.List;
 public class GameMap implements Serializable {
 
     List<Field> fields;
+    private Random rand;
 
     /**
      * Generate a random gencode
@@ -27,6 +28,7 @@ public class GameMap implements Serializable {
      */
     public GameMap(int minFieldCount, int maxFieldCount) {
         fields = new ArrayList<>();
+        rand = new Random();
         generateMap(minFieldCount, maxFieldCount);
     }
 
@@ -105,8 +107,6 @@ public class GameMap implements Serializable {
      * @param field The field to save
      */
     private void storeField(Field field) {
-        Random rand = new Random();
-
         if (fields.size() == 0) {
             fields.add(field);
             return;
@@ -115,6 +115,7 @@ public class GameMap implements Serializable {
         Field randomPreviousField = fields.get(rand.nextInt(fields.size()));
         if (randomPreviousField != null) {
             randomPreviousField.addNeighbor(field);
+            field.addNeighbor(randomPreviousField);
         }
         fields.add(field);
     }

@@ -31,4 +31,9 @@ public class Storage extends Field {
     public void destroy() {
         matters.clear();
     }
+
+    @Override
+    public FIELD_TYPE getType() {
+        return FIELD_TYPE.STORAGE;
+    }
 }

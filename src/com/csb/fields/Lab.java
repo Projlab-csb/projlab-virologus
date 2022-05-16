@@ -26,4 +26,9 @@ public class Lab extends Field {
     public ArrayList<Collectable> getCollectable() {
         return gencodes;
     }
+
+    @Override
+    public FIELD_TYPE getType() {
+        return FIELD_TYPE.LAB;
+    }
 }

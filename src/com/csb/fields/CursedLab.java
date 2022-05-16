@@ -38,4 +38,9 @@ public class CursedLab extends Lab {
         virologist.attack(new BearDance(), null);
         super.acceptVirologist(virologist);
     }
+
+    @Override
+    public FIELD_TYPE getType() {
+        return FIELD_TYPE.CURSED_LAB;
+    }
 }

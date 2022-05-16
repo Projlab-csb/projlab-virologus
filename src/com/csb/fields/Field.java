@@ -15,6 +15,14 @@ public class Field implements Serializable {
     private List<Field> neighbors;
     private List<Virologist> virologistonField;
 
+    public static enum FIELD_TYPE {
+        FIELD,
+        LAB,
+        SHELTER,
+        STORAGE,
+        CURSED_LAB,
+    }
+
     public Field() {
         neighbors = new ArrayList<Field>();
         virologistonField = new ArrayList<Virologist>();
@@ -58,5 +66,9 @@ public class Field implements Serializable {
 
     public void destroy() {
         return;
+    }
+
+    public FIELD_TYPE getType() {
+        return FIELD_TYPE.FIELD;
     }
 }

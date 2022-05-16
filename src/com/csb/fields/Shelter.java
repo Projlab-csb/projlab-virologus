@@ -33,4 +33,9 @@ public class Shelter extends Field {
     public void removeCollectable(Collectable coll) {
         collectables.remove(coll);
     }
+
+    @Override
+    public FIELD_TYPE getType() {
+        return FIELD_TYPE.SHELTER;
+    }
 }
