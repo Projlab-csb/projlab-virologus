@@ -205,7 +205,6 @@ public class GameController implements Serializable {
             someoneWon = isWinner(allVirologists.get(currentVirologistIndex - 1));
         }
         if (someoneWon) {
-            System.out.println("asdasdasda");
             String[] options = {"Ok!"};
             PopUpView.selectOption("Congratulations!", "The winner is:" + allVirologists.get(currentVirologistIndex), options);
             System.exit(0);
