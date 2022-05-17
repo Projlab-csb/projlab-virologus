@@ -9,6 +9,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import javax.swing.*;
 
+/**
+ *
+ * The frame what determines the outline of the application
+ */
 public class GameView extends JFrame implements Serializable {
 
     private Container container;
@@ -29,6 +33,9 @@ public class GameView extends JFrame implements Serializable {
         init();
     }
 
+    /**
+     * initialize the frame
+     */
     public void init() {
         setTitle("CSB - CSAK A BALAGE");
 
@@ -45,6 +52,11 @@ public class GameView extends JFrame implements Serializable {
         setVisible(true);
     }
 
+    /**
+     *
+     * @param frame
+     * Organise the view of the main frame
+     */
     private void initializeView(JFrame frame) {
         JPanel mainPanel = new JPanel(new BorderLayout());
         frame.add(mainPanel);
@@ -63,12 +75,10 @@ public class GameView extends JFrame implements Serializable {
         frame.setVisible(true);
     }
 
-    public void recreateLabels() {
-        labels.clear();
-        this.remove(dataPanel);
-        createStatusLabels(this);
-    }
-
+    /**
+     * Create the status labels for the given frame
+     * @param frame
+     */
     private void createStatusLabels(JFrame frame) {
         dataPanel = new JPanel();
         dataPanel.setLayout(new BoxLayout(dataPanel, BoxLayout.Y_AXIS));
@@ -76,6 +86,9 @@ public class GameView extends JFrame implements Serializable {
         dataPanel.setBorder(BorderFactory.createTitledBorder("Virologist data"));
         nameLabel = new JLabel("Name");
 
+        /**
+         * Add the panels
+         */
         dataPanel.add(nameLabel);
         labels.add(nameLabel);
         aminoLabel = new JLabel("Amino acid:");
@@ -102,18 +115,20 @@ public class GameView extends JFrame implements Serializable {
 
         dataPanel.add(effectLabel);
         labels.add(effectLabel);
-        /*
-        JLabel nextPlayerLabel = new JLabel("Next player:");
-        nextPlayerLabel.setFont(new Font("Serif", Font.BOLD, 20));
-        dataPanel.add(nextPlayerLabel);
-        labels.add(nextPlayerLabel);
-        */
 
         frame.add(dataPanel, BorderLayout.WEST);
 
+        /**
+         * initialize the virologist view
+         */
         virologistView = new VirologistView(labels, mapPanel);
     }
 
+    /**
+     *
+     *Create the main menubar
+     * @param frame
+     */
     private void createMenuBar(JFrame frame) {
         JMenuBar menuBar = new JMenuBar();
 
@@ -121,6 +136,14 @@ public class GameView extends JFrame implements Serializable {
         JMenu gameMenu = new JMenu("Game");
         JMenu actionMenu = new JMenu("Action");
 
+        /**
+         *
+         * Add actionlisteners for the menu items
+         */
+
+        /**
+         * Add actionlisteners for the load menu items
+         */
         //File Menu
         JMenuItem loadItem = new JMenuItem("Load");
         loadItem.addActionListener(x -> {
@@ -135,6 +158,9 @@ public class GameView extends JFrame implements Serializable {
         });
         fileMenu.add(loadItem);
 
+        /**
+         * Add actionlisteners for the save menu items
+         */
         JMenuItem saveItem = new JMenuItem("Save");
         saveItem.addActionListener(x -> {
             String fileName = JOptionPane.showInputDialog(frame, "Enter file name (without extension)");
@@ -148,6 +174,9 @@ public class GameView extends JFrame implements Serializable {
         });
         fileMenu.add(saveItem);
 
+        /**
+         * Add actionlisteners for the exit menu items
+         */
         JMenuItem exitItem = new JMenuItem("Exit");
         exitItem.addActionListener(x -> {
             //Ask for confirmation
@@ -159,7 +188,9 @@ public class GameView extends JFrame implements Serializable {
         });
         fileMenu.add(exitItem);
 
-        //Game Menu
+        /**
+         * Add actionlisteners for the round ender menu item under the game menu
+         */
         JMenuItem endRoundItem = new JMenuItem("End round");
         endRoundItem.addActionListener(x -> {
             GameController.getInstance().virologistController.roundEnd();
@@ -167,7 +198,9 @@ public class GameView extends JFrame implements Serializable {
         });
         gameMenu.add(endRoundItem);
 
-        //Action Menu
+        /**
+         * Add actionlisteners for the collect menu item under the action menu
+         */
         JMenuItem collectItem = new JMenuItem("Collect");
         collectItem.addActionListener(x -> {
             GameController.getInstance().virologistController.collect();
@@ -175,6 +208,9 @@ public class GameView extends JFrame implements Serializable {
         });
         actionMenu.add(collectItem);
 
+        /**
+         * Add actionlisteners for the move menu item under the action menu
+         */
         JMenuItem moveItem = new JMenuItem("Move");
         moveItem.addActionListener(x -> {
             GameController.getInstance().virologistController.move();
@@ -182,6 +218,9 @@ public class GameView extends JFrame implements Serializable {
         });
         actionMenu.add(moveItem);
 
+        /**
+         * Add actionlisteners for the steal menu item under the action menu
+         */
         JMenuItem stealItem = new JMenuItem("Steal");
         stealItem.addActionListener(x -> {
             GameController.getInstance().virologistController.steal();
@@ -189,6 +228,9 @@ public class GameView extends JFrame implements Serializable {
         });
         actionMenu.add(stealItem);
 
+        /**
+         * Add actionlisteners for the kill menu item under the action menu
+         */
         JMenuItem killItem = new JMenuItem("Kill");
         killItem.addActionListener(x -> {
             GameController.getInstance().virologistController.murder();
@@ -196,6 +238,9 @@ public class GameView extends JFrame implements Serializable {
         });
         actionMenu.add(killItem);
 
+        /**
+         * Add actionlisteners for the create agent menu item under the action menu
+         */
         JMenuItem createAgentItem = new JMenuItem("Create agent");
         createAgentItem.addActionListener(x -> {
             GameController.getInstance().virologistController.createAgent();
@@ -203,6 +248,9 @@ public class GameView extends JFrame implements Serializable {
         });
         actionMenu.add(createAgentItem);
 
+        /**
+         * Add actionlisteners for the use agent menu item under the action menu
+         */
         JMenuItem useAgentsItem = new JMenuItem("Use agents");
         useAgentsItem.addActionListener(x -> {
             GameController.getInstance().virologistController.useAgent();
@@ -210,6 +258,9 @@ public class GameView extends JFrame implements Serializable {
         });
         actionMenu.add(useAgentsItem);
 
+        /**
+         * Add actionlisteners for the discard menu item under the action menu
+         */
         JMenuItem discardItem = new JMenuItem("Discard");
         discardItem.addActionListener(x -> {
             GameController.getInstance().virologistController.discard();
@@ -217,6 +268,9 @@ public class GameView extends JFrame implements Serializable {
         });
         actionMenu.add(discardItem);
 
+        /**
+        Add the 3 main menus
+         */
         menuBar.add(fileMenu);
         menuBar.add(gameMenu);
         menuBar.add(actionMenu);
@@ -224,6 +278,9 @@ public class GameView extends JFrame implements Serializable {
         frame.setJMenuBar(menuBar);
     }
 
+    /**
+    getter for virologistview
+     */
     public VirologistView getVirologistView() {
         return virologistView;
     }

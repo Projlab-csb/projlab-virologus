@@ -8,12 +8,20 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+/**
+ * The form what opens when the user starts the game
+ *
+ */
+
 public class WelcomeForm extends JFrame {
 
     //Big header title of the application
     private JLabel headerLabel;
     private ArrayList<String> names;
 
+    /**
+     * WelcomeForm Constructor
+     */
     public WelcomeForm() {
         names = new ArrayList<>();
         this.setSize(800, 400);
@@ -22,7 +30,10 @@ public class WelcomeForm extends JFrame {
         headerLabel.setFont(new Font("Arial", Font.BOLD, 20));
         headerLabel.setHorizontalAlignment(JLabel.CENTER);
 
-        //A form to enter any number of names, all the names are displayed to the user
+        /**
+         * A form to enter any number of names, all the names are displayed to the user
+         *
+         */
         JPanel namePanel = new JPanel();
         namePanel.setLayout(new BoxLayout(namePanel, BoxLayout.Y_AXIS));
         namePanel.add(headerLabel);
@@ -31,7 +42,9 @@ public class WelcomeForm extends JFrame {
         JPanel buttonPanel = new JPanel();
         JButton addNameButton = new JButton("Add name");
         addNameButton.addActionListener(e -> {
-            //Get name from the user
+            /**
+             * Get name from the user
+             */
             String name = JOptionPane.showInputDialog(this, "Enter name of the player");
             if (name != null && !name.isEmpty()) {
                 names.add(name);
@@ -43,9 +56,15 @@ public class WelcomeForm extends JFrame {
         });
         namePanel.add(addNameButton);
 
+        /**
+         * Initializing the 2 new buttons
+         */
         Button gameButton = new Button("Start new game");
         Button loadButton = new Button("Load game");
 
+        /**
+         * Add actionlisteners for the buttons
+         */
         gameButton.addActionListener(e -> {
             //If there are no names, show an error message
             if (names.isEmpty()) {
@@ -70,6 +89,9 @@ public class WelcomeForm extends JFrame {
             }
         });
 
+        /**
+        Set the positions of the buttons
+         */
         this.add(headerLabel, BorderLayout.NORTH);
         this.add(buttonPanel, BorderLayout.SOUTH);
         buttonPanel.add(loadButton, BorderLayout.EAST);
