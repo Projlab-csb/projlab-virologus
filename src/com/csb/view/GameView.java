@@ -30,7 +30,7 @@ public class GameView extends JFrame implements Serializable {
     }
 
     public void init() {
-        setTitle("CSB - CSAK A BALÁZS");
+        setTitle("CSB - CSAK A BALAGE");
 
         this.setSize(1000, 1000);
         setDefaultCloseOperation(EXIT_ON_CLOSE);

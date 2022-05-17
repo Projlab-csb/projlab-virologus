@@ -18,7 +18,7 @@ public class WelcomeForm extends JFrame {
         names = new ArrayList<>();
         this.setSize(800, 400);
         this.setResizable(false);
-        headerLabel = new JLabel("CSB - CSAK A BALÁZS");
+        headerLabel = new JLabel("CSB - CSAK A BALAGE");
         headerLabel.setFont(new Font("Arial", Font.BOLD, 20));
         headerLabel.setHorizontalAlignment(JLabel.CENTER);
 
