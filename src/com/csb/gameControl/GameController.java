@@ -245,6 +245,7 @@ public class GameController implements Serializable {
         allGencodes.add(gencode);
     }
 
+    /**Returns a boolean whether the given virologist has won or not**/
     private boolean isWinner(Virologist v) {
         //Check if the virologist has all the possible gencodes
         List<Gencode> gencodes = virologistGencodesMap.get(v);
