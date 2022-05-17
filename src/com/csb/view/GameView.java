@@ -14,10 +14,9 @@ public class GameView extends JFrame implements Serializable {
     //private VirologistController virologistController;
     private VirologistView virologistView = null;
     private MapPanel mapPanel;
-    private ArrayList<JLabel> labels = new ArrayList<>();
 
     public GameView() {
-        setTitle("CSB - CSAK A BALÁZS");
+        setTitle("CSB - CSAK A BALAGE");
 
         this.setSize(1000, 1000);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -48,8 +47,9 @@ public class GameView extends JFrame implements Serializable {
         frame.setVisible(true);
     }
 
-    private void createStatusLabels(JFrame frame) {
+    public void createStatusLabels(JFrame frame) {
         JPanel dataPanel = new JPanel();
+        ArrayList<JLabel> labels = new ArrayList<>();
         dataPanel.setLayout(new BoxLayout(dataPanel, BoxLayout.Y_AXIS));
         dataPanel.setPreferredSize(new Dimension(200, 500));
         dataPanel.setBorder(BorderFactory.createTitledBorder("Virologist data"));
