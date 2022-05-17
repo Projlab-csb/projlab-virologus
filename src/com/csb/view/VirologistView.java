@@ -1,6 +1,7 @@
 package com.csb.view;
 
 import com.csb.fields.Field;
+import com.csb.gameControl.GameController;
 import com.csb.virologist.Virologist;
 import java.awt.*;
 import java.io.Serializable;
