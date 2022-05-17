@@ -111,6 +111,7 @@ public class GameView extends JFrame implements Serializable {
                 GameController.getInstance().loadGame(FileChooserView.getSelectedFile().getAbsolutePath());
                 GameController.getInstance().startGame();
             }
+            this.repaint();
         });
         fileMenu.add(loadItem);
 
@@ -123,6 +124,7 @@ public class GameView extends JFrame implements Serializable {
             } catch (IOException e) {
                 PopUpView.showError("Error saving game", "Save Game - Error");
             }
+            this.repaint();
         });
         fileMenu.add(saveItem);
 
@@ -133,6 +135,7 @@ public class GameView extends JFrame implements Serializable {
             if (dialogResult == JOptionPane.YES_OPTION) {
                 System.exit(0);
             }
+            this.repaint();
         });
         fileMenu.add(exitItem);
 
@@ -140,6 +143,7 @@ public class GameView extends JFrame implements Serializable {
         JMenuItem endRoundItem = new JMenuItem("End round");
         endRoundItem.addActionListener(x -> {
             GameController.getInstance().virologistController.roundEnd();
+            this.repaint();
         });
         gameMenu.add(endRoundItem);
 
@@ -147,42 +151,49 @@ public class GameView extends JFrame implements Serializable {
         JMenuItem collectItem = new JMenuItem("Collect");
         collectItem.addActionListener(x -> {
             GameController.getInstance().virologistController.collect();
+            this.repaint();
         });
         actionMenu.add(collectItem);
 
         JMenuItem moveItem = new JMenuItem("Move");
         moveItem.addActionListener(x -> {
             GameController.getInstance().virologistController.move();
+            this.repaint();
         });
         actionMenu.add(moveItem);
 
         JMenuItem stealItem = new JMenuItem("Steal");
         stealItem.addActionListener(x -> {
             GameController.getInstance().virologistController.steal();
+            this.repaint();
         });
         actionMenu.add(stealItem);
 
         JMenuItem killItem = new JMenuItem("Kill");
         killItem.addActionListener(x -> {
             GameController.getInstance().virologistController.murder();
+            this.repaint();
         });
         actionMenu.add(killItem);
 
         JMenuItem createAgentItem = new JMenuItem("Create agent");
         createAgentItem.addActionListener(x -> {
             GameController.getInstance().virologistController.createAgent();
+            this.repaint();
         });
         actionMenu.add(createAgentItem);
 
         JMenuItem useAgentsItem = new JMenuItem("Use agents");
         useAgentsItem.addActionListener(x -> {
             GameController.getInstance().virologistController.useAgent();
+            this.repaint();
         });
         actionMenu.add(useAgentsItem);
 
         JMenuItem discardItem = new JMenuItem("Discard");
         discardItem.addActionListener(x -> {
             GameController.getInstance().virologistController.discard();
+            this.repaint();
         });
         actionMenu.add(discardItem);
 
