@@ -42,7 +42,20 @@ public class DefaultRoundRun implements RoundRunStrategyInterface, Serializable 
     @Override
     public void move(Virologist virologist) {
         if (stepcounter == 0) {
-            String[] options = virologist.getField().getNeighbors().stream().map((field -> field.getType().name())).toArray(String[]::new);
+            final int[] id = { -1 };
+            String[] options = virologist
+                .getField()
+                .getNeighbors()
+                .stream()
+                .map(
+                    (
+                        field -> {
+                            id[0]++;
+                            return field.getType().name() + " (" + id[0] + ")";
+                        }
+                    )
+                )
+                .toArray(String[]::new);
             int fieldId = PopUpView.selectOption("Select a field to move to", "Virologist Move", options);
             if (fieldId == -1) return;
             virologist.move(fieldId);

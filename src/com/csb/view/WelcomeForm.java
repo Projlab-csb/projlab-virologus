@@ -61,7 +61,7 @@ public class WelcomeForm extends JFrame {
 
         loadButton.addActionListener(e -> {
             JFileChooser FileChooserView = new JFileChooser();
-            FileChooserView.setCurrentDirectory(new File("data\\saves"));
+            FileChooserView.setCurrentDirectory(new File("data" + File.separatorChar + "saves"));
             var dialogResult = FileChooserView.showOpenDialog(this);
             if (dialogResult == JFileChooser.APPROVE_OPTION) {
                 GameController.getInstance().loadGame(FileChooserView.getSelectedFile().getAbsolutePath());

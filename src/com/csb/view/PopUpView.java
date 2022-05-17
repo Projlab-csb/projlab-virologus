@@ -38,4 +38,8 @@ public class PopUpView {
             }
         }
     }
+
+    public static void showSuccess(String game_saved_successfully) {
+        JOptionPane.showMessageDialog(null, game_saved_successfully, "Success", JOptionPane.INFORMATION_MESSAGE);
+    }
 }
