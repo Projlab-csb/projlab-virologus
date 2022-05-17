@@ -84,8 +84,8 @@ public class VirologistController implements Serializable {
      */
     public void updateView() {
         if (virologist != null) {
-            view.printVirologist(virologist);
             view.renderMap();
+            view.printVirologist(virologist);
         }
     }
 }

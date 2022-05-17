@@ -17,9 +17,7 @@ public class VirologistView implements Serializable {
     private MapPanel mapPanel;
 
     public VirologistView(ArrayList<JLabel> label, MapPanel mapPanel) {
-        for (int i = 0; i < 7; i++) {
-            this.labels.add(label.get(i));
-        }
+        labels = label;
         this.mapPanel = mapPanel;
     }
 

@@ -12,6 +12,10 @@ import javax.swing.JPanel;
 
 public class MapPanel extends JPanel implements Serializable {
 
+    /**
+     * Renders a map of the game.
+     * @param g Graphics object to draw on.
+     */
     @Override
     public void paint(Graphics g) {
         Graphics2D graphic2d = (Graphics2D) g;
@@ -39,6 +43,17 @@ public class MapPanel extends JPanel implements Serializable {
         drawField(g, centerX, centerY, centerX, centerY, fieldSize, centerField, null);
     }
 
+    /**
+     * Draws a field on the map with the given parameters as a circle.
+     * @param g Graphics object to draw on.
+     * @param x X coordinate of the center of the circle.
+     * @param y Y coordinate of the center of the circle.
+     * @param centerX X coordinate of the center of the map.
+     * @param centerY Y coordinate of the center of the map.
+     * @param size Size of the circle.
+     * @param field Field to draw.
+     * @param fieldId Id of the field.
+     */
     private void drawField(Graphics g, int x, int y, int centerX, int centerY, int size, Field field, Integer fieldId) {
         g.setColor(Color.BLACK);
         g.drawLine(x + size / 2, y + size / 2, centerX + size / 2, centerY + size / 2);
@@ -68,6 +83,14 @@ public class MapPanel extends JPanel implements Serializable {
         renderVirologists(g, x, y, size, field);
     }
 
+    /**
+     * Renders a virologist on the map.
+     * @param g Graphics object to draw on.
+     * @param x X coordinate of the center of the circle.
+     * @param y Y coordinate of the center of the circle.
+     * @param fieldSize Size of the circle.
+     * @param field Field to draw.
+     */
     private void renderVirologists(Graphics g, int x, int y, int fieldSize, Field field) {
         for (int i = 0; i < field.getVirologists().size(); i++) {
             Virologist virologist = field.getVirologists().get(i);
