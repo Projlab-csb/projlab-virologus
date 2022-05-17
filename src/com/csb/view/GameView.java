@@ -15,14 +15,28 @@ public class GameView extends JFrame implements Serializable {
     //private VirologistController virologistController;
     private VirologistView virologistView = null;
     private MapPanel mapPanel;
-    private ArrayList<JLabel> labels = new ArrayList<>();
+    private ArrayList<JLabel> labels;
+    private JLabel nameLabel;
+    private JLabel aminoLabel;
+    private JLabel nucleicLabel;
+    private JLabel inventoryLabel;
+    private JLabel gencodeLabel;
+    private JLabel createdLabel;
+    private JLabel effectLabel;
+    private JPanel dataPanel;
 
     public GameView() {
+        init();
+    }
+
+    public void init() {
         setTitle("CSB - CSAK A BALÁZS");
 
         this.setSize(1000, 1000);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
+
+        labels = new ArrayList<>();
 
         container = getContentPane();
         container.setLayout(new BorderLayout());
@@ -49,36 +63,42 @@ public class GameView extends JFrame implements Serializable {
         frame.setVisible(true);
     }
 
+    public void recreateLabels() {
+        labels.clear();
+        this.remove(dataPanel);
+        createStatusLabels(this);
+    }
+
     private void createStatusLabels(JFrame frame) {
-        JPanel dataPanel = new JPanel();
+        dataPanel = new JPanel();
         dataPanel.setLayout(new BoxLayout(dataPanel, BoxLayout.Y_AXIS));
         dataPanel.setPreferredSize(new Dimension(200, 500));
         dataPanel.setBorder(BorderFactory.createTitledBorder("Virologist data"));
-        JLabel nameLabel = new JLabel("Name");
+        nameLabel = new JLabel("Name");
 
         dataPanel.add(nameLabel);
         labels.add(nameLabel);
-        JLabel aminoLabel = new JLabel("Amino acid:");
+        aminoLabel = new JLabel("Amino acid:");
 
         dataPanel.add(aminoLabel);
         labels.add(aminoLabel);
-        JLabel nucleicLabel = new JLabel("Nucleic acid:");
+        nucleicLabel = new JLabel("Nucleic acid:");
 
         dataPanel.add(nucleicLabel);
         labels.add(nucleicLabel);
-        JLabel inventoryLabel = new JLabel("Inventory:");
+        inventoryLabel = new JLabel("Inventory:");
 
         dataPanel.add(inventoryLabel);
         labels.add(inventoryLabel);
-        JLabel gencodeLabel = new JLabel("Genetic codes:");
+        gencodeLabel = new JLabel("Genetic codes:");
 
         dataPanel.add(gencodeLabel);
         labels.add(gencodeLabel);
-        JLabel createdLabel = new JLabel("Created agents:");
+        createdLabel = new JLabel("Created agents:");
 
         dataPanel.add(createdLabel);
         labels.add(createdLabel);
-        JLabel effectLabel = new JLabel("Effects on player:");
+        effectLabel = new JLabel("Effects on player:");
 
         dataPanel.add(effectLabel);
         labels.add(effectLabel);

@@ -3,7 +3,6 @@ package com.csb.controller;
 import com.csb.gameControl.GameController;
 import com.csb.view.VirologistView;
 import com.csb.virologist.Virologist;
-
 import java.io.Serializable;
 
 public class VirologistController implements Serializable {

@@ -35,7 +35,7 @@ public class GameController implements Serializable {
     GameMap map = null;
 
     GameView gameView = null;
-    public VirologistController virologistController; //TODO: This should be private, only for test purposes
+    public VirologistController virologistController;
 
     //Instance of the singleton class
     private static GameController _instance;
@@ -119,9 +119,10 @@ public class GameController implements Serializable {
             Object o = ois.readObject();
             ois.close();
             GameController gameController = (GameController) o;
+            _instance.gameView.setVisible(false);
             _instance = gameController;
+            _instance.gameView.init();
 
-            this.gameView.getVirologistView();
             System.out.println("Game loaded");
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
