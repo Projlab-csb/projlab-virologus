@@ -4,6 +4,7 @@ import com.csb.controller.VirologistController;
 import com.csb.gameControl.GameController;
 import java.awt.*;
 import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.swing.*;
@@ -116,12 +117,23 @@ public class GameView extends JFrame implements Serializable {
         JMenuItem saveItem = new JMenuItem("Save");
         saveItem.addActionListener(x -> {
             String fileName = JOptionPane.showInputDialog(frame, "Enter file name (without extension)");
-            GameController.getInstance().saveGame(fileName);
+            try {
+                GameController.getInstance().saveGame(fileName);
+                PopUpView.showSuccess("Game saved successfully");
+            } catch (IOException e) {
+                PopUpView.showError("Error saving game", "Save Game - Error");
+            }
         });
         fileMenu.add(saveItem);
 
         JMenuItem exitItem = new JMenuItem("Exit");
-        exitItem.addActionListener(x -> {});
+        exitItem.addActionListener(x -> {
+            //Ask for confirmation
+            int dialogResult = JOptionPane.showConfirmDialog(frame, "Are you sure you want to exit?", "Exit", JOptionPane.YES_NO_OPTION);
+            if (dialogResult == JOptionPane.YES_OPTION) {
+                System.exit(0);
+            }
+        });
         fileMenu.add(exitItem);
 
         //Game Menu

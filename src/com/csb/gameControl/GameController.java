@@ -90,7 +90,7 @@ public class GameController implements Serializable {
      * Saves the current game state.
      * @param fileName The name of the file to save the game state to.
      */
-    public void saveGame(String fileName) {
+    public void saveGame(String fileName) throws IOException {
         File directory = new File(GAME_SAVE_LOCATION);
         if (!directory.exists()) {
             directory.mkdirs();
@@ -98,16 +98,12 @@ public class GameController implements Serializable {
 
         File file = new File(GAME_SAVE_LOCATION + fileName + ".ser");
         //Loop through the fields and save them to a file
-        try {
-            FileOutputStream fos = new FileOutputStream(file);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(getInstance());
-            oos.close();
-            fos.close();
-            System.out.println("Game saved");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        FileOutputStream fos = new FileOutputStream(file);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(getInstance());
+        oos.close();
+        fos.close();
+        System.out.println("Game saved");
     }
 
     /**
