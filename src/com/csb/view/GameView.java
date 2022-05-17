@@ -105,7 +105,7 @@ public class GameView extends JFrame implements Serializable {
         JMenuItem loadItem = new JMenuItem("Load");
         loadItem.addActionListener(x -> {
             JFileChooser FileChooserView = new JFileChooser();
-            FileChooserView.setCurrentDirectory(new File("data\\saves"));
+            FileChooserView.setCurrentDirectory(new File("data" + File.separator + "saves"));
             var dialogResult = FileChooserView.showOpenDialog(this);
             if (dialogResult == JFileChooser.APPROVE_OPTION) {
                 GameController.getInstance().loadGame(FileChooserView.getSelectedFile().getAbsolutePath());
