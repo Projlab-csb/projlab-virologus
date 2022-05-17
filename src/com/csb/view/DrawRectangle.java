@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 public class DrawRectangle extends JPanel {
 
+    /**coordinates**/
     private int x, y, width, length;
 
     public DrawRectangle(int xc, int yc, int w, int l) {
@@ -18,6 +19,9 @@ public class DrawRectangle extends JPanel {
         length = l;
     }
 
+
+    /**drawing a red rectangle
+     with the given coordinates**/
     @Override
     public void paint(Graphics g) {
         Graphics2D graphic2d = (Graphics2D) g;
